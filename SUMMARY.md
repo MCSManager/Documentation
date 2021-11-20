@@ -20,7 +20,7 @@
 
 ## 远程实例操作
 
-* [获取远程实例详情信息](yuan-cheng-shi-li-cao-zuo/get\_instance\_info.md)
+* [获取远程实例详情信息](group-2/get\_instance\_info.md)
 * [查询远程实例详细信息](group-1/search\_remote\_services.md)
 * [创建远程实例](group-1/create\_instance.md)
 * [编辑远程实例](group-1/edit\_instance.md)
@@ -32,19 +32,19 @@
 
 ## 实例文件操作
 
-* [复制文件](copy\_files.md)
-* [移动文件](move\_files.md)
-* [新建目录](mkdir.md)
-* [删除文件](delete\_files.md)
-* [编辑/查看文件](edit\_files.md)
+* [查看远程实例文件列表](group-1/view\_instance\_fils\_list.md)
 * [查询实例配置文件列表](group-1/query\_instance\_configfile.md)
-* [查看指定实例的文件列表](group-1/view\_instance\_fils\_list.md)
 * [获取指定实例配置文件内容](get\_instance\_configFileContent.md)
 * [更新指定实例配置文件内容](shi-li-wen-jian-cao-zuo/update\_instance\_configfilecontent.md)
+* [编辑/查看文件](edit\_files.md)
 * [压缩/解压文件](compress.md)
+* [新建目录](mkdir.md)
+* [复制文件](copy\_files.md)
+* [移动文件](move\_files.md)
+* [删除文件](delete\_files.md)
 
 ## 计划任务
 
 * [获取计划任务列表](get\_schedule\_list.md)
-* [删除计划任务](del\_scedule.md)
 * [创建计划任务](create\_schedule.md)
+* [删除计划任务](del\_scedule.md)
