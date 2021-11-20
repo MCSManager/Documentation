@@ -1,4 +1,4 @@
-### 获取指定实例配置文件内容
+# 获取指定实例配置文件内容
 
 地址
 
@@ -13,8 +13,7 @@ GET
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-响应
-（这里为上面地址里的`spigot.yml`）
+响应 （这里为上面地址里的`spigot.yml`）
 
 ```json
 {

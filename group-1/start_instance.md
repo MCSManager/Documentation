@@ -1,9 +1,9 @@
-### 关闭实例
+# 开启实例
 
 地址
 
 ```
-/api/protected_instance/stop/?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/protected_instance/open/?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
 ```
 
 请求方式
@@ -21,6 +21,6 @@ Content-Type: application/json; charset=utf-8
     "data": {
         "instanceUuid": "884cef664bda4c45b9ced960c56be439"
     },
-    "time": 1633161747334
+    "time": 1633160304677
 }
 ```

@@ -1,16 +1,16 @@
-### 重启实例
+# 关闭实例
 
 地址
 
 ```
-/api/protected_instance/restart/?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/protected_instance/kill/?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
 ```
 
 请求方式
 
 ```
 GET
-Content-Type: application/json; charset=utf-8
+Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
 响应

@@ -1,4 +1,4 @@
-### 编辑/查看文件
+# 编辑/查看文件
 
 地址
 
@@ -24,7 +24,8 @@ Content-Type: application/json; charset=utf-8
 
 响应
 
-*查看文件*
+_查看文件_
+
 ```json
 {
     "status":200,
@@ -33,7 +34,8 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-*编辑文件*
+_编辑文件_
+
 ```json
 {
     "status": 200,

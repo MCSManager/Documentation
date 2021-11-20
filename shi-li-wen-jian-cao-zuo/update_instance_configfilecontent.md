@@ -1,4 +1,4 @@
-### 更新指定实例配置文件内容
+# 更新指定实例配置文件内容
 
 地址
 
@@ -179,8 +179,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-响应
-（这里为上面地址里的`spigot.yml`）
-```json
+响应 （这里为上面地址里的`spigot.yml`）
 
+```json
 ```
