@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/Suwings/MCSManager/master/public/common/doc_logo.png)
+![logo](https://docs.mcsmanager.com/logo.png)
 
 # MCSManager <small>官方接口文档</small>
 
