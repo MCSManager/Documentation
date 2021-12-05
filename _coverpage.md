@@ -1,6 +1,6 @@
 ![logo](https://docs.mcsmanager.com/logo.png)
 
-# MCSManager <small>官方接口文档</small>
+<h1><b>MCSManager</b><small>官方接口文档</small></h1>
 
 > 简单，易用，多实例，轻量级的 Minecraft Server 控制面板
 
