@@ -1,12 +1,16 @@
+<!--
+ * @Author: Nuomiaa&Suwings
+ * @Date: 2021-12-04 19:06:40
+ * @LastEditTime: 2021-12-06 21:20:04
+-->
+
 ![logo](https://docs.mcsmanager.com/logo.png)
 
-<h1><b>MCSManager</b><small>官方接口文档</small></h1>
+<h1><b>MCSManager 接口文档</b></h1>
 
-> 简单，易用，多实例，轻量级的 Minecraft Server 控制面板
+> 分布式，虚拟化，开箱即用，支持 Minecraft 和其他游戏的服务端管理面板
 
-- 控制面板可运行在 Windows 与 Linux 平台
-- 只需安装 node 环境即可快速运行
-- 无需数据库与任何系统配置
+文档由 Suwings，Lazy，Nuomiaa 和其他贡献者们共同维护与更新。
 
-[GitHub](https://github.com/Suwings/MCSManager)
 [快速开始](README.md)
+[GitHub](https://github.com/Suwings/MCSManager)
