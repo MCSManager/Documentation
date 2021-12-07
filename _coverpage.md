@@ -10,7 +10,7 @@
 
 > 分布式，虚拟化，开箱即用，支持 Minecraft 和其他游戏的服务端管理面板
 
-文档由 Suwings，Lazy，Nuomiaa 和其他贡献者们共同维护与更新。test1
+文档由 Suwings，Lazy，Nuomiaa 和其他贡献者们共同维护与更新。
 
 [快速开始](README.md)
 [GitHub](https://github.com/Suwings/MCSManager)
