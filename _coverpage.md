@@ -12,5 +12,5 @@
 
 文档由 Suwings，Lazy，Nuomiaa 和其他贡献者们共同维护与更新。
 
-[快速开始](README.md)
 [GitHub](https://github.com/Suwings/MCSManager)
+[快速开始](README.md)
