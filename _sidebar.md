@@ -3,7 +3,7 @@
 * 面版操作
   * [登录用户](panel/login.md)
   * [登出用户](panel/logout.md)
-  * [创建用户](panel/register.md)
+  * [创建用户](panel/user_register.md)
   * [删除用户](panel/user_delete.md)
   * [数据监控](panel/overview.md)
   * [用户总览](panel/user_overview.md)
