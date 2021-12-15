@@ -13,7 +13,7 @@
   * [更新用户数据](panel/update.md)
   * [更新用户数据(管理)](panel/update_admin.md)
   
-* remote
+* 远程服务操作
   * [删除远程服务](remote/del_remote_services.md)
   * [编辑远程服务](remote/edit_remote_services.md)
   * [获取所有分布式服务列表](remote/get_daemonlist.md)
@@ -22,7 +22,7 @@
   * [新增远程服务](remote/new_remote_services.md)
   * [重新连接远程服务](remote/reconn_remote_services.md)
 
-* instance
+* 远程实例操作
   * [创建实例](instance/create_instance.md)
   * [删除实例](instance/delete_instance.md)
   * [编辑实例](instance/edit_instance.md)
@@ -37,7 +37,7 @@
   * [查看指定实例的文件列表](instance/view_instance_fils_list.md)
   * [获取指定实例配置文件内容](instance/get_instance_configFileContent.md)
 
-* files
+* 远程文件操作
   * [压缩/解压文件](files/compress.md)
   * [复制文件](files/copy_files.md)
   * [删除文件](files/delete_files.md)
@@ -45,7 +45,7 @@
   * [新建目录](files/mkdir.md)
   * [移动文件](files/move_files.md)
 
-* scedule
+* 计划任务操作
   * [创建计划任务](scedule/create_schedule.md)
   * [删除计划任务](scedule/del_scedule.md)
   * [获取计划任务列表](scedule/get_schedule_list.md)
