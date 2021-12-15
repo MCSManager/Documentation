@@ -1,20 +1,24 @@
 # 创建计划任务
 
 地址
-
 ```
-/api/protected_schedule/?uuid={{instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/protected_schedule
 ```
 
 请求方式
-
 ```
 POST
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
+查询参数
+```js
+uuid: String        // UUID
+apikey: String      // API 密钥
+remote_uuid: String // 远程 UUID
+```
 
+请求参数（Query）
 ```json
 {
     "name":"测试计划",
@@ -27,7 +31,6 @@ Content-Type: application/json; charset=utf-8
 ```
 
 响应
-
 ```json
 {
     "status": 200,

@@ -1,32 +1,34 @@
 # 创建实例
 
 地址
-
 ```
-/api/instance/?remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/instance
 ```
 
 请求方式
-
 ```
 POST 
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
-
+查询参数
+```js
+remote_uuid: String // 远程服务 UUID
+apikey: String      // API 密钥
 ```
-command:cmd.exe	// 启动命令
-cwd:.			// 工作目录
-stopCommand:stop	// 停止命令
-nickname:昵称{{$randomFileName}} // 实例昵称
-ie:GBK	// 输入编码
-io:GBK  // 输出编码
+
+请求参数（Query）
+```js
+command: cmd.exe	// 启动命令
+cwd: .			// 工作目录
+stopCommand: stop	// 停止命令
+nickname: 昵称{{$randomFileName}} // 实例昵称
+ie: GBK	// 输入编码
+io: GBK  // 输出编码
 ```
 
 响应
-
-```
+```json
 {
     "status": 200,
     "data": {

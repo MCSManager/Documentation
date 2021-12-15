@@ -1,21 +1,25 @@
 # 编辑实例
 
 地址
-
 ```
-/api/instance?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/instance
 ```
 
 请求方式
-
 ```
 POST
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
-
+查询参数
+```js
+uuid: String // UUID
+remote_uuid: String // 远程服务 UUID
+apikey: String      // API 密钥
 ```
+
+请求参数（Query）
+```json
 {
     "nickname": "TestServerName",	// 实例名称
     "startCommand": "cmd.exe",		// 启动命令
@@ -37,8 +41,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 响应
-
-```
+```json
 {
     "status": 200,
     "data": {

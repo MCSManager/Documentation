@@ -1,19 +1,22 @@
 # 更新面板设置
 
 地址
-
 ```
-/api/overview/setting/?apikey={{apikey}}
+/api/overview/setting
 ```
 
 请求方式
-
 ```
 PUT
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
+查询参数
+```js
+apikey: String        // API 密钥
+```
+
+请求参数（Query）
 ```json
 {
     "maxDonwload": 100,

@@ -1,20 +1,22 @@
 # 查看各个守护进程简报
 
 地址
-
 ```
-/api/service/remote_services_system?apikey={{apikey}}
+/api/service/remote_services_system
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-响应
+查询参数
+```js
+apikey: String      // API 密钥
+```
 
+响应
 ```json
 {
     "status": 200,

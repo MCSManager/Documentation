@@ -1,20 +1,22 @@
 # 数据监控
 
 地址
-
 ```
 /api/overview?apikey={{apikey}}
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-响应
+查询参数
+```js
+apikey: String        // API 密钥
+```
 
+响应
 ```json
 {
     "status": 200,

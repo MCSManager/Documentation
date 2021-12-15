@@ -1,21 +1,24 @@
 # 根据条件查询远程服务实例
 
 地址
-
 ```
-/api/service/remote_service_instances/?remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/service/remote_service_instances
 ```
 
 请求方式
-
 ```
-GET
+POST
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-请求参数
-
+查询参数
+```js
+remote_uuid: String // 远程服务 UUID
+apikey: String      // API 密钥
 ```
+
+请求参数（Query）
+```js
 page：页码
 page_size：每页显示几个实例
 instance_name：要搜索的实例名称
@@ -24,7 +27,6 @@ apikey：密钥
 ```
 
 响应
-
 ```json
 {
     "status": 200,

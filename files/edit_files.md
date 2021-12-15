@@ -1,20 +1,17 @@
 # 编辑/查看文件
 
 地址
-
 ```
 /api/files?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
 ```
 
 请求方式
-
 ```
 PUT
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
-
+请求参数（Query）
 ```json
 {
     "target": "eula.txt",
@@ -25,7 +22,6 @@ Content-Type: application/json; charset=utf-8
 响应
 
 _查看文件_
-
 ```json
 {
     "status":200,
@@ -35,7 +31,6 @@ _查看文件_
 ```
 
 _编辑文件_
-
 ```json
 {
     "status": 200,

@@ -1,16 +1,19 @@
 # 获取面板设置
 
 地址
-
 ```
 /api/overview/setting/?apikey={{apikey}}
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: application/json; charset=utf-8
+```
+
+查询参数
+```js
+apikey: String        // API 密钥
 ```
 
 响应

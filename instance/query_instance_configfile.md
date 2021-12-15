@@ -1,20 +1,24 @@
 # 查询实例配置文件列表
 
 地址
-
 ```
-/api/protected_instance/process_config/list?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/protected_instance/process_config/list
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: application/json; charset=utf-8
 ```
 
-响应
+查询参数
+```js
+uuid: String // 新实例 UUID
+remote_uuid: String // 远程服务 UUID
+apikey: String      // API 密钥
+```
 
+响应
 ```json
 {
     "status":200,

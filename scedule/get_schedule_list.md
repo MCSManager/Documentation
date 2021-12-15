@@ -1,20 +1,24 @@
 # 获取计划任务列表
 
 地址
-
 ```
-/api/protected_schedule/?uuid={{instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/protected_schedule
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-响应
+查询参数
+```js
+uuid: String        // UUID
+apikey: String      // API 密钥
+remote_uuid: String // 远程 UUID
+```
 
+响应
 ```json
 {
     "status": 200,

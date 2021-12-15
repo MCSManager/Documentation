@@ -3,18 +3,22 @@
 地址
 
 ```
-/api/service/link_remote_service/?uuid={{newServiceId}}&apikey={{apikey}}
+/api/service/link_remote_service
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-响应
+查询参数
+```js
+uuid: String        // UUID
+apikey: String      // API 密钥
+```
 
+响应
 ```json
 {
     "status": 200,

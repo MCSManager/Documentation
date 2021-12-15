@@ -1,20 +1,22 @@
 # 新增远程服务
 
 地址
-
 ```
-/api/service/remote_service/?apikey={{apikey}}
+/api/service/remote_service
 ```
 
 请求方式
-
 ```
 POST
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
+查询参数
+```js
+apikey: String      // API 密钥
+```
 
+请求参数（Query）
 ```json
 {
     "apiKey":"test_key",    //连接密钥
@@ -25,7 +27,6 @@ Content-Type: application/json; charset=utf-8
 ```
 
 响应
-
 ```json
 {
     "status":200,

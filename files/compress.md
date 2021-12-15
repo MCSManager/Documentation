@@ -1,20 +1,24 @@
 # 压缩/解压文件
 
 地址
-
 ```
-/api/files/compress/?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
+/api/files/compress
 ```
 
 请求方式
-
 ```
 POST
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
+查询参数
+```js
+uuid: String        // 实例的 UUID
+remote_uuid: String // 远程服务 UUID
+apikey: String      // API 密钥
+```
 
+请求参数（Query）
 ```json
 {
     "type":1,                   // 1为压缩，2为解压 
@@ -30,7 +34,6 @@ Content-Type: application/json; charset=utf-8
 ```
 
 响应
-
 ```json
 {
     "status": 200,

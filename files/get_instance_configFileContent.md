@@ -1,20 +1,25 @@
 # 获取指定实例配置文件内容
 
 地址
-
 ```
-/api/protected_instance/process_config/file?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&fileName=spigot.yml&type=yml&apikey={{apikey}}
+/api/protected_instance/process_config/file
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-响应 （这里为上面地址里的`spigot.yml`）
+查询参数
+```js
+uuid: String        // 实例的 UUID
+remote_uuid: String // 远程服务 UUID
+apikey: String      // API 密钥
+fileName: String      // 文件名称
+```
 
+响应 （这里为上面*查询参数*里的`spigot.yml`）
 ```json
 {
     "status":200,

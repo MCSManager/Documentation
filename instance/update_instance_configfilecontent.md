@@ -1,20 +1,25 @@
 # 更新指定实例配置文件内容
 
 地址
-
 ```
-/api/protected_instance/process_config/file?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&fileName=spigot.yml&apikey={{apikey}}
+/api/protected_instance/process_config/file
 ```
 
 请求方式
-
 ```
 PUT
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
+查询参数
+```js
+uuid: String          // UUID
+apikey: String        // API 密钥
+remote_uuid: String   // 远程服务 UUID
+fileName: String      // API 密钥
+```
 
+请求参数（Query）
 ```json
 {
     "config-version":1145144,

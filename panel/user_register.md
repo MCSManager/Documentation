@@ -1,20 +1,17 @@
 # 创建用户
 
 地址
-
 ```
 /api/auth
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数
-
+请求参数（Query）
 ```json
 {
     "username": "注册用户名",

@@ -1,26 +1,29 @@
 # 查看指定实例的文件列表
 
 地址
-
 ```
 /api/files/list?uuid={{new_instance_uuid}}&remote_uuid={{service_uuid}}&apikey={{apikey}}
 ```
 
 请求方式
-
 ```
 GET
 Content-Type: x-www-form-urlencoded; charset=utf-8
 ```
 
-请求参数
+查询参数
+```js
+uuid: String          // UUID
+apikey: String        // API 密钥
+remote_uuid: String   // 远程服务 UUID
+```
 
+请求参数（Query）
 ```
 target:\     // 查看的文件目录
 ```
 
 响应
-
 ```json
 {
     "status": 200,
