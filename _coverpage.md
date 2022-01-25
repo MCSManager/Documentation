@@ -6,7 +6,7 @@
 
 ![logo](https://docs.mcsmanager.com/logo.png)
 
-<h1><b>MCSManager 接口文档</b></h1>
+<h1><b>MCSManager 官方文档</b></h1>
 
 > 分布式，虚拟化，开箱即用，支持 Minecraft 和其他游戏的服务端管理面板
 
