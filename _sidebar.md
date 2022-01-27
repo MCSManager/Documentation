@@ -5,7 +5,7 @@
 
   - [如何连接守护进程](tutorial/connect_daemon.md)
   - [分布式工作原理](tutorial/system_structure.md)
-  - [反向代理](tutorial/simple_reverse_proxy.md)
+  - [配置反向代理](tutorial/simple_reverse_proxy.md)
 
 - 面版基本接口
 
