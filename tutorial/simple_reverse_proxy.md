@@ -49,7 +49,7 @@ http {
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
-                add_header Cache-Control no-cache;
+            add_header Cache-Control no-cache;
             expires 12h;
         }
     }
@@ -70,7 +70,7 @@ http {
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
-                add_header Cache-Control no-cache;
+            add_header Cache-Control no-cache;
             expires 12h;
         }
     }
@@ -78,15 +78,24 @@ http {
 }
 ```
 
-配置完毕后，访问 http://x.x.x.x:8081/ 即可享受反代之后的地址。
+**重启 Nginx 服务**
+
+```bash
+# 可能的命令
+systemctl restart nginx
+systemctl restart http
+systemctl restart httpd
+```
+
+配置完毕后，访问 http://{公网 IP}:8081/ 即可享受反代之后的地址。
 
 <br />
 
-## 注意事项
+## 重新连接到守护进程
 
 反代建立完毕后，请重新使用反代后的 Daemon 端口连接。
 
-列如上述配置将 8082 反代到了 24444 端口，纵使你是 Localhost 连接也必须使用 8082 端口进行连接。
+列如上述配置将 8082 反代到了 24444 端口，纵使你是 localhost 地址也建议使用 8082 端口进行连接。
 
 ![示例图](images/fandai8082.png)
 
