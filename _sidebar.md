@@ -25,7 +25,7 @@
 
   - [删除远程服务](remote/del_remote_services.md)
   - [编辑远程服务](remote/edit_remote_services.md)
-  - [获取所有分布式服务列表](remote/get_daemonlist.md)
+  - [获取所有守护进程列表](remote/get_daemonlist.md)
   - [获取远程服务列表](remote/get_remote_services.md)
   - [查看各个守护进程简报](remote/get_remote_services_info.md)
   - [新增远程服务](remote/new_remote_services.md)
