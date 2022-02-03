@@ -21,7 +21,7 @@ apikey: String; // API 密钥
 remote_uuid: String; // 远程 UUID
 ```
 
-请求参数（Query）
+请求体（Body）
 
 ```json
 // 此接口请求较为复杂，其他更多计划类型以后介绍。

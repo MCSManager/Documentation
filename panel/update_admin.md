@@ -19,7 +19,7 @@ Content-Type: application/json; charset=utf-8
 apikey: String;
 ```
 
-请求参数（Body）
+请求体（Body）
 
 ```json
 {

@@ -20,7 +20,7 @@ uuid: String; // 守护进程的 UUID
 apikey: String; // API 密钥
 ```
 
-查询参数（Body）
+请求体（Body）
 
 ```json
 {

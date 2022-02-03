@@ -20,7 +20,7 @@ uuid: String; // UUID
 apikey: String; // API 密钥
 ```
 
-请求参数（Body）
+请求体（Body）
 
 ```json
 {

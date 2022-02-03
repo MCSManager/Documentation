@@ -19,7 +19,7 @@ Content-Type: application/json; charset=utf-8
 apikey: String; // API 密钥
 ```
 
-请求参数（Body）
+请求体（Body）
 
 ```json
 // 此处极有可能会随着版本迭代而变化，内容可能会有些许不同
