@@ -1,4 +1,4 @@
-# 压缩文件
+# 解压文件
 
 地址
 
@@ -25,13 +25,9 @@ apikey: String; // API 密钥
 
 ```json
 {
-  "type": 1,
-  "source": "testzip.zip", // 压缩后的包名称
-  "targets": [
-    "eula.txt", // 要压缩的文件，相对目录
-    "spigot.yml",
-    "world"
-  ]
+  "type": 2,
+  "source": "testzip.zip", //要解压的文件
+  "targets": "解压目录_testzip.zip" //解压后的目录名，文件将全部在此目录中
 }
 ```
 
@@ -41,6 +37,6 @@ apikey: String; // API 密钥
 {
   "status": 200,
   "data": true,
-  "time": 1633180183159
+  "time": 1643882564419
 }
 ```

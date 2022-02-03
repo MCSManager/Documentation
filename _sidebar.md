@@ -48,13 +48,14 @@
   - [检查实例配置文件存在](instance/query_instance_configfile.md)
   - [更新指定实例配置文件内容](instance/update_instance_configfilecontent.md)
 
-- 远程文件管理
+- 实例文件管理
 
   - [获取文件列表](instance/view_instance_fils_list.md)
-  - [压缩/解压文件](files/compress.md)
+  - [编辑/查看文件](files/edit_files.md)
+  - [压缩文件](files/compress.md)
+  - [解压文件](files/uncompress.md)
   - [复制文件](files/copy_files.md)
   - [删除文件](files/delete_files.md)
-  - [编辑/查看文件](files/edit_files.md)
   - [新建目录](files/mkdir.md)
   - [移动文件](files/move_files.md)
 
