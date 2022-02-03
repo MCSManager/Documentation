@@ -46,6 +46,7 @@
   - [关闭实例](instance/stop_instance.md)
   - [终止实例](instance/kill_instance.md)
   - [重启实例](instance/restart_instance.md)
+  - [向实例发送命令](instance/command_instance.md)
   - [检查实例配置文件存在](instance/query_instance_configfile.md)
   - [更新指定实例配置文件内容](instance/update_instance_configfilecontent.md)
 
