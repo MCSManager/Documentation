@@ -11,6 +11,7 @@
 - 面版基本接口
 
   - [数据监控](panel/overview.md)
+  - [获取面板数据简报](remote/get_remote_services_info.md)
   - [获取面板设置](panel/get_settings.md)
   - [更新面板设置](panel/update_settings.md)
 
@@ -24,15 +25,14 @@
   - [查看用户信息](panel/info.md)
   - [根据条件查询用户](panel/search.md)
 
-- 远程服务接口
+- 守护进程管理
 
-  - [删除远程服务](remote/del_remote_services.md)
-  - [编辑远程服务](remote/edit_remote_services.md)
+  - [新增远程守护进程](remote/new_remote_services.md)
+  - [删除远程守护进程](remote/del_remote_services.md)
+  - [编辑远程守护进程](remote/edit_remote_services.md)
   - [获取所有守护进程列表](remote/get_daemonlist.md)
-  - [获取远程服务列表](remote/get_remote_services.md)
-  - [查看各个守护进程简报](remote/get_remote_services_info.md)
-  - [新增远程服务](remote/new_remote_services.md)
-  - [重新连接远程服务](remote/reconn_remote_services.md)
+  - [获取守护进程列表](remote/get_remote_services.md)
+  - [重新连接远程守护进程](remote/reconn_remote_services.md)
 
 - 远程实例接口
 
@@ -43,7 +43,7 @@
   - [关闭实例](instance/kill_instance.md)
   - [查询实例配置文件列表](instance/query_instance_configfile.md)
   - [重启实例](instance/restart_instance.md)
-  - [根据条件查询远程服务实例](instance/search_remote_services.md)
+  - [根据条件查询守护进程实例](instance/search_remote_services.md)
   - [开启实例](instance/start_instance.md)
   - [关闭实例](instance/stop_instance.md)
   - [更新指定实例配置文件内容](instance/update_instance_configfilecontent.md)
