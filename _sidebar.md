@@ -7,6 +7,7 @@
   - [分布式工作原理](tutorial/system_structure.md)
   - [配置反向代理](tutorial/simple_reverse_proxy.md)
   - [配置 https](tutorial/reverse_proxy+ssl.md)
+  - [更新面板](tutorial/update_mcsm.md)
 
 - 面板通用设置
 
@@ -20,10 +21,10 @@
   - [创建用户](panel/user_register.md)
   - [删除用户](panel/user_delete.md)
   - [用户总览](panel/user_overview.md)
-  - [更新用户数据](panel/update.md)
-  - [更新用户数据(管理)](panel/update_admin.md)
   - [查看用户信息](panel/info.md)
   - [根据条件查询用户](panel/search.md)
+  - [更新自身用户信息](panel/update.md)
+  - [更新任意用户信息](panel/update_admin.md)
 
 - 守护进程管理
 
