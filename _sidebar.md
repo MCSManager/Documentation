@@ -10,16 +10,19 @@
 
 - 面版基本接口
 
-  - [创建用户](panel/user_register.md)
-  - [删除用户](panel/user_delete.md)
   - [数据监控](panel/overview.md)
-  - [用户总览](panel/user_overview.md)
   - [获取面板设置](panel/get_settings.md)
   - [更新面板设置](panel/update_settings.md)
-  - [查看用户信息](panel/info.md)
   - [根据条件查询用户](panel/search.md)
+
+- 用户管理
+
+  - [创建用户](panel/user_register.md)
+  - [删除用户](panel/user_delete.md)
+  - [用户总览](panel/user_overview.md)
   - [更新用户数据](panel/update.md)
   - [更新用户数据(管理)](panel/update_admin.md)
+  - [查看用户信息](panel/info.md)
 
 - 远程服务接口
 

@@ -7,17 +7,30 @@
 ```
 
 请求方式
+
 ```
 DELETE
 Content-Type: application/json; charset=utf-8
 ```
 
-请求参数（Query）
+查询参数（Query）
+
+```js
+apikey: String;
+```
+
+请求参数（Body）
+
 ```json
-["{{uuid}}"]
+["{{uuid}}"] // uuid 指用户的 uuid，可以多个
 ```
 
 响应
-```json
 
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1643878526440
+}
 ```
