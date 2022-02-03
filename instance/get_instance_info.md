@@ -1,68 +1,91 @@
 # 获取远程实例详情信息
 
 地址
+
 ```
 /api/instance
 ```
 
 请求方式
+
 ```
 GET
-Content-Type: x-www-form-urlencoded; charset=utf-8
+Content-Type: application/json; charset=utf-8
 ```
 
 查询参数
+
 ```js
-uuid: String // UUID
-remote_uuid: String // 远程服务 UUID
-apikey: String      // API 密钥
+uuid: String; // UUID
+remote_uuid: String; // 远程服务 UUID
+apikey: String; // API 密钥
 ```
 
 响应
+
 ```json
+// 可能变动
 {
-    "status": 200,
-    "data": {
-        "instanceUuid": "884cef664bda4c45b9ced960c56be439",
-        "started": 0,
-        "status": 0,
-        "config": {
-            "nickname": "b1.5_02",
-            "startCommand": "\"C:\\Program Files\\Java\\jre1.8.0_281\\bin\\javaw.exe\" -Xmx1G -Xms256m -jar b1.5_02.jar -nogui",
-            "stopCommand": "stop",
-            "cwd": "E:\\[25016]b1.5_02",
-            "ie": "GBK",
-            "oe": "GBK",
-            "createDatetime": "2021-8-24",
-            "lastDatetime": "--",
-            "type": "minecraft/java",
-            "tag": [],
-            "maxSpace": null,
-            "endTime": null,
-            "docker": {
-                "image": "",
-                "xmx": "",
-                "ports": [
-                    ""
-                ],
-                "cpu": ""
-            }
-        },
-        "info": {
-            "player": -1,
-            "maxPlayer": -1
-        },
-        "space": 809631,
-        "processInfo": {
-            "cpu": 0,
-            "memory": 0,
-            "ppid": 0,
-            "pid": 0,
-            "ctime": 0,
-            "elapsed": 0,
-            "timestamp": 0
-        }
+  "status": 200,
+  "data": {
+    "instanceUuid": "668985e57be14889afe3ecfa75475edd",
+    "started": 0,
+    "status": 0,
+    "config": {
+      "nickname": "Postman测试服务",
+      "startCommand": "cmd.exe",
+      "stopCommand": "^C",
+      "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon\\data\\InstanceData\\668985e57be14889afe3ecfa75475edd",
+      "ie": "utf-8",
+      "oe": "utf-8",
+      "createDatetime": "2022/2/3",
+      "lastDatetime": "2022/2/3 16:0",
+      "type": "universal",
+      "tag": [],
+      "endTime": "",
+      "fileCode": "gbk",
+      "processType": "docker",
+      "terminalOption": {
+        "haveColor": true
+      },
+      "eventTask": {
+        "autoStart": false,
+        "autoRestart": false,
+        "ignore": false
+      },
+      "docker": {
+        "image": "",
+        "ports": ["25565:25565/tcp"],
+        "memory": 2048,
+        "networkMode": "bridge",
+        "cpusetCpus": "0,1",
+        "cpuUsage": 100,
+        "maxSpace": null,
+        "io": null,
+        "network": null
+      },
+      "pingConfig": {
+        "ip": "",
+        "port": 25565,
+        "type": 1
+      }
     },
-    "time": 1633160013105
+    "info": {
+      "currentPlayers": -1,
+      "maxPlayers": -1,
+      "version": ""
+    },
+    "space": 0,
+    "processInfo": {
+      "cpu": 0,
+      "memory": 0,
+      "ppid": 0,
+      "pid": 0,
+      "ctime": 0,
+      "elapsed": 0,
+      "timestamp": 0
+    }
+  },
+  "time": 1643880530062
 }
 ```

@@ -15,7 +15,7 @@
   - [获取面板设置](panel/get_settings.md)
   - [更新面板设置](panel/update_settings.md)
 
-- 用户管理接口
+- 用户管理
 
   - [创建用户](panel/user_register.md)
   - [删除用户](panel/user_delete.md)
@@ -34,24 +34,23 @@
   - [获取守护进程列表](remote/get_remote_services.md)
   - [重新连接远程守护进程](remote/reconn_remote_services.md)
 
-- 远程实例接口
+- 远程实例管理
 
-  - [创建实例](instance/create_instance.md)
-  - [删除实例](instance/delete_instance.md)
-  - [编辑实例](instance/edit_instance.md)
   - [获取远程实例详情信息](instance/get_instance_info.md)
-  - [关闭实例](instance/kill_instance.md)
-  - [查询实例配置文件列表](instance/query_instance_configfile.md)
-  - [重启实例](instance/restart_instance.md)
   - [根据条件查询守护进程实例](instance/search_remote_services.md)
+  - [创建实例](instance/create_instance.md)
+  - [编辑实例](instance/edit_instance.md)
+  - [删除实例](instance/delete_instance.md)
   - [开启实例](instance/start_instance.md)
   - [关闭实例](instance/stop_instance.md)
+  - [终止实例](instance/kill_instance.md)
+  - [重启实例](instance/restart_instance.md)
+  - [检查实例配置文件存在](instance/query_instance_configfile.md)
   - [更新指定实例配置文件内容](instance/update_instance_configfilecontent.md)
-  - [查看指定实例的文件列表](instance/view_instance_fils_list.md)
-  - [获取指定实例配置文件内容](instance/get_instance_configFileContent.md)
 
-- 远程文件接口
+- 远程文件管理
 
+  - [获取文件列表](instance/view_instance_fils_list.md)
   - [压缩/解压文件](files/compress.md)
   - [复制文件](files/copy_files.md)
   - [删除文件](files/delete_files.md)
@@ -59,7 +58,7 @@
   - [新建目录](files/mkdir.md)
   - [移动文件](files/move_files.md)
 
-- 计划任务接口
+- 计划任务管理
 
   - [创建计划任务](scedule/create_schedule.md)
   - [删除计划任务](scedule/del_scedule.md)
