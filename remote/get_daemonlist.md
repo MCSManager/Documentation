@@ -10,7 +10,7 @@
 
 ```
 GET
-Content-Type: x-www-form-urlencoded; charset=utf-8
+Content-Type: application/json; charset=utf-8
 ```
 
 查询参数
@@ -22,59 +22,320 @@ apikey: String; // API 密钥
 响应
 
 ```json
+// 此处极有可能会随着版本迭代而变化，内容可能会有些许不同
 {
   "status": 200,
   "data": [
     {
-      "uuid": "0d227ef3138a465594054fbf4ckbcec3",
-      "ip": "s1.mcsmanager.com",
-      "port": 10086,
+      "uuid": "1647bf1a527e411894861e7c44899185",
+      "ip": "localhost",
+      "port": 24444,
       "available": true,
       "instances": [
         {
-          "instanceUuid": "d8797036faf845s5aeb3bc3ftb824d9a",
+          "instanceUuid": "63284fafeb644b519947604ba91e112b",
           "started": 1,
-          "status": 0,
+          "status": 3,
           "config": {
-            "nickname": "TestServerName",
-            "startCommand": "bash",
+            "nickname": "cmd.exe",
+            "startCommand": "cmd.exe",
             "stopCommand": "^c",
-            "cwd": "/",
-            "ie": "utf-8",
-            "oe": "utf-8",
-            "createDatetime": "8/23/2021",
-            "lastDatetime": "8/23/2021 16:53",
-            "type": "universal/web_shell",
+            "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon\\data\\InstanceData\\63284fafeb644b519947604ba91e112b",
+            "ie": "gbk",
+            "oe": "gbk",
+            "createDatetime": "2022/2/3",
+            "lastDatetime": "2022/2/3 16:24",
+            "type": "universal",
             "tag": [],
-            "endTime": null,
+            "endTime": "",
+            "fileCode": "gbk",
             "processType": "general",
+            "terminalOption": {
+              "haveColor": true
+            },
+            "eventTask": {
+              "autoStart": false,
+              "autoRestart": false,
+              "ignore": false
+            },
             "docker": {
               "image": "",
-              "memory": 1024,
-              "ports": [""],
-              "cpu": 1,
-              "maxSpace": 0,
+              "ports": [],
+              "memory": null,
+              "networkMode": "bridge",
               "cpusetCpus": "",
-              "io": 0,
-              "network": 0,
-              "networkMode": "bridge"
+              "cpuUsage": null,
+              "maxSpace": null,
+              "io": null,
+              "network": null
+            },
+            "pingConfig": {
+              "ip": "",
+              "port": 25565,
+              "type": 1
             }
           },
           "info": {
-            "player": -1,
-            "maxPlayer": -1
+            "currentPlayers": -1,
+            "maxPlayers": -1,
+            "version": ""
+          }
+        },
+        {
+          "instanceUuid": "668985e57be14889afe3ecfa75475edd",
+          "started": 0,
+          "status": 0,
+          "config": {
+            "nickname": "Postman测试服务",
+            "startCommand": "cmd.exe",
+            "stopCommand": "^C",
+            "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon\\data\\InstanceData\\668985e57be14889afe3ecfa75475edd",
+            "ie": "utf-8",
+            "oe": "utf-8",
+            "createDatetime": "2022/2/3",
+            "lastDatetime": "2022/2/3 16:0",
+            "type": "universal",
+            "tag": [],
+            "endTime": "",
+            "fileCode": "gbk",
+            "processType": "docker",
+            "terminalOption": {
+              "haveColor": true
+            },
+            "eventTask": {
+              "autoStart": false,
+              "autoRestart": false,
+              "ignore": false
+            },
+            "docker": {
+              "image": "",
+              "ports": ["25565:25565/tcp"],
+              "memory": 2048,
+              "networkMode": "bridge",
+              "cpusetCpus": "0,1",
+              "cpuUsage": 100,
+              "maxSpace": null,
+              "io": null,
+              "network": null
+            },
+            "pingConfig": {
+              "ip": "",
+              "port": 25565,
+              "type": 1
+            }
+          },
+          "info": {
+            "currentPlayers": -1,
+            "maxPlayers": -1,
+            "version": ""
+          }
+        },
+        {
+          "instanceUuid": "91aeae17648a44f481c770a009070860",
+          "started": 0,
+          "status": 0,
+          "config": {
+            "nickname": "Postman 文件管理测试",
+            "startCommand": "cmd.exe",
+            "stopCommand": "^C",
+            "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon\\data\\InstanceData\\91aeae17648a44f481c770a009070860",
+            "ie": "gbk",
+            "oe": "gbk",
+            "createDatetime": "2022/2/3",
+            "lastDatetime": "--",
+            "type": "universal",
+            "tag": [],
+            "endTime": "",
+            "fileCode": "gbk",
+            "processType": "general",
+            "terminalOption": {
+              "haveColor": true
+            },
+            "eventTask": {
+              "autoStart": false,
+              "autoRestart": false,
+              "ignore": false
+            },
+            "docker": {
+              "image": "",
+              "ports": [],
+              "memory": null,
+              "networkMode": "bridge",
+              "cpusetCpus": "",
+              "cpuUsage": null,
+              "maxSpace": null,
+              "io": null,
+              "network": null
+            },
+            "pingConfig": {
+              "ip": "",
+              "port": 25565,
+              "type": 1
+            }
+          },
+          "info": {
+            "currentPlayers": -1,
+            "maxPlayers": -1,
+            "version": ""
+          }
+        },
+        {
+          "instanceUuid": "eb02608807e84b9e93490f18c94a475a",
+          "started": 0,
+          "status": 0,
+          "config": {
+            "nickname": "Postman 文件管理测试",
+            "startCommand": "cmd.exe",
+            "stopCommand": "^C",
+            "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon\\data\\InstanceData\\eb02608807e84b9e93490f18c94a475a",
+            "ie": "gbk",
+            "oe": "gbk",
+            "createDatetime": "2022/2/3",
+            "lastDatetime": "--",
+            "type": "universal",
+            "tag": [],
+            "endTime": "",
+            "fileCode": "gbk",
+            "processType": "general",
+            "terminalOption": {
+              "haveColor": true
+            },
+            "eventTask": {
+              "autoStart": false,
+              "autoRestart": false,
+              "ignore": false
+            },
+            "docker": {
+              "image": "",
+              "ports": [],
+              "memory": null,
+              "networkMode": "bridge",
+              "cpusetCpus": "",
+              "cpuUsage": null,
+              "maxSpace": null,
+              "io": null,
+              "network": null
+            },
+            "pingConfig": {
+              "ip": "",
+              "port": 25565,
+              "type": 1
+            }
+          },
+          "info": {
+            "currentPlayers": -1,
+            "maxPlayers": -1,
+            "version": ""
+          }
+        },
+        {
+          "instanceUuid": "449d1f7742b24992b503dc902a031b6f",
+          "started": 0,
+          "status": 0,
+          "config": {
+            "nickname": "昵称representative_concrete_deposit.vst",
+            "startCommand": "",
+            "stopCommand": "stop",
+            "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon\\data\\InstanceData\\449d1f7742b24992b503dc902a031b6f",
+            "ie": "gbk",
+            "oe": "gbk",
+            "createDatetime": "2022/2/3",
+            "lastDatetime": "--",
+            "type": "universal",
+            "tag": [],
+            "endTime": "",
+            "fileCode": "gbk",
+            "processType": "general",
+            "terminalOption": {
+              "haveColor": true
+            },
+            "eventTask": {
+              "autoStart": false,
+              "autoRestart": false,
+              "ignore": false
+            },
+            "docker": {
+              "image": "",
+              "ports": [],
+              "memory": null,
+              "networkMode": "bridge",
+              "cpusetCpus": "",
+              "cpuUsage": null,
+              "maxSpace": null,
+              "io": null,
+              "network": null
+            },
+            "pingConfig": {
+              "ip": "",
+              "port": 25565,
+              "type": 1
+            }
+          },
+          "info": {
+            "currentPlayers": -1,
+            "maxPlayers": -1,
+            "version": ""
+          }
+        },
+        {
+          "instanceUuid": "d9062be8397844fb84fa2053bfefd92b",
+          "started": 0,
+          "status": 0,
+          "config": {
+            "nickname": "昵称somoni.dgc",
+            "startCommand": "",
+            "stopCommand": "stop",
+            "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon\\data\\InstanceData\\d9062be8397844fb84fa2053bfefd92b",
+            "ie": "gbk",
+            "oe": "gbk",
+            "createDatetime": "2022/2/3",
+            "lastDatetime": "--",
+            "type": "universal",
+            "tag": [],
+            "endTime": "",
+            "fileCode": "gbk",
+            "processType": "general",
+            "terminalOption": {
+              "haveColor": true
+            },
+            "eventTask": {
+              "autoStart": false,
+              "autoRestart": false,
+              "ignore": false
+            },
+            "docker": {
+              "image": "",
+              "ports": [],
+              "memory": null,
+              "networkMode": "bridge",
+              "cpusetCpus": "",
+              "cpuUsage": null,
+              "maxSpace": null,
+              "io": null,
+              "network": null
+            },
+            "pingConfig": {
+              "ip": "",
+              "port": 25565,
+              "type": 1
+            }
+          },
+          "info": {
+            "currentPlayers": -1,
+            "maxPlayers": -1,
+            "version": ""
           }
         }
       ]
     },
     {
-      "uuid": "655e068ad14c4df98ceca302b3ae0e41",
-      "ip": "s2.mcsmanager.com",
-      "port": 10000,
+      "uuid": "07e5c805bea646238b4b3af847eb637c",
+      "ip": "127.0.0.2",
+      "port": 24444,
       "available": false,
       "instances": []
     }
   ],
-  "time": 1633139276831
+  "time": 1643879681578
 }
 ```
