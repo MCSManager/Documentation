@@ -25,6 +25,7 @@ command: String; //要执行的命令 如：ping www.baidu.com
 响应
 
 ```json
+// 暂不支持命令结果的返回
 {
   "status": 200,
   "time": 1633161747334

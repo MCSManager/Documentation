@@ -60,6 +60,8 @@
   - [删除文件](files/delete_files.md)
   - [新建目录](files/mkdir.md)
   - [移动文件](files/move_files.md)
+  - [上传文件](files/update_file.md)
+  - [下载文件](files/download_file.md)
 
 - 计划任务管理
 
