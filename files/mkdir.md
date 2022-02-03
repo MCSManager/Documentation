@@ -13,7 +13,7 @@ POST
 Content-Type: application/json; charset=utf-8
 ```
 
-查询参数
+查询参数（Query）
 
 ```js
 uuid: String; // 实例的 UUID
@@ -21,7 +21,7 @@ remote_uuid: String; // 远程服务 UUID
 apikey: String; // API 密钥
 ```
 
-请求体
+请求参数（Body）
 
 ```json
 {

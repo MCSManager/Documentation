@@ -13,13 +13,13 @@ POST
 Content-Type: application/json; charset=utf-8
 ```
 
-查询参数
+查询参数（Query）
 
 ```js
 apikey: String; // API 密钥
 ```
 
-请求参数（Query）
+请求参数（Body）
 
 ```json
 {

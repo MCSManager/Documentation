@@ -8,14 +8,14 @@
   - [配置反向代理](tutorial/simple_reverse_proxy.md)
   - [配置 https](tutorial/reverse_proxy+ssl.md)
 
-- 面版基本接口
+- 面板通用设置
 
   - [数据监控](panel/overview.md)
   - [获取面板数据简报](remote/get_remote_services_info.md)
   - [获取面板设置](panel/get_settings.md)
   - [更新面板设置](panel/update_settings.md)
 
-- 用户管理
+- 多用户管理
 
   - [创建用户](panel/user_register.md)
   - [删除用户](panel/user_delete.md)

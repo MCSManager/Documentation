@@ -13,7 +13,7 @@ PUT
 Content-Type: application/json; charset=utf-8
 ```
 
-查询参数
+查询参数（Query）
 
 ```js
 uuid: String; // 实例的 UUID
