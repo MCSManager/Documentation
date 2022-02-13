@@ -34,6 +34,8 @@
 
 如原有的地址:`localhost`，修改后:`wss://localhost`。
 
+![图片](images/wss_daemon.png)
+
 <br />
 
 ## 大功告成
