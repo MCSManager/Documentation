@@ -45,6 +45,8 @@ systemctl start mcsm-{web,daemon}
 
 **更新注意：** 请勿使用一键安装脚本来更新，这样做的后果将会导致您的数据全部丢失。
 
+<br />
+
 ### Linux 手动安装的更新方法
 
 分别进入 `web` 和 `daemon` 目录，执行下列命令：
@@ -56,3 +58,4 @@ git pull origin master
 git pull
 ```
 
+<br />
