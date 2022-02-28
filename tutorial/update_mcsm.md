@@ -6,19 +6,48 @@
 
 <br />
 
-## Windows
+### 更新建议
 
-前往[官方网站](https://mcsmanager.com)下载最新 Windows 版软件，下载解压并且覆盖现有文件即可。
+因为采用守护进程分布式部署，如果你的节点超过 5 个，那么更新将有点麻烦，建议保留观望，待累积更新到一定程度后再一并更新。
+
+如果您的节点很少，那么可以更新到此版本。
 
 <br />
 
-## Linux
+### 备份
 
-**请勿执行安装脚本进行升级。**
+如果您担心更新导致暑假丢失，先将 `web/data`，`daemon/daemon`两个目录移动到其他**上层**目录。
 
-如果您是使用的**一键安装脚本**安装的 MCSM 面板，那么此时您的面板应该位于 `/opt/mcsmanager/` 中。
+更新完毕后再复制/移动回来即可保证数据安全性。
 
-分别进入 `/opt/mcsmanager/web` 和 `/opt/mcsmanager/daemon` 目录，执行下列命令：
+<br />
+
+### Windows 更新方法
+
+前往官网下载最新发行版压缩包，手动分离 web 与 daemon 目录，覆盖您的 web 与 daemon 目录即可。
+
+如果有多个节点，则需要覆盖所有 daemon 节点文件。
+
+<br />
+
+### Linux 一键脚本安装的更新方法
+
+如果您采用一键脚本更新，那么将天然支持 git 自动更新，前往 `/opt/mcsmanager/web` 和 `/opt/mcsmanager/daemon` 分别执行 git 拉取命令即可。
+
+```bash
+systemctl stop mcsm-{web,daemon}
+cd /opt/mcsmanager/web
+git pull
+cd /opt/mcsmanager/daemon
+git pull
+systemctl start mcsm-{web,daemon}
+```
+
+**更新注意：** 请勿使用一键安装脚本来更新，这样做的后果将会导致您的数据全部丢失。
+
+### Linux 手动安装的更新方法
+
+分别进入 `web` 和 `daemon` 目录，执行下列命令：
 
 ```bash
 git fetch --all
@@ -27,6 +56,3 @@ git pull origin master
 git pull
 ```
 
-<br />
-
-> 注意事项：更新之前请先停止面板运行。
