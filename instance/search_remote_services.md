@@ -16,18 +16,11 @@ Content-Type: application/json; charset=utf-8
 查询参数（Query）
 
 ```js
-remote_uuid: String; // 远程服务 UUID
+remote_uuid: String; // 守护进程 GUID
 apikey: String; // API 密钥
-```
-
-请求体（Body）
-
-```js
-page: Number; //页码
-page_size: Number; //每页显示几个实例
-instance_name: String; //要搜索的实例名称，查询所有请为空
-service_uuid: String; //远程服务GUID
-apikey: String; //密钥
+page: Number; // 页码
+page_size: Number; // 每页显示几个实例
+instance_name: String; // 要搜索的实例名称，查询所有请为空
 ```
 
 响应
