@@ -1,6 +1,10 @@
 - [快速开始](README.md)
 - [常见问题](qa/1.md)
 
+- 使用教程
+  - [Windows Java 版](tutorial/ubuntu_bds.md)
+  - [Linux 基岩版服务端](tutorial/ubuntu_bds.md)
+
 - 面板应用介绍
 
   - [如何连接守护进程](tutorial/connect_daemon.md)
