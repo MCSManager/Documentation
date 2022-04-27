@@ -2,7 +2,7 @@
 - [常见问题](qa/1.md)
 
 - 使用教程
-  - [Windows Java 版](tutorial/ubuntu_bds.md)
+  - [Windows Java 版](tutorial/java_windows.md)
   - [Linux 基岩版服务端](tutorial/ubuntu_bds.md)
 
 - 面板应用介绍
