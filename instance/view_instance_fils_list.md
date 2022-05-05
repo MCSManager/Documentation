@@ -13,7 +13,18 @@ GET
 Content-Type: application/json; charset=utf-8
 ```
 
-查询参数（Query）
+查询参数（Query，>= 9.4.4）
+
+```js
+uuid: String; // UUID
+apikey: String; // API 密钥
+remote_uuid: String; // 远程服务 UUID
+target: String; //查看的文件目录，如：/xxx
+page:0  // 第几页，0代表第一页
+page_size:20 // 每页容量，不得超过40
+```
+
+查询参数（Query，< 9.4.4）
 
 ```js
 uuid: String; // UUID
@@ -25,6 +36,33 @@ target: String; //查看的文件目录，如：/xxx
 响应
 
 ```json
+// 9.4.4 之后
+{
+    "status": 200,
+    "data": {
+        "items": [
+            {
+                "name": "xxx",
+                "type": 0,
+                "size": 0,
+                "time": "Thu May 05 2022 14:07:39 GMT+0800 (中国标准时间)"
+            },
+            {
+                "name": "xxxxx",
+                "type": 0,
+                "size": 0,
+                "time": "Thu May 05 2022 14:09:40 GMT+0800 (中国标准时间)"
+            }
+        ],
+        "page": 0,
+        "pageSize": 20,
+        "total": 2
+    },
+    "time": 1651731022028
+}
+
+
+// 9.4.4 之前
 {
   "status": 200,
   "data": [
