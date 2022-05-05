@@ -14,6 +14,8 @@
 
 在 `data/Config/global.json` 文件中也拥有密钥信息。
 
+> 如果您使用一键安装脚本安装，那么默认路径应该是 /opt/mcsmanager/daemon/data/Config/global.json
+
 <br />
 
 ## 连接协议

@@ -20,8 +20,8 @@ uuid: String; // UUID
 apikey: String; // API 密钥
 remote_uuid: String; // 远程服务 UUID
 target: String; //查看的文件目录，如：/xxx
-page:0  // 第几页，0代表第一页
-page_size:20 // 每页容量，不得超过40
+page: Number  // 第几页，0代表第一页
+page_size: Number // 每页容量，不得超过40
 ```
 
 查询参数（Query，< 9.4.4）

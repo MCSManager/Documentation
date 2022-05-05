@@ -39,7 +39,7 @@
   - [获取守护进程列表](remote/get_remote_services.md)
   - [重新连接远程守护进程](remote/reconn_remote_services.md)
 
-- 远程实例管理
+- 应用实例管理
 
   - [获取远程实例详情信息](instance/get_instance_info.md)
   - [根据条件查询守护进程实例](instance/search_remote_services.md)
@@ -51,6 +51,7 @@
   - [终止实例](instance/kill_instance.md)
   - [重启实例](instance/restart_instance.md)
   - [向实例发送命令](instance/command_instance.md)
+  - [获取实例输出内容](instance/instance_output.md)
   - [检查实例配置文件存在](instance/query_instance_configfile.md)
   - [更新指定实例配置文件内容](instance/update_instance_configfilecontent.md)
 
