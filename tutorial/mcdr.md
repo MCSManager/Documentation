@@ -24,3 +24,6 @@ MCDR 自动检测编码格式的功能在部分 Windows 环境下会与 MCSM 不
 2. 在 MCSM 创建实例时，请注意将
 `终端输入编码` 与 `终端输出编码`
 设置为 `UTF-8（通用）`
+3. 启动命令建议设置为
+`python3 -X utf8 -m mcdreforged`
+> 请确保您的 Python 版本大于 3.6
