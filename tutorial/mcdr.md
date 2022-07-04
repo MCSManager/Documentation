@@ -17,3 +17,9 @@ MCDR 的部分功能会与 MCSM 产生冲突，但这里提供了一些常见问
 MCSM 将会重定向 MCDR 的标准输入/输出，因此您需要关闭高级控制台以避免排版错误。
 
 需要将 MCDR 配置文件中的 `advanced_console` 改为 `false`。
+
+### 输入输出编码
+
+1. 在启动参数中添加 `-X utf8`，例如 `python -X utf8 -m mcdreforged`。
+
+2. 将终端输入/输出编码调整为 `UTF-8`
