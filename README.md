@@ -30,13 +30,34 @@ MCSManager 面板（简称：MCSM 面板）是一款全中文，轻量级，开�
 
 接下来您会进入一个控制面板，大部分功能已经默认最佳，无需配置，直接前往 `应用实例` 界面选择 `远程主机` 即可创建您的 Minecraft 服务器！
 
-<br />
-
-## 安装
-
 为确保数据实时性，请移步前往 [Github 项目主页](https://github.com/MCSManager/MCSManager) 查看具体的安装方法
 
 <br />
+
+## 面板操作命令（Linux）
+
+```
+systemctl start mcsm-{daemon,web}.service // 启动面板
+systemctl stop mcsm-{daemon,web}.service // 停止面板
+systemctl restart mcsm-{daemon,web}.service // 重启面板
+
+systemctl restart mcsm-web.service // 只重启面板 Web 服务
+systemctl restart mcsm-daemon.service // 只重启面板守护进程服务
+```
+
+> 面板 Web 服务是提供用户管理与网页访问功能的服务，守护进程是提供进程管理和容器管理的服务，两者缺一不可。如果某个功能不正常，可以只重启这一部分的服务来热修复问题。
+
+<br />
+
+
+## 面板操作命令（Windows）
+
+关闭面板：在面板两个终端控制台窗口输入 `Ctrl+C` 即可正常关闭，如果无效可以直接鼠标点击右上角关闭按钮。
+
+启动面板：执行 `start.bat` 或 `运行.bat` 等。
+
+<br />
+
 
 ## 相关链接
 
