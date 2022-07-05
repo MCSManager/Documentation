@@ -24,17 +24,15 @@ MCSManager 面板（简称：MCSM 面板）是一款全中文，轻量级，开�
 
 <br />
 
-## 如何使用？
+## 安装
 
-请先`安装`软件，再根据控制台输出的地址进行访问，默认情况是 `http://localhost:23333` 访问，使用账号 `root` 密码 `12346` 进行登录。
-
-接下来您会进入一个控制面板，大部分功能已经默认最佳，无需配置，直接前往 `应用实例` 界面选择 `远程主机` 即可创建您的 Minecraft 服务器！
-
-为确保数据实时性，请移步前往 [Github 项目主页](https://github.com/MCSManager/MCSManager) 查看具体的安装方法
+安装方法在官方网站首页，为确保数据实时性，请移步前往 [官方网站（mcsmanager.com）](https://mcsmanager.com/) 查看具体的安装方法。
 
 <br />
 
-## 面板操作命令（Linux）
+## 启动面板（Linux）
+
+使用一键安装脚本后，您才可以使用下列命令，如果是手动安装，请访问 [Readme.md](https://github.com/MCSManager/MCSManager/blob/master/README.md) 查看。
 
 ```
 systemctl start mcsm-{daemon,web}.service // 启动面板
@@ -50,7 +48,7 @@ systemctl restart mcsm-daemon.service // 只重启面板守护进程服务
 <br />
 
 
-## 面板操作命令（Windows）
+## 启动面板（Windows）
 
 关闭面板：在面板两个终端控制台窗口输入 `Ctrl+C` 即可正常关闭，如果无效可以直接鼠标点击右上角关闭按钮。
 
