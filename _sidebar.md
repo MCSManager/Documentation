@@ -13,7 +13,7 @@
   - [配置反向代理](tutorial/simple_reverse_proxy.md)
   - [配置 https](tutorial/reverse_proxy+ssl.md)
   - [更新面板](tutorial/update_mcsm.md)
-  - [MCSManager与MCDR](tutorial/mcdr.md)
+  - [MCSM&MCDR](tutorial/mcdr.md)
 
 - 面板通用设置
 
