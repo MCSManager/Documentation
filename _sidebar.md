@@ -15,14 +15,14 @@
   - [更新面板](tutorial/update_mcsm.md)
   - [MCSM&MCDR](tutorial/mcdr.md)
 
-- 面板通用设置
-
-  - [数据监控](panel/overview.md)
-  - [获取面板数据简报](remote/get_remote_services_info.md)
-  - [获取面板设置](panel/get_settings.md)
-  - [更新面板设置](panel/update_settings.md)
 
 - API 参考
+
+  - 面板通用设置
+    - [数据监控](panel/overview.md)
+    - [获取面板数据简报](remote/get_remote_services_info.md)
+    - [获取面板设置](panel/get_settings.md)
+    - [更新面板设置](panel/update_settings.md)
 
   - 多用户管理
 
