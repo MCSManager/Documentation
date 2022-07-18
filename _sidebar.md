@@ -13,6 +13,8 @@
   - [配置反向代理](tutorial/simple_reverse_proxy.md)
   - [配置 https](tutorial/reverse_proxy+ssl.md)
   - [更新面板](tutorial/update_mcsm.md)
+  - [仿真终端](tutorial/pty.md)
+  - [常见乱码解决方案](tutorial/code.md)
   - [MCSM&MCDR](tutorial/mcdr.md)
 
 
