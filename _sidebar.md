@@ -5,6 +5,7 @@
 
   - [Windows Java 版](tutorial/java_windows.md)
   - [Linux 基岩版服务端](tutorial/ubuntu_bds.md)
+  - [使用 Docker-compose 部署](tutorial/docker-compose.md)
 
 - 面板应用介绍
 
@@ -14,7 +15,6 @@
   - [配置 https](tutorial/reverse_proxy+ssl.md)
   - [更新面板](tutorial/update_mcsm.md)
   - [仿真终端](tutorial/pty.md)
-
   - [MCSM&MCDR](tutorial/mcdr.md)
 
 - 常见问题
