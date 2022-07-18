@@ -23,10 +23,10 @@ apt update && apt install docker-compose
 FROM node:14-alpine
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 RUN apk --no-cache add git openssh
-RUN git clone https://github.com/MCSManager/MCSManager-Web-Production /workspace
-RUN cd /workspace && npm i --production --registry=https://registry.npmmirror.com
+RUN git clone https://github.com/MCSManager/MCSManager-Web-Production /opt/docker-mcsm/releases/web
+RUN cd /opt/docker-mcsm/releases/web && npm i --production --registry=https://registry.npmmirror.com
 ENV TZ=Asia/Shanghai
-WORKDIR /workspace
+WORKDIR /opt/docker-mcsm/releases/web
 CMD node app.js
 ```
 
@@ -36,23 +36,13 @@ CMD node app.js
 ## Daemon
 
 ```dockerfile
-FROM node:14-bullseye-slim
-RUN echo "deb http://deb.debian.org/debian/ sid main" >> /etc/apt/sources.list
+FROM node:14-slim
 RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
-RUN apt update \
-    && apt install -y openjdk-8-jre && sed -i '$d' /etc/apt/sources.list
-RUN apt update \
-    && apt install -y git libcurl4 openjdk-17-jre wget
-RUN wget -P /tmp https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_linux-x64_bin.tar.gz \
-    && tar -zxvf /tmp/openjdk-16.0.2_linux-x64_bin.tar.gz -C /usr/lib/jvm/ \
-    && rm -rf /tmp/openjdk-16.0.2_linux-x64_bin.tar.gz
-RUN ln -s /usr/lib/jvm/java-17-openjdk-amd64/bin/java /usr/bin/java17 \
-    && ln -s /usr/lib/jvm/jdk-16.0.2/bin/java /usr/bin/java16 \
-    && ln -s /usr/lib/jvm/java-8-openjdk-amd64/bin/java /usr/bin/java8
-RUN git clone https://github.com/MCSManager/MCSManager-Daemon-Production /workspace
-RUN cd /workspace && npm i --production --registry=https://registry.npmmirror.com
+RUN apt update && apt install -y git
+RUN git clone https://github.com/MCSManager/MCSManager-Daemon-Production /opt/docker-mcsm/releases/daemon
+RUN cd /opt/docker-mcsm/releases/daemon && npm i --production --registry=https://registry.npmmirror.com
 ENV TZ=Asia/Shanghai
-WORKDIR /workspace
+WORKDIR /opt/docker-mcsm/releases/daemon
 CMD node app.js
 ```
 
@@ -72,9 +62,9 @@ services:
         network_mode: "host"
         restart: always
         volumes:
-            - "./web/data:/workspace/data"
-            - "./web/logs:/workspace/logs"
-            - "./daemon:/daemon:ro"
+            - "/opt/docker-mcsm/releases/web/data:/opt/docker-mcsm/releases/web/data"
+            - "/opt/docker-mcsm/releases/web/logs:/opt/docker-mcsm/releases/web/logs"
+            - "/opt/docker-mcsm/releases/daemon/data/Config:/opt/docker-mcsm/releases/daemon/data/Config:ro"
     mcsm-daemon:
         container_name: mcsm-daemon
         build:
@@ -83,9 +73,9 @@ services:
         network_mode: "host"
         restart: always
         volumes:
-            - "./daemon/data:/workspace/data"
-            - "./daemon/logs:/workspace/logs"
-
+            - "/opt/docker-mcsm/releases/daemon/data:/opt/docker-mcsm/releases/daemon/data"
+            - "/opt/docker-mcsm/releases/daemon/logs:/opt/docker-mcsm/releases/daemon/logs"
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
 ```
 
 复制并保存文件名为 `docker-compose.yml` 的文件
@@ -94,12 +84,9 @@ services:
 
 把三个文件放到一个文件夹内，您可以通过进入到这个目录，输入 `docker-compose up -d` 来启动面板和后端。
 
-- 后端已经内置 java8 java16 java17 三个版本的 java , 运行不同版本 java 服务器直接输入 java(版本号即可)
+- 发布版中不携带 java,如需运行 java 程序请在 `mcsm面板->环境镜像->环境镜像管理->新建镜像` 中自行构建
 
-    - `java17 -jar server.jar`
-    - `java8 -jar server.jar`
-
-- 请勿尝试在 Docker 容器内安装 Docker, 后端可直接运行 Minecraft Bedrock Server
+    - 实例设置中的 `进程启动方式` 选择 `虚拟化容器`
 
 - 关闭服务器请进入到 docker-compose.yml 文件目录运行 `docker-compose stop`
 
