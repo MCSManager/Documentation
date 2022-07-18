@@ -9,6 +9,7 @@ curl -sSL https://get.daocloud.io/docker | sh
 apt update && apt install docker-compose
 ```
 
+- 现已支持 docker 容器内调用宿主机 docker 来启动 `应用实例`
 
 <br />
 
