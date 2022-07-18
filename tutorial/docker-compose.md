@@ -42,13 +42,12 @@ RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.tuna.tsinghua.edu.cn/g
 RUN apt update \
     && apt install -y openjdk-8-jre && sed -i '$d' /etc/apt/sources.list
 RUN apt update \
-    && apt install -y git libcurl4 openjdk-17-jre openjdk-11-jre wget
+    && apt install -y git libcurl4 openjdk-17-jre wget
 RUN wget -P /tmp https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_linux-x64_bin.tar.gz \
     && tar -zxvf /tmp/openjdk-16.0.2_linux-x64_bin.tar.gz -C /usr/lib/jvm/ \
     && rm -rf /tmp/openjdk-16.0.2_linux-x64_bin.tar.gz
 RUN ln -s /usr/lib/jvm/java-17-openjdk-amd64/bin/java /usr/bin/java17 \
     && ln -s /usr/lib/jvm/jdk-16.0.2/bin/java /usr/bin/java16 \
-    && ln -s /usr/lib/jvm/java-11-openjdk-amd64/bin/java /usr/bin/java11 \
     && ln -s /usr/lib/jvm/java-8-openjdk-amd64/bin/java /usr/bin/java8
 RUN git clone https://github.com/MCSManager/MCSManager-Daemon-Production /workspace
 RUN cd /workspace && npm i --production --registry=https://registry.npmmirror.com
@@ -95,7 +94,7 @@ services:
 
 把三个文件放到一个文件夹内，您可以通过进入到这个目录，输入 `docker-compose up -d` 来启动面板和后端。
 
-- 后端已经内置 java8 java11 java16 java17 四个版本的 java , 运行不同版本 java 服务器直接输入 java(版本号即可)
+- 后端已经内置 java8 java16 java17 三个版本的 java , 运行不同版本 java 服务器直接输入 java(版本号即可)
 
     - `java17 -jar server.jar`
     - `java8 -jar server.jar`
