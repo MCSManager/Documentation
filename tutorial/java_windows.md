@@ -57,4 +57,3 @@ java -Dfile.encoding=UTF-8 -jar "你的jar文件名，列如：paper-1.19-62.jar
 
 前往“文件管理”界面编辑 `eula.txt`，将其中的 `false` 改为 `true` 即可。
 
-##
