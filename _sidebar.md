@@ -1,5 +1,5 @@
 - [快速开始](README.md)
-- [常见问题](qa/1.md)
+
 
 - 使用教程
 
@@ -14,9 +14,12 @@
   - [配置 https](tutorial/reverse_proxy+ssl.md)
   - [更新面板](tutorial/update_mcsm.md)
   - [仿真终端](tutorial/pty.md)
-  - [常见乱码解决方案](tutorial/code.md)
+
   - [MCSM&MCDR](tutorial/mcdr.md)
 
+- 常见问题
+  - [终端乱码解决方案](tutorial/code.md)
+  - [常见问题集合](qa/1.md)
 
 - API 参考
 
