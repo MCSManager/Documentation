@@ -1,7 +1,7 @@
 # 通过 Docker-Compose 启动面板
 
 
-## 需先安装 Docker + Docker-compose
+### 需先安装 Docker + Docker-compose
 
 ```bash
 sudo su
@@ -13,7 +13,7 @@ apt update && apt install docker-compose
 <br />
 
 
-## 面板分为网页后端（Web）和守护进程端（Daemon），所以需要先备好两个 Dockerfile 文件。
+### 面板分为网页前端（Web）和守护进程后端（Daemon），所以需要先备好两个 Dockerfile 文件。
 
 
 ## Web 
