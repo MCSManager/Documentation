@@ -13,10 +13,11 @@ apt update && apt install docker-compose
 <br />
 
 
+## 面板分为网页后端（Web）和守护进程端（Daemon），所以需要先备好两个 Dockerfile 文件。
+
 
 ## Web 
 
-面板分为网页后端（Web）和守护进程端（Daemon），所以需要先备好两个 Dockerfile 文件。
 
 ```dockerfile
 FROM node:14-alpine
@@ -29,7 +30,8 @@ WORKDIR /workspace
 CMD node app.js
 ```
 
-<br />
+复制并保存文件名为 `dockerfile-web` 的文件
+
 
 ## Daemon
 
@@ -55,7 +57,8 @@ WORKDIR /workspace
 CMD node app.js
 ```
 
-<br />
+复制并保存文件名为 `dockerfile-daemon` 的文件
+
 
 ## Docker-compose.yml
 
@@ -72,6 +75,7 @@ services:
         volumes:
             - "./web/data:/workspace/data"
             - "./web/logs:/workspace/logs"
+            - "./daemon:/daemon:ro"
     mcsm-daemon:
         container_name: mcsm-daemon
         build:
@@ -85,10 +89,21 @@ services:
 
 ```
 
-<br />
+复制并保存文件名为 `docker-compose.yml` 的文件
 
 ## 最后
 
-您可以通过进入到这个目录，输入 `docker-compose up` 启动面板。
+把三个文件放到一个文件夹内，您可以通过进入到这个目录，输入 `docker-compose up -d` 来启动面板和后端。
 
-作者：[zijiren233](https://github.com/zijiren233)
+- 后端已经内置 java8 java11 java16 java17 四个版本的 java , 运行不同版本 java 服务器直接输入 java(版本号即可)
+
+    - `java17 -jar server.jar`
+    - `java8 -jar server.jar`
+
+- 请勿尝试在 Docker 容器内安装 Docker, 后端可直接运行 Minecraft Bedrock Server
+
+- 关闭服务器请进入到 docker-compose.yml 文件目录运行 `docker-compose stop`
+
+    - 运行 `docker-compose down` 来移除容器
+
+作者：[zijiren233](https://github.com/zijiren233/docker-mcsm)
