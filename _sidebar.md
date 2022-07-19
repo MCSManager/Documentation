@@ -13,6 +13,7 @@
   - [分布式工作原理](tutorial/system_structure.md)
   - [仿真终端](tutorial/pty.md)
   - [手动配置为 Linux 服务](tutorial/to_service.md)
+  - [修改访问端口](tutorial/modify_port.md)
   - [更改解压缩文件大小限制](tutorial/delete_file_unzip_limit.md)
   - [配置反向代理](tutorial/simple_reverse_proxy.md)
   - [配置 HTTPS](tutorial/reverse_proxy+ssl.md)
