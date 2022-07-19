@@ -13,7 +13,7 @@ apt update && apt install docker-compose
 
     - 注意：如果要调宿主机 docker 请一定不要修改任何挂载目录！docker-compose 里面的挂载目录和 dockerfile 内程序的安装目录都不可修改！
 
-- 如果完全安装教程安装不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm/` 下
+- 如果完全按照教程安装且不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm/` 下
 
 <br />
 
