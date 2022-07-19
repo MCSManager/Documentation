@@ -1,7 +1,7 @@
 # 通过 Docker-Compose 启动面板
 
 
-### 需先安装 Docker + Docker-compose
+## 需先安装 Docker + Docker-compose
 
 ```bash
 sudo su
@@ -18,10 +18,11 @@ apt update && apt install docker-compose
 <br />
 
 
-### 面板分为网页前端（Web）和守护进程后端（Daemon），所以需要先备好两个 Dockerfile 文件。
+## 编写两个 Dockerfile
 
+面板分为网页前端（Web）和守护进程后端（Daemon），所以需要先备好两个 Dockerfile 文件。
 
-## Web 
+### Web 
 
 
 ```dockerfile
@@ -38,7 +39,7 @@ CMD node app.js
 复制并保存文件名为 `dockerfile-web` 的文件
 
 
-## Daemon
+### Daemon
 
 ```dockerfile
 FROM node:14-slim
@@ -53,6 +54,7 @@ CMD node app.js
 
 复制并保存文件名为 `dockerfile-daemon` 的文件
 
+<br />
 
 ## Docker-compose.yml
 
@@ -85,11 +87,13 @@ services:
 
 复制并保存文件名为 `docker-compose.yml` 的文件
 
-## 最后
+<br />
+
+### 最后
 
 把三个文件放到一个文件夹内，您可以通过进入到这个目录，输入 `docker-compose up -d` 来启动面板和后端。
 
-- 发布版中不携带 java,如需运行 java 程序请在 `mcsm面板->环境镜像->环境镜像管理->新建镜像` 中自行构建
+- 发布版中不携带 java,如需运行 java 程序请在 `面板->环境镜像->环境镜像管理->新建镜像` 中自行构建
 
     - 实例设置中的 `进程启动方式` 选择 `虚拟化容器`
 
