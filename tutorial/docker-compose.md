@@ -11,9 +11,9 @@ apt update && apt install docker-compose
 
 - 现已支持 docker 容器内调用宿主机 docker 来启动 `应用实例`
 
-    - 注意：如果要调宿主机 docker 请一定不要修改任何挂载目录！docker-compose 里面的挂载目录和 dockerfile 内程序的安装目录都不可修改！
+    - 注意：如果要 `修改挂载目录` 请一定要保证 `宿主机挂载目录` 和 `挂载到容器内的目录` 要一模一样！即 docker-compose 里面的挂载目录和 dockerfile 内程序的安装目录都要同时修改！
 
-- 如果完全按照教程安装且不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm/` 下
+- 如果完全按照教程安装不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm/` 下
 
 <br />
 
