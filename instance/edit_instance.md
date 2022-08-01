@@ -9,7 +9,7 @@
 请求方式
 
 ```
-POST
+PUT
 Content-Type: application/json; charset=utf-8
 ```
 
