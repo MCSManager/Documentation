@@ -25,6 +25,7 @@ apikey: String;
 
 ```json
 {
+  // ↓ 会返回的值及其解释：200（正常，并返回相应内容）；400（请求参数不正确）；403（无权限）；500（服务器内部错误）
   "status": 200,
   "data": {
     "uuid": "0ecf6068909845749e5921fafdfd96b0",
@@ -37,6 +38,7 @@ apikey: String;
         "hostIp": "-- Unknown --",
         "instanceUuid": "11e2f159b43f447eacb213b2cdc6df2a",
         "serviceUuid": "0e865f1f14c14906894698cc71f4e574",
+        // ↓ 会返回的值及其解释：-1（状态未知）；0（已停止）；1（正在停止）；2（正在启动）；3（正在运行）。下方同理
         "status": -1,
         "nickname": "--",
         "remarks": "--"
@@ -58,7 +60,7 @@ apikey: String;
         "remarks": "--"
       }
     ],
-    "permission": 10,
+    "permission": 10, // 会返回的值及其解释：-1（封禁）；1（普通权限）；10（最高权限）
     "apiKey": "9bacef3559b746c3aa5a6afdc24cf408"
   },
   "time": 1643878890761

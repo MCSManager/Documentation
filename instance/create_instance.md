@@ -68,6 +68,7 @@ apikey: String; // API 密钥
 
 ```json
 {
+  // ↓ 会返回的值及其解释：200（正常，并返回相应内容）；400（请求参数不正确）；403（无权限）；500（服务器内部错误）
   "status": 200,
   "data": {
     "instanceUuid": "655e068ad14c4df98ceca302b3ae0e41",

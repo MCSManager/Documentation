@@ -25,7 +25,7 @@ apikey: String;
 {
   "uuid": "{{uuid}}", // 目标用户的 UUID
   "config": {
-    "permission": 10,
+    "permission": 10, // 会返回的值及其解释：-1（封禁）；1（普通权限）；10（最高权限）
     "instances": [
       // 目标用户能管理的实例，分别是守护进程UUID，实例UUID
       {

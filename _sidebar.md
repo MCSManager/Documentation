@@ -1,6 +1,5 @@
 - [快速开始](README.md)
 
-
 - 使用教程
 
   - [搭建 Java 版 Minecraft 服务端](tutorial/java_windows.md)
@@ -19,7 +18,6 @@
   - [配置 HTTPS](tutorial/reverse_proxy+ssl.md)
   - [更新面板](tutorial/update_mcsm.md)
   - [MCSM & MCDR](tutorial/mcdr.md)
-  
 
 - 常见问题
   - [终端乱码解决方案](tutorial/code.md)
