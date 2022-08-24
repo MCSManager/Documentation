@@ -26,6 +26,7 @@ apikey: String;
 
 ```json
 {
+  // ↓ 会返回的值及其解释：200（正常，并返回相应内容）；400（请求参数不正确）；403（无权限）；500（服务器内部错误）
   "status": 200,
   "data": {
     "page": 1,
@@ -37,7 +38,7 @@ apikey: String;
       {
         "uuid": "0ecf6068909845749e5921fafdfd96b0",
         "userName": "test",
-        "permission": 10,
+        "permission": 10,  // 会返回的值及其解释：-1（封禁）；1（普通权限）；10（最高权限）。下方同理
         "registerTime": "2022/2/3 下午4:12:51",
         "loginTime": "2022/2/3 下午4:12:56",
         "instances": [
