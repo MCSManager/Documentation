@@ -85,10 +85,3 @@ Node 环境下载前往：[https://nodejs.org/zh-cn/](https://nodejs.org/zh-cn/)
 
 <br />
 
-## 版权
-
-版权所有 [Suwings](https://github.com/Suwings) 保留所有权利，禁止删除源代码中的任何版权声明中英文字。
-
-或前往官方网站购买私有化商业开发授权。
-
-中华人民共和国软件著作权编号：2021SR2085061。
