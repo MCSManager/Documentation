@@ -3,7 +3,7 @@
 地址
 
 ```
-/api/auth
+/api/auth/
 ```
 
 请求方式
@@ -11,6 +11,7 @@
 ```
 GET
 Content-Type: application/json; charset=utf-8
+X-Requested-With: XmlHttpRequest
 ```
 
 查询参数（Query）
