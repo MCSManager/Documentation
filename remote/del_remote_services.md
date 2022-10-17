@@ -20,17 +20,6 @@ uuid: String; // 守护进程的 UUID
 apikey: String; // API 密钥
 ```
 
-请求体（Body）
-
-```json
-{
-  "apiKey": "test_key",
-  "port": 24444,
-  "ip": "127.0.0.2",
-  "remarks": "Postman 创建测试"
-}
-```
-
 响应
 
 ```json
