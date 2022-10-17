@@ -21,7 +21,7 @@
 
 - 常见问题
   - [终端乱码解决方案](tutorial/code.md)
-  - [常见问题集合](qa/1.md)
+  - [常见问题集合](qa/common_qa.md)
 
 - API 参考
 
