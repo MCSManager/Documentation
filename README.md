@@ -6,7 +6,13 @@
 [![Status](https://img.shields.io/badge/node-v14.17.6-blue.svg)](https://nodejs.org/en/download/)
 [![Status](https://img.shields.io/badge/License-Apache-red.svg)](https://github.com/MCSManager)
 
-[官方网站](http://mcsmanager.com/) | [使用文档](https://docs.mcsmanager.com/) | [团队主页](https://github.com/MCSManager) | [面板端](https://github.com/MCSManager/MCSManager) | [网页前端](https://github.com/MCSManager/UI) | [守护进程](https://github.com/MCSManager/Daemon)
+Github: [https://github.com/mcsmanager](https://github.com/mcsmanager) 
+
+<br />
+
+## Note
+
+**The document does not yet support English, We will translate it later.**
 
 <br />
 
