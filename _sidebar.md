@@ -22,6 +22,8 @@
 - 常见问题
   - [终端乱码解决方案](tutorial/code.md)
   - [常见问题集合](qa/common_qa.md)
+  - [使用 HiPer 进行家庭网联机](tutorial/hiper.md)
+
 
 - API 参考
 
