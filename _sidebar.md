@@ -20,14 +20,15 @@
   - [MCSM & MCDR](tutorial/mcdr.md)
 
 - 常见问题
+
   - [终端乱码解决方案](tutorial/code.md)
   - [常见问题集合](qa/common_qa.md)
-  - [使用 HiPer 进行家庭网联机](tutorial/hiper.md)
-
+  - [使用内网映射与朋友进行联机](tutorial/openfrp.md)
 
 - API 参考
 
   - 面板通用设置
+
     - [数据监控](panel/overview.md)
     - [获取面板数据简报](remote/get_remote_services_info.md)
     - [获取面板设置](panel/get_settings.md)
