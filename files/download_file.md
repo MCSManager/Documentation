@@ -7,7 +7,7 @@
 地址
 
 ```
-/api/files/upload
+/api/files/download
 ```
 
 请求方式
