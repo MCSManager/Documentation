@@ -25,7 +25,9 @@ command: String; //要执行的命令 如：ping www.baidu.com
 响应
 
 ```json
-// 暂不支持命令结果的返回
+// 无法支持命令结果返回
+// 原因请参考：https://github.com/MCSManager/MCSManager/issues/614
+// 你也可以尝试使用 https://docs.mcsmanager.com/#/instance/instance_output 来间接实现。
 {
   // ↓ 会返回的值及其解释：200（正常，并返回相应内容）；400（请求参数不正确）；403（无权限）；500（服务器内部错误）
   "status": 200,
