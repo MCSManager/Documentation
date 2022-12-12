@@ -1,4 +1,12 @@
-# 搭建 Java 版 Minecraft 服务端
+# 自动搭建 Java 版 Minecraft 服务端
+
+如果您从来没有搭建过 Minecraft（我的世界）服务器，那么这篇文章将适用于你。
+
+参考：[点击跳转](https://www.bilibili.com/read/cv20379951)
+
+<br />
+
+# 手动搭建 Java 版 Minecraft 服务端
 
 ## 1. 安装 Java 环境
 
