@@ -47,15 +47,17 @@ apikey: String; // API 密钥
     "ignore": false
   },
   "docker": {
-    "image": "",
-    "ports": ["25565:25565/tcp"],
-    "memory": "2048",
-    "networkMode": "bridge",
-    "cpusetCpus": "0,1",
-    "cpuUsage": "100",
-    "maxSpace": null,
-    "io": null,
-    "network": null
+    "containerName":"cs",                   #容器名
+    "image": "mcsm-openjdk:16",             #环境镜像(直接填写镜像识别名称)
+    "ports": ["25565:25565/tcp"],           #开放端口
+    "extraVolumes": ["/17H:/warp"],         #额外挂载路径
+    "memory":1024,                          #最大内存（单位 MB）
+    "networkMode":"bridge",                 #网络模式(可以参考面板给的三个属性)
+    "cpusetCpus":"50",                      #指定 CPU 计算核心(可以参考面板给出的填写方式)
+    "cpuUsage":2,                           #限制 CPU 使用率（百分比）
+    "maxSpace":1024,                        #未知(疑似docker属性)最大磁盘空间
+    "io":2035,                              #未知(疑似docker属性)
+    "network":256                           #未知
   },
   "pingConfig": {
     "ip": "",
