@@ -55,9 +55,9 @@ apikey: String; // API 密钥
     "networkMode":"bridge",                 #网络模式(可以参考面板给的三个属性)
     "cpusetCpus":"50",                      #指定 CPU 计算核心(可以参考面板给出的填写方式)
     "cpuUsage":2,                           #限制 CPU 使用率（百分比）
-    "maxSpace":1024,                        #未知(疑似docker属性)最大磁盘空间
-    "io":2035,                              #未知(疑似docker属性)
-    "network":256                           #未知
+    "maxSpace":1024,                        #无用
+    "io":2035,                              #无用
+    "network":256                           #无用
   },
   "pingConfig": {
     "ip": "",
