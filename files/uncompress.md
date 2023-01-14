@@ -27,7 +27,8 @@ apikey: String; // API 密钥
 {
   "type": 2,
   "source": "testzip.zip", //要解压的文件
-  "targets": "解压目录_testzip.zip" //解压后的目录名，文件将全部在此目录中
+  "targets": "解压目录_testzip.zip", //解压后的目录名，文件将全部在此目录中
+  "code":"utf-8" //解压后的文件编码格式：可选utf-8,gbk,big5
 }
 ```
 
