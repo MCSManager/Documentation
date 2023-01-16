@@ -1,6 +1,5 @@
 # 通过 Docker-Compose 启动面板
 
-
 ## 需先安装 Docker + Docker-compose
 
 ```bash
@@ -9,32 +8,30 @@ curl -sSL https://get.daocloud.io/docker | sh
 apt update && apt install docker-compose
 ```
 
-- 现已支持 docker 容器内调用宿主机 docker 来启动 `应用实例`
+-   现已支持 docker 容器内调用宿主机 docker 来启动 `应用实例`
 
-    - 注意：如果要 `修改挂载目录` 只需要修改 `.env` 文件中的 `INSTALL_PATH`, 目录结尾不要有斜线!!！
+    -   注意：如果要 `修改挂载目录` 只需要修改 `.env` 文件中的 `INSTALL_PATH`, 目录结尾不要有斜线!!！
 
-- 若不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm` 下
+-   若不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm` 下
 
-- 若您使用 unraid 搭建 docker-mcsm, 那么根据 unraid 的机制, 您的数据必须保存到 /mnt/user/appdata 下才能重启服务器不丢失数据。所以请修改 `.env` 文件中 `INSTALL_PATH=/mnt/user/appdata`。
+-   若您使用 unraid 搭建 docker-mcsm, 那么根据 unraid 的机制, 您的数据必须保存到 /mnt/user/appdata 下才能重启服务器不丢失数据。所以请修改 `.env` 文件中 `INSTALL_PATH=/mnt/user/appdata`。
 
-    - 此时 docker-mcsm 的所有数据会保存到 `/mnt/user/appdata/docker-mcsm` 目录下
+    -   此时 docker-mcsm 的所有数据会保存到 `/mnt/user/appdata/docker-mcsm` 目录下
 
 <br />
-
 
 ## 编写两个 Dockerfile
 
 面板分为网页前端（Web）和守护进程后端（Daemon），所以需要先备好两个 Dockerfile 文件。
 
-### Web 
-
+### Web
 
 ```dockerfile
 FROM node:14-alpine
 ARG INSTALL_PATH=/opt/docker-mcsm
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN apk --no-cache add git
-RUN git clone https://gitee.com/MCSManager/MCSManager-Web-Production $INSTALL_PATH/releases/web
+RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Web-Production $INSTALL_PATH/releases/web
 RUN cd $INSTALL_PATH/releases/web && npm i --production --registry=https://registry.npmmirror.com
 ENV TZ=Asia/Shanghai
 WORKDIR $INSTALL_PATH/releases/web
@@ -43,15 +40,14 @@ CMD node app.js
 
 复制并保存文件名为 `dockerfile-web` 的文件
 
-
 ### Daemon
 
 ```dockerfile
 FROM node:14-slim
 ARG INSTALL_PATH=/opt/docker-mcsm
-RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
+RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update && apt install -y git
-RUN git clone https://gitee.com/MCSManager/MCSManager-Daemon-Production $INSTALL_PATH/releases/daemon
+RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Daemon-Production $INSTALL_PATH/releases/daemon
 RUN cd $INSTALL_PATH/releases/daemon && npm i --production --registry=https://registry.npmmirror.com
 ENV TZ=Asia/Shanghai
 WORKDIR $INSTALL_PATH/releases/daemon
@@ -113,13 +109,13 @@ INSTALL_PATH=/opt/docker-mcsm
 
 把四个文件放到一个文件夹内，您可以通过进入到这个目录，输入 `docker-compose up -d` 来启动面板和后端。
 
-- 发布版中不携带 java,如需运行 java 程序请在 `面板->环境镜像->环境镜像管理->新建镜像` 中自行构建
+-   发布版中不携带 java,如需运行 java 程序请在 `面板->环境镜像->环境镜像管理->新建镜像` 中自行构建
 
-    - 实例设置中的 `进程启动方式` 选择 `虚拟化容器`
+    -   实例设置中的 `进程启动方式` 选择 `虚拟化容器`
 
-- 关闭服务器请进入到 docker-compose.yml 文件目录运行 `docker-compose stop`
+-   关闭服务器请进入到 docker-compose.yml 文件目录运行 `docker-compose stop`
 
-    - 运行 `docker-compose down` 来移除容器
+    -   运行 `docker-compose down` 来移除容器
 
 <br />
 
