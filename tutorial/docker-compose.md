@@ -85,6 +85,10 @@ services:
                 INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
         network_mode: "host"
         restart: always
+        environment:
+            - PUID=0
+            - PGID=0
+            - UMASK=022
         volumes:
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs
