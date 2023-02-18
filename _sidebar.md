@@ -7,14 +7,14 @@
 
   - [Connect Other Servers](configuration/Connect-other-servers.md)
   - [Distributed Principle](configuration/Distributed-Principle.md)
-  - [Update](tutorial/update_mcsm.md)
+  - [Update](tutorial/update_mcsmanager.md)
 
 - Configuration
 
   - [Config Files](configuration/Where-is-config-file.md)
   - [Register System Service](getting-stared/linux-service.md)
-  - [Nginx Reverse Proxy](tutorial/simple_reverse_proxy.md)
-  - [Add HTTPS](tutorial/reverse_proxy+ssl.md)
+  - [Nginx Reverse Proxy](tutorial/simple-reverse-proxy.md)
+  - [Add HTTPS](tutorial/reverse-proxy-ssl.md)
 
 - Develop
 
