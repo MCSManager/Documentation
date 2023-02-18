@@ -1,14 +1,10 @@
-# Manual Install
-
+# Install MCSManager
 
 ## Windows
 
-For the Windows systems, the MCSM panel has been **compiled into a click-to-run version**. 
+For the Windows systems, the MCSM panel has been **compiled into a click-to-run version**.
 
 Download it from the official site: [https://mcsmanager.com/](https://mcsmanager.com/)
-
-<br />
-
 
 ## Linux
 
@@ -58,12 +54,14 @@ cd /opt/mcsmanager/daemon
 # Start the daemon
 node app.js
 
-# Start the web project (in the second terminal/screen)
+# Start the web project (new screen)
 cd /opt/mcsmanager/web
 # start the application
 node app.js
 
 # Access http://localhost:23333/ for web interface
-# In general, the web 
 ```
 
+## Register system service
+
+reference: [/getting-stared/linux-service](/getting-stared/linux-service)

@@ -1,51 +1,47 @@
-# 使用反向代理并加入 HTTPS
+# Use a reverse proxy and add HTTPS
 
+This tutorial uses Nginx for descriptions
 
-此教程使用 Nginx 进行描述
+**Prerequisites**: Nginx has been installed, MCSManager has been installed, reverse proxy has been configured.
 
-**先决条件**：Nginx 已安装，MCSManager 已安装，反向代理已配置完毕。
-
-> 警告：我们不推荐配置 HTTPS，MCSManager 面板的分布式架构设计较为复杂，若加入 HTTPS 则会导致复杂度直线上升，在您的网络通信环境基本安全的情况下 HTTPS 并不是必要的。
-
+> Warning: We do not recommend configuring HTTPS. The distributed architecture design of the MCSManager panel is relatively complex. If HTTPS is added, the complexity will rise sharply. HTTPS is not necessary when your network communication environment is basically secure.
 
 <br />
 
-## 配置反向代理
+## Configure reverse proxy
 
-参考：[反向代理](/tutorial/simple_reverse_proxy.md)。
-
-<br />
-
-## 生成 HTTPS 证书
-
-生成您自己的 HTTPS 证书，并且对 Nginx 进行相关 HTTPS 反向代理配置。
+Reference: [Reverse proxy](/tutorial/simple_reverse_proxy.md).
 
 <br />
 
-## 全站 HTTPS（重要）
+## Generate HTTPS certificate
 
-根据浏览器访问策略，一旦网站拥有 HTTPS 时，那么所有请求就必须全是 HTTPS 请求，否则将被浏览器拒绝。
-
-所以，您必须将**守护进程所在的 24444 默认端口，面板端的 23333 端口也要配置 https+wss**，只有这样，浏览器连接守护进程时才不会出错。
-
-如果您有其他守护进程，您需要给**每一个守护进程全部加入 HTTPS+WSS**，否则，将无法使用部分功能。
+Generate your own HTTPS certificate and configure Nginx as an HTTPS reverse proxy.
 
 <br />
 
-## 使用新协议连接守护进程
+## Site-wide HTTPS (important)
 
-由于您将守护进程配置了 https 访问，那么此时守护进程管理界面中的连接应当是无法连接的。
+According to the browser access policy, once the website has HTTPS, all requests must be HTTPS requests, otherwise it will be rejected by the browser.
 
-在[守护进程管理](/tutorial/connect_daemon.md)里，将原有的地址添加`wss://` 协议头进行重新连接以解决此问题。
+Therefore, you must configure https+wss on the default port 24444 where the daemon is located, and port 23333 on the panel side. Only in this way will there be no error when the browser connects to the daemon.
 
-如原有的地址:`localhost`，修改后:`wss://localhost`。
-
-![图片](images/wss_daemon.png)
+If you have other daemons, you need to add HTTPS+WSS to \*\*every daemon, otherwise, some functions will not be available.
 
 <br />
 
-## 大功告成
+## Connect daemon with new protocol
 
-根据以上步骤，您的全面板 https 访问应该正常工作。
+Since you have configured the daemon process with https access, the connection in the daemon process management interface should be unconnectable at this time.
+
+In [Daemon Process Management](/configuration/Connect-other-servers.md), add the `wss://` protocol header to the original address to reconnect to solve this problem.
+
+For example, the original address: `localhost`, after modification: `wss://localhost`.
+
+<br />
+
+## Done
+
+Based on the steps above, your full board https access should work fine.
 
 <br />
