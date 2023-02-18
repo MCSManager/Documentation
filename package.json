@@ -1,0 +1,20 @@
+{
+  "name": "mcsm-document",
+  "version": "1.0.0",
+  "description": "<img src=\"https://public-link.oss-cn-shenzhen.aliyuncs.com/mcsm_picture/logo.png\" alt=\"MCSManager 图标.png\" width=\"480px\" />",
+  "main": "index.js",
+  "scripts": {
+    "start": "docsify serve",
+    "dev": "docsify serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MCSManager/Documentation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MCSManager/Documentation/issues"
+  },
+  "homepage": "https://github.com/MCSManager/Documentation#readme"
+}
