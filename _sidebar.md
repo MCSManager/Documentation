@@ -6,8 +6,8 @@
 - Tutorial
 
   - [Connect Other Servers](configuration/Connect-other-servers.md)
-  - [Update](tutorial/update_mcsm.md)
   - [Distributed Principle](configuration/Distributed-Principle.md)
+  - [Update](tutorial/update_mcsm.md)
 
 - Configuration
 
@@ -20,3 +20,7 @@
 
   - [Projects](developer/projects.md)
   - [Build Development Environment](developer/environment.md)
+
+- Reference
+
+  - [Github](https://github.com/MCSManager)

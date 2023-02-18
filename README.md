@@ -1,15 +1,11 @@
 <img src="https://public-link.oss-cn-shenzhen.aliyuncs.com/mcsm_picture/logo.png" alt="MCSManagerLogo.png" width="510px" />
 
-<br />
-
 [![--](https://img.shields.io/badge/Support-Windows/Linux-green.svg)](https://github.com/MCSManager)
 [![Status](https://img.shields.io/badge/npm-v6.14.15-blue.svg)](https://www.npmjs.com/)
 [![Status](https://img.shields.io/badge/node-v14.17.6-blue.svg)](https://nodejs.org/en/download/)
 [![Status](https://img.shields.io/badge/License-Apache%202.0-red.svg)](https://github.com/MCSManager)
 
 [Official Website](http://mcsmanager.com/) | [Web Project](https://github.com/MCSManager/MCSManager) | [UI Project](https://github.com/MCSManager/UI) | [Daemon Project](https://github.com/MCSManager/Daemon)
-
-<br />
 
 ## Introduction
 
