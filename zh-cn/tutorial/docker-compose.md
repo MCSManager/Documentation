@@ -14,7 +14,7 @@ apt update && apt install docker-compose
 
 -   若不修改任何配置 则您的所有数据将会保存在宿主机的 `/opt/docker-mcsm` 下
 
--   若您使用 unraid 搭建 docker-mcsm, 那么根据 unraid 的机制, 您的数据必须保存到 /mnt/user/appdata 下才能重启服务器不丢失数据。所以请修改 `.env` 文件中 `INSTALL_PATH=/mnt/user/appdata`。
+-   若您使用 unraid 搭建 docker-mcsm, 那么根据 unraid 的机制, 您的数据必须保存到 /mnt/user/appdata 下才能重启服务器不丢失数据。所以请修改 `.env` 文件中 INSTALL_PATH 为 `INSTALL_PATH=/mnt/user/appdata`。
 
     -   此时 docker-mcsm 的所有数据会保存到 `/mnt/user/appdata/docker-mcsm` 目录下
 
@@ -27,13 +27,14 @@ apt update && apt install docker-compose
 ### Web
 
 ```dockerfile
-FROM node:14-alpine
+FROM node:14-slim
 ARG INSTALL_PATH=/opt/docker-mcsm
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-RUN apk --no-cache add git
+ARG TZ=Asia/Shanghai
+ENV TZ=${TZ}
+RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+RUN apt update && apt install -y git
 RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Web-Production $INSTALL_PATH/releases/web
 RUN cd $INSTALL_PATH/releases/web && npm i --production --registry=https://registry.npmmirror.com
-ENV TZ=Asia/Shanghai
 WORKDIR $INSTALL_PATH/releases/web
 CMD node app.js
 ```
@@ -45,11 +46,12 @@ CMD node app.js
 ```dockerfile
 FROM node:14-slim
 ARG INSTALL_PATH=/opt/docker-mcsm
+ARG TZ=Asia/Shanghai
+ENV TZ=${TZ}
 RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update && apt install -y git
 RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Daemon-Production $INSTALL_PATH/releases/daemon
 RUN cd $INSTALL_PATH/releases/daemon && npm i --production --registry=https://registry.npmmirror.com
-ENV TZ=Asia/Shanghai
 WORKDIR $INSTALL_PATH/releases/daemon
 CMD node app.js
 ```
@@ -70,8 +72,13 @@ services:
             dockerfile: dockerfile-web
             args:
                 INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
+                TZ: ${TZ-Asia/Shanghai}
         network_mode: "host"
         restart: always
+        environment:
+            - PUID=0
+            - PGID=0
+            - UMASK=022
         volumes:
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/web/data:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/data
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/web/logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/logs
@@ -83,6 +90,7 @@ services:
             dockerfile: dockerfile-daemon
             args:
                 INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
+                TZ: ${TZ-Asia/Shanghai}
         network_mode: "host"
         restart: always
         environment:
@@ -103,6 +111,7 @@ services:
 
 ```.env
 INSTALL_PATH=/opt/docker-mcsm
+TZ=Asia/Shanghai
 ```
 
 复制并保存文件名为 `.env` 的文件
@@ -111,7 +120,17 @@ INSTALL_PATH=/opt/docker-mcsm
 
 ### 最后
 
-把四个文件放到一个文件夹内，您可以通过进入到这个目录，输入 `docker-compose up -d` 来启动面板和后端。
+把四个文件放到一个文件夹内，您可以通过进入到这个目录
+
+```shell
+
+docker-compose up -d # 运行 web 和 daemon
+
+docker-compose up -d mcsm-web # 仅运行 web
+
+docker-compose up -d mcsm-daemon # 仅运行 daemon
+
+```
 
 -   发布版中不携带 java,如需运行 java 程序请在 `面板->环境镜像->环境镜像管理->新建镜像` 中自行构建
 
@@ -125,10 +144,14 @@ INSTALL_PATH=/opt/docker-mcsm
 
 ### 更新 docker-mcsm
 
-```shell
-docker-compose down
-docker-compose build --no-cache
-docker-compose up -d
+```
+
+docker-compose exec mcsm-web bash -c "git pull && npm i --production --registry=https://registry.npmmirror.com" # 更新 web
+
+docker-compose exec mcsm-daemon bash -c "git pull && npm i --production --registry=https://registry.npmmirror.com" # 更新 daemon
+
+docker-compose restart
+
 ```
 
 作者：[zijiren233](https://github.com/zijiren233/docker-mcsm)
