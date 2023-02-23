@@ -8,6 +8,7 @@
   - [Connect Other Servers](configuration/Connect-other-servers.md)
   - [Distributed Principle](configuration/Distributed-Principle.md)
   - [Update](tutorial/update_mcsmanager.md)
+  - [Forget Password](tutorial/forget-password.md)
 
 - Configuration
 

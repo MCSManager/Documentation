@@ -1,29 +1,29 @@
-# 分布式工作原理
+# Distributed working principle
 
-## 子项目职责
+## Subproject responsibilities
 
-整体项目总共分为两个部分，一个面板端（Web），一个守护进程端（Daemon）。
+The whole project is divided into two parts, a panel side (Web) and a Daemon side (Daemon).
 
-**面板端的功能划分：**
+** Panel end function division: **
 
-- 用户管理
-- 连接守护进程
-- 大多数操作的权限认证与授权
-- API 接口提供
-- 更多...
+- User Management
+- Connect to daemons
+- Authentication and authorization for most operations
+- Provided by the API
+- More...
 
-**守护进程端的功能划分**
+** Function division of daemon side **
 
-- 真实的进程管理（Bukkit，Spigot 程序运行）
-- Docker 容器管理
-- 文件管理
-- 终端实时通信
-- 更多
+- Real process management (Bukkit, Spigot program running)
+- Docker container management
+- File Management
+- Real-time terminal communication
+- More
 
-## 分布式连接原理图
+## Distributed connection schematic
 
-在无其他配置和因素下，浏览器需要与守护进程进行直接访问，以便于文件上传下载和实时数据传输，从而减小面板端的流量压力。
+If there is no other configuration or factor, the browser must directly access the daemon process to facilitate file uploading and downloading and real-time data transmission, reducing the traffic pressure on the panel.
 
-正因如此，连接守护进程的 IP 地址不得使用内网段，否则外部用户将无法访问到守护进程并且会一直显示`连接中`字样。
+Because of this, the IP address connected to the daemon must not use the Intranet segment, otherwise external users will not be able to access the daemon and will always be displayed as' connected '.
 
-![分布式原理图](images/distributed_principle.png)
+![Distributed schematic diagram](images/distributed_princip.png)
