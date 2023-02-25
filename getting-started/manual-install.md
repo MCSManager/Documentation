@@ -37,26 +37,26 @@ ln -s /opt/node-v14.17.6-linux-x64/bin/npm /usr/bin/npm
 mkdir /opt/mcsmanager/
 cd /opt/mcsmanager/
 
-# Download the web project. 
+# Download the web project. (Skip this if you do not plan to run web panel on this machine)
 git clone https://github.com/MCSManager/MCSManager-Web-Production.git web
 cd web
 # Install dependencies
 npm install --production
 cd /opt/mcsmanager/
 
-# Download the Daemon
+# Download the Daemon (Skip this if you do not plan to run daemon service on this machine.)
 git clone https://github.com/MCSManager/MCSManager-Daemon-Production.git daemon
 cd daemon
 # Install dependencies
 npm install --production
 
 # You need two terinals or Screens for the following step.
-# Run the daemon first
+# Run the daemon first (Skip this if you do not plan to run daemon service on this machine.)
 cd /opt/mcsmanager/daemon
 # Start the daemon
 node app.js
 
-# Run the web project (in another screen)
+# Run the web project (in another screen) (Skip this if you do not plan to run web panel on this machine)
 cd /opt/mcsmanager/web
 # start the application
 node app.js
