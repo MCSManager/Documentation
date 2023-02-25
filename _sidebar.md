@@ -6,7 +6,7 @@
 - Tutorial
 
   - [Adding Daemon to Web Panel](configuration/adding-daemon.md)
-  - [Distributed Principle](configuration/Distributed-Principle.md)
+  - [Project Structure](configuration/project-structure.md)
   - [Update](tutorial/update_mcsmanager.md)
   - [Forget Password](tutorial/forget-password.md)
 
