@@ -66,4 +66,4 @@ node app.js
 
 ## Register MCSM as system service (auto start)
 
-reference: [/getting-stared/linux-service](/getting-stared/linux-service)
+reference: [/getting-started/linux-service](/getting-started/linux-service)
