@@ -1,7 +1,7 @@
 - Getting started
 
-  - [Installation](getting-stared/manual-install.md)
-  - [Runtime Environment](getting-stared/runtime-environment.md)
+  - [Installation](getting-started/manual-install.md)
+  - [Runtime Environment](getting-started/runtime-environment.md)
 
 - Tutorial
 
@@ -13,7 +13,7 @@
 - Configuration
 
   - [Config Files](configuration/Where-is-config-file.md)
-  - [Register System Service](getting-stared/linux-service.md)
+  - [Register System Service](getting-started/linux-service.md)
   - [Nginx Reverse Proxy](tutorial/simple-reverse-proxy.md)
   - [Add HTTPS](tutorial/reverse-proxy-ssl.md)
 
