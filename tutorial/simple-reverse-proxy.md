@@ -1,20 +1,22 @@
 # Reverse Proxy
 
-This tutorial uses Nginx for descriptions
+This tutorial demonstrate how to use Nginx as a reverse proxy.
 
 **Prerequisites**: Nginx installed, MCSManager installed.
 
 ## Notice
 
-You don't necessarily need to do this step, and if you don't, then don't do it.
+Reverse proxies are for advanced users. This is not required for MCSM to work.
+If you do not know what you are doing, DO NOT PROCEED.
 
 ## Configure reverse proxy
 
-The purpose of a reverse proxy is usually to pass all traffic through Nginx for further optimization, etc.
+We use Nginx in this example.
 
-By default, MCSManager has two programs that need reverse proxy, namely `23333` and `24444` ports.
+By default, MCSManager listens on two ports `23333`(web) and `24444`(daemon). (In most cases) you need to reverse proxy both ports for it to work.
 
-Edit `/etc/nginx/nginx.conf` configuration file (Linux)
+Edit the nginx configurations. (Default `/etc/nginx/nginx.conf`). The actual location may vary based on your distributions.
+Sample configurations:
 
 ```conf
 # These are the default configurations of Nginx, please copy them according to your situation.
@@ -34,11 +36,11 @@ http {
      client_max_body_size 10240M;
 
 server {
-         # Web-side public network access port
+         # Web panel public access port
          listen 8081;
 
          location / {
-             # Web side reverse proxy target
+             # Local address of web panel
              proxy_pass http://localhost:23333/;
              root html;
              index index.html index.htm;
@@ -47,7 +49,7 @@ server {
              proxy_set_header X-Real-IP $remote_addr;
              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
              proxy_set_header REMOTE-HOST $remote_addr;
-             # Required Websocket support
+             # Required for Websocket support
              proxy_set_header Upgrade $http_upgrade;
              proxy_set_header Connection "upgrade";
              add_header X-Cache $upstream_cache_status;
@@ -57,11 +59,12 @@ server {
      }
 
      server {
-         # Daemon public network access port
+         # Daemon public access port
          listen 8082;
 
          location / {
-             # Daemon side reverse proxy target (the configuration is the same as that of the web side)
+             # Local address for Daemon(s)(the configuration is the same as that of the web side)
+			 # You can repeat this block for different address & port for multiple daemons.
              proxy_pass http://localhost:24444/;
              root html;
              index index.html index.htm;
@@ -83,20 +86,21 @@ server {
 **Restart Nginx service**
 
 ```bash
-# possible commands
+#These are just sample commands that were used to restart nginx in most distributions.
 systemctl restart nginx
 systemctl restart http
 systemctl restart httpd
 ```
 
-After the configuration is complete, visit http://{public IP}:8081/ to enjoy the reversed address.
+visit http://{public IP}:8081/ to have access your new port! 
+Note: usually, once reverse proxy configured, you may want to block access to the original port.
 
 <br />
 
-## Reconnect to daemon
+## Update Daemon information
 
-After the reverse generation is established, please use the reversed Daemon port connection again.
+Once reverse proxies configured, you need to update the Daemon(s) connection address in the web panel.
 
-The above configuration reverses 8082 to port 24444. Even if you are using a localhost address, it is recommended to use port 8082 for connection.
+The above configuration exposes port 8082 on public IP and forward to port 24444 of localhost. Even if you are using a localhost address, it is recommended to use the public address for connection.
 
 <br />

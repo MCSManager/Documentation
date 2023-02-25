@@ -7,7 +7,7 @@
 
   - [Adding Daemon to Web Panel](configuration/adding-daemon.md)
   - [Project Structure](configuration/project-structure.md)
-  - [Update](tutorial/update_mcsmanager.md)
+  - [Update](tutorial/update-mcsmanager.md)
   - [Forget Password](tutorial/forget-password.md)
 
 - Configuration
