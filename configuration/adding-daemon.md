@@ -2,15 +2,15 @@
 
 ## Install Daemon on the target machine.
 
-Make sure MCSM Daemon was already installed on the target machine.
+Make sure MCSM Daemon was installed on the target machine.
 Refers to [Installation](getting-started/manual-install.md) for instructions.
-If you installed both daemon and web services on the target machine, you may want to disable the web panel. 
+If you installed both daemon and web panel on the target machine, you may want to disable the web panel. 
 
 ```bash
 # If not already, start the Daemon service.
 systemctl start mcsm-daemon
 
-# STOP web panel.
+# STOP web panel, and prevent it from run on startup.
 systemctl stop mcsm-web
 systemctl disable mcsm-web 
 ```
