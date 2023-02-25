@@ -22,11 +22,11 @@ mv /opt/mcsmanager/web/data/Users/ /opt/user-back/
 systemctl start mcsm-web
 ```
 
-## Recreate the administrator
+## Create a new admin account
 
 Access MCSM web panel and follow the instructions.
 
-## restore original user data
+## Restore user data
 
 ```bash
 mv /opt/user-back/ /opt/mcsmanager/web/data/Users/

@@ -1,4 +1,4 @@
-# Config Files
+# Config Files Locations
 
 ## Web
 

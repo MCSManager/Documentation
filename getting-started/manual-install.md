@@ -64,6 +64,6 @@ node app.js
 # Access http://localhost:23333/ for web interface
 ```
 
-## Register MCSM as system service (auto start)
+## Register MCSM as a system service (autostart)
 
 reference: [/getting-started/linux-service](/getting-started/linux-service.md)
