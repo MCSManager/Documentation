@@ -1,4 +1,4 @@
-# Adding a Daemon to Web Panel
+# Adding a Daemon
 
 ## Install Daemon on the target machine.
 
@@ -15,7 +15,7 @@ systemctl stop mcsm-web
 systemctl disable mcsm-web 
 ```
 
-## Add Daemon to Web Panel
+## Add a Daemon to the Web Panel
 
 ### Obtain the remote daemon access token
 On the target machine, run the following command
