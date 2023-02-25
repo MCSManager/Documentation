@@ -1,6 +1,6 @@
 # Runtime Environment
 
-MCSManager panel can run on both Windows and Linux platforms easily. As a lightweight control panel, only Node.js is required.
+MCSManager can ne easily deployed on both Windows and Linux platforms. As a lightweight control panel, only Node.js is required.
 
 Required **Node.js** version: **14.17.6** or above.
 
