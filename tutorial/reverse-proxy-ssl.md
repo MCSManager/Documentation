@@ -9,7 +9,7 @@ This tutorial uses Nginx for demonstration.
 
 ## Configure reverse proxy
 
-Reference: [Reverse proxy](/tutorial/simple_reverse_proxy.md).
+Reference: [Reverse proxy](/tutorial/simple-reverse-proxy.md).
 
 <br />
 
@@ -34,10 +34,10 @@ Note: All daemons configured in the web panel need to have HTTPS enabled, otherw
 ## Update Daemon Information
 
 
-Refers to [Daemon Process Management](/configuration/adding-daemon.md), add the `wss://` protocol header to the original address.
+Refers to [adding daemon](/configuration/adding-daemon.md), add the `wss://` protocol header to the original address.
 
 For example, if the original address is `localhost`, modify it as: `wss://localhost`.
 
-Once finished, save and apply the new configuration and the Daemon should be able to reconnect. 
+Once finished, apply the new configuration and the Daemon should be online now. 
 
 <br />
