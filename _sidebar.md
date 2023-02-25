@@ -15,7 +15,7 @@
   - [Config Files](configuration/where-is-config-file.md)
   - [Register MCSM as a System Service](getting-started/linux-service.md)
   - [Nginx Reverse Proxy](tutorial/simple-reverse-proxy.md)
-  - [Add HTTPS](tutorial/reverse-proxy-ssl.md)
+  - [HTTPS](tutorial/reverse-proxy-ssl.md)
 
 - Develop
 

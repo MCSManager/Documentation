@@ -1,12 +1,12 @@
 # Reverse Proxy
 
-This tutorial demonstrate how to use Nginx as a reverse proxy.
+This tutorial demonstrates how to use Nginx as a reverse proxy.
 
-**Prerequisites**: Nginx installed, MCSManager installed.
+**Prerequisites**: Nginx and MCSManager.
 
-## Notice
+## Before you start
 
-Reverse proxies are for advanced users. This is not required for MCSM to work.
+> Reverse proxies are for advanced users. This is NOT REQUIRED for MCSM to work.
 If you do not know what you are doing, DO NOT PROCEED.
 
 ## Configure reverse proxy
@@ -15,13 +15,13 @@ We use Nginx in this example.
 
 By default, MCSManager listens on two ports `23333`(web) and `24444`(daemon). (In most cases) you need to reverse proxy both ports for it to work.
 
-Edit the nginx configurations. (Default `/etc/nginx/nginx.conf`). The actual location may vary based on your distributions.
+Edit the Nginx configurations. (Default `/etc/nginx/nginx.conf`). The actual location may vary based on your distributions.
 Sample configurations:
 
 ```conf
-# These are the default configurations of Nginx, please copy them according to your situation.
-# If there is an error or cannot be started after configuration, please restore the original configuration file and only cover the content of the Http{ ... } section.
-# Consider deleting all Chinese comments to solve the phenomenon of configuration garbled characters.
+# These are the default configurations of Nginx, please copy them accordingly.
+# If the new configuration failed to start later, remove the two newly-added server block.
+
 user www-data;
 worker_processes auto;
 pid /run/nginx.pid;
@@ -99,8 +99,8 @@ Note: usually, once reverse proxy configured, you may want to block access to th
 
 ## Update Daemon information
 
-Once reverse proxies configured, you need to update the Daemon(s) connection address in the web panel.
+Once you finished configuring the reverse proxy, Daemon's connection address in the web panel will need to be updated.
 
-The above configuration exposes port 8082 on public IP and forward to port 24444 of localhost. Even if you are using a localhost address, it is recommended to use the public address for connection.
+The above configuration exposes port 8082 on public IP and forwards to port 24444 on localhost. Even if you are using a localhost address, it is still recommended to use the public address for connections.
 
 <br />
