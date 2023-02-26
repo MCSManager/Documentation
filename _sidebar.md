@@ -12,7 +12,7 @@
 
 - Configuration
 
-  - [Config Files](configuration/where-is-config-file.md)
+  - [Config Files](configuration/config-files-locations.md)
   - [Register MCSM as a System Service](getting-started/linux-service.md)
   - [Nginx Reverse Proxy](tutorial/simple-reverse-proxy.md)
   - [HTTPS](tutorial/reverse-proxy-ssl.md)
@@ -25,3 +25,4 @@
 - Reference
 
   - [Github](https://github.com/MCSManager)
+  - [Edit this document](https://github.com/MCSManager/Documentation)
