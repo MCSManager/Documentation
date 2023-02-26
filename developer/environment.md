@@ -1,8 +1,8 @@
 # Build Development Environment
 
-This is intended for developers. If you are not a developer, you can safely ignore these.
+This is intended for developers. If you are not a developer, you can safely ignore this document.
 
-You can continue to develop or preview all the projects once they are running under the development environment. Please make sure to be in compliance with the license.
+You are welcomed to develop this project further. This document shows how to build a basic development encironment for MCSManager. Please make sure to be in compliance with the license.
 
 ## Web Project
 

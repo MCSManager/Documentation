@@ -1,4 +1,4 @@
-# Register system service
+# Register MCSM as a system service
 
 ## Config
 
@@ -39,9 +39,19 @@ WantedBy=multi-user.target
 <br />
 
 ## Usage
-
+```
+#Restart web or daemon service
 systemctl restart mcsm-{daemon,web}.service
+
+#Start web or daemon service
 systemctl start mcsm-{daemon,web}.service
+
+#Stop web or daemon service
 systemctl stop mcsm-{daemon,web}.service
-systemctl disable mcsm-{daemon,web}.service
+
+#Configure web or daemon service to run on system startup.
 systemctl enable mcsm-{daemon,web}.service
+
+#Stop web or daemon service from run on system startup.
+systemctl disable mcsm-{daemon,web}.service
+```

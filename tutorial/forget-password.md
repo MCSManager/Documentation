@@ -1,6 +1,6 @@
 # Forget Password
 
-Unfortunately you forgot your password, if you are an admin, you have to move all the user data from the panel elsewhere, then reboot and access the panel to generate a new admin account, then move all the user data back.
+We are sorry that you forgot your password. If you are the server owner, you need to temporarily  move all user data from the configuration directory to a safe place. Then, restart MCSM service so the panel will generate a new admin account. You can move back all the user data then. 
 
 ## Stop MCSManager Web
 
@@ -22,11 +22,11 @@ mv /opt/mcsmanager/web/data/Users/ /opt/user-back/
 systemctl start mcsm-web
 ```
 
-## Recreate the administrator
+## Create a new admin account
 
-Use a browser to access MCSManager
+Access MCSM web panel and follow the instructions.
 
-## restore original user data
+## Restore user data
 
 ```bash
 mv /opt/user-back/ /opt/mcsmanager/web/data/Users/
