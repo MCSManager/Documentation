@@ -23,6 +23,7 @@ Content-Type: application/json; charset=utf-8
 uuid: String; // 守护进程下的实例 UUID
 remote_uuid: String; // 守护进程 UUID
 apikey: String; // API 密钥
+size Number | String; // 可选，设定这一次返回的文案内容大小。填入数字则单位是字节，也可以输入 128kb 代表需要多少kb（只支持kb单位）。
 ```
 
 响应
