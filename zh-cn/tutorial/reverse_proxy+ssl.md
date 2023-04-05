@@ -208,7 +208,7 @@ http {
 
 ![图片1](images/default_ws_daemon.png)
 
-不能将地址填写为 `ws://localhost` ！这会导致浏览器尝试使用 `http` 连接！
+`不能`将地址填写为 `ws://localhost` ！这会导致浏览器尝试使用 `http` 连接！
 
 <br />
 
