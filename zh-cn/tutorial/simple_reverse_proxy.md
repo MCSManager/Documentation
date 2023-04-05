@@ -50,7 +50,6 @@ http {
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
             add_header Cache-Control no-cache;
-            expires 12h;
         }
     }
 
@@ -71,7 +70,6 @@ http {
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
             add_header Cache-Control no-cache;
-            expires 12h;
         }
     }
 

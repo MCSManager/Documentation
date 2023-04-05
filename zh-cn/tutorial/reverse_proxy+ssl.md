@@ -4,6 +4,7 @@
 您应当 `充分理解` 本文的内容，便于依据自己的需求进行更改。  
 文中提到的 `本地回环地址` 在本文是指域名`localhost`以及IPv4`127.0.0.1`。  
 文中提到的 `WS协议` 基于 `HTTP协议` 通道，`WSS协议` 基于 `HTTPS协议` 通道。  
+内容仅供参考，不绝对确保稳定性，不确保时效性。  
 
 **先决条件**：Nginx 已安装，MCSManager 已安装。  
 
@@ -28,8 +29,9 @@
 ## 配置反向代理
 
 参考：[反向代理](/tutorial/simple_reverse_proxy.md)。  
- 
-以下示范环境是 `CentOS` 操作系统内使用 `yum install nginx` 安装的Nginx，配置文件目录 `/etc/nginx/nginx.conf`。  
+
+以下示范环境是 `CentOS` 操作系统内使用 `yum install nginx` 安装的Nginx，配置文件目录 `/etc/nginx/nginx.conf` ，  
+Web面板版本 `9.8.0` ，守护进程版本 `3.3.0` 。  
 内容仅供参考，请依据自己的需求进行更改。  
 `<>`这俩符号需要按里面描述的内容进行填写（填写时别带这俩符号！）。  
 ```nginx
@@ -48,10 +50,16 @@ include /usr/share/nginx/modules/*.conf;
 events {
     worker_connections 1024;
 }
+
+# 以上内容在nginx配置文件中默认包含，无需修改。
+#======================================================
+# 以下才是需要修改的内容。
+# <> 这俩符号需要按里面描述的内容进行填写（填写时别带这俩符号！）。  
+
 http {
     # 配置SSL证书。以下监听的ssl端口将默认使用该证书。
-    ssl_certificate <你的域名证书crt文件所在目录>; #！！！注意<>！！！
-    ssl_certificate_key <你的域名证书私钥key文件所在目录>; #！！！注意<>！！！
+    ssl_certificate <你的域名证书crt文件所在目录>; #！！！注意此处需要填写<>！！！
+    ssl_certificate_key <你的域名证书私钥key文件所在目录>; #！！！注意此处需要填写<>！！！
     ssl_session_cache shared:SSL:1m;
     ssl_session_timeout  10m;
     ssl_protocols TLSv1.2; # 仅允许使用TLSv1.2建立连接
@@ -75,11 +83,11 @@ http {
         # 这块是用于阻止跨域访问的。
 
         # Daemon 端访问端口
-        listen <代理后的端口> ssl; #！！！注意<>！！！
+        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
         # Web面板访问端口
-        listen <代理后的端口> ssl; #！！！注意<>！！！
+        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
         server_name _; #若使用的域名在其它server{}中都无法匹配，则会匹配这里。
@@ -91,7 +99,7 @@ http {
     }
     server {
         # Daemon 端localhost访问HTTP协议端口
-        listen 127.0.0.1:<代理后的端口>; #！！！注意<>！！！
+        listen 127.0.0.1:<代理后的端口>; #！！！注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
         server_name localhost; # 本地回环域名
@@ -100,7 +108,7 @@ http {
 
         # 开始反向代理
         location / {
-            proxy_pass http://localhost:<Daemon进程真正监听的端口号>; #！！！注意<>！！！
+            proxy_pass http://localhost:<Daemon进程真正监听的端口号>; #！！！注意此处需要填写<>！！！
             proxy_set_header Host $host:$server_port;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -108,27 +116,24 @@ http {
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-store;
+            add_header Cache-Control no-store; # 禁止客户端缓存，防止更新不及时
         }
     }
     server {
         # Daemon 端公网HTTPS端口
-        listen <代理后的端口> ssl; #！！！注意<>！！！
+        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
-        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #！！！注意<>！！！
+        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #！！！注意此处需要填写<>！！！
         deny 127.0.0.1; # 这块主要是测试的时候为了确保localhost真的不是访问这个。
 
         # 在示范内容之前已经填了ssl证书相关配置，因此这里并没有ssl配置。您也可以在此处单独配置ssl。
 
-        # 这块只是在公网尝试使用http访问、https访问根路径、返回404时，直接切断连接。
-        # 这段代码可有可无，有也不会影响一般情况下的访问。
-        error_page 404 =200 /;
-        error_page 497 =200 /;
-        location =/ {
+        # 使用HTTP访问时，断开链接。
+        error_page 497 =200 /444nginx;
+        location =/444nginx {
             return 444;
         }
-        #================
         
         # 绝对防止搜索引擎收录
         location =/robots.txt{
@@ -139,7 +144,7 @@ http {
         # 开始反向代理
         location / {
             proxy_intercept_errors on; #捕捉到错误状态码时，让nginx可以决定返回的错误页面。
-            proxy_pass http://localhost:<Daemon进程真正监听的端口号>; #！！！注意<>！！！
+            proxy_pass http://localhost:<Daemon进程真正监听的端口号>; #！！！注意此处需要填写<>！！！
             proxy_set_header Host $host:$server_port;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -147,20 +152,20 @@ http {
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-store;
+            add_header Cache-Control no-store; # 禁止客户端缓存，防止更新不及时
         }
     }
     server {
         # Web 端公网HTTPS端口
-        listen <代理后的端口> ssl; #！！！注意<>！！！
+        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
-        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #！！！注意<>！！！
+        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #！！！注意此处需要填写<>！！！
         
         # 在示范内容之前已经填了ssl证书相关配置，因此这里并没有ssl配置。您也可以在此处单独配置ssl。
 
+        # 使用HTTP访问时，断开链接。
         error_page 497 =200 /444nginx;
-
         location =/444nginx {
             return 444;
         }
@@ -173,7 +178,7 @@ http {
 
         # 开始反向代理
         location / {
-            proxy_pass http://localhost:<Web面板端真正监听的端口号>; #！！！注意<>！！！
+            proxy_pass http://localhost:<Web面板端真正监听的端口号>; #！！！注意此处需要填写<>！！！
             proxy_set_header Host $host:$server_port;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -181,9 +186,7 @@ http {
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control "max-age=30";
-            expires 3d; # gzip缓存3天
-        
+            add_header Cache-Control no-stone; # 禁止客户端缓存，防止更新不及时
         }
     }
 
@@ -192,17 +195,35 @@ http {
 
 <br />
 
-## 使用基于 HTTPS 的 WSS 协议连接 非本地回环地址 的守护进程
+## 使用 WS 协议连接 `本地回环地址` 的守护进程
 
-由于您为守护进程的 非本地回环地址 配置了 HTTPS 访问，那么此时守护进程管理界面中的连接应当是无法连接的。  
+在 [守护进程管理](/tutorial/connect_daemon.md) 里，填写地址为 `localhost` ，然后单击右侧的 `连接` 或 `更新` 即可。
 
-在 [守护进程管理](/tutorial/connect_daemon.md) 里，将原有的地址前面添加 `wss://` 协议头后，重新连接以解决此问题。  
+![图片1](images/default_ws_daemon.png)
 
-如原有的地址：`domain.com`，修改后：`wss://domain.com`。  
+也可以将地址填写为 `ws://localhost` 。
+
+![图片2](images/ws_daemon.png)
+
+<br />
+
+## 使用 WSS 协议连接 `非本地回环地址` 的守护进程
+
+由于您为 `守护进程` 的 `非本地回环地址` 配置了 HTTPS 访问，且Web面板后台使用 `非本地回环地址` 连接 `守护进程` ，此时守护进程管理界面中，该节点应当是离线的。  
+
+在 [守护进程管理](/tutorial/connect_daemon.md) 里，将原有的地址前面添加 `wss://` 协议头，然后单击右侧的 `连接` 或 `更新` 即可。
+
+如原有的地址：`domain.com` 或 `ws://domain.com`，修改后：`wss://domain.com`。  
 
 ![图片](images/wss_daemon.png)
 
 <br />
+
+## 客户端访问时，需要注意的
+
+请不要使用IE浏览器或其它版本过旧的浏览器访问。  
+建议使用版本较新的 `Google Chrome` 或 `Microsoft Edge` 或 `Mozilla FireFox` ，并在系统内开启 `TLSv1.2` （通常默认开启）。  
+依据示范的配置内容，您应当直接使用 `https://` 协议访问。  
 
 ## 大功告成
 
