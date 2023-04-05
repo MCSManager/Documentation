@@ -37,7 +37,7 @@
 
 ## 配置反向代理
 
-参考：[反向代理](/tutorial/simple_reverse_proxy.md)。  
+参考：[反向代理](simple_reverse_proxy.md)。  
 
 以下示范环境是`CentOS`操作系统内使用`yum install nginx`安装的Nginx`1.20.1`，配置文件目录`/etc/nginx/nginx.conf`，Web面板版本`9.8.0`，守护进程版本`3.3.0`。  
 内容仅供参考，请依据自己的需求进行更改。  
