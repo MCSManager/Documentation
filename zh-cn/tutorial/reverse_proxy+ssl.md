@@ -2,16 +2,17 @@
 
 此教程使用 Nginx 进行演示。  
 您应当 充分理解 本文的内容，便于依据自己的需求进行更改。  
-`本地回环地址` 在本文是指域名`localhost`以及IPv4`127.0.0.1`。  
-`非本地回环地址` 在本文指不是`本地回环地址`。  
-`WS协议` 基于HTTP协议通道，`WSS协议` 基于HTTPS协议通道。  
-`守护进程` 与 `Daemon节点` 的意思相同。 
-`Web面板后台` 指服务器中`Web面板`的程序，不是`守护进程`，不是`浏览器`。  
+> 本地回环地址：指域名 `localhost` 以及IPv4 `127.0.0.1` 。  
+> 非本地回环地址：指不是 `本地回环地址` 。  
+> WS协议：基于HTTP协议的WebSocket协议。  
+> WSS协议：基于HTTPS协议的WebSocketSecure协议。  
+> 守护进程：意思同Daemon节点。  
+> Web面板后台：指Web面板的程序，不是守护进程，不是浏览器。  
 
 ### 警告：
 
 当浏览器使用HTTPS访问Web面板时，浏览器访问守护进程也需要使用HTTPS。  
-若为守护进程的`非本地回环地址`配置了HTTPS，并且Web面板后台也使用`非本地回环地址`访问守护进程，则需要确保`证书有效`、访问的地址正确。否则Web面板后台会因为`证书无效`而无法连接节点，会显示节点离线。  
+若为守护进程的`非本地回环地址`配置了HTTPS，并且Web面板后台也使用`非本地回环地址`访问守护进程，则需要确保`SSL证书有效`、访问的地址正确。否则Web面板后台会因为`SSL证书无效`而无法连接节点，会显示节点离线。  
 若您未理解本文的主要内容，则不建议配置HTTPS。  
 内容仅供参考，不绝对确保稳定性，不确保时效性。  
 
@@ -24,9 +25,9 @@
 
 <br />
 
-## 生成 SSL 证书
+## 生成SSL证书
 
-为自己的域名生成 SSL 证书，用于建立安全的 HTTPS 链接。  
+为自己的域名生成SSL证书，用于建立安全的HTTPS链接。  
 可以在免费SSL的网站上，为自己的域名生成90天免费证书（可无限续签）。  
 这里提供两个可以免费申请90天SSL证书的地址：
 > https://www.cersign.com/free-ssl-certificate.html  
@@ -40,7 +41,7 @@
 
 以下示范环境是`CentOS`操作系统内使用`yum install nginx`安装的Nginx，配置文件目录`/etc/nginx/nginx.conf`，Web面板版本`9.8.0`，守护进程版本`3.3.0`。  
 内容仅供参考，请依据自己的需求进行更改。  
-`<>`这俩符号需要按里面描述的内容进行填写（填写时`别`带这俩符号！）。  
+`<>`这俩符号需要按里面描述的内容进行填写（填写时别带这俩符号！）。  
 ```nginx
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -65,8 +66,8 @@ events {
 
 http {
     # 配置SSL证书。以下监听的ssl端口将默认使用该证书。
-    ssl_certificate <你的域名证书crt文件所在目录>; #！！！注意此处需要填写<>！！！
-    ssl_certificate_key <你的域名证书私钥key文件所在目录>; #！！！注意此处需要填写<>！！！
+    ssl_certificate <你的域名证书crt文件所在目录>; #注意此处需要填写<>！！！
+    ssl_certificate_key <你的域名证书私钥key文件所在目录>; #注意此处需要填写<>！！！
     ssl_session_cache shared:SSL:1m;
     ssl_session_timeout  10m;
     ssl_protocols TLSv1.2; # 仅允许使用TLSv1.2建立连接
@@ -90,11 +91,11 @@ http {
         # 这块是用于阻止跨域访问的。
 
         # Daemon 端访问端口
-        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
+        listen <代理后的端口> ssl; #注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
         # Web面板访问端口
-        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
+        listen <代理后的端口> ssl; #注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
         server_name _; #若使用的域名在其它server{}中都无法匹配，则会匹配这里。
@@ -106,7 +107,7 @@ http {
     }
     server {
         # Daemon 端localhost访问HTTP协议端口
-        listen 127.0.0.1:<代理后的端口>; #！！！注意此处需要填写<>！！！
+        listen 127.0.0.1:<代理后的端口>; #注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
         server_name localhost; # 本地回环域名
@@ -115,7 +116,7 @@ http {
 
         # 开始反向代理
         location / {
-            proxy_pass http://localhost:<Daemon进程真正监听的端口号>; #！！！注意此处需要填写<>！！！
+            proxy_pass http://localhost:<Daemon进程真正监听的端口号>/; #注意此处需要填写<>！！！不要漏掉后面的斜杠！
             proxy_set_header Host $host:$server_port;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -128,10 +129,10 @@ http {
     }
     server {
         # Daemon 端公网HTTPS端口
-        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
+        listen <代理后的端口> ssl; #注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
-        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #！！！注意此处需要填写<>！！！
+        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #注意此处需要填写<>！！！
         deny 127.0.0.1; # 这块主要是测试的时候为了确保localhost真的不是访问这个。
 
         # 在示范内容之前已经填了ssl证书相关配置，因此这里并没有ssl配置。您也可以在此处单独配置ssl。
@@ -151,7 +152,7 @@ http {
         # 开始反向代理
         location / {
             proxy_intercept_errors on; #捕捉到错误状态码时，让nginx可以决定返回的错误页面。
-            proxy_pass http://localhost:<Daemon进程真正监听的端口号>; #！！！注意此处需要填写<>！！！
+            proxy_pass http://localhost:<Daemon进程真正监听的端口号>/; #注意此处需要填写<>！！！不要漏掉后面的斜杠！
             proxy_set_header Host $host:$server_port;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -164,10 +165,10 @@ http {
     }
     server {
         # Web 端公网HTTPS端口
-        listen <代理后的端口> ssl; #！！！注意此处需要填写<>！！！
+        listen <代理后的端口> ssl; #注意此处需要填写<>！！！
         # 可以通过多个listen监听多个地址与端口。
 
-        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #！！！注意此处需要填写<>！！！
+        server_name <你访问时使用的域名> <也可以通过空格分割，填写多个域名>; #注意此处需要填写<>！！！
         
         # 在示范内容之前已经填了ssl证书相关配置，因此这里并没有ssl配置。您也可以在此处单独配置ssl。
 
@@ -185,7 +186,7 @@ http {
 
         # 开始反向代理
         location / {
-            proxy_pass http://localhost:<Web面板端真正监听的端口号>; #！！！注意此处需要填写<>！！！
+            proxy_pass http://localhost:<Web面板端真正监听的端口号>/; #注意此处需要填写<>！！！不要漏掉后面的斜杠！
             proxy_set_header Host $host:$server_port;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -202,21 +203,21 @@ http {
 
 <br />
 
-## Web面板后台使用 WS 协议连接 `本地回环地址` 的守护进程
+## Web面板后台使用 WS 协议连接`本地回环地址`的守护进程
 
-在 [守护进程管理](/tutorial/connect_daemon.md) 里，填写地址为 `localhost` ，然后单击右侧的 `连接` 或 `更新` 即可。
+在[守护进程管理](/tutorial/connect_daemon.md)里，填写地址为 `localhost` ，端口填写反向代理后的端口号，然后单击右侧的 `连接` 或 `更新` 即可。
 
 ![图片1](images/default_ws_daemon.png)
 
-请注意：不能将地址填写为 `ws://localhost` ，这会导致浏览器尝试使用http协议连接！
+请注意：不能将地址填写为 `ws://localhost` ！这会导致浏览器尝试使用HTTP协议连接！
 
 <br />
 
-## Web面板后台使用 WSS 协议连接 `非本地回环地址` 的守护进程
+## Web面板后台使用 WSS 协议连接`非本地回环地址`的守护进程
 
 由于您为守护进程的 `非本地回环地址` 配置了HTTPS访问，且Web面板后台使用 `非本地回环地址` 连接守护进程，此时守护进程管理界面中，该节点状态可能是离线的。  
 
-在 [守护进程管理](/tutorial/connect_daemon.md) 里，将原有的地址前面添加`wss://`协议头，然后单击右侧的 `连接` 或 `更新` 即可。
+在[守护进程管理](/tutorial/connect_daemon.md)里，将原有的地址前面添加 `wss://` 协议头，端口填写反向代理后的端口号，然后单击右侧的 `连接` 或 `更新` 即可。
 
 例如以下两种原地址：
 > `domain.com`  
@@ -230,8 +231,14 @@ http {
 
 ## 客户端访问时，需要注意的
 
-请不要使用IE浏览器或其它版本过旧的浏览器访问，建议使用版本较新的 `Google Chrome` 或 `Microsoft Edge` 或 `Mozilla FireFox` 。  
+请不要使用IE浏览器或其它版本过旧的浏览器访问，建议使用以下版本较新的浏览器：
+> [Google Chrome](https://www.google.cn/chrome/)  
+> [Microsoft Edge](https://www.microsoft.com/edge/download)  
+> [Mozilla FireFox](https://www.firefox.com.cn/)  
+
 依据示范的配置内容，需要在系统内开启`TLSv1.2`（通常默认开启），且应当直接使用 `https://` 协议访问，而不要使用 `http://` 协议。  
+
+<br />
 
 ## 大功告成
 
