@@ -12,7 +12,7 @@
 当浏览器使用HTTPS访问Web面板时，浏览器访问Deamon节点也需要使用HTTPS。  
 若为 `Daemon节点` 的 `非本地回环地址` 配置了HTTPS，并且 `Web面板后台` 也使用 `非本地回环地址` 访问Daemon节点，则需要确保 `证书有效` 、访问的地址正确。否则 `Web面板后台` 会因为 `证书验证不通过` 而无法连接节点，会显示节点离线。  
 若您 `未理解` 本文的主要内容，则 `不建议` 配置HTTPS。  
-内容仅供参考，不绝对确保稳定性，不确保时效性。  
+内容仅供参考，`不`绝对确保稳定性，`不`确保时效性。  
 
 <br />
 
@@ -40,7 +40,7 @@
 以下示范环境是 `CentOS` 操作系统内使用 `yum install nginx` 安装的Nginx，配置文件目录 `/etc/nginx/nginx.conf` ，  
 Web面板版本 `9.8.0` ，守护进程版本 `3.3.0` 。  
 内容仅供参考，请依据自己的需求进行更改。  
-`<>`这俩符号需要按里面描述的内容进行填写（填写时别带这俩符号！）。  
+`<>`这俩符号需要按里面描述的内容进行填写（填写时`别`带这俩符号！）。  
 ```nginx
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -208,17 +208,18 @@ http {
 
 ![图片1](images/default_ws_daemon.png)
 
-`不能`将地址填写为 `ws://localhost` ！这会导致浏览器尝试使用 `http` 连接！
+`不能`将地址填写为 `ws://localhost` ！！！这会导致浏览器尝试使用 `http` 连接！！！
 
 <br />
 
-## Web面板后台使用 WSS 协议连接 `非本地回环地址` 的守护进程
+## Web面板后台使用 WSS 协议连接 `非 本地回环地址` 的守护进程
 
 由于您为 `守护进程` 的 `非本地回环地址` 配置了 HTTPS 访问，且Web面板后台使用 `非本地回环地址` 连接 `守护进程` ，此时守护进程管理界面中，该节点应当是离线的。  
 
 在 [守护进程管理](/tutorial/connect_daemon.md) 里，将原有的地址前面添加 `wss://` 协议头，然后单击右侧的 `连接` 或 `更新` 即可。
 
-如原有的地址：`domain.com` 或 `ws://domain.com`，修改后：`wss://domain.com`。  
+如原有的地址：`domain.com` 或 `ws://domain.com`，  
+修改后：`wss://domain.com`。  
 
 ![图片](images/wss_daemon.png)
 
@@ -226,9 +227,9 @@ http {
 
 ## 客户端访问时，需要注意的
 
-请不要使用IE浏览器或其它版本过旧的浏览器访问。  
+请`不要`使用IE浏览器或其它版本过旧的浏览器访问。  
 建议使用版本较新的 `Google Chrome` 或 `Microsoft Edge` 或 `Mozilla FireFox` 。  
-依据示范的配置内容，需要在系统内开启 `TLSv1.2` （通常默认开启），且应当直接使用 `https://` 协议访问，而不要使用 `http://` 协议。  
+依据示范的配置内容，需要在系统内开启 `TLSv1.2` （通常默认开启），且应当直接使用 `https://` 协议访问，而`不要`使用 `http://` 协议。  
 
 ## 大功告成
 
