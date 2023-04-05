@@ -39,7 +39,7 @@
 
 参考：[反向代理](/tutorial/simple_reverse_proxy.md)。  
 
-以下示范环境是`CentOS`操作系统内使用`yum install nginx`安装的Nginx，配置文件目录`/etc/nginx/nginx.conf`，Web面板版本`9.8.0`，守护进程版本`3.3.0`。  
+以下示范环境是`CentOS`操作系统内使用`yum install nginx`安装的Nginx`1.20.1`，配置文件目录`/etc/nginx/nginx.conf`，Web面板版本`9.8.0`，守护进程版本`3.3.0`。  
 内容仅供参考，请依据自己的需求进行更改。  
 `<>`这俩符号需要按里面描述的内容进行填写（填写时别带这俩符号！）。  
 ```nginx
@@ -205,7 +205,7 @@ http {
 
 ## Web面板后台使用 WS 协议连接`本地回环地址`的守护进程
 
-在[守护进程管理](/zh-cn/tutorial/connect_daemon.md)里，填写地址为 `localhost` ，端口填写反向代理后的端口号，然后单击右侧的 `连接` 或 `更新` 即可。
+在[守护进程管理](connect_daemon.md)里，填写地址为 `localhost` ，端口填写反向代理后的端口号，然后单击右侧的 `连接` 或 `更新` 即可。
 
 ![图片1](images/default_ws_daemon.png)
 
@@ -217,7 +217,7 @@ http {
 
 由于您为守护进程的 `非本地回环地址` 配置了HTTPS访问，且Web面板后台使用 `非本地回环地址` 连接守护进程，此时守护进程管理界面中，该节点状态可能是离线的。  
 
-在[守护进程管理](/zh-cn/tutorial/connect_daemon.md)里，将原有的地址前面添加 `wss://` 协议头，端口填写反向代理后的端口号，然后单击右侧的 `连接` 或 `更新` 即可。
+在[守护进程管理](connect_daemon.md)里，将原有的地址前面添加 `wss://` 协议头，端口填写反向代理后的端口号，然后单击右侧的 `连接` 或 `更新` 即可。
 
 例如以下两种原地址：
 > `domain.com`  
