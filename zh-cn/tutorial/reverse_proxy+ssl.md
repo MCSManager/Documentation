@@ -16,7 +16,7 @@
 当浏览器使用HTTPS访问Web面板时，浏览器访问守护进程也需要使用HTTPS。  
 若为守护进程的`非本地回环地址`配置了HTTPS，并且Web面板后台也使用`非本地回环地址`访问守护进程，则需要确保`SSL证书有效`、访问的地址正确。否则Web面板后台会因为`SSL证书无效`而无法连接节点，会显示节点离线。  
 若您未理解本文的主要内容，则不建议配置HTTPS。  
-内容仅供参考，不绝对确保稳定性，不确保时效性。  
+内容仅供参考，不绝对确保稳定性，不确保时效性，不确保内容绝对准确。  
 
 <br />
 
@@ -41,6 +41,15 @@
 
 以下示范环境是`CentOS`操作系统内使用`yum install nginx`安装的Nginx`1.20.1`，配置文件目录`/etc/nginx/nginx.conf`，Web面板版本`9.8.0`，守护进程版本`3.3.0`。  
 仅供参考，请理解主要内容，并依据自己的需求以及运行环境进行更改。  
+假设：  
+> 只需监听IPv4的端口  
+> Daemon端真正监听的端口：24444  
+> Daemon端代理后端口：12444  
+> Web面板端真正监听的端口：23333  
+> Web面板端代理后端口：12333  
+> ssl证书目录：/etc/nginx/ssl/domain.com.crt  
+> ssl证书私钥目录：/etc/nginx/ssl/domain.com_rsa.key  
+
 ```nginx
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -228,7 +237,7 @@ http {
 
 }
 ```
-配置完成后，重启 Nginx 服务（用于Linux操作系统）
+配置完成后，重启 Nginx 服务（以下命令用于Linux操作系统）
 ```bash
 systemctl restart nginx
 ```
@@ -244,7 +253,9 @@ systemctl restart nginx
 
 依据示范的配置内容，需要在系统内开启`TLSv1.2`（通常默认开启），且直接使用 `https://` 协议访问，而不要使用 `http://` 协议。  
 假设域名是`domain.com`，反向代理后的端口是`12333`，那么浏览器需要使用这个地址访问面板：
-> https://domain.com:12333/  
+```
+https://domain.com:12333/
+```
 
 请确保反向代理后的面板端口与节点端口都通过了防火墙，否则您是无法正常访问的。  
 

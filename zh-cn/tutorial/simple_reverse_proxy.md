@@ -2,6 +2,7 @@
 
 此教程使用 Nginx 进行演示。  
 您应当 充分理解 本文的内容，便于依据自己的需求进行更改。  
+> 本地回环地址：指域名 `localhost` 以及IPv4 `127.0.0.1` 。  
 > WS协议：基于HTTP协议的WebSocket协议。  
 > 守护进程：意思同Daemon节点、Daemon进程。  
 > Web面板后台：指Web面板的程序，不是守护进程，不是浏览器。  
@@ -10,7 +11,7 @@
 
 使用HTTP协议可能会在毫不知情的情况下遭到网页内容篡改、窃取连接内容，若想要确保连接安全，请[配置HTTPS](reverse_proxy+ssl.md)。  
 若您未理解本文的主要内容，则不建议配置HTTP反向代理。  
-内容仅供参考，不绝对确保稳定性，不确保时效性。  
+内容仅供参考，不绝对确保稳定性，不确保时效性，不确保内容绝对准确。  
 
 <br />
 
@@ -25,6 +26,13 @@
 
 以下示范环境是`CentOS`操作系统内使用`yum install nginx`安装的Nginx`1.20.1`，配置文件目录`/etc/nginx/nginx.conf`，Web面板版本`9.8.0`，守护进程版本`3.3.0`。  
 仅供参考，请理解主要内容，并依据自己的需求以及运行环境进行更改。  
+假设：  
+> 只需监听IPv4的端口  
+> Daemon端真正监听的端口：24444  
+> Daemon端代理后端口：12444  
+> Web面板端真正监听的端口：23333  
+> Web面板端代理后端口：12333  
+
 ```nginx
 # For more information on configuration, see:
 #   * Official English Documentation: http://nginx.org/en/docs/
@@ -46,7 +54,7 @@ events {
 #========================================================
 # 以下才是需要理解并修改的内容。
 # 仅供参考，请理解主要内容，并依据自己的需求以及运行环境进行更改。
-# 文中假设：
+# 假设：
 #    只需监听IPv4的端口
 #    Daemon端真正监听的端口：24444
 #    Daemon端代理后端口：12444
@@ -83,7 +91,7 @@ http {
         return 444; # 断开连接。
     }
     server {
-        # Daemon 端的localhost访问端口
+        # Daemon 端代理后的localhost访问HTTP协议端口
             listen 12444;
         # 可以通过多个listen监听多个地址与端口。
 
@@ -93,11 +101,7 @@ http {
         allow 127.0.0.1;
         deny all;
 
-        # 绝对防止搜索引擎收录
-        location =/robots.txt{
-            default_type text/plain;
-            return 200 "User-agent: *\nDisallow: /";
-        }
+        gzip off; # 本地回环地址不需要压缩传输
 
         # 开始反向代理
         location / {
@@ -117,13 +121,15 @@ http {
         }
     }
     server {
-        # Daemon 端代理后的HTTP端口
+        # Daemon 端代理后的HTTP协议端口
             listen 12444;
         # 可以通过多个listen监听多个地址与端口。
 
         # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
         # 您不应该加上localhost
             server_name domain.com *.domain.com;
+
+        deny 127.0.0.1; # 禁止来源127.0.0.1的IP访问，这块主要是测试的时候为了确保localhost真的不是访问这里。
 
         # 绝对防止搜索引擎收录
         location =/robots.txt{
@@ -182,7 +188,7 @@ http {
 
 }
 ```
-配置完成后，重启 Nginx 服务（用于Linux操作系统）
+配置完成后，重启 Nginx 服务（以下命令用于Linux操作系统）
 ```bash
 systemctl restart nginx
 ```
@@ -197,7 +203,9 @@ systemctl restart nginx
 > [Mozilla FireFox](https://www.firefox.com.cn/)  
 
 假设域名是`domain.com`，反向代理后的端口是`12333`，那么浏览器需要使用这个地址访问面板：
-> http://domain.com:12333/  
+```
+http://domain.com:12333/
+```
 
 请确保反向代理后的面板端口与节点端口都通过了防火墙，否则您是无法正常访问的。  
 
