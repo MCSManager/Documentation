@@ -1,6 +1,7 @@
-# 使用反向代理配置 HTTPS
+# 配置 HTTPS 反向代理
 
-本文主要参考[配置HTTP反向代理](simple_reverse_proxy.md)进行编写。  
+若您只需要 HTTP 反向代理，请参考 [配置HTTP反向代理](simple_reverse_proxy.md) 。  
+若您需要合并端口，请参考 [配置HTTPS反向代理且合并端口](https_proxy_merge_ports.md) 。
 
 此教程使用 Nginx 进行演示。  
 您应当 充分理解 本文的内容，便于依据自己的需求进行更改。  
@@ -49,6 +50,7 @@
 > Web面板端代理后端口：12333  
 > ssl证书目录：/etc/nginx/ssl/domain.com.crt  
 > ssl证书私钥目录：/etc/nginx/ssl/domain.com_rsa.key  
+> 需要允许主域名 domain.com 及其所有子域名访问  
 
 ```nginx
 # For more information on configuration, see:
@@ -79,6 +81,7 @@ events {
 #    Web面板端代理后端口：12333
 #    ssl证书目录：/etc/nginx/ssl/domain.com.crt
 #    ssl证书私钥目录：/etc/nginx/ssl/domain.com_rsa.key
+#    需要允许主域名 domain.com 及其所有子域名访问
 
 http {
     # 配置SSL证书。以下监听的ssl端口将默认使用该证书。
