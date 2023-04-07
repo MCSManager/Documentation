@@ -100,3 +100,14 @@ ApiKey 是一段十六进制字符串，例如 `f81768ab920341e6b6ea4cb231fc24bc
 Warning：请勿将 ApiKey 透露给任何人，否则可能会造成账号被意外调用。
 
 <br />
+
+## 为什么我通过浏览器访问面板时，显示一个灰色背景，一直转圈圈？
+![图片](images/gray_loading.png)
+
+首先，您应当使用以下较新版本的浏览器访问，以确保不会遇到兼容问题：
+> [Google Chrome](https://www.google.cn/chrome/)  
+> [Microsoft Edge](https://www.microsoft.com/edge/download)  
+> [Mozilla FireFox](https://www.firefox.com.cn/)  
+
+其次，请确保能正常访问 https://mcsmanager.com/sponsor.js 。  
+然后如果还是不行，可能是网速太慢了，刷新试试。  

@@ -5,19 +5,18 @@
 
 此教程使用 Nginx 进行演示。  
 您应当 充分理解 本文的内容，便于依据自己的需求进行更改。  
-> 本地回环地址：指域名 `localhost` 以及IPv4 `127.0.0.1` 。  
+> 本地回环地址：在本文是指域名 `localhost` 以及IPv4 `127.0.0.1` 。  
 > 非本地回环地址：指不是 `本地回环地址` 。  
-> WS协议：基于HTTP协议的WebSocket协议。  
-> WSS协议：基于HTTPS协议的WebSocketSecure协议。  
 > 守护进程：意思同Daemon节点、Daemon进程。  
 > Web面板后台：指Web面板的程序，不是守护进程，不是浏览器。  
+
+合并端口通常仅用于Web面板与守护进程在同一主机的情况。  
 
 ### 警告：
 
 当浏览器使用HTTPS访问Web面板时，浏览器访问守护进程也需要使用HTTPS。  
 若为守护进程的`非本地回环地址`配置了HTTPS，并且Web面板后台也使用`非本地回环地址`访问守护进程，则需要确保`SSL证书有效`、访问的地址正确。否则Web面板后台会因为`SSL证书无效`而无法连接节点，会显示节点离线。  
 若您未理解本文的主要内容，则不建议配置HTTPS。  
-内容仅供参考，不绝对确保稳定性，不确保时效性，不确保内容绝对准确。  
 
 <br />
 
@@ -43,6 +42,8 @@
 这里提供两个可以免费申请90天SSL证书的地址：
 > https://www.cersign.com/free-ssl-certificate.html  
 > https://www.mianfeissl.com/  
+
+请勿泄露证书的私钥，攻击者拿到私钥后能劫持连接。  
 
 <br />
 
@@ -124,7 +125,9 @@ http {
 
         server_name _; #若使用的域名在其它server{}中都无法匹配，则会匹配这里。
 
-        ssl_reject_handshake on; # 使用https访问时，直接断开连接，不返回证书。
+        # 使用https访问时，直接断开连接，不返回证书。
+        # 如果你需要套DNS的CDN高防，则不应该删除此块，那样更容易导致证书泄露，攻击者扫到IP后直接将源IP与域名绑定在一起。
+        ssl_reject_handshake on;
 
         # 使用HTTP访问时，断开连接。
         error_page 497 =200 /;
@@ -230,11 +233,6 @@ systemctl restart nginx
 
 ## 客户端访问时，需要注意的
 
-请不要使用IE浏览器或其它版本过旧的浏览器访问，建议使用以下版本较新的浏览器：
-> [Google Chrome](https://www.google.cn/chrome/)  
-> [Microsoft Edge](https://www.microsoft.com/edge/download)  
-> [Mozilla FireFox](https://www.firefox.com.cn/)  
-
 依据示范的配置内容，需要在系统内开启`TLSv1.2`（通常默认开启），且直接使用 `https://` 协议访问，而不要使用 `http://` 协议。  
 假设域名是`domain.com`，反向代理后的端口是`12333`，那么浏览器需要使用这个地址访问面板：
 ```
@@ -278,6 +276,4 @@ https://domain.com:12333/
 > Web面板端真正监听的端口（例如23333）  
 > Daemon端真正监听的端口（例如24444） 
  
-（部分VPS可能是用共享IP，这俩端口在公网中可能默认就无法访问）  
-
 <br />

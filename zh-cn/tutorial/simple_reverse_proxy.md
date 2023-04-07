@@ -5,8 +5,7 @@
 
 此教程使用 Nginx 进行演示。  
 您应当 充分理解 本文的内容，便于依据自己的需求进行更改。  
-> 本地回环地址：指域名 `localhost` 以及IPv4 `127.0.0.1` 。  
-> WS协议：基于HTTP协议的WebSocket协议。  
+> 本地回环地址：在本文是指域名 `localhost` 以及IPv4 `127.0.0.1` 。  
 > 守护进程：意思同Daemon节点、Daemon进程。  
 > Web面板后台：指Web面板的程序，不是守护进程，不是浏览器。  
 
@@ -14,7 +13,6 @@
 
 使用HTTP协议可能会在毫不知情的情况下遭到网页内容篡改、窃取连接内容，若想要确保连接安全，请 [配置HTTPS反向代理](reverse_proxy+ssl.md) 。  
 若您未理解本文的主要内容，则不建议配置HTTP反向代理。  
-内容仅供参考，不绝对确保稳定性，不确保时效性，不确保内容绝对准确。  
 
 <br />
 
@@ -112,7 +110,7 @@ http {
 
         # 开始反向代理
         location / {
-            # 填写Daemon进程真正监听的端口号，不要漏掉后面的斜杠！
+            # 填写Daemon进程真正监听的端口号，别漏后面的斜杠！
                 proxy_pass http://localhost:24444/;
 
             # 一些必要的请求头
@@ -146,7 +144,7 @@ http {
 
         # 开始反向代理
         location / {
-            # 填写Daemon进程真正监听的端口号，不要漏掉后面的斜杠！
+            # 填写Daemon进程真正监听的端口号，别漏后面的斜杠！
                 proxy_pass http://localhost:24444/;
 
             # 一些必要的请求头
@@ -177,7 +175,7 @@ http {
 
         # 开始反向代理
         location / {
-            # 填写Web面板端真正监听的端口号，不要漏掉后面的斜杠！
+            # 填写Web面板端真正监听的端口号，别漏后面的斜杠！
                 proxy_pass http://localhost:23333/;
 
             # 一些必要的请求头
@@ -203,11 +201,6 @@ systemctl restart nginx
 <br />
 
 ## 客户端访问Web面板时，需要注意的
-
-请不要使用IE浏览器或其它版本过旧的浏览器访问，建议使用以下版本较新的浏览器：
-> [Google Chrome](https://www.google.cn/chrome/)  
-> [Microsoft Edge](https://www.microsoft.com/edge/download)  
-> [Mozilla FireFox](https://www.firefox.com.cn/)  
 
 假设域名是`domain.com`，反向代理后的端口是`12333`，那么浏览器需要使用这个地址访问面板：
 ```
@@ -235,6 +228,4 @@ http://domain.com:12333/
 > Web面板端真正监听的端口（例如23333）  
 > Daemon端真正监听的端口（例如24444） 
  
-（部分VPS可能是用共享IP，这俩端口在公网中可能默认就无法访问）  
-
 <br />
