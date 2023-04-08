@@ -73,7 +73,7 @@ http {
     gzip_types text/plain text/css application/javascript application/xml application/json image/png;
     # 反向代理时，启用压缩
     gzip_proxied any;
-    # 传输时压缩等级，最高9级
+    # 传输时压缩等级，等级越高压缩消耗CPU越多，最高9级
     gzip_comp_level 5;
     # 传输时大小达到1k才压缩
     gzip_min_length 1k;
