@@ -25,7 +25,7 @@
 
 ## Windows
 
-在中国大陆地区，Windows 系统一般是 GBK 编码。
+在中国大陆地区，Windows 系统一般是 `GBK`或`GB2312` 编码。
 
 在香港，台湾地区一般选择 BIG5 或其他。
 
@@ -35,4 +35,5 @@
 
 > "C:\Users\Administrator\Desktop\Mcsmoke\Java\jre-8\bin\java.exe" -Dfile.encoding=UTF-8 -jar Paper-1.8.8.jar￼
 
+请注意. 对于1.14或更高版本的Java服务器 终端输入/输出编码应始终为您计算机的主要编码 即使您在启动参数中添加了指定 Java 程序编码`-Dfile.encoding=?`. `GB2312` `GBK`
 <br />
