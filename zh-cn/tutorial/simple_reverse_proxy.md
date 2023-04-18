@@ -1,7 +1,7 @@
 # 配置 HTTP 反向代理
 
-> 若您需要 HTTPS 反向代理，请参考 [配置HTTPS反向代理](配置HTTPS反向代理.md) 。  
-> 若您需要合并端口，请参考 [配置HTTP反向代理且合并端口](配置HTTP反向代理且合并端口.md) 。  
+> 若您需要 HTTPS 反向代理，请参考 [配置HTTPS反向代理](reverse_proxy+ssl.md) 。  
+> 若您需要合并端口，请参考 [配置HTTP反向代理且合并端口](http_proxy_merge_ports.md) 。  
 > ⚠ 使用HTTP协议可能导致毫不知情的遭到网页内容**篡改**、**窃取**连接内容。
 
 注释：  

@@ -16,8 +16,10 @@
   - [手动配置为 Linux 服务](zh-cn/tutorial/to_service.md)
   - [修改访问端口](zh-cn/tutorial/modify_port.md)
   - [更改解压缩文件大小限制](zh-cn/tutorial/delete_file_unzip_limit.md)
-  - [配置反向代理](zh-cn/tutorial/simple_reverse_proxy.md)
-  - [配置 HTTPS](zh-cn/tutorial/reverse_proxy+ssl.md)
+  - [配置HTTP反向代理](zh-cn/tutorial/simple_reverse_proxy.md)
+  - [配置HTTPS反向代理](zh-cn/tutorial/reverse_proxy+ssl.md)
+  - [配置HTTP反向代理且合并端口](zh-cn/tutorial/http_proxy_merge_ports.md)
+  - [配置HTTPS反向代理且合并端口](zh-cn/tutorial/https_proxy_merge_ports.md)
   - [更新面板](zh-cn/tutorial/update_mcsm.md)
   - [MCSM & MCDR](zh-cn/tutorial/mcdr.md)
 

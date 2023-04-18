@@ -1,7 +1,7 @@
 # 配置 HTTPS 反向代理
 
-> 若您只需要 HTTP 反向代理，请参考 [配置HTTP反向代理](配置HTTP反向代理.md) 。  
-> 若您需要合并端口，请参考 [配置HTTPS反向代理且合并端口](配置HTTPS反向代理且合并端口.md) 。  
+> 若您只需要 HTTP 反向代理，请参考 [配置HTTP反向代理](simple_reverse_proxy.md) 。  
+> 若您需要合并端口，请参考 [配置HTTPS反向代理且合并端口](https_proxy_merge_ports.md) 。  
 
 注释：  
 > 本地回环地址：例如域名 ***localhost*** 或IPv4 ***127.0.0.1*** 。  
