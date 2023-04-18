@@ -1,102 +1,210 @@
-# 反向代理
+# 配置 HTTP 反向代理
 
-此教程使用 Nginx 进行描述
+> 若您需要 HTTPS 反向代理，请参考 [配置HTTPS反向代理](配置HTTPS反向代理.md) 。  
+> 若您需要合并端口，请参考 [配置HTTP反向代理且合并端口](配置HTTP反向代理且合并端口.md) 。  
+> ⚠ 使用HTTP协议可能导致毫不知情的遭到网页内容**篡改**、**窃取**连接内容。
 
-**先决条件**：Nginx 已安装，MCSManager 已安装。
+注释：  
+> 本地回环地址：例如域名 ***localhost*** 或IPv4 ***127.0.0.1*** 。  
+> 守护进程：意思同守护节点、Daemon节点、Daemon进程、Daemon端。  
 
 <br />
 
 ## 配置反向代理
 
-反向代理的目的通常是将所有流量全部经过 Nginx ，以便于进一步优化等。
+以下示范内容的测试环境：  
+> ***CentOS*** 操作系统  
+> 使用yum安装的Nginx ***1.20.1***  
+> 配置文件目录 ***/etc/nginx/nginx.conf***  
+> Web面板 ***9.8.0***  
+> 守护进程 ***3.3.0***  
 
-MCSManager 在默认情况下有两个程序需要反向代理，分别是 `23333` 与 `24444` 端口。
+```nginx
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
 
-编辑 `/etc/nginx/nginx.conf` 配置文件（Linux）
-
-```conf
-# 这些是 Nginx 默认配置，请您依照情况复制。
-# 如果配置后有报错或无法启动，请恢复原有配置文件并且只覆盖 Http{ ... } 段的内容即可。
-# 可考虑删除所有中文注释以解决出现配置乱码现象。
-user www-data;
+user nginx;
 worker_processes auto;
+error_log /var/log/nginx/error.log;
 pid /run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
 events {
-	worker_connections 768;
+    worker_connections 1024;
 }
 
-# 配置开始
+# 以上内容可能已经包含在nginx.conf里，确保目录在您的操作系统中有效即可。
+#=======================================================================
+# 以下才是需要理解并修改的内容，请依据自己的需求以及运行环境进行更改。
+# 假设：
+#    只需监听IPv4的端口
+#    Daemon端真正监听的端口：24444
+#    Daemon端代理后端口：12444
+#    Web面板端真正监听的端口：23333
+#    Web面板端代理后端口：12333
+#    需要允许主域名 domain.com 及其所有子域名访问
+
 http {
-    # 限制文件上传大小为 10G
-    client_max_body_size 10240M;
+    # 传输时默认开启gzip压缩
+    gzip on;
+    # 传输时会被压缩的类型（应当依据文件压缩效果添加）
+    gzip_types text/plain text/css application/javascript application/xml application/json;
+    # 反向代理时，启用压缩
+    gzip_proxied any;
+    # 传输时压缩等级，等级越高压缩消耗CPU越多，最高9级，通常5级就够了
+    gzip_comp_level 5;
+    # 传输时大小达到1k才压缩，压缩小内容无意义
+    gzip_min_length 1k;
 
-	server {
-        # Web 端公网访问端口
-        listen 8081;
+    # 响应头中的server仅返回nginx，不返回版本号。
+    server_tokens  off;
 
-        location / {
-            # Web 端反向代理目标
-            proxy_pass http://localhost:23333/;
-            root   html;
-            index  index.html index.htm;
-            # 一些必要的 HTTP Header 设置
-            proxy_set_header Host localhost;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header REMOTE-HOST $remote_addr;
-            # 必须的 Websocket 支持
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-cache;
-            expires 12h;
-        }
-    }
+    # 不限制客户端上传文件大小
+    client_max_body_size 0;
 
     server {
-        # Daemon 端公网访问端口
-        listen 8082;
+        # 这块是用于阻止跨域访问的。
 
+        # Daemon 端访问端口（可用多个listen监听多个端口）
+        listen 12444 default ;
+
+        # Web面板访问端口（可用多个listen监听多个端口）
+        listen 12333 default ;
+
+        # 若使用的域名在其它server{}中都无法匹配，则会匹配这里。
+        server_name _ ;
+
+        # 断开连接。
+        return 444;
+    }
+    server {
+        # Daemon 端代理后的localhost访问HTTP协议端口（可用多个listen监听多个端口）
+        listen 127.0.0.1:12444 ;
+
+        # 本地回环域名
+        server_name localhost ;
+
+        # 本地回环地址不占宽带，无需压缩。
+        gzip off;
+
+        # 开始反向代理
         location / {
-            # Daemon 端反向代理目标（配置与 Web 端处同理）
-            proxy_pass http://localhost:24444/;
-            root   html;
-            index  index.html index.htm;
-            proxy_set_header Host localhost;
+            # 填写Daemon进程真正监听的端口号
+            proxy_pass http://localhost:24444 ;
+
+            # 一些请求头
+            proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header REMOTE-HOST $remote_addr;
+            # 用于WebSocket的必要请求头
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
+            # 增加响应头
             add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-cache;
-            expires 12h;
+            # 禁止客户端缓存，防止客户端未更新内容
+            expires -1;
         }
     }
+    server {
+        # Daemon 端代理后的公网访问HTTP协议端口（可用多个listen监听多个端口）
+        listen 12444 ;
 
+        # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
+        server_name domain.com *.domain.com ;
+
+        # 返回 robots.txt 以防止搜索引擎收录
+        location =/robots.txt{
+            default_type text/plain;
+            return 200 "User-agent: *\nDisallow: /";
+        }
+
+        # 开始反向代理
+        location / {
+            # 填写Daemon进程真正监听的端口号
+            proxy_pass http://localhost:24444 ;
+
+            # 一些请求头
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header REMOTE-HOST $remote_addr;
+            # 用于WebSocket的必要请求头
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            # 增加响应头
+            add_header X-Cache $upstream_cache_status;
+            # 禁止客户端缓存，防止客户端未更新内容
+            expires -1;
+        }
+    }
+    server {
+        # Web 端代理后的公网访问HTTP端口（可用多个listen监听多个端口）
+        listen 12333 ;
+
+        # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
+        server_name domain.com *.domain.com ;
+
+        # 此处无需单独返回 robots.txt ，面板已包含该文件。
+
+        # 开始反向代理
+        location / {
+            # 填写Web面板端真正监听的端口号
+            proxy_pass http://localhost:23333 ;
+
+            # 一些请求头
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header REMOTE-HOST $remote_addr;
+            # 用于WebSocket的必要请求头
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            # 增加响应头
+            add_header X-Cache $upstream_cache_status;
+            # 禁止客户端缓存，防止客户端未更新内容
+            expires -1;
+        }
+    }
 }
 ```
 
-**重启 Nginx 服务**
-
+**配置完成后，重启 Nginx 服务（以下命令用于Linux操作系统）**
 ```bash
-# 可能的命令
 systemctl restart nginx
-systemctl restart http
-systemctl restart httpd
 ```
-
-配置完毕后，访问 http://{公网 IP}:8081/ 即可享受反代之后的地址。
 
 <br />
 
-## 重新连接到守护进程
+## 客户端访问面板
 
-反代建立完毕后，请重新使用反代后的 Daemon 端口连接。
+假如域名是 ***domain.com*** ，反向代理后的端口是12333，那么浏览器需要使用这个地址访问面板：
+```
+http://domain.com:12333/
+```
 
-列如上述配置将 8082 反代到了 24444 端口，纵使你是 localhost 地址也建议使用 8082 端口进行连接。
+**⚠请确保反向代理后的端口都通过了服务器的防火墙，否则您是无法正常访问的。**  
 
-![示例图](images/fandai8082.png)
+<br />
+
+## 连接守护进程
+
+假如Web面板后台通过 ***localhost*** 域名连接节点，那么在**节点管理**中填写地址为 ***localhost*** 或 ***ws://localhost*** ，端口填写反向代理后的端口号（例如12333），然后单击右侧的 **连接** 或 **更新** 即可。  
+假如需要填远程地址 ***domain.com*** ，那么将 ***localhost*** 改为 ***domain.com*** 即可。
+
+![connect_default_daemon_12444.webp](images/connect_default_daemon_12444.webp)
+
+<br />
+
+## 恭喜你，基础配置完成了！
+
+为了安全，您应当在防火墙中，禁止通过以下端口访问：
+> Web面板端真正监听的端口（例如23333）  
+> Daemon端真正监听的端口（例如24444） 
+
+（本地回环地址不受防火墙限制）
 
 <br />

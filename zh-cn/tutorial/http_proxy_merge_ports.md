@@ -1,7 +1,9 @@
-# 配置 HTTPS 反向代理
+# 配置 HTTP 反向代理且合并Web面板与守护节点的端口
 
-> 若您只需要 HTTP 反向代理，请参考 [配置HTTP反向代理](配置HTTP反向代理.md) 。  
-> 若您需要合并端口，请参考 [配置HTTPS反向代理且合并端口](配置HTTPS反向代理且合并端口.md) 。  
+> 合并端口通常仅用于Web面板与守护进程在同一主机的情况。  
+> 本文基于 [配置HTTP反向代理](配置HTTP反向代理.md) 进行修改。  
+> 若您需要 HTTPS 反向代理且合并端口，请参考 [配置HTTPS反向代理且合并端口](配置HTTPS反向代理且合并端口.md) 。  
+> ⚠ 使用HTTP协议可能导致毫不知情的遭到网页内容**篡改**、**窃取**连接内容。
 
 注释：  
 > 本地回环地址：例如域名 ***localhost*** 或IPv4 ***127.0.0.1*** 。  
@@ -9,14 +11,21 @@
 
 <br />
 
-## 生成SSL证书
+## 合并端口的原理
 
-为自己的域名生成有效的SSL证书，用于建立安全的HTTPS连接。  
-可以在免费SSL的网站上，为自己的域名生成90天免费证书（可无限续签）。  
-> <https://www.cersign.com/free-ssl-certificate.html>  
-> <https://www.mianfeissl.com/>  
+MCSManager访问守护进程的路径开头（与Web面板路径开头不冲突）：  
+> /socket.io/  
+> /upload/  
+> /download/  
 
-### ⚠别泄露私钥！私钥泄露会导致HTTPS形同虚设！
+Nginx里的location匹配优先级从高到低是：  
+```nginx
+location =/test.txt {}              # 匹配完全相等的路径
+location ~ (^/path/)|(^/path2/) {}  # 匹配正则表达式
+location /path/ {}                  # 匹配单个路径开头
+```
+
+依据这些特性，将两者端口合并，以减少公网监听端口数量。   
 
 <br />
 
@@ -52,25 +61,11 @@ events {
 # 假设：
 #    只需监听IPv4的端口
 #    Daemon端真正监听的端口：24444
-#    Daemon端代理后端口：12444
 #    Web面板端真正监听的端口：23333
-#    Web面板端代理后端口：12333
-#    ssl证书目录：/etc/nginx/ssl/domain.com.crt
-#    ssl证书私钥目录：/etc/nginx/ssl/domain.com_rsa.key
-#    需要允许主域名 domain.com 及其所有子域名访问
+#    代理后端口：12333
+#    需要允许主域名 domain.com 及其任意子域名访问
 
 http {
-    # 配置SSL证书。以下监听的ssl端口将默认使用该证书。
-    #SSL-START
-    ssl_certificate "/etc/nginx/ssl/domain.com.crt";
-    ssl_certificate_key "/etc/nginx/ssl/domain.com_rsa.key";
-
-    ssl_session_cache shared:SSL:1m;
-    ssl_session_timeout  10m;
-    ssl_protocols TLSv1.2; # 仅允许使用TLSv1.2建立连接
-    ssl_verify_client off; # 不验证客户端的证书
-    #SSL-END
-
     # 传输时默认开启gzip压缩
     gzip on;
     # 传输时会被压缩的类型（应当依据文件压缩效果添加）
@@ -91,35 +86,27 @@ http {
     server {
         # 这块是用于阻止跨域访问的。
 
-        # Daemon 端访问端口（可用多个listen监听多个端口）
-        listen 12444 ssl ;
-        # Web面板访问端口（可用多个listen监听多个端口）
-        listen 12333 ssl ;
+        # 代理后端口（可用多个listen监听多个端口）
+        listen 12333 default ;
 
         # 若使用的域名在其它server{}中都无法匹配，则会匹配这里。
         server_name _ ;
 
-        # 使用https访问时，直接断开连接，不返回证书。
-        # 如果你需要套DNS的CDN高防，则不应该删除此块，那样更容易导致证书泄露，攻击者扫到IP后直接将源IP与域名绑定在一起。
-        ssl_reject_handshake on;
-
-        # 使用HTTP访问时，断开连接。
-        error_page 497 =200 /;
-        location / {
-            return 444;
-        }
+        # 断开连接。
+        return 444;
     }
     server {
-        # Daemon 端localhost访问HTTP协议端口（可用多个listen监听多个端口）
-        listen 127.0.0.1:12444 ;
+        # Daemon 端代理后localhost访问HTTP协议端口（可用多个listen监听多个端口）
+        listen 127.0.0.1:12333 ;
 
         # 本地回环域名
         server_name localhost ;
-        
+
         # 本地回环地址不占宽带，无需压缩。
         gzip off;
 
         # 开始反向代理
+        # 代理Daemon节点
         location / {
             # 填写Daemon进程真正监听的端口号
             proxy_pass http://localhost:24444 ;
@@ -139,61 +126,34 @@ http {
         }
     }
     server {
-        # Daemon 端公网HTTPS端口（可用多个listen监听多个端口）
-        listen 12444 ssl ;
+        # 代理后的公网访问HTTP协议端口（可用多个listen监听多个端口）
+        listen 12333 ;
 
         # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
         server_name domain.com *.domain.com ;
-
-        # 前面已经写了默认ssl配置，因此这里并没有ssl配置。您也可以在此处单独配置该域名的ssl。
-
-        # 使用HTTP访问时，断开连接。
-        error_page 497 =200 /444nginx;
-        location =/444nginx {
-            return 444;
-        }
-        
-        # 返回 robots.txt 以防止搜索引擎收录
-        location =/robots.txt{
-            default_type text/plain;
-            return 200 "User-agent: *\nDisallow: /";
-        }
-
-        # 开始反向代理
-        location / {
-            # 填写Daemon进程真正监听的端口号
-            proxy_pass http://localhost:24444 ;
-
-            # 一些请求头
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header REMOTE-HOST $remote_addr;
-            # 用于WebSocket的必要请求头
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            # 增加响应头
-            add_header X-Cache $upstream_cache_status;
-            # 禁止客户端缓存，防止客户端未更新内容
-            expires -1;
-        }
-    }
-    server {
-        # Web 端公网HTTPS端口（可用多个listen监听多个端口）
-        listen 12333 ssl ;
-
-        # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
-        server_name domain.com *.domain.com ;
-        
-        # 使用HTTP访问时，断开连接。
-        error_page 497 =200 /444nginx;
-        location =/444nginx {
-            return 444;
-        }
 
         # 此处无需单独返回 robots.txt ，面板已包含该文件。
 
         # 开始反向代理
+        # 代理Daemon节点
+        location ~ (^/socket.io/)|(^/upload/)|(^/download/) {
+            # 填写Daemon进程真正监听的端口号，后面不能加斜杠！
+            proxy_pass http://localhost:24444 ;
+
+            # 一些请求头
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header REMOTE-HOST $remote_addr;
+            # 用于WebSocket的必要请求头
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            # 增加响应头
+            add_header X-Cache $upstream_cache_status;
+            # 禁止客户端缓存，防止客户端未更新内容
+            expires -1;
+        }
+        # 代理Web端
         location / {
             # 填写Web面板端真正监听的端口号
             proxy_pass http://localhost:23333 ;
@@ -224,10 +184,9 @@ systemctl restart nginx
 
 ## 客户端访问面板
 
-依据示范的配置内容，需要在系统内开启 **TLSv1.2**（通常默认开启）。  
 假如域名是 ***domain.com*** ，反向代理后的端口是12333，那么浏览器需要使用这个地址访问面板：
 ```
-https://domain.com:12333/
+http://domain.com:12333/
 ```
 
 **⚠请确保反向代理后的端口都通过了服务器的防火墙，否则您是无法正常访问的。**  
@@ -236,22 +195,10 @@ https://domain.com:12333/
 
 ## 连接守护进程
 
-### 本地回环地址  
-> 在**节点管理**中，填写地址为 ***localhost*** ，端口填写反向代理后的端口号（例如12444），然后单击右侧的 **连接** 或 **更新** 即可。  
-> **⚠不能将地址填写为 *ws://localhost* ！这会导致浏览器尝试使用HTTP协议连接！**  
-> 
-> ![connect_default_daemon_12444.webp](images/connect_default_daemon_12444.webp)
+假如Web面板后台通过 ***localhost*** 域名连接节点，那么在**节点管理**中填写地址为 ***localhost*** 或 ***ws://localhost*** ，端口填写反向代理后的端口号（例如12333），然后单击右侧的 **连接** 或 **更新** 即可。  
+假如需要填远程地址 ***domain.com*** ，那么将 ***localhost*** 改为 ***domain.com*** 即可。
 
-### 远程地址  
-> 在**节点管理**中，将原有的地址前面添加 ***wss://*** 协议头，端口填写反向代理后的端口号（例如12444），然后单击右侧的 **连接** 或 **更新** 即可。  
-> 例如以下两种原地址：
-> > domain.com  
-> > ws://domain.com  
-> 
-> 修改后：
-> > wss://domain.com  
-> 
-> ![connect_wss_daemon_12444.webp](images/connect_wss_daemon_12444.webp)
+![connect_default_daemon_12333.webp](images/connect_default_daemon_12333.webp)
 
 <br />
 
@@ -261,6 +208,6 @@ https://domain.com:12333/
 > Web面板端真正监听的端口（例如23333）  
 > Daemon端真正监听的端口（例如24444） 
 
-（本地回环地址不受防火墙限制）  
+（本地回环地址不受防火墙限制）
 
 <br />
