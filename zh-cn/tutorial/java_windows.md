@@ -32,11 +32,11 @@
 
 - MCBBS 整合包: https://www.mcbbs.net/forum-serverpack-1.html
 
-如果您对访问阅读英语有困难，可以直接点击这个下载：
+如果您对访问阅读英语有困难，可以直接点击版本下载：
 
-- 1.18: https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/387/downloads/paper-1.18.2-387.jar
+- [1.18.2](https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar)
 
-- 1.19: https://api.papermc.io/v2/projects/paper/versions/1.19/builds/62/downloads/paper-1.19-62.jar
+- [1.19.4](https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/516/downloads/paper-1.19.4-516.jar)
 
 <br />
 
@@ -47,7 +47,7 @@
 填写启动命令：
 
 ```
-java -Dfile.encoding=UTF-8 -jar "你的jar文件名，列如：paper-1.19-62.jar"
+java -Dfile.encoding=UTF-8 -jar "你的jar文件名，例如：paper-1.19-62.jar"
 ```
 
 创建！
