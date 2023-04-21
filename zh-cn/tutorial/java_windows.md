@@ -22,7 +22,9 @@
   
 您可以在此处下载Java: `下列Java下载链接只适用于Windows 64位操作系统 如果您需要其它版本下载 请自行搜索`
   - [(Oracle)Java JDK8 8u202](https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe) `安装程序`
-  - [(Oracle)Java JDK11 11.0.2](https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe) `安装程序`
+  - [(Azul)Java JDK8 8.0.362](https://cdn.azul.com/zulu/bin/zulu8.68.0.21-ca-jdk8.0.362-win_x64.zip) `压缩归档`
+  - [(Azul)Java JDK11 11.0.18](https://cdn.azul.com/zulu/bin/zulu11.62.17-ca-jdk11.0.18-win_x64.msi) `安装程序`
+  - [(Azul)Java JDK11 11.0.19](https://cdn.azul.com/zulu/bin/zulu11.64.19-ca-jdk11.0.19-win_x64.zip) `压缩归档`
   - [(Oracle)Java JDK17 17.0.7](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe) `安装程序`
   - [(Oracle)Java JDK17 17.0.7](https://download.oracle.com/java/17/archive/jdk-17.0.7_windows-x64_bin.zip) `压缩归档`
   
