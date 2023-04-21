@@ -10,7 +10,26 @@
 
 ## 1. 安装 Java 环境
 
-`Minecraft 1.17` 以下版本需要 `java 8` 运行时环境，`1.17` 以上版本则直接升级到了 `Java 16` 运行时环境，两者版本跨度极大且并不完全兼容低版本，因而导致 `1.17` 以下版本的 `Minecraft` 服务端软件是无法运行在 `Java 16` 运行时环境的，所以您在架设您自己的服务端之前，需要先检查是否拥有对应的运行环境。
+在开始运行Java服务端之前 Java运行库是必不可少的.
+以下是一些Minecraft版本所需的对应的Java版本运行库列表:
+
+  - 1.7.x / 1.8.x / 1.9.x - 使用`Java7(不推荐)`或`Java8`
+  - 1.10.x / 1.12.x - 使用`Java8`运行
+  - 1.13.x / 1.15.x - 使用`Java8`或`Java9`, `Java11`运行
+  - 1.16.x / 1.17.x - 使用Java16运行
+  - 1.17.x / 1.18.x - 使用Java17或Java18运行
+  - 1.18.x / 1.19.x - 使用Java17或更高版本运行.
+  
+您可以在此处下载Java: `下列Java下载链接只适用于Windows 64位操作系统 如果您需要其它版本下载 请自行搜索`
+  - [Java JDK8 8u202](https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe) `安装程序`
+  - [Java JDK11 11.0.2](https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe) `安装程序`
+  - [Java JDK17 17.0.7](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe) `安装程序`
+  
+> 请注意 这些列表仅供参考 您需要查看您的插件是否支持Java 以避免出现本可避免的不必要的麻烦  
+
+> 请找到适合您的计算机处理器架构以及操作系统合适的Java. **不要盲目地点击下载链接**  
+
+> Java16以及更高版本仅可以在64位系统上运行.  
 
 
 不同版本的 Minecraft 要求的 Java 版本不一致，这里您需要提前了解，可以前往 [这里](https://www.oracle.com/java/technologies/downloads/#jdk18-windows) 下载安装。
