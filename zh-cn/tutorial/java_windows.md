@@ -47,8 +47,12 @@
 填写启动命令：
 
 ```
-java -Dfile.encoding=UTF-8 -jar "你的jar文件名，例如：paper-1.19-62.jar"
+java -Xmx6G -Xms6G -XX:+UseG1GC -Dfile.encoding=UTF-8 -jar "你的jar文件名，例如：paper-1.19-62.jar"
 ```
+
+> 如果需要 将`6G`修改成您想要分配的内存 `-Xmx?G -Xms?G` 6-16G是一个较为合适的范围.
+
+> 不要将一台计算机的所有可用内存分配给服务端! 请最多空出2G可用内存.
 
 创建！
 
