@@ -21,9 +21,10 @@
   - 1.18.x / 1.19.x - 使用Java17或更高版本运行.
   
 您可以在此处下载Java: `下列Java下载链接只适用于Windows 64位操作系统 如果您需要其它版本下载 请自行搜索`
-  - [Java JDK8 8u202](https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe) `安装程序`
-  - [Java JDK11 11.0.2](https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe) `安装程序`
-  - [Java JDK17 17.0.7](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe) `安装程序`
+  - [(Oracle)Java JDK8 8u202](https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe) `安装程序`
+  - [(Oracle)Java JDK11 11.0.2](https://mirrors.huaweicloud.com/java/jdk/11.0.2+9/jdk-11.0.2_windows-x64_bin.exe) `安装程序`
+  - [(Oracle)Java JDK17 17.0.7](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe) `安装程序`
+  - [(Oracle)Java JDK17 17.0.7](https://download.oracle.com/java/17/archive/jdk-17.0.7_windows-x64_bin.zip) `压缩归档`
   
 > 请注意 这些列表仅供参考 您需要查看您的插件是否支持Java 以避免出现本可避免的不必要的麻烦  
 
@@ -31,12 +32,11 @@
 
 > Java16以及更高版本仅可以在64位系统上运行.  
 
+**如何使用压缩归档?**
+如果您不想在您的电脑上安装Java 或者目前您不想更换主要的Java 那么使用一个压缩归档是一个比较好的选择.
+您只需要将文件解压(文件夹最好不要带空格) 然后在启动参数内将开头的`java`替换成您的压缩归档运行库路径即可. 
+`java路径/bin/java.exe`. 例如 `C:/Java/jdk-17.0.7/bin/java.exe ... -jar "你的jar文件名，例如：paper-1.19.4-516.jar"`
 
-不同版本的 Minecraft 要求的 Java 版本不一致，这里您需要提前了解，可以前往 [这里](https://www.oracle.com/java/technologies/downloads/#jdk18-windows) 下载安装。
-
-
-
-> 更高版本请点击上文的“这里”文字前往官方网站下载。
 
 <br />
 
@@ -66,7 +66,7 @@
 填写启动命令：
 
 ```
-java -Xmx6G -Xms6G -XX:+UseG1GC -Dfile.encoding=UTF-8 -jar "你的jar文件名，例如：paper-1.19-62.jar"
+java -Xmx6G -Xms6G -XX:+UseG1GC -Dfile.encoding=UTF-8 -jar "你的jar文件名，例如：paper-1.19.4-516.jar"
 ```
 
 > 如果需要 将`6G`修改成您想要分配的内存 `-Xmx?G -Xms?G` 6-16G是一个较为合适的范围.
