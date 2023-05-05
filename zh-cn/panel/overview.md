@@ -27,8 +27,8 @@ apikey: String; // API 密钥
   // ↓ 会返回的值及其解释：200（正常，并返回相应内容）；400（请求参数不正确）；403（无权限）；500（服务器内部错误）
   "status": 200,
   "data": {
-    "version": "9.2.1", // 面板版本
-    "specifiedDaemonVersion": "1.3.0", //面板要求的守护进程版本
+    "version": "9.8.0", // 面板版本
+    "specifiedDaemonVersion": "3.3.0", //面板要求的守护进程版本
     "process": {
       "cpu": 0,
       "memory": 89153536,
@@ -48,7 +48,7 @@ apikey: String; // API 密钥
         "homedir": "C:\\Users\\suwings",
         "shell": null
       },
-      "time": "2022/2/3 下午5:07:07",
+      "time": "1643879227310",
       "totalmem": 17024741376,
       "freemem": 5502345216,
       "type": "Windows_NT",
