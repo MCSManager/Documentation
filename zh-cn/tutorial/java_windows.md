@@ -13,12 +13,17 @@
 在开始运行Java服务端之前 Java运行库是必不可少的.
 以下是一些Minecraft版本所需的对应的Java版本运行库列表:
 
-  - 1.7.x / 1.8.x / 1.9.x - 使用`Java7(不推荐)`或`Java8`
+  - 1.7.x / 1.8.x / 1.9.x - 使用`Java7(不推荐)`或`Java8`运行
   - 1.10.x / 1.12.x - 使用`Java8`运行
-  - 1.13.x / 1.15.x - 使用`Java8`或`Java9`, `Java11`运行
-  - 1.16.x / 1.17.x - 使用Java16运行
-  - 1.17.x / 1.18.x - 使用Java17或Java18运行
-  - 1.18.x / 1.19.x - 使用Java17或更高版本运行.
+  - 1.12.x / 1.13.x / 1.15.x - 使用`Java8`,`Java9`或`Java12`运行
+  - 1.16.x - 使用`Java8`,`Java9`,`Java12`或`Java16`运行
+  - 1.17.x - 使用`Java16`或`Java17`运行
+  - 1.18.x - 使用Java17或Java18运行
+  - 1.18.x / 1.19.x - 使用Java17或**更高版本**运行.
+
+> `更高版本` 注意事项: Java20太新了 有很多东西可能不支持 推荐停留在Java19
+
+> 您始终应该查看自己的插件支持哪些Java版本再做出抉择 如果插件没有声明 最好询问插件开发者 以免引起不必要的麻烦.
   
 您可以在此处下载Java: `下列Java下载链接只适用于Windows 64位操作系统 如果您需要其它版本下载 请自行搜索`
   - [(Oracle)Java JDK8 8u202](https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe) `安装程序`
@@ -27,8 +32,6 @@
   - [(Azul)Java JDK11 11.0.19](https://cdn.azul.com/zulu/bin/zulu11.64.19-ca-jdk11.0.19-win_x64.zip) `压缩归档`
   - [(Oracle)Java JDK17 17.0.7](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe) `安装程序`
   - [(Oracle)Java JDK17 17.0.7](https://download.oracle.com/java/17/archive/jdk-17.0.7_windows-x64_bin.zip) `压缩归档`
-  
-> 请注意 这些列表仅供参考 您需要查看您的插件是否支持Java 以避免出现本可避免的不必要的麻烦  
 
 > 请找到适合您的计算机处理器架构以及操作系统合适的Java. **不要盲目地点击下载链接**  
 
@@ -57,7 +60,7 @@
 
 - [1.18.2](https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar)
 
-- [1.19.4](https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/516/downloads/paper-1.19.4-516.jar)
+- [1.19.4](https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/524/downloads/paper-1.19.4-524.jar)
 
 <br />
 
