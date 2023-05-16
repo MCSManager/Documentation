@@ -14,6 +14,7 @@
   - [分布式工作原理](zh-cn/tutorial/system_structure.md)
   - [仿真终端](zh-cn/tutorial/pty.md)
   - [手动配置为 Linux 服务](zh-cn/tutorial/to_service.md)
+  - [手动配置为 Windows 服务](zh-cn/tutorial/to_windows_service.md)
   - [修改访问端口](zh-cn/tutorial/modify_port.md)
   - [更改解压缩文件大小限制](zh-cn/tutorial/delete_file_unzip_limit.md)
   - [配置反向代理](zh-cn/tutorial/simple_reverse_proxy.md)

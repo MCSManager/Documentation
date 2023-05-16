@@ -1,4 +1,4 @@
-# 手动配置 MCSM 到 Linux 服务
+# 手动配置 MCSM 为 Linux 服务
 
 
 > 注意：如果您是通过一键安装脚本安装的，这个教程对您而言是无用的，因为已经自动配置完毕。
@@ -60,3 +60,11 @@ WantedBy=multi-user.target
 禁用：systemctl disable mcsm-{daemon,web}.service
 
 启用：systemctl enable mcsm-{daemon,web}.service
+
+## 修改用户权限
+
+> 在 systemd 的服务配置内未指定用户的情况下，服务会以 root 用户运行，从而给服务器带来潜在安全隐患，推荐更改运行该服务的用户来保证安全。
+
+1. 通过`useradd``chmod``chown`等命令来创建用户并修改相关用户权限。
+2. 在 `[Service]` 栏目中添加 `User=用户`
+3. 重新启动服务
