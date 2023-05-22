@@ -10,7 +10,7 @@
 
 - 面板配置与使用
 
-  - [如何连接守护进程](zh-cn/tutorial/connect_daemon.md)
+  - [连接多台物理主机](zh-cn/tutorial/connect_daemon.md)
   - [分布式工作原理](zh-cn/tutorial/system_structure.md)
   - [仿真终端](zh-cn/tutorial/pty.md)
   - [手动配置为 Linux 服务](zh-cn/tutorial/to_service.md)
