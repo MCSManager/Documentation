@@ -6,8 +6,6 @@
 [![Status](https://img.shields.io/badge/node-v14.17.6-blue.svg)](https://nodejs.org/en/download/)
 [![Status](https://img.shields.io/badge/License-Apache-red.svg)](https://github.com/MCSManager)
 
-Github: [https://github.com/mcsmanager](https://github.com/mcsmanager)
-
 <br />
 
 ## 这是什么？

@@ -93,3 +93,9 @@
     - [创建计划任务](zh-cn/apis/scedule/create_schedule.md)
     - [删除计划任务](zh-cn/apis/scedule/del_scedule.md)
     - [获取计划任务列表](zh-cn/apis/scedule/get_schedule_list.md)
+
+
+- 相关链接
+
+  - [Github](https://github.com/MCSManager)
+  - [改进这个文档](https://github.com/MCSManager/Documentation)
