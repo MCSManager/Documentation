@@ -1,4 +1,9 @@
-# Adding a Daemon
+# Adding a Remote Daemon
+
+
+## What's this?
+
+If you have multiple machine available, the MCSManager supports connecting multiple machine, and you will be able to control all the machines through a web page.
 
 ## Install Daemon on the target machine.
 
