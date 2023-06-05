@@ -1,36 +1,49 @@
 # Update MCSManager
 
-## Backup
+### Update Proposals
 
-1. Backup the configuration folders. You can simply move them to another location other than where MCSM was installed.
+Because of the distributed deployment of daemon processes, if you have more than 5 nodes, it will be a bit troublesome to update. It is recommended to wait and see, and update them together after the cumulative update reaches a certain level.
 
-- /opt/mcsmanager/web/data/
-- /opt/mcsmanager/daemon/data/
+If you have few nodes, you can update to the latest version.
 
-2. Update...
-3. Move the backuped configurations back to its original location. (We recommend copying it and then removing the backup once the updated version works.)
+<br />
 
-## Update
+### backup (optional)
 
-### Linux
+If you are worried about data loss caused by the update, first move the two directories `web/data` and `daemon/data` to other **upper** directories.
 
-Go to `/opt/mcsmanager/web` and `/opt/mcsmanager/daemon` and run git pull commands.
+Data security can be ensured by moving back after the update is complete.
 
-Note: The following commands will destroy all local changes. Be sure to backup the data folder in advance.
-```
-git fetch --all
-git reset --hard origin/master
-git pull
-```
-
-If you see this output in both folders, the update was successful.
-
-```
-Already up to date.
-```
+<br />
 
 ### Windows
 
-1. Go to https://mcsmanager.com/ to download the latest zip file.
+1. Go to the official website https://mcsmanager.com/ and download the latest zip file.
 
-2. **Overwrite** the original file.
+2. Just **overwrite** the source file.
+
+<br />
+
+### Linux
+
+**Auto Update**
+
+If you used the one-click script update at the beginning, then you only need to execute the following command:
+
+Our one-click install script supports automatic updates without compromising local data.
+
+```bash
+cd /opt
+sudo su # switch root account
+wget -qO- https://gitee.com/mcsmanager/script/raw/master/setup_cn.sh | bash
+```
+
+**Manual Update**
+
+If you installed the MCSManager panel manually, the one-click install script will not work for you, as it will result in two copies of the program being installed.
+
+You have to go to the official release repository, download the latest code and overwrite all your MCSManager files.
+
+https://github.com/MCSManager/MCSManager/releases/latest
+
+<br />
