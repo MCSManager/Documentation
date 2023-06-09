@@ -1,10 +1,8 @@
 # 连接多台物理主机
 
-
 ## 这是什么？
 
 如果您有多台物理主机可供使用，MCSManager 面板支持将多台主机连接起来，届时你将可以通过一个网页控制所有机器。
-
 
 **如图所示**
 
@@ -18,6 +16,8 @@
 # 一键脚本安装后...
 
 systemctl stop mcsm-web         # 停止面板网页服务
+systemctl disable mcsm-web      # 禁用开机自启网页服务
+
 systemctl start mcsm-daemon     # 只启动面板守护进程服务，用来作为被控端
 ```
 
@@ -34,7 +34,6 @@ systemctl start mcsm-daemon     # 只启动面板守护进程服务，用来作�
 Linux：如果您使用一键安装脚本安装，那么默认路径应该是 /opt/mcsmanager/daemon/data/Config/global.json
 
 Windows：<面板安装路径>/daemon/data/Config/global.json
-
 
 <br />
 
