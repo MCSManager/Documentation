@@ -15,8 +15,12 @@
 ```bash
 # 一键脚本安装后...
 
-systemctl stop mcsm-web         # 停止面板网页服务
-systemctl disable mcsm-web      # 禁用开机自启网页服务
+# 停止面板网页服务（必须）
+# 如果不停止则有可能让其他人访问到面板初始化用户界面，从而入侵你的主机
+systemctl stop mcsm-web
+
+ # 禁用开机自启网页服务（必须）
+systemctl disable mcsm-web
 
 systemctl start mcsm-daemon     # 只启动面板守护进程服务，用来作为被控端
 ```
