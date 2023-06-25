@@ -86,8 +86,8 @@
 cd /opt/mcsmanager/web
 #创建备份并删除原有的用户配置
 mv data/User data/UserBackup
-#打开面板以创建新的管理员账号
-node app.js
+#重启面板以创建新的管理员账号
+systemctl restart mcsm-{daemon,web}.service
 ```
 
 <br />
