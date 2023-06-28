@@ -78,6 +78,19 @@ mv data/User data/UserBackup
 #重启面板以创建新的管理员账号
 systemctl restart mcsm-{daemon,web}.service
 ```
+## Windows系统
+
+如果为Windows系统,需要到你解压的面板目录下进行
+
+假设解压目录为`C:\mcsm`
+
+1.进入面板存放用户文件的目录下
+
+目录为:`C:\mcsm\web\data`
+
+2.将data目录下的User目录重命名为UserBackup
+
+3.重启面板并访问面板以重设密码
 
 <br />
 
