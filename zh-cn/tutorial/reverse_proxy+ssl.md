@@ -12,7 +12,7 @@
 
 ## 配置反向代理
 
-参考：[反向代理](/tutorial/simple_reverse_proxy.md)。
+参考：[反向代理](/zh-cn/tutorial/simple_reverse_proxy.md)。
 
 <br />
 
@@ -36,7 +36,7 @@
 
 由于您将守护进程配置了 https 访问，那么此时守护进程管理界面中的连接应当是无法连接的。
 
-在[守护进程管理](/tutorial/connect_daemon.md)里，将原有的地址添加`wss://` 协议头进行重新连接以解决此问题。
+在[守护进程管理](/zh-cn/tutorial/connect_daemon.md)里，将原有的地址添加`wss://` 协议头进行重新连接以解决此问题。
 
 如原有的地址:`localhost`，修改后:`wss://localhost`。
 

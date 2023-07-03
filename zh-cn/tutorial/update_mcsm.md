@@ -18,7 +18,7 @@
 
 ### Windows
 
-1. 前往官方网站 https://mcsmanager.com/，下载最新的压缩文件。
+1. [前往官方网站](https://mcsmanager.com)，下载最新的压缩文件。
 
 2. **覆盖**源文件即可。
 
