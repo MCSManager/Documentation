@@ -63,30 +63,34 @@
 
 <br />
 
-## 默认的账号密码是什么？
-
-账号和密码会在第一次启动 Mcsmanager 控制面板的时候显示在命令行终端上。
-```
-#默认账号和密码
-账号：root
-密码: 123456
-```
-
-<br />
-
 ## 如果忘记了管理员密码怎么办？
 
 控制面板在运行时会检测用户是否为空，若为空会自动创建一个默认的管理员账号。
 
 如果您忘记了管理员账号，您只能备份并删除原有的用户配置文件夹，并且重新生成一个新的管理员账号以覆盖。
+`如果你使用的官方一键脚本可完全按此步骤执行，手动安装请手动进入面板目录`
 
 ``` bash
-cd /web
+#进入面板目录
+cd /opt/mcsmanager/web
 #创建备份并删除原有的用户配置
-mv /data/User /data/UserBackup
-#打开面板以创建新的管理员账号
-node app.js
+mv data/User data/UserBackup
+#重启面板以创建新的管理员账号
+systemctl restart mcsm-{daemon,web}.service
 ```
+## Windows系统
+
+如果为Windows系统,需要到你解压的面板目录下进行
+
+假设解压目录为`C:\mcsm`
+
+1.进入面板存放用户文件的目录下
+
+目录为:`C:\mcsm\web\data`
+
+2.将data目录下的User目录重命名为UserBackup
+
+3.重启面板并访问面板以重设密码
 
 <br />
 
