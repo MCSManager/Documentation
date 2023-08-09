@@ -28,8 +28,9 @@ events {
 
 # 配置开始
 http {
-    # 限制文件上传大小为 10G
-    client_max_body_size 10240M;
+    
+    # 限制文件上传大小为 100G（用于覆盖 Nginx 默认的上传大小限制）
+    client_max_body_size 100g;
 
 	server {
         # Web 端公网访问端口
@@ -40,7 +41,6 @@ http {
             proxy_pass http://localhost:23333/;
             root   html;
             index  index.html index.htm;
-            # 一些必要的 HTTP Header 设置
             proxy_set_header Host localhost;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -50,7 +50,7 @@ http {
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
             add_header Cache-Control no-cache;
-            expires 12h;
+            expires -1;
         }
     }
 
@@ -67,11 +67,12 @@ http {
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header REMOTE-HOST $remote_addr;
+            # 必须的 Websocket 支持
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
             add_header Cache-Control no-cache;
-            expires 12h;
+            expires -1;
         }
     }
 

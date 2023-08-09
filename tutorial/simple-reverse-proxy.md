@@ -32,8 +32,8 @@ worker_connections 768;
 
 # configuration start
 http {
-     # Limit file upload size to 10G
-     client_max_body_size 10240M;
+     # Limit file upload size to 100G
+     client_max_body_size 100g;
 
 server {
          # Web panel public access port
@@ -54,7 +54,7 @@ server {
              proxy_set_header Connection "upgrade";
              add_header X-Cache $upstream_cache_status;
              add_header Cache-Control no-cache;
-             expires 12h;
+             expires -1;
          }
      }
 
@@ -76,7 +76,7 @@ server {
              proxy_set_header Connection "upgrade";
              add_header X-Cache $upstream_cache_status;
              add_header Cache-Control no-cache;
-             expires 12h;
+             expires -1;
          }
      }
 
