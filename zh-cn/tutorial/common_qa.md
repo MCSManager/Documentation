@@ -82,11 +82,11 @@ systemctl restart mcsm-{daemon,web}.service
 
 如果为Windows系统,需要到你解压的面板目录下进行
 
-假设解压目录为`C:\mcsm`
+假设解压目录为`C:\panel`
 
 1.进入面板存放用户文件的目录下
 
-目录为:`C:\mcsm\web\data`
+目录为:`C:\panel\web\data`
 
 2.将data目录下的User目录重命名为UserBackup
 
@@ -104,3 +104,4 @@ ApiKey 是一段十六进制字符串，例如 `f81768ab920341e6b6ea4cb231fc24bc
 Warning：请勿将 ApiKey 透露给任何人，否则可能会造成账号被意外调用。
 
 <br />
+
