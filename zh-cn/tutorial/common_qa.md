@@ -78,7 +78,7 @@ mv data/User data/UserBackup
 #重启面板以创建新的管理员账号
 systemctl restart mcsm-{daemon,web}.service
 
-还可以使用
+还可以使用[一键脚本](https://blog.kabaka.xyz)
 ```
 ## Windows系统
 
