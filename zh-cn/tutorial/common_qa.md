@@ -77,6 +77,8 @@ cd /opt/mcsmanager/web
 mv data/User data/UserBackup
 #重启面板以创建新的管理员账号
 systemctl restart mcsm-{daemon,web}.service
+
+还可以使用
 ```
 ## Windows系统
 
