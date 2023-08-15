@@ -76,9 +76,7 @@ cd /opt/mcsmanager/web
 #创建备份并删除原有的用户配置
 mv data/User data/UserBackup
 #重启面板以创建新的管理员账号
-systemctl restart mcsm-{daemon,web}.service
-
-还可以使用[一键脚本](https://blog.kabaka.xyz)
+systemctl restart mcsm-{daemon,web}.servic
 ```
 ## Windows系统
 
