@@ -83,7 +83,7 @@ Github 开发团队主页：[https://github.com/MCSManager](https://github.com/M
 
 Github 讨论区：[https://github.com/MCSManager/MCSManager/issues](https://github.com/MCSManager/MCSManager/issues)
 
-QQ 群: [287215485](https://jq.qq.com/?_wv=1027&k=eou88jyb)
+QQ 群: [198646856](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=NjZnbz2w1oEhjHbcL8nyxoxtrbtmFlp5&authKey=ktl9iperzg%2BdAjJeyZJ6hDSd1aZksO8uTpEbWeqY6XU1K6lg005nqPGlZ2SQp6Sx&noverify=0&group_code=198646856)
 
 <br />
 

@@ -149,5 +149,5 @@
 
 
 
-如果您使用本教程创建服务器时出现了问题，请加入**MCSM面板用户群**：287215485 或者可以联系作者QQ：1400008010，本人会提供有限的技术支持。
+如果您使用本教程创建服务器时出现了问题，请加入**MCSM面板用户群**：[198646856](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=NjZnbz2w1oEhjHbcL8nyxoxtrbtmFlp5&authKey=ktl9iperzg%2BdAjJeyZJ6hDSd1aZksO8uTpEbWeqY6XU1K6lg005nqPGlZ2SQp6Sx&noverify=0&group_code=198646856) 或者可以联系作者QQ：1400008010，本人会提供有限的技术支持。
 
