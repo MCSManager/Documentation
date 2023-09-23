@@ -6,7 +6,7 @@ MCSM 支持 [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) 等软�
 
 请查阅 [MCDReforged 文档](https://mcdreforged.readthedocs.io/zh_CN/latest/) 配置 MCDReforged。
 
-配置完成后，如 MCDR 文档所述，在启动命令中填写 `python -m mcdreforged` 即可。
+配置完成后，如 MCDR 文档所述，在启动命令中填写 `mcdreforged` 即可。
 
 ## 兼容性问题
 
@@ -21,6 +21,6 @@ MCDR 的部分功能会与 MCSM 产生冲突，但这里提供了一些常见问
 
 ### 输入输出编码
 
-1. 在启动参数中添加 `-X utf8`，例如 `python -X utf8 -m mcdreforged`。
+1. 依照 [MCDReforged 文档](https://mcdreforged.readthedocs.io/zh_CN/latest/configuration.html#encoding-decoding) 配置编码/解码格式为 `UTF-8`。
 
 2. 将终端输入/输出编码调整为 `UTF-8`。
