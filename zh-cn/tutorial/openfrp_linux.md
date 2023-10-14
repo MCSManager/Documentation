@@ -23,7 +23,7 @@
 
 <br />
 
-## 4. 去OpenFrp软件下载也获取下载链接
+## 4. 去OpenFrp软件下载页获取下载链接
 
 ![图片](images/linux_openfrp.png)
 
