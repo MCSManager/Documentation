@@ -44,7 +44,8 @@
 ![图片](images/setup_frp.png)
 
 一. **下载frp客户端**
-使用ssh连接服务器
+
+**使用ssh连接服务器**
 
 ``` bash
 cd /root/frp
