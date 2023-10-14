@@ -43,7 +43,7 @@
 
 ![图片](images/setup_frp.png)
 
-下载frp客户端
+一. **下载frp客户端**
 使用ssh连接服务器
 
 ``` bash
