@@ -35,8 +35,10 @@
 
 选择无需文件或选择已存在文件类
 
-启动命令填写./frpc_linux_amd64 -u frp用户密钥 -p 隧道ID
-
+启动命令填写
+``` bash
+./frpc_linux_amd64 -u frp用户密钥 -p 隧道ID
+```
 服务端文件目录随意填写，此处以 **/root/frp** 目录作为文件存放目录
 
 ![图片](images/setup_frp.png)
