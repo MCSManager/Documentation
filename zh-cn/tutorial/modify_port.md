@@ -32,7 +32,7 @@
 }
 ```
 
-改完后请使用 systemctl 指令重启 mcsm-web.service 以使设置的新端口生效。请尽快登上面板为面板配置管理员账户。
+改完后请使用 systemctl 指令重启 mcsm-web.service 以使设置的新端口生效。请**尽快**登上面板为面板配置管理员账户。
 
 
 
