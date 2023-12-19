@@ -31,7 +31,45 @@ export default defineConfig({
     },
   },
   themeConfig: {
-    sidebar,
+    sidebar: {
+      ["/"]: [
+        { text: "QuickStart", link: "/index.md" },
+        { text: "Markdown Examples", link: "/en_us/markdown-examples.md" },
+        { text: "其他菜单不着急，等中文写完", link: "/en_us/demo.md" },
+      ],
+      ["/zh_cn/"]: [
+        {
+          text: "使用教程",
+          items: [
+            { text: "这是什么", link: "/zh_cn/index.md" },
+            { text: "安装面板", link: "/zh_cn/install.md" },
+            {
+              text: "搭建 Minecraft 服务器",
+              link: "/zh_cn/markdown-examples.md",
+            },
+            { text: "搭建 Steam 游戏服务器", link: "/zh_cn/api-examples.md" },
+            { text: "部署任意控制台程序", link: "/zh_cn/api-examples.md" },
+          ],
+        },
+        {
+          text: "高级用法",
+          items: [
+            { text: "更新面板", link: "/zh_cn/demo.md" },
+            { text: "分布式", link: "/zh_cn/demo.md" },
+            { text: "容器化", link: "/zh_cn/demo.md" },
+          ],
+        },
+        {
+          text: "面板配置",
+          items: [
+            { text: "配置文件", link: "/zh_cn/demo.md" },
+            { text: "数据储存", link: "/zh_cn/demo.md" },
+            { text: "反向代理", link: "/zh_cn/demo.md" },
+            { text: "HTTPS", link: "/zh_cn/demo.md" },
+          ],
+        },
+      ],
+    },
     nav: [
       {
         text: "Official website",
