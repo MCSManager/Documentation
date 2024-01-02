@@ -27,12 +27,12 @@ apt update && apt install docker-compose
 ### Web
 
 ```dockerfile
-FROM node:14-slim
+FROM node:14-alpine
 ARG INSTALL_PATH=/opt/docker-mcsm
 ARG TZ=Asia/Shanghai
 ENV TZ=${TZ}
-RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN apt update && apt install -y git
+RUN sed -i 's#https\?://dl-cdn.alpinelinux.org/alpine#https://mirrors.cernet.edu.cn/alpine#g' /etc/apk/repositories
+RUN apk add git --no-cache
 RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Web-Production $INSTALL_PATH/releases/web
 RUN cd $INSTALL_PATH/releases/web && npm i --production --registry=https://registry.npmmirror.com
 WORKDIR $INSTALL_PATH/releases/web
@@ -48,8 +48,8 @@ FROM node:14-slim
 ARG INSTALL_PATH=/opt/docker-mcsm
 ARG TZ=Asia/Shanghai
 ENV TZ=${TZ}
-RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN apt update && apt install -y git
+RUN sed -i 's#https\?://dl-cdn.alpinelinux.org/alpine#https://mirrors.cernet.edu.cn/alpine#g' /etc/apk/repositories
+RUN apk add git --no-cache
 RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Daemon-Production $INSTALL_PATH/releases/daemon
 RUN cd $INSTALL_PATH/releases/daemon && npm i --production --registry=https://registry.npmmirror.com
 WORKDIR $INSTALL_PATH/releases/daemon
@@ -102,7 +102,35 @@ services:
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs
             - /var/run/docker.sock:/var/run/docker.sock:ro
 ```
-
+如果你不想锁死mcsm的路径，可以考虑以下配置：
+```yml
+services:
+    mcsm-web:
+        #... 重复内容，省略
+        volumes:
+            - mcsm-web-data:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/data
+            - mcsm-web-logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/logs
+            - mcsm-web-config:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data/Config:ro
+    mcsm-daemon:
+        #... 重复内容，省略
+        volumes:
+            - mcsm-daemon-data:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data
+            - mcsm-daemon-logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+Volumes:
+    mcsm-web-data:
+        extrnal: false
+    mcsm-web-logs:
+        extrnal: false
+    mcsm-web-config:
+        extrnal: false
+    mcsm-daemon-data:
+        extrnal: false
+    mcsm-daemon-logs:
+        extrnal: false
+    mcsm-daemon-config:
+        extrnal: false
+```
 复制并保存文件名为 `docker-compose.yml` 的文件
 
 <br />
