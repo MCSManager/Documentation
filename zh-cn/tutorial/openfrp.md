@@ -46,3 +46,25 @@
 把这个地址发给你的朋友就可以实现联机。
 
 ![图片](images/result_frp_ip.png)
+
+<br />
+
+## 手动更新 Frpc  
+
+如果你正确配置以上内容并重启后没有看到这个
+
+![img](images/open_ok.png)
+
+请尝试手动更新 Frpc  
+
+前往 https://console.openfrp.net/home/download 下载新的 Frpc  
+
+![img](images/download.png)
+
+并手动替换守护进程目录下的 Frpc 文件  
+
+Linux：如果您使用一键安装脚本安装，那么默认路径应该是 /opt/mcsmanager/daemon/lib  
+
+Windows：<面板安装路径>/daemon/lib  
+
+替换 frpc_(系统)_(架构)并重启即可  
