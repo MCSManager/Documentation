@@ -36,7 +36,7 @@ RUN apk add git --no-cache
 RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Web-Production $INSTALL_PATH/releases/web
 RUN cd $INSTALL_PATH/releases/web && npm i --production --registry=https://registry.npmmirror.com
 WORKDIR $INSTALL_PATH/releases/web
-CMD node app.js
+CMD ["node", "app.js"]
 ```
 
 复制并保存文件名为 `dockerfile-web` 的文件
@@ -53,7 +53,7 @@ RUN apk add git --no-cache
 RUN git clone --single-branch -b master --depth 1 https://gitee.com/MCSManager/MCSManager-Daemon-Production $INSTALL_PATH/releases/daemon
 RUN cd $INSTALL_PATH/releases/daemon && npm i --production --registry=https://registry.npmmirror.com
 WORKDIR $INSTALL_PATH/releases/daemon
-CMD node app.js
+CMD ["node", "app.js"]
 ```
 
 复制并保存文件名为 `dockerfile-daemon` 的文件
