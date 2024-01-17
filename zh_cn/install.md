@@ -16,8 +16,6 @@ wget -qO- https://gitee.com/mcsmanager/script/raw/master/setup_cn.sh | bash
 
 下载即可运行，无任何安装依赖，不污染注册表。
 
-<br />
-
 # 启动面板
 
 ## Linux
@@ -44,15 +42,11 @@ systemctl stop mcsm-daemon.service
 
 > 面板 Web 服务是提供用户管理与网页访问功能的服务，守护进程是提供进程管理和容器管理的服务，两者缺一不可。如果某个功能不正常，可以只重启这一部分的服务来热修复问题。
 
-<br />
-
 ## Windows
 
 关闭面板：在面板两个终端控制台窗口输入 `Ctrl+C` 即可正常关闭，如果无效可以直接鼠标点击右上角关闭按钮。
 
 启动面板：执行 `start.bat` 或 `运行.bat` 等，如果压缩包内部含有 `启动器.exe`，则可使用它来启动面板。
-
-<br />
 
 ## 相关链接
 
@@ -64,15 +58,11 @@ Github 讨论区：[https://github.com/MCSManager/MCSManager/issues](https://git
 
 QQ 群: [198646856](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=NjZnbz2w1oEhjHbcL8nyxoxtrbtmFlp5&authKey=ktl9iperzg%2BdAjJeyZJ6hDSd1aZksO8uTpEbWeqY6XU1K6lg005nqPGlZ2SQp6Sx&noverify=0&group_code=198646856)
 
-<br />
-
 ## 捐助
 
 爱发电捐助平台地址：[https://afdian.net/@mcsmanager](https://afdian.net/@mcsmanager)
 
 > 支持开发团队，这样软件才能源源不断的更新迭代下去，并且服务每个人。
-
-<br />
 
 ## 运行环境
 
@@ -81,5 +71,3 @@ QQ 群: [198646856](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=NjZnbz2w1oEhjHbcL8
 特殊情况下，您需满足 `Node 14+` 运行时环境
 
 Node 环境下载前往：[https://nodejs.org/zh-cn/](https://nodejs.org/zh-cn/)
-
-<br />

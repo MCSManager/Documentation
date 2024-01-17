@@ -68,19 +68,27 @@ export default defineConfig({
         {
           text: "高级",
           items: [
-            { text: "更新面板", link: "/zh_cn/update_panel.md" },
+            { text: "更新与重置", link: "/zh_cn/update_panel.md" },
             { text: "分布式", link: "/zh_cn/distributed.md" },
-            { text: "容器化", link: "/zh_cn/docker.md" },
+            { text: "环境隔离", link: "/zh_cn/docker.md" },
+            {
+              text: "系统服务",
+              link: "/zh_cn/linux_systemctl.md",
+            },
           ],
         },
         {
           text: "运维",
           items: [
             { text: "数据与配置", link: "/zh_cn/config_files.md" },
-
+            { text: "面板通信原理", link: "/zh_cn/mcsm_network.md" },
             { text: "反向代理", link: "/zh_cn/reverse_proxy.md" },
             { text: "HTTPS", link: "/zh_cn/https.md" },
           ],
+        },
+        {
+          text: "开发",
+          items: [{ text: "HTML 卡片", link: "/zh_cn/html_card.md" }],
         },
       ],
     },
