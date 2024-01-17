@@ -95,7 +95,7 @@ http {
     server {
         # Daemon 端公网HTTPS端口（可用多个listen监听多个端口）
         listen 12444 ssl ;
-        listen [::]:12444 ; #IPv6
+        listen [::]:12444 ssl ; #IPv6
 
         # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
         # 如果你访问时的链接直接使用公网IP，那么此处填写公网IP。
@@ -123,7 +123,7 @@ http {
     server {
         # Web 端公网HTTPS端口（可用多个listen监听多个端口）
         listen 12333 ssl ;
-        listen [::]:12333 ; #IPv6
+        listen [::]:12333 ssl ; #IPv6
 
         # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
         # 如果你访问时的链接直接使用公网IP，那么此处填写公网IP。
