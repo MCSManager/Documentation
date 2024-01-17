@@ -42,34 +42,44 @@ export default defineConfig({
               collapsed: true,
               items: [
                 {
-                  text: "使用预制整合包搭建",
-                  link: "/zh_cn/demo1.md",
+                  text: "一键搭建 Java 版",
+                  link: "/zh_cn/setup_minecraft_1.md",
                 },
                 {
-                  text: "手动上传搭建",
-                  link: "/zh_cn/demo2.md",
+                  text: "搭建 Java 版",
+                  link: "/zh_cn/setup_minecraft_2.md",
+                },
+                {
+                  text: "搭建基岩版",
+                  link: "/zh_cn/setup_minecraft_3.md",
                 },
               ],
             },
-            { text: "搭建 Steam 游戏服务器", link: "/zh_cn/demo.md" },
-            { text: "部署任意控制台程序", link: "/zh_cn/demo.md" },
+            {
+              text: "搭建 Steam 游戏服务器",
+              link: "/zh_cn/setup_steam.md",
+            },
+            {
+              text: "部署任意控制台程序",
+              link: "/zh_cn/setup_any_software.md",
+            },
           ],
         },
         {
           text: "高级",
           items: [
-            { text: "更新面板", link: "/zh_cn/demo.md" },
-            { text: "分布式", link: "/zh_cn/demo.md" },
-            { text: "容器化", link: "/zh_cn/demo.md" },
+            { text: "更新面板", link: "/zh_cn/update_panel.md" },
+            { text: "分布式", link: "/zh_cn/distributed.md" },
+            { text: "容器化", link: "/zh_cn/docker.md" },
           ],
         },
         {
           text: "运维",
           items: [
-            { text: "配置文件", link: "/zh_cn/demo.md" },
-            { text: "数据储存", link: "/zh_cn/demo.md" },
-            { text: "反向代理", link: "/zh_cn/demo.md" },
-            { text: "HTTPS", link: "/zh_cn/demo.md" },
+            { text: "数据与配置", link: "/zh_cn/config_files.md" },
+
+            { text: "反向代理", link: "/zh_cn/reverse_proxy.md" },
+            { text: "HTTPS", link: "/zh_cn/https.md" },
           ],
         },
       ],
