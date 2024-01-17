@@ -92,8 +92,6 @@ http {
         # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
         server_name domain.com *.domain.com ;
 
-        # 此处无需单独返回 robots.txt ，面板已包含该文件。
-
         # 开始反向代理
         location / {
             # 填写Web面板端真正监听的端口号
