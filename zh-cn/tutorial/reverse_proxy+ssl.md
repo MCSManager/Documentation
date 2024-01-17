@@ -1,16 +1,12 @@
 # 配置 HTTPS 反向代理
 
-> 节选自 [nginx-proxy-docs-for-mcsm](https://gitee.com/bddjr/nginx-proxy-docs-for-mcsm)  
-
-<br />
-
 ## 生成SSL证书
 
 可以在免费SSL的网站上，为自己的域名生成90天免费证书（可无限续签），用于建立安全的HTTPS连接。  
 > <a href="https://www.cersign.com/free-ssl-certificate.html" target="_blank">https://www.cersign.com/free-ssl-certificate.html</a>  
 > <a href="https://www.mianfeissl.com/" target="_blank">https://www.mianfeissl.com/</a>  
 
-如果您正在使用大厂IDC（例如阿里云、腾讯云）的中国内地服务器，遇到非通用端口号（不是80也不是443）仍然不能使用域名建立HTTPS连接的情况，可以尝试直接使用公网IP建立HTTPS连接。[\[参考腾讯云用户反馈\]](https://github.com/bddjr/nginx-proxy-docs-for-mcsm/issues/12)  
+如果您正在使用大厂IDC（例如阿里云、腾讯云）的中国内地服务器，遇到非通用端口号（不是80也不是443）仍然不能使用域名建立HTTPS连接的情况，可以尝试直接使用公网IP建立HTTPS连接。  
 可在下方网址填入公网IP，使用HTTP验证的方式获取IP证书。  
 > <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>  
 
@@ -62,8 +58,6 @@ http {
     # 不限制客户端上传文件大小
     client_max_body_size 0;
 
-    # (此处可依据原文自行补充防跨域的)
-
     server {
         # Daemon 端localhost访问HTTP协议端口（可用多个listen监听多个端口）
         listen 127.0.0.1:12444 ;
@@ -101,8 +95,6 @@ http {
         # 如果你访问时的链接直接使用公网IP，那么此处填写公网IP。
         server_name domain.com *.domain.com ;
 
-        # (此处可依据原文自行补充robots.txt)
-
         # 开始反向代理
         location / {
             # 填写Daemon端真正监听的端口号
@@ -131,8 +123,6 @@ http {
         
         # HTTP跳转到HTTPS
         error_page 497 https://$host:$server_port$request_uri;
-
-        # 此处无需单独返回 robots.txt ，面板已包含该文件。
 
         # 开始反向代理
         location / {

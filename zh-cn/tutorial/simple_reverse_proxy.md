@@ -1,11 +1,5 @@
 # 配置 HTTP 反向代理
 
-> 节选自 [nginx-proxy-docs-for-mcsm](https://gitee.com/bddjr/nginx-proxy-docs-for-mcsm)  
-
-<br />
-
-## 配置反向代理
-
 如果操作系统的包管理器自带的nginx版本太低（例如ubuntu），请编译安装最新版nginx。  
 
 ```nginx
@@ -34,8 +28,6 @@ http {
 
     # 不限制客户端上传文件大小
     client_max_body_size 0;
-
-    # (此处可依据原文自行补充防跨域的)
 
     server {
         # Daemon 端代理后的localhost访问HTTP协议端口（可用多个listen监听多个端口）
@@ -73,8 +65,6 @@ http {
         # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
         # 如果你访问时的链接直接使用公网IP，那么此处填写公网IP。
         server_name domain.com *.domain.com ;
-
-        # (此处可依据原文自行补充robots.txt)
 
         # 开始反向代理
         location / {
