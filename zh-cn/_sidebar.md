@@ -18,7 +18,6 @@
   - [手动配置为 Windows 服务](zh-cn/tutorial/to_windows_service.md)
   - [修改访问端口](zh-cn/tutorial/modify_port.md)
   - [更改解压缩文件大小限制](zh-cn/tutorial/delete_file_unzip_limit.md)
-  - [配置 HTTP 反向代理](zh-cn/tutorial/simple_reverse_proxy.md)
   - [配置 HTTPS 反向代理](zh-cn/tutorial/reverse_proxy+ssl.md)
   - [更新面板](zh-cn/tutorial/update_mcsm.md)
   - [MCSM & MCDR](zh-cn/tutorial/mcdr.md)
