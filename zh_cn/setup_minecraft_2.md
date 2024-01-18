@@ -8,15 +8,15 @@
 
 部署服务器的本质其实和您在手机上运行 APP 的操作一致，您需要一个服务端软件（又称服务器核心）来实现 Minecraft 服务器部署。
 
-可以前往这些地方下载：
+**可以前往这些地方下载服务端软件：**
 
 - Paper 服务端：https://papermc.io/downloads
 
-- MCBBS 整合包: https://www.mcbbs.net/forum-serverpack-1.html
+- MCBBS 整合包：https://www.mcbbs.net/forum-serverpack-1.html
 
-如果您对访问阅读英语有困难，可以直接点击版本下载：
+如果您对访问英语网站有困难，可以直接点击版本下载：
 
-### Paper 服务器软件
+**直接下载 Paper 服务端软件：**
 
 - [1.18.2](https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar)
 
