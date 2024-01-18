@@ -1,13 +1,5 @@
-# 123
+# What's this?
 
-23123
-13124124
-123123
+This is a **distributed, stable and reliable, out-of-the-box, highly scalable, control panel that supports Minecraft and Steam game servers**.
 
-## 232194809
-
-asdi qwjiod ioawjd
-
-## ksjad 2ioj
-
-sadpojapso
+This software has a certain degree of popularity in Minecraft and other game communities. It can help you centrally manage multiple physical servers, dynamically create game servers on any host, and provide a safe and reliable multi-user permission system, which can be easily Easily help you manage multiple servers.

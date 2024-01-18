@@ -3,26 +3,35 @@ import type { Config as ThemeConfig } from "@vue/theme";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "MCSManager Document",
+  title: "MCSManager",
+
   description: "MCSManager Document",
   locales: {
     root: {
       label: "English",
       lang: "en",
-      link: "/en_us/",
+      link: "/",
     },
     zh_cn: {
       label: "简体中文",
       lang: "zh",
-      link: "/zh_cn/",
+      link: "/zh_cn",
     },
   },
   themeConfig: {
+    logo: "/images/logo.png",
     sidebar: {
       ["/"]: [
-        { text: "QuickStart", link: "/index.md" },
-        { text: "Markdown Examples", link: "/en_us/markdown-examples.md" },
-        { text: "其他菜单不着急，等中文写完", link: "/en_us/demo.md" },
+        {
+          text: "Quick Start",
+          link: "/zh_cn/index.md",
+          collapsed: true,
+          items: [
+            { text: "What is this", link: "/index.md" },
+            { text: "Installation Panel", link: "/install.md" },
+          ],
+        },
+        { text: "其他菜单不着急，等中文写完", link: "/demo.md" },
       ],
       ["/zh_cn/"]: [
         {
@@ -82,8 +91,8 @@ export default defineConfig({
           items: [
             { text: "数据与配置", link: "/zh_cn/config_files.md" },
             { text: "面板通信原理", link: "/zh_cn/mcsm_network.md" },
-            { text: "反向代理", link: "/zh_cn/reverse_proxy.md" },
-            { text: "HTTPS", link: "/zh_cn/https.md" },
+            // { text: "反向代理", link: "/zh_cn/reverse_proxy.md" },
+            { text: "配置 HTTPS", link: "/zh_cn/proxy_https.md" },
           ],
         },
         {

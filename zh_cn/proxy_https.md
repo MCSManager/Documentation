@@ -3,7 +3,7 @@
 <tip>
 MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的，需要大量的专业开发知识，如果您没有如此之高的安全性要求，那么请不要尝试配置 HTTPS。
 
-你需要先阅读「反向代理」章节再阅读本文。
+**请确保你已经充分理解「面板通信原理」章节。**
 </tip>
 
 ## 生成 SSL 证书
@@ -18,6 +18,8 @@ MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的�
 > <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
 
 ## Nginx 反向代理与证书配置
+
+MCSManager 不支持直接配置证书并开启 HTTPS，需要依靠反向代理实现，这里以 `Nginx` 配置为例，你也可以使用 `Apache` 或其他工具。
 
 ```nginx
 # 此配置以如下场景进行假定：
