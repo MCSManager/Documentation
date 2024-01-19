@@ -97,7 +97,7 @@ export default defineConfig({
         },
         {
           text: "开发",
-          items: [{ text: "HTML 卡片", link: "/zh_cn/html_card.md" }],
+          items: [{ text: "制作卡片组件", link: "/zh_cn/html_card.md" }],
         },
       ],
     },
