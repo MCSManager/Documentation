@@ -23,6 +23,7 @@
         console.debug("Button click!");
       }
 
+      // 卡片挂载事件
       window.$onMounted = function () {
         console.debug("HTML Mounted");
 
@@ -30,6 +31,7 @@
         document.querySelector("#myButton").addEventListener("click");
       };
 
+      // 卡片卸载事件
       window.$onUnmounted = function () {
         console.debug("HTML Unmounted");
       };
@@ -37,3 +39,29 @@
   </body>
 </html>
 ```
+
+## JavaScript 沙盒机制
+
+为了防止多个卡片载入到同一个页面互相干扰，MCSManager 制作了一个简易的 JavaScript 沙盒机制，它的工作原理就是代理 `window` 对象，你对 `window` 对象的所有更改都不会影响到其他人。
+
+### HTML 卡片 1
+
+```js
+window.$onMounted = function () {
+  window.name = "foo"; // 定义全局变量
+};
+```
+
+### HTML 卡片 2
+
+```js
+window.$onMounted = function () {
+  setTimeout(() => {
+    console.log(window.name); // undefined
+  }, 10000);
+};
+```
+
+## CSS 样式污染
+
+MCSManager 并没有对 CSS 样式进行隔离，需要你自己或者其他开发者自己约束 CSS 样式，你对 CSS 样式的任何定义都会影响 MCSManager 整个网页。
