@@ -19,9 +19,9 @@
 
 ### Windows 版下载
 
-- [(Oracle) Java JDK 8](https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe) `安装程序`
-- [(Azul) Java JDK 11](https://cdn.azul.com/zulu/bin/zulu11.62.17-ca-jdk11.0.18-win_x64.msi) `安装程序`
-- [(Oracle) Java JDK 17](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe) `安装程序`
+- [(Oracle) Java JDK 8](https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe)
+- [(Azul) Java JDK 11](https://cdn.azul.com/zulu/bin/zulu11.62.17-ca-jdk11.0.18-win_x64.msi)
+- [(Oracle) Java JDK 17](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe)
 
 > Java16 以及更高版本仅可以在 64 位系统上运行。
 
