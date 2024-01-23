@@ -40,11 +40,6 @@ export default defineConfig({
             {
               text: "快速开始",
               link: "/zh_cn/index.md",
-              collapsed: true,
-              items: [
-                { text: "这是什么", link: "/zh_cn/index.md" },
-                { text: "安装面板", link: "/zh_cn/install.md" },
-              ],
             },
             {
               text: "搭建 Minecraft 服务器",

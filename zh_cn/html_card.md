@@ -65,3 +65,26 @@ window.$onMounted = function () {
 ## CSS 样式污染
 
 MCSManager 并没有对 CSS 样式进行隔离，需要你自己或者其他开发者自己约束 CSS 样式，你对 CSS 样式的任何定义都会影响 MCSManager 整个网页。
+
+## 卡片 API
+
+我们为你提供了几个 API 供你在脚本中使用。
+
+```js
+window.$onMounted = function () {
+  // 卡片加载完毕事件。
+};
+window.$onUnmounted = function () {
+  // 卡片卸载完毕事件。
+};
+
+// 真实 window 对象，即 MCSManager 网页前端的 window 对象。
+window.$realWindow;
+
+// Axios 库，可用于发送请求。
+// 使用方法参考：https://axios-http.com/docs/example
+window.$axios;
+
+// 当前 MCSManager 界面主题，浅色或深色（light/dark）。
+window.$theme;
+```

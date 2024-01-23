@@ -17,9 +17,9 @@ MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的�
 
 > <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
 
-## Nginx 反向代理与证书配置
+## 反向代理与证书配置
 
-MCSManager 不支持直接配置证书并开启 HTTPS，需要依靠反向代理实现，这里以 `Nginx` 配置为例，你也可以使用 `Apache` 或其他工具。
+MCSManager 不支持直接配置证书并开启 HTTPS，需要依靠反向代理实现，这里以 `Nginx` 配置为例。
 
 ```nginx
 # 此配置以如下场景进行假定：
@@ -146,11 +146,13 @@ http {
 }
 ```
 
-**配置完成后，重载 Nginx 配置（以下命令用于 Linux 操作系统）**
+配置完成后，重载 Nginx 配置。
 
 ```bash
 systemctl reload nginx
 ```
+
+Windows 系统则需要重启 Nginx 程序或系统服务。
 
 ## 访问面板
 
@@ -164,10 +166,12 @@ https://domain.com:12333/
 
 **但是**
 
-如果你进入实例控制台界面，文件管理界面等，就会发现依然**无法正常使用**，这是因为 MCSManager 要求浏览器能够直接连接到 Daemon 节点，由于你升级到了 HTTPS，导致浏览器**拒绝**使用 Websocket+HTTP 协议连接 Daemon 节点！
+如果你进入实例控制台界面，上传文件，下载文件等，就会发现依然**无法正常使用**，这是因为 MCSManager 要求浏览器能够直接连接到远程节点，由于你升级到了 HTTPS，导致浏览器**拒绝**使用 Websocket+HTTP 协议连接远程节点！
+
+> [为什么浏览器要连接远程节点？](mcsm_network)
 
 ## 使用 HTTPS 连接节点
 
-进入`节点管理`，你会发现可能是使用 `localhost`，`123.x.x.x` 或其他域名连接到 Daemon 节点的，此时你必须要给每一个 Daemon 节点**全部配置一次反向代理（如果是同一台机器只需配置一次即可）**，让它们全部支持 HTTPS+Websocket。
+进入`节点管理`，你会发现可能是使用 `localhost`，`123.x.x.x` 或其他域名连接到远程节点的，此时你必须要给每一个远程节点**全部配置一次反向代理（如果是同一台机器只需配置一次即可）**，让它们全部支持 HTTPS+Websocket。
 
-接下来，再使用 `wss://localhost`，`wss://123.x.x.x` 或 `wss://domain.com` 连接到你的 Daemon 节点，只有这样才能确保整个面板都是 HTTPS 请求，所有功能才能正常工作。
+接下来，再使用 `wss://localhost`，`wss://123.x.x.x` 或 `wss://domain.com` 连接到你的远程节点，只有这样才能确保整个面板都是 HTTPS 请求，所有功能才能正常工作。
