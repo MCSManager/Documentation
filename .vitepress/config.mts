@@ -86,7 +86,7 @@ export default defineConfig({
           items: [
             { text: "数据与配置", link: "/zh_cn/config_files.md" },
             { text: "面板通信原理", link: "/zh_cn/mcsm_network.md" },
-            // { text: "反向代理", link: "/zh_cn/reverse_proxy.md" },
+            { text: "反向代理", link: "/zh_cn/reverse_proxy.md" },
             { text: "配置 HTTPS", link: "/zh_cn/proxy_https.md" },
           ],
         },
