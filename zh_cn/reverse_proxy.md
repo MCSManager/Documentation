@@ -6,7 +6,7 @@ MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的�
 **请确保你已经充分理解「面板通信原理」章节。**
 </tip>
 
-## 生成 SSL 证书
+## 1. 生成 SSL 证书
 
 可以在免费 SSL 的网站上，为自己的域名生成 90 天免费且可无限续签的证书：
 
@@ -17,12 +17,18 @@ MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的�
 
 > <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
 
-## 反向代理与证书配置
+## 2. 定位nginx.conf配置
+
+一般位于/etc/nginx/nginx.conf
+也可能根据发行版不同略有区别
+
+## 3. 反向代理与证书配置
 
 MCSManager 不支持直接配置证书并开启 HTTPS，需要依靠反向代理实现，这里以 `Nginx` 配置为例。
 
+
 ```nginx
-# 此配置以如下场景进行假定：
+#此配置以如下场景进行假定，可以自行根据实际需求调整端口或IP
 # Daemon 运行在本地地址 127.0.01.1:24444
 # Web 运行在本地地址 127.0.01.1:23333
 # 代理后 Daemon 端HTTPS端口：124444
@@ -55,7 +61,7 @@ http {
     gzip_min_length 1k;
 
     
-
+	#Daemon开启HTTPS
     server {
         # Daemon HTTPS端口. 代理完成后需使用此端口连接 Daemon.
         listen 12444 ssl ;
@@ -64,6 +70,8 @@ http {
 		# 一般情况下 如果12444仅此一个服务, 填错了也不要紧
         server_name domain.com;
 
+		# 解析DNS 仅在使用域名连接目标服务器时有效 一般无需更改
+		resolver 8.8.8.8;
         # 开始反向代理
         location / {
             # 填写Daemon端真正监听的端口号
@@ -80,23 +88,27 @@ http {
             add_header X-Cache $upstream_cache_status;
         }
     }
+	#Web开启HTTPS
     server {
         # Web HTTPS端口. 代理完成后需使用此端口连接 Web
         listen 12333 ssl ;
 		
-        # 访问时使用的域名或IP
+        # 访问时使用的域名或IP 
 		# 一般情况下 如果12333仅此一个服务, 填错了也不要紧
         server_name domain.com ;
 
-        # HTTP跳转到HTTPS
+        # HTTP跳转到HTTPS 一般无需更改
         error_page 497 https://$host:$server_port$request_uri;
-
-        # 开始反向代理
+		
+		# 解析DNS 仅在使用域名连接目标服务器时有效 一般无需更改
+		resolver 8.8.8.8;
+        # 开始反向代理 
         location / {
-            # 填写Web面板端真正监听的地址
+            # 填写Web面板端真正监听的地址,所有的请求将会被转发至此地址
+			# 根据实际需求此处可以使用非本机域名或IP,支持http与https协议
             proxy_pass http://127.0.01.1:23333 ;
 						
-            # 一些请求头 无需更改
+            # 一些请求头 一般无需更改
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
