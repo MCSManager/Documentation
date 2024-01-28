@@ -17,11 +17,32 @@ MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的�
 
 > <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
 
-## 2. 定位nginx.conf配置
+你也可以选择使用自签名SSL证书，注意自签名证书默认不被操作系统及浏览器信任，需要手动加入信任链。
+```使用OpenSSL生成自签名证书
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
+```
 
-一般位于/etc/nginx/nginx.conf
-也可能根据发行版不同略有区别
+## 2. 定位配置文件位置
+本教程以 `Nginx` 配置为例，如果使用`Apache`等其他软件则需要根据实际情况调整配置。
 
+Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略有区别。
+
+## 3. 准备证书链文件
+如果您使用自签名证书可忽略此步骤
+
+请准备以下文件:
+1. 已签发的证书，例如 ***domain.crt***.
+2. 签发证书的中级CA，可从签发机构网站下载。例如 ***ca.crt***.
+3. 已签发证书对应的私钥，例如 ***domain.key***.
+
+后续示例均将使用 ***domain.crt***, ***ca.crt***, ***domain.key*** 作为示例名。
+
+如果您使用`Nginx`反向代理, 使用任意编辑器打开 ***domain.crt*** 与 ***ca.crt*** , 并将 ***ca.crt*** 的内容复制到 ***domain.crt*** 文件最下方。\
+
+
+## 3. 根据需求配置反向代理
+在开始前请确保以下文件及配置准备完毕:
+1. 
 ## 3. 反向代理与证书配置
 
 MCSManager 不支持直接配置证书并开启 HTTPS，需要依靠反向代理实现，这里以 `Nginx` 配置为例。
