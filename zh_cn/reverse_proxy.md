@@ -28,12 +28,12 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3
 Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略有区别。
 
 ## 3. 准备证书链文件
-如果您使用自签名证书可忽略此步骤
+如果您使用自签名证书可忽略此步骤。
 
 请准备以下文件:
-1. 已签发的证书，例如 ***domain.crt***.
-2. 签发证书的中级CA，可从签发机构网站下载。例如 ***ca.crt***.
-3. 已签发证书对应的私钥，例如 ***domain.key***.
+1. 已签发的证书，例如 ***domain.crt***。
+2. 签发证书的中级CA，可从签发机构网站下载。例如 ***ca.crt***。
+3. 已签发证书对应的私钥，例如 ***domain.key***。
 
 后续示例均将使用 ***domain.crt***, ***ca.crt***, ***domain.key*** 作为示例名。
 
@@ -41,21 +41,21 @@ Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略
 
 ## 4. 准备反向代理配置文件
 在开始前请确保以下文件及配置准备完毕，可根据实际情况调整:
-1. 已配置好的证书链文件及路径: `/etc/nginx/ssl/domain.crt`.
-2. 已签发证书对应的私钥及路径: `/etc/nginx/ssl/domain.key`.
-3. Nginx配置文件位置: `/etc/nginx/nginx.conf`.
-4. 未开启SSL的Daemon地址及端口: `127.0.0.1:24444`.
-4. 未开启SSL的Web地址及端口: `127.0.0.1:23333`.
-5. 即将开启的Daemon HTTPS端口: `12444`.
-6. 即将开启的Web HTTPS端口: `12333`.
-7. [***如使用域名***] 域名已正确解析到IP.
-8. 防火墙或端口映射已放行端口`12444`与`12333`.
+1. 已配置好的证书链文件及路径: `/etc/nginx/ssl/domain.crt`。
+2. 已签发证书对应的私钥及路径: `/etc/nginx/ssl/domain.key`。
+3. Nginx配置文件位置: `/etc/nginx/nginx.conf`。
+4. 未开启SSL的Daemon地址及端口: `127.0.0.1:24444`。
+4. 未开启SSL的Web地址及端口: `127.0.0.1:23333`。
+5. 即将开启的Daemon HTTPS端口: `12444`。
+6. 即将开启的Web HTTPS端口: `12333`。
+7. [***如使用域名***] 域名已正确解析到IP。
+8. 防火墙或端口映射已放行端口`12444`与`12333`。
 
 ## 5. 为Daemon开启反向代理
 以下为示例配置，您可根据实际情况更改端口或调整配置。\
 更改完成后保存为`daemon_https.conf`文件并放入`/etc/nginx/sites-enabled`目录.\
-您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前).\
-如果您有多个Daemon，只需以不同的端口与地址重复添加下列配置即可.
+您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。\
+如果您有多个Daemon，只需以不同的端口与地址重复添加下列配置即可。
 ```Daemon开启HTTPS反向代理
 #MCSM Daemon Sample Reverse Proxy HTTPS
 server
@@ -125,8 +125,8 @@ server
 
 ## 6. 为Web开启反向代理
 以下为示例配置，您可根据实际情况更改端口或调整配置。\
-更改完成后保存为`web_https.conf`文件并放入`/etc/nginx/sites-enabled`目录.\
-您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前).
+更改完成后保存为`web_https.conf`文件并放入`/etc/nginx/sites-enabled`目录。\
+您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。
 ```Web开启HTTPS反向代理
 #MCSM Wev Sample Reverse Proxy HTTPS
 server
@@ -196,13 +196,13 @@ server
 ```
 
 ## 7. 确认反向代理生效
-当您完成上述配置添加后，可以使用命令```sudo nginx -t```来测试配置是否存在问题.
+当您完成上述配置添加后，可以使用命令```sudo nginx -t```来测试配置是否存在问题。
 ```示例输出
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-测试成功后使用命令```sudo nginx -s reload``` 来使Nginx配置生效.
+测试成功后使用命令```sudo nginx -s reload``` 来使Nginx配置生效。
 ```示例输出
 2024/01/27 22:57:17 [notice] 4826#4826: signal process started
 ```
@@ -215,10 +215,10 @@ Daemon: https://domain.com:12444/
 ```
 
 
-使用Daemon连接通过浏览器访问。如果您看到网页显示下列内容，则Daemon反代已正确配置.
+使用Daemon连接通过浏览器访问。如果您看到网页显示下列内容，则Daemon反代已正确配置。
 > [MCSManager Daemon] Status: OK | reference: https://mcsmanager.com/
 
-使用Web连接通过浏览器访问。如果您看到网页显示出MCSM登陆页面，则Web反代已正确配置.
+使用Web连接通过浏览器访问。如果您看到网页显示出MCSM登陆页面，则Web反代已正确配置。
 
 ## 8. 配置MCSM使用HTTPS连接
 此时如果你访问网页，你会发现你可以登录并且使用面板。
