@@ -53,7 +53,8 @@ Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略
 
 ## 5. 为Daemon开启HTTPS反向代理
 以下为示例配置，您可根据实际情况更改端口或调整配置。更改完成后保存为`daemon_https.conf`文件并放入`/etc/nginx/sites-enabled`目录.\
-您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前).
+您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前).\
+如果您有多个Daemon，只需以不同的端口与地址重复添加下列配置即可.
 ```Daemon开启HTTPS反向代理
 #MCSM Daemon Sample Reverse Proxy HTTPS
 server
@@ -62,11 +63,11 @@ server
 		listen 12333 ssl http2; #IPV4
 		listen [::]:12333 ssl http2; #IPv6
 		
-		# 开启HSTS 开启后将强制使用HTTPS连接 daemon 并在取消此策略后持续一年除非在浏览器手动清楚策略。
+		# 开启HSTS 开启后将强制使用HTTPS连接 Daemon 并在取消此策略后持续一年除非在浏览器手动清楚策略。
 		# 默认未开启，可取消注释开启.
 		#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 		
-		# DNS服务器，仅在目标daemon需要使用域名连接时需要。
+		# DNS服务器，仅在目标Daemon需要使用域名连接时需要。
 		resolver 8.8.8.8;	
 		
 		# 自动重定向HTTP连接至HTTPS
@@ -124,6 +125,95 @@ server
 ## 6. 为Web开启HTTPS反向代理
 以下为示例配置，您可根据实际情况更改端口或调整配置。更改完成后保存为`web_https.conf`文件并放入`/etc/nginx/sites-enabled`目录.\
 您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前).
+```Wev开启HTTPS反向代理
+#MCSM Wev Sample Reverse Proxy HTTPS
+server
+    {
+		# Web 端公网HTTPS端口（可用多个listen监听多个端口）
+		listen 12444 ssl http2; #IPV4
+		listen [::]:12444 ssl http2; #IPv6
+		
+		# 开启HSTS 开启后将强制使用HTTPS连接 Web 并在取消此策略后持续一年除非在浏览器手动清楚策略。
+		# 默认未开启，可取消注释开启.
+		#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+		
+		# DNS服务器，仅在目标Web需要使用域名连接时需要。
+		resolver 8.8.8.8;	
+		
+		# 自动重定向HTTP连接至HTTPS
+		error_page 497 https://$host:$server_port$request_uri;		
+
+		proxy_hide_header Upgrade;		
+		location / {
+				# 请求头 一般无需更改
+				proxy_set_header Host $host;
+				proxy_set_header X-Real-Ip $remote_addr;
+				proxy_set_header X-Forwarded-For $remote_addr;
+				proxy_set_header REMOTE-HOST $remote_addr;
+				
+				#目标Web的地址与端口。支持使用域名及https连接。
+				proxy_pass http://127.0.0.1:23333;
+				
+				# 支持反代 WebSocket
+				proxy_set_header Upgrade $http_upgrade;
+				proxy_set_header Connection "upgrade";
+				
+				# 最大文件上传大小限制。设置0为不限制
+				client_max_body_size 0;
+				
+				# 关闭缓存
+				proxy_request_buffering off;
+				proxy_buffering off;
+				  }
+				  
+		# HTTPS 证书与私钥位置
+		ssl_certificate /etc/nginx/ssl/domain.crt;
+		ssl_certificate_key /etc/nginx/ssl/domain.key;
+		
+		# 传输时默认开启gzip压缩
+		gzip on;
+		
+		# 传输时会被压缩的类型（应当依据文件压缩效果添加）
+		gzip_types text/plain text/css application/javascript application/xml application/json;
+		
+		# 反向代理时，启用压缩
+		gzip_proxied any;
+		
+		# 传输时压缩等级，等级越高压缩消耗CPU越多，最高9级，通常5级就够了
+		gzip_comp_level 5;
+		
+		# 传输时大小达到1k才压缩，压缩小内容无意义
+		gzip_min_length 1k;
+		
+		# 支持协议、算法与超时时间等 一般无需更改
+		ssl_session_timeout 5m;
+		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+		ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+		ssl_prefer_server_ciphers on;
+    }
+```
+
+## 7. 确认反向代理生效
+当您完成上述配置添加后，可以使用命令```sudo nginx -t```来测试配置是否存在问题.
+```示例输出
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+
+测试成功后使用命令```sudo nginx -s reload``` 来使Nginx配置生效.
+```示例输出
+2024/01/27 22:57:17 [notice] 4826#4826: signal process started
+```
+
+使用浏览器，通过HTTPS协议访问您准备好的域名与端口。
+
+Daemon： https://domain.com:12444/ \
+如果您看到网页显示下列内容，则Daemon反代已正确配置.
+> [MCSManager Daemon] Status: OK | reference: https://mcsmanager.com/
+
+
+Web： https://domain.com:12333/ \
+如果您看到网页显示出MCSM登陆页面，则Web反代已正确配置.
 
 
 ## 3. 反向代理与证书配置
