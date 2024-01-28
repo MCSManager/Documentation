@@ -57,7 +57,7 @@ Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略
 您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。\
 如果您有多个节点，只需以不同的端口与地址重复添加下列配置即可。
 ```节点开启HTTPS反向代理
-#MCSM Daemon Sample Reverse Proxy HTTPS
+# MCSM节点端开启HTTPS反向代理
 server
     {
 		# 节点 公网HTTPS端口(可用多个listen监听多个端口)
@@ -128,7 +128,7 @@ server
 更改完成后保存为`web_https.conf`文件并放入`/etc/nginx/sites-enabled`目录。\
 您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。
 ```面板开启HTTPS反向代理
-#MCSM Wev Sample Reverse Proxy HTTPS
+# MCSM面板端开启HTTPS反向代理
 server
     {
 		# 面板端公网HTTPS端口(可用多个listen监听多个端口)
