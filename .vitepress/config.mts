@@ -60,11 +60,15 @@ export default defineConfig({
               ],
             },
             {
+              text: "使用 Docker 镜像部署",
+              link: "/zh_cn/setup_docker_image.md",
+            },
+            {
               text: "搭建 Steam 游戏服务器",
               link: "/zh_cn/setup_steam.md",
             },
             {
-              text: "部署任意控制台程序",
+              text: "其他使用场景",
               link: "/zh_cn/setup_any_software.md",
             },
           ],
