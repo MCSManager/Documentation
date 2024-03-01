@@ -112,6 +112,7 @@ export default defineConfig({
           items: [
             { text: "制作卡片组件", link: "/zh_cn/html_card.md" },
             { text: "获取 APIKEY", link: "/zh_cn/get_apikey.md" },
+            { text: "API 接口参考", link: "/apis/users.html" },
           ],
         },
       ],

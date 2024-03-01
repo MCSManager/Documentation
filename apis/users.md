@@ -2,10 +2,10 @@
 
 ## Create User
 
-```js
+```http
 POST /api/auth
 
-Body Example:
+Request Body:
 {
   "username": "{{register_username}}",
   "password": "123456",
@@ -15,10 +15,10 @@ Body Example:
 
 ## Update User
 
-```js
+```http
 PUT /api/auth
 
-Body Example:
+Request Body:
 {
   "uuid": "{{uuid}}", // 目标用户的 UUID
   "config": {

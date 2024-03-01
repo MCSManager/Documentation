@@ -2,13 +2,13 @@
 
 ## Instance detail
 
-```js
+```http
 GET /api/instance?uuid={InstanceId}&remote_uuid={DaemonId}
 ```
 
 ## Delete
 
-```js
+```http
 DELETE /api/instance?uuid={InstanceId}&remote_uuid={DaemonId}
 
 Request Body:
@@ -20,7 +20,7 @@ Request Body:
 
 ## Create
 
-```js
+```http
 POST /api/instance?remote_uuid={DaemonId}
 
 Request Body:
@@ -68,7 +68,7 @@ Request Body:
 
 ## Update
 
-```js
+```http
 PUT /api/instance?uuid={InstanceId}&remote_uuid={DaemonId}
 
 Request Body:
@@ -118,37 +118,37 @@ Request Body:
 
 ## Start
 
-```js
+```http
 GET /api/protected_instance/open?uuid={InstanceId}&remote_uuid={DaemonId}
 ```
 
 ## Stop
 
-```js
+```http
 GET /api/protected_instance/stop?uuid={InstanceId}&remote_uuid={DaemonId}
 ```
 
 ## Restart
 
-```js
+```http
 GET /api/protected_instance/restart?uuid={InstanceId}&remote_uuid={DaemonId}
 ```
 
 ## Kill
 
-```js
+```http
 GET /api/protected_instance/kill?uuid={InstanceId}&remote_uuid={DaemonId}
 ```
 
 ## Send Command
 
-```js
+```http
 GET /api/protected_instance/command?uuid={InstanceId}&remote_uuid={DaemonId}&command={command}
 ```
 
 ## Get output
 
-```js
+```http
 GET /api/protected_instance/outputlog?uuid={InstanceId}&remote_uuid={DaemonId}&size={128}
 
 // Size: 1KB ~ 2048KB
