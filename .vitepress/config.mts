@@ -31,6 +31,20 @@ export default defineConfig({
             { text: "Installation Panel", link: "/install.md" },
           ],
         },
+        {
+          text: "API Reference",
+          collapsed: true,
+          items: [
+            {
+              text: "Users",
+              link: "/apis/users.md",
+            },
+            {
+              text: "Instances",
+              link: "/apis/instance.md",
+            },
+          ],
+        },
         { text: "其他菜单不着急，等中文写完", link: "/demo.md" },
       ],
       ["/zh_cn/"]: [
@@ -42,7 +56,7 @@ export default defineConfig({
               link: "/zh_cn/index.md",
             },
             {
-              text: "搭建 Minecraft 服务器",
+              text: "搭建 Minecraft 游戏服务器",
               collapsed: true,
               items: [
                 {
@@ -60,7 +74,7 @@ export default defineConfig({
               ],
             },
             {
-              text: "使用 Docker 镜像部署",
+              text: "使用 Docker 部署游戏服务器",
               link: "/zh_cn/setup_docker_image.md",
             },
             {
@@ -90,13 +104,15 @@ export default defineConfig({
           items: [
             { text: "数据与配置", link: "/zh_cn/config_files.md" },
             { text: "面板通信原理", link: "/zh_cn/mcsm_network.md" },
-            { text: "反向代理", link: "/zh_cn/reverse_proxy.md" },
-            { text: "配置 HTTPS", link: "/zh_cn/proxy_https.md" },
+            { text: "使用 HTTPS", link: "/zh_cn/proxy_https.md" },
           ],
         },
         {
           text: "开发",
-          items: [{ text: "制作卡片组件", link: "/zh_cn/html_card.md" }],
+          items: [
+            { text: "制作卡片组件", link: "/zh_cn/html_card.md" },
+            { text: "获取 APIKEY", link: "/zh_cn/get_apikey.md" },
+          ],
         },
       ],
     },

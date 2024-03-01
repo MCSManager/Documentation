@@ -1,16 +1,14 @@
 # 快速开始
 
-MCSManager 是一个分布式，稳定可靠，开箱即用，高扩展性，支持 `Minecraft`，`Steam 游戏服务器` 和 `所有控制台程序`的控制面板。
+MCSManager 开源，分布式，一键部署，支持 `Minecraft` 和 `Steam 游戏服务器` 的控制面板。
 
 此软件在 `Minecraft` 和 `其他游戏` 社区内中已有一定的流行程度，它可以帮助你集中管理多个物理服务器，动态在任何主机上创建游戏服务端，并且提供安全可靠的多用户权限系统，可以很轻松的帮助你管理多个服务器。
 
 ### 环境要求
 
-默认情况下，一键安装脚本应该已经包含一切所需环境。
+默认情况下，一键安装脚本应该已经包含一切所需环境。如果是手动安装的情况下，您需满足 `Node 16+` 运行时环境
 
-手动安装的情况下，您需满足 `Node 16+` 运行时环境
-
-Node 环境下载前往：[https://nodejs.org/zh-cn/](https://nodejs.org/zh-cn/)
+> Node 环境下载前往：[https://nodejs.org/zh-cn/](https://nodejs.org/zh-cn/)
 
 ## 安装面板
 
@@ -24,7 +22,7 @@ wget -qO- https://gitee.com/mcsmanager/script/raw/master/setup_cn.sh | bash
 
 ### Windows
 
-[下载 ZIP 文件](http://oss.duzuii.com/MCSManager/MCSManager-ZH)即可，无任何安装依赖，不污染注册表。
+仅需[下载 ZIP 文件](http://oss.duzuii.com/MCSManager/MCSManager-ZH)解压后即可运行，无任何安装依赖，不污染注册表。
 
 ## 启动面板
 
