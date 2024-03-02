@@ -44,8 +44,6 @@ If you used the installation script to install, the default file path is:
 
 You can customise the connection protocol when filling in the `connection address' using `ws://x.x.x.x' or `wss://x.x.x.x'. Or just type the IP address or domain in the blank.
 
-`ws` 对于 `http`，`wss` 对应 `https`。
-
 `ws` refer to `http`, `wss` refer to `https`.
 
 > If you don't know what it is, just type the IP address or domain without any decorations.

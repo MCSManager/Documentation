@@ -18,7 +18,7 @@ Description=MCSManager Daemon
 
 [Service]
 WorkingDirectory=/opt/mcsmanager/daemon
-ExecStart=<NodeJS安装路径>/bin/node app.js
+ExecStart=<NodeJS installation path>/bin/node app.js
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
@@ -35,7 +35,7 @@ Description=MCSManager Web
 
 [Service]
 WorkingDirectory=/opt/mcsmanager/web
-ExecStart=<NodeJS安装路径>/bin/node app.js
+ExecStart=<NodeJS installation path>/bin/node app.js
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
