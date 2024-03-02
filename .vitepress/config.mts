@@ -32,6 +32,28 @@ export default defineConfig({
           ],
         },
         {
+          text: "Advanced",
+          collapsed: false,
+          items: [
+            {
+              text: "Upgrade & Reset Panel",
+              link: "/advanced/update_panel.md",
+            },
+            {
+              text: "Distributed",
+              link: "/advanced/distributed.md",
+            },
+            {
+              text: "Enviromental isolation",
+              link: "/advanced/docker.md",
+            },
+            {
+              text: "Systemd service (Linux)",
+              link: "/advanced/linux_systemctl.md",
+            },
+          ]
+        },
+        {
           text: "API Reference",
           collapsed: true,
           items: [
@@ -45,7 +67,6 @@ export default defineConfig({
             },
           ],
         },
-        { text: "其他菜单不着急，等中文写完", link: "/demo.md" },
       ],
       ["/zh_cn/"]: [
         {
@@ -90,21 +111,33 @@ export default defineConfig({
         {
           text: "高级",
           items: [
-            { text: "更新与重置", link: "/zh_cn/update_panel.md" },
-            { text: "分布式", link: "/zh_cn/distributed.md" },
-            { text: "环境隔离", link: "/zh_cn/docker.md" },
+            { 
+              text: "更新与重置", 
+              link: "/zh_cn/advanced/update_panel.md" },
+            { 
+              text: "分布式", 
+              link: "/zh_cn/advanced/distributed.md" },
+            { 
+              text: "环境隔离", 
+              link: "/zh_cn/advanced/docker.md" },
             {
               text: "系统服务",
-              link: "/zh_cn/linux_systemctl.md",
+              link: "/zh_cn/advanced/linux_systemctl.md",
             },
           ],
         },
         {
           text: "运维",
           items: [
-            { text: "数据与配置", link: "/zh_cn/config_files.md" },
-            { text: "面板通信原理", link: "/zh_cn/mcsm_network.md" },
-            { text: "使用 HTTPS", link: "/zh_cn/proxy_https.md" },
+            { 
+              text: "数据与配置", 
+              link: "/zh_cn/config_files.md" },
+            { 
+              text: "面板通信原理", 
+              link: "/zh_cn/mcsm_network.md" },
+            { 
+              text: "使用 HTTPS", 
+              link: "/zh_cn/proxy_https.md" },
           ],
         },
         {
