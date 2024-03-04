@@ -1,7 +1,7 @@
 # 配置 HTTPS
 
 <tip>
-MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的，需要大量的专业开发知识，如果您没有如此之高的安全性要求，那么请不要尝试配置 HTTPS。
+MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的，需要大量的专业开发知识，如果你没有如此之高的安全性要求，那么请不要尝试配置 HTTPS。
 
 **请确保你已经充分理解「面板通信原理」章节。**
 </tip>
@@ -28,7 +28,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3
 Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略有区别。
 
 ## 3. 准备证书链文件
-如果您使用自签名证书可忽略此步骤。
+如果你使用自签名证书可忽略此步骤。
 
 请准备以下文件:
 1. 已签发的证书，例如 ***domain.crt***。
@@ -37,7 +37,7 @@ Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略
 
 后续示例均将使用 ***domain.crt***, ***ca.crt***, ***domain.key*** 作为示例名。
 
-如果您使用`Nginx`反向代理, 使用任意编辑器打开 ***domain.crt*** 与 ***ca.crt*** , 并将 ***ca.crt*** 的内容复制到 ***domain.crt*** 文件最下方。
+如果你使用`Nginx`反向代理, 使用任意编辑器打开 ***domain.crt*** 与 ***ca.crt*** , 并将 ***ca.crt*** 的内容复制到 ***domain.crt*** 文件最下方。
 
 ## 4. 准备反向代理配置文件
 在开始前请确保以下文件及配置准备完毕，可根据实际情况调整:
@@ -52,10 +52,10 @@ Nginx配置一般位于`/etc/nginx/nginx.conf` 也可能根据发行版不同略
 8. 防火墙或端口映射已放行端口`12444`与`12333`。
 
 ## 5. 为节点开启反向代理
-以下为示例配置，您可根据实际情况更改端口或调整配置。\
+以下为示例配置，你可根据实际情况更改端口或调整配置。\
 更改完成后保存为`daemon_https.conf`文件并放入`/etc/nginx/sites-enabled`目录.\
-您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。\
-如果您有多个节点，只需以不同的端口与地址重复添加下列配置即可。
+你也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。\
+如果你有多个节点，只需以不同的端口与地址重复添加下列配置即可。
 ```节点开启HTTPS反向代理
 # MCSM节点端开启HTTPS反向代理
 server
@@ -124,9 +124,9 @@ server
 ```
 
 ## 6. 为面板开启反向代理
-以下为示例配置，您可根据实际情况更改端口或调整配置。\
+以下为示例配置，你可根据实际情况更改端口或调整配置。\
 更改完成后保存为`web_https.conf`文件并放入`/etc/nginx/sites-enabled`目录。\
-您也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。
+你也可以将配置直接放入`nginx.conf`文件末尾(最后一个大括号前)。
 ```面板开启HTTPS反向代理
 # MCSM面板端开启HTTPS反向代理
 server
@@ -196,7 +196,7 @@ server
 ```
 
 ## 7. 确认反向代理生效
-当您完成上述配置添加后，可以使用命令```sudo nginx -t```来测试配置是否存在问题。
+当你完成上述配置添加后，可以使用命令```sudo nginx -t```来测试配置是否存在问题。
 ```示例输出
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -215,10 +215,10 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
 
-使用节点地址通过浏览器访问。如果您看到网页显示下列内容，则节点反代已正确配置。
+使用节点地址通过浏览器访问。如果你看到网页显示下列内容，则节点反代已正确配置。
 > [MCSManager Daemon] Status: OK | reference: https://mcsmanager.com/
 
-使用面板地址通过浏览器访问。如果您看到网页显示出MCSM登陆页面，则面板反代已正确配置。
+使用面板地址通过浏览器访问。如果你看到网页显示出MCSM登陆页面，则面板反代已正确配置。
 
 ## 8. 配置MCSM使用HTTPS连接
 此时如果你访问网页，你会发现你可以登录并且使用面板。
@@ -233,4 +233,4 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 配置完成后，使用 `wss://localhost`，`wss://123.x.x.x` 或 `wss://domain.com` 替换原有的`localhost`，`123.x.x.x` 或 `domain.com`即可。
 
-恭喜，至此您已成功为您的面板启用了HTTPS。
+恭喜，至此你已成功为你的面板启用了HTTPS。

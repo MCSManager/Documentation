@@ -1,12 +1,13 @@
 # 搭建 Steam 游戏服务器
 
 <tip>
-如果您<b>是 Linux 服务器</b>，我们推荐你使用 Docker 镜像来部署你的 Steam 游戏服务器，请参考「使用 Docker 镜像部署」章节。
+如果你<b>是 Linux 服务器</b>，我们推荐你使用 Docker 镜像来部署你的 Steam 游戏服务器，请参考「使用 Docker 镜像部署」章节。
 </tip>
 
 ## 下载 Steam 服务器程序
 
-`SteamCMD` 程序可以帮助您快速建立 Steam 游戏服务器，MCSManager 面板也依赖它来运行 Steam 游戏服务器。
+
+无论你是想架设 `Palworld`，`CSGO2`，`ARK` 还是其他 Steam 游戏，官方提供的 `SteamCMD` 命令行工具都可以帮助你快速建立 Steam 游戏服务器，MCSManager 面板也依赖它来运行 Steam 游戏服务器。
 
 - [下载 Windows 版 SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD#Windows)
 
@@ -36,4 +37,6 @@
 
 ## 设置到 MCSManager
 
-将刚刚 `steamcmd...` 命令写到 MCSManager `实例设置` 的 `更新命令`，在 `终端` 界面操作中找到 `更新` 操作即可运行此命令，实现任何 Steam 游戏服务器的安装。
+将刚刚 `steamcmd...` 命令写到 MCSManager `实例设置` 的 `更新命令`，在 `控制台` 网页中找到 `更新` 按钮即可运行此命令，从而安装你的 Steam 游戏服务器。
+
+最后，只需轻点 `开启` 按钮，即可运行你的 Steam 游戏服务器。
