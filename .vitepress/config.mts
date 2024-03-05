@@ -15,7 +15,7 @@ export default defineConfig({
     zh_cn: {
       label: "简体中文",
       lang: "zh",
-      link: "/zh_cn",
+      link: "/zh_cn/",
     },
   },
   themeConfig: {
@@ -23,12 +23,20 @@ export default defineConfig({
     sidebar: {
       ["/"]: [
         {
-          text: "Quick Start",
+          text: "Installation",
           link: "/zh_cn/index.md",
           collapsed: true,
           items: [
-            { text: "What is this", link: "/index.md" },
-            { text: "Installation Panel", link: "/install.md" },
+            { text: "Quick start", link: "/index.md" },
+            {
+              text: "Setup Minecraft Server",
+              collapsed: false,
+              items: [
+                { text: "Package (Java) ", link: '/setup_package' },
+                { text: "Java Edition", link: '/setup_java_edition' },
+                { text: "Bedrock Edition", link: '/setup_bedrock_edition' },
+              ]
+            }
           ],
         },
         {
@@ -82,15 +90,15 @@ export default defineConfig({
               items: [
                 {
                   text: "一键搭建 Java 版",
-                  link: "/zh_cn/setup_minecraft_1.md",
+                  link: "/zh_cn/setup_package.md",
                 },
                 {
                   text: "搭建 Java 版",
-                  link: "/zh_cn/setup_minecraft_2.md",
+                  link: "/zh_cn/setup_java_edition.md",
                 },
                 {
                   text: "搭建基岩版",
-                  link: "/zh_cn/setup_minecraft_3.md",
+                  link: "/zh_cn/setup_bedrock_edition.md",
                 },
               ],
             },
