@@ -36,7 +36,19 @@ export default defineConfig({
                 { text: "Java Edition", link: '/setup_java_edition' },
                 { text: "Bedrock Edition", link: '/setup_bedrock_edition' },
               ]
-            }
+            },
+            {
+              text: "Setup Docker Images",
+              link: "/setup_docker_image.md",
+            },
+            {
+              text: "Setup Steam Game Server",
+              link: "/setup_steam.md",
+            },
+            {
+              text: "Other Situation",
+              link: "/setup_any_software.md",
+            },
           ],
         },
         {

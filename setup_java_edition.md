@@ -1,8 +1,8 @@
 # Setup Java Edition Server
 
-<tip>
-This section assumes that you already have JRE installed. If you have any questions, see Setup packages.
-</tip>
+::: tip
+This section assumes that you already have JRE installed. If you have any questions, see [Setup Packages](/setup_package.md).
+:::
 
 ## Download JE server core
 
@@ -20,30 +20,30 @@ We will use Paper core as an example. Here are some popular versions
 
 ## Deploy
 
-点击顶部 `应用实例` 按钮，选择 `Minecraft Java 版游戏服务器` ，选择需要部署的 `节点`，选择 `上传单个服务端软件` ，上传你下载的 `jar` 格式文件。
+Create an Instance by clicking the `Create` button on the Instance page. When you create your instance, you can select the server(daemon) you want to deploy to and manage your instance files. Don't forget to select `Mincraft Server (Java)` when creating your instance.
 
-在实例 `启动命令` 处填写：
+- Startup Command
 
 ```bash
-java -Dfile.encoding=UTF-8 -jar "刚刚下载的jar文件名，例如：paper-1.19.4-516.jar"
+java -Dfile.encoding=UTF-8 -jar "paper-<version>.jar"
 ```
 
 <tip>
-启动命令还有更多有趣的玩法，后续你可以自己探索。
+The startup command has many different uses and args, which you can discover for yourself.
 </tip>
 
-<br />
+---
 
-## 启动服务器
+## Start server
 
-在创建完毕后对页面进入 `实例控制台` 或点击顶部的 `应用实例`，再点击应用实例进入并启动它。
+After creating the instance, navigate to the instance console and start it by clicking the 'start' button located in the top-right corner.
 
-最后，你的服务器应该会正常运行。
+## ELUA
 
-<br />
+::: warning
+If you do not agree to the End-User License Agreement (ELUA), you will not be able to set up your server.
+:::
 
-## 同意 EULA 协议
+To start the server for the first time, you must accept the `End-User License Agreement (EULA)`. To accept ELUA, go to `configuration files`, and you will see `elua.txt`, click `edit` and select `yes`.
 
-第一次启动很有可能会启动失败，会有类似于 `EULA` 等字样的错误，这个是你需要更改一个 `txt` 文件来代表你同意最终用户协议。
-
-点击功能组的 `服务端配置文件` 选项，将 `eula.txt` 的选项从 `否` 改为 `是`，保存文件
+If you do not see this file, start your server once.

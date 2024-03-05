@@ -31,12 +31,12 @@ If you are unsure, ask the developer about which JRE version your plugins suppor
 Please ensure that you have installed the correct version of JRE. You can check if it has been installed successfully by using the command "java -version".
 </tip>
 
-- Go to the Instance page and click the `Create` button to create a new instance.
-- Select `Minecraft Server (Java)`.
-- Select the machine (node) where you would like to deploy the server.
-- Select one pre-build package, and click install. Then fill blanks.
-- Wait for installation, and open Instance terminal.
-- Click `start` button on the top-right.
+1. Go to the Instance page and click the `Create` button to create a new instance.
+2. Select `Minecraft Server (Java)`.
+3. Select the machine (node) where you would like to deploy the server.
+4. Select one pre-build package, and click install. Then fill blanks.
+5. Wait for installation, and open Instance terminal.
+6. Click `start` button on the top-right.
 
 After you have seen this, the server should have started successfully.
 
