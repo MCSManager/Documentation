@@ -1,4 +1,4 @@
-# Use Docker Image
+# Setup Game Server via Docker Image
 
 ## Select a Docker Image
 

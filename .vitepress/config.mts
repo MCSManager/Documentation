@@ -32,13 +32,13 @@ export default defineConfig({
               text: "Setup Minecraft Server",
               collapsed: false,
               items: [
-                { text: "Package (Java) ", link: '/setup_package' },
-                { text: "Java Edition", link: '/setup_java_edition' },
-                { text: "Bedrock Edition", link: '/setup_bedrock_edition' },
-              ]
+                { text: "Quick Install", link: "/setup_package" },
+                { text: "Java Edition", link: "/setup_java_edition" },
+                { text: "Bedrock Edition", link: "/setup_bedrock_edition" },
+              ],
             },
             {
-              text: "Setup Docker Images",
+              text: "Setup Docker Image",
               link: "/setup_docker_image.md",
             },
             {
@@ -46,7 +46,7 @@ export default defineConfig({
               link: "/setup_steam.md",
             },
             {
-              text: "Other Situation",
+              text: "Other Use Cases",
               link: "/setup_any_software.md",
             },
           ],
@@ -71,7 +71,7 @@ export default defineConfig({
               text: "Systemd service (Linux)",
               link: "/advanced/linux_systemctl.md",
             },
-          ]
+          ],
         },
         {
           text: "API Reference",
@@ -131,15 +131,18 @@ export default defineConfig({
         {
           text: "高级",
           items: [
-            { 
-              text: "更新与重置", 
-              link: "/zh_cn/advanced/update_panel.md" },
-            { 
-              text: "分布式", 
-              link: "/zh_cn/advanced/distributed.md" },
-            { 
-              text: "环境隔离", 
-              link: "/zh_cn/advanced/docker.md" },
+            {
+              text: "更新与重置",
+              link: "/zh_cn/advanced/update_panel.md",
+            },
+            {
+              text: "分布式",
+              link: "/zh_cn/advanced/distributed.md",
+            },
+            {
+              text: "环境隔离",
+              link: "/zh_cn/advanced/docker.md",
+            },
             {
               text: "系统服务",
               link: "/zh_cn/advanced/linux_systemctl.md",
@@ -149,15 +152,18 @@ export default defineConfig({
         {
           text: "运维",
           items: [
-            { 
-              text: "数据与配置", 
-              link: "/zh_cn/config_files.md" },
-            { 
-              text: "面板通信原理", 
-              link: "/zh_cn/mcsm_network.md" },
-            { 
-              text: "使用 HTTPS", 
-              link: "/zh_cn/proxy_https.md" },
+            {
+              text: "数据与配置",
+              link: "/zh_cn/config_files.md",
+            },
+            {
+              text: "面板通信原理",
+              link: "/zh_cn/mcsm_network.md",
+            },
+            {
+              text: "使用 HTTPS",
+              link: "/zh_cn/proxy_https.md",
+            },
           ],
         },
         {

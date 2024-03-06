@@ -1,4 +1,4 @@
-# Setup Minecraft bedrock edition server
+# Setup Minecraft Bedrock Edition Server
 
 ## Enviroment requirments
 

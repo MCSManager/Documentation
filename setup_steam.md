@@ -1,4 +1,4 @@
-# Setup Steam game server
+# Setup Steam Game Server
 
 :::tip
 If you are using Linux, we recommend that you deploy the steam server using a Docker image. [More information](/setup_docker_image.md)

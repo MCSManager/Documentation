@@ -1,4 +1,4 @@
-# Set up a Minecraft Jave Edition(JE) server from pre-built packages
+# Quick Install Minecraft Server
 
 ## Install Java environment
 
