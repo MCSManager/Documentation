@@ -25,7 +25,7 @@ export default defineConfig({
         {
           text: "Installation",
           link: "/zh_cn/index.md",
-          collapsed: true,
+          collapsed: false,
           items: [
             { text: "Quick start", link: "/index.md" },
             {
@@ -70,6 +70,27 @@ export default defineConfig({
             {
               text: "Systemd service (Linux)",
               link: "/advanced/linux_systemctl.md",
+            },
+          ],
+        },
+        {
+          text: "OPS",
+          items: [
+            {
+              text: "Data & Configs",
+              link: "/ops/config_files.md",
+            },
+            {
+              text: "面板通信原理",
+              link: "/ops/mcsm_network.md",
+            },
+            {
+              text: "Use HTTPS",
+              link: "/ops/proxy_https.md",
+            },
+            {
+              text: "Use CloudFlare CDN",
+              link: "/ops/cloudflare.md"
             },
           ],
         },
@@ -154,15 +175,19 @@ export default defineConfig({
           items: [
             {
               text: "数据与配置",
-              link: "/zh_cn/config_files.md",
+              link: "/zh_cn/ops/config_files.md",
             },
             {
               text: "面板通信原理",
-              link: "/zh_cn/mcsm_network.md",
+              link: "/zh_cn/ops/mcsm_network.md",
             },
             {
               text: "使用 HTTPS",
-              link: "/zh_cn/proxy_https.md",
+              link: "/zh_cn/ops/proxy_https.md",
+            },
+            {
+              text: "使用 CloudFlare CDN",
+              link: "/zh_cn/ops/cloudflare.md"
             },
           ],
         },
