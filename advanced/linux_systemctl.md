@@ -1,8 +1,8 @@
 # Systemd service (Linux)
 
-<tip>
+:::tip
 If you used the installation script to install, the information on this page is not relevant to you. This is because the installation script has already done this for you.
-</tip>
+:::
 
 As we all know, we can use ssh client to visit Linux server and start programs, but when ssh is stopped, program will stop too. If we want to let MCSManager run for a long time on Linux server, then we can write into a service and let it run in background.
 

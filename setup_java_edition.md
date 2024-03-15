@@ -28,9 +28,9 @@ Create an Instance by clicking the `Create` button on the Instance page. When yo
 java -Dfile.encoding=UTF-8 -jar "paper-<version>.jar"
 ```
 
-<tip>
+:::tip
 The startup command has many different uses and args, which you can discover for yourself.
-</tip>
+:::
 
 ---
 

@@ -1,6 +1,6 @@
 # 使用 Cloudflare 代理
 
-:::warning
+:::tip
 **在阅读本章节之前请充分理解[「面板通信原理」](/zh_cn/mcsm_network)和[「使用 HTTPS」](/zh_cn/proxy_https)章节。**
 本章节适用人群为 Cloudflare CDN 的使用者
 :::

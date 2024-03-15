@@ -11,11 +11,11 @@ Prior to running the JE server, it is necessary to install the Java Runtime Envi
 | Java17          |                           1.18.x                            |
 | Java17 or above |                  1.18.x & 1.19.x & 1.20.x                   |
 
-<tip>
+:::tip
 Avoid using JRE version 20 as it may cause errors.
 
 If you are unsure, ask the developer about which JRE version your plugins support.
-</tip>
+:::
 
 ### For Windows
 
@@ -27,9 +27,9 @@ If you are unsure, ask the developer about which JRE version your plugins suppor
 
 ## Setup with pre-build packages
 
-<tip>
+:::tip
 Please ensure that you have installed the correct version of JRE. You can check if it has been installed successfully by using the command "java -version".
-</tip>
+:::
 
 1. Go to the Instance page and click the `Create` button to create a new instance.
 2. Select `Minecraft Server (Java)`.
