@@ -36,7 +36,7 @@ Cloudflare 的 CDN 只支持以下端口作为 SSL 端口转发：
 请选择以上端口作为守护进程的转发端口
 :::
 
-```
+```nginx
 # /etc/nginx/nginx.conf
 http {
 

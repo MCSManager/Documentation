@@ -81,7 +81,7 @@ export default defineConfig({
               link: "/ops/config_files.md",
             },
             {
-              text: "面板通信原理",
+              text: "Panel Network Principle",
               link: "/ops/mcsm_network.md",
             },
             {

@@ -1,7 +1,7 @@
 # Use CloudFlare CDN
 
-:::warning
-**Before start reading this page, please make sure you understand [「面板通信原理」](/ops/mcsm_network) and [「Use HTTPS」](/ops/proxy_https).**
+:::tip
+**Before start reading this page, please make sure you understand [「Panel Network Principle」](/ops/mcsm_network) and [「Use HTTPS」](/ops/proxy_https).**
 This page is for Cloudflare users.
 :::
 
@@ -37,7 +37,7 @@ Cloudflare only support these ports for SSL
 
 :::
 
-```
+```nginx
 # /etc/nginx/nginx.conf
 # /etc/nginx/nginx.conf
 http {
