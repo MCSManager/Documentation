@@ -40,4 +40,4 @@ Please ensure that you have installed the correct version of JRE. You can check 
 
 After you have seen this, the server should have started successfully.
 
-![Successful Startup](../images/zh_cn/java_setup.png)
+![Successful Startup](images/java_setup.png)

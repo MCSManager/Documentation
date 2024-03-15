@@ -42,4 +42,4 @@
 
 右键新标签页打开可以放大。
 
-![分布式原理图](../images/zh_cn/distributed_principle.png)
+![分布式原理图](/images/zh_cn/distributed_principle.png)

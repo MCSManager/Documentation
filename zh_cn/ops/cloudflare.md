@@ -1,7 +1,7 @@
 # 使用 Cloudflare 代理
 
 :::tip
-**在阅读本章节之前请充分理解[「面板通信原理」](/zh_cn/mcsm_network)和[「使用 HTTPS」](/zh_cn/proxy_https)章节。**
+**在阅读本章节之前请充分理解[「面板通信原理」](./mcsm_network)和[「使用 HTTPS」](./proxy_https.md)章节。**
 本章节适用人群为 Cloudflare CDN 的使用者
 :::
 
@@ -104,4 +104,4 @@ systemctl restart nginx
 
 ## 访问面板和建立 WSS 协议连接
 
-请根据[使用 HTTPS](/zh_cn/proxy_https)访问面板和建立 WSS 连接
+请根据[使用 HTTPS](./proxy_https)访问面板和建立 WSS 连接
