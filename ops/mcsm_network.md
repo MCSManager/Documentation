@@ -1,4 +1,4 @@
-# Network Principles
+# Network Architecture
 
 :::tip
 If you want a proper reverse proxy, you have to first understand how MCSManager manages its network traffic. On this page, we briefly discussed the network principle of MCSManager. 
