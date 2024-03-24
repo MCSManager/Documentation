@@ -74,7 +74,7 @@ export default defineConfig({
           ],
         },
         {
-          text: "OPS",
+          text: "Operations",
           items: [
             {
               text: "Data & Configs",
@@ -99,7 +99,7 @@ export default defineConfig({
           ],
         },
         {
-          text: "API Reference",
+          text: "Development",
           collapsed: true,
           items: [
             {
@@ -109,6 +109,10 @@ export default defineConfig({
             {
               text: "Instances",
               link: "/apis/instance.md",
+            },
+			{
+              text: "Customize HTML Card",
+              link: "/apis/html_card.md",
             },
           ],
         },
