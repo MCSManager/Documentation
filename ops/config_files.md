@@ -1,6 +1,6 @@
-# Data & Config
+# Data & Configs
 
-## Config
+## Configurations
 
 ### Web UI
 
@@ -9,9 +9,9 @@
 ```json
 {
   "httpPort": 23333, // Web UI listening port
-  "httpIp": null, // Bind IP address, available for multiple netcard
+  "httpIp": null, // Bind IP address, can be useful with multiple NICs
   "crossDomain": true, // Allow cross origin
-  "gzip": false, // allow gzip decompression
+  "gzip": false, // enable gzip decompression
   "loginCheckIp": false, // Block IP address after too many login attemps
   "loginInfo": "foo", // Login UI hint
   "canFileManager": true, // Allow all users to use file management
@@ -22,30 +22,32 @@
   "dataPort": 23334, // Abandoned
   "forwardType": 1, // Abandoned
   "zipType": 1, // Abandoned
-  "maxCompress": 1, // Abandoned
-  "maxDownload": 10 // Abandoned
+  "maxCompress": 1, // Max number of concurrent compression tasks, Abandoned.
+  "maxDownload": 10 // Max number of concurrent downloading tasks, Abandoned.
 }
 ```
 
-### Node
+### Daemon
 
 `<Daemon Installation Path>/data/Config/global.json`
 
 ```json
 {
   "version": 2,
-  "ip": "", // Bind IP address, available for multiple netcard
+  "ip": "", // Bind IP address, can be useful with multiple NICs
   "port": 24444, // Daemon listening port
   "key": "c043e149c9bc44d922ea3be6ff6406abc7b778981c3feb6", // Daemon key
-  "maxFileTask": 2, // Maximum decompression task per instance
-  "maxZipFileSize": 60, // Maximum decompression file size, unit GB
+  "maxFileTask": 2, // Max concurrent decompression tasks per instance
+  "maxZipFileSize": 60, // Max allowed file size for decompression in GB
   "language": "zh_cn", // daemon language
-  "defaultInstancePath": "" // Daemon storage path, blank refer auto
+  "defaultInstancePath": "" // Default directory for instances, blank for auto
 }
 ```
 
-## Where is the Instance data files?
+## Instance Data Location
 
-Instance data files refer to the player data, maps, plugins, etc. They are stored at `<Daemon Installation Path>/data/InstanceData/<Instance ID>/`.
+Instance data files are player data, maps, plugins, etc. By default, they are stored at `<Daemon Installation Path>/data/InstanceData/<Instance ID>/`.
 
-Instance config files are stored at `<Daemon Installation Path>/data/InstanceConfig/<Instance ID>.json`, this json file stores the startup commands and other instance configs.
+Instance configurations are stored in\
+`<Daemon Installation Path>/data/InstanceConfig/<Instance ID>.json`, \
+this file contains all configurations like `startup commands` for the selected instance.
