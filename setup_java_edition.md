@@ -1,7 +1,7 @@
 # Setup Java Edition Server
 
 ::: tip
-This section assumes that you already have JRE installed. If you have any questions, see [Setup Packages](/setup_package.md).
+This section assumes that you already have JRE installed. If you have any questions, see [Dependencies](/setup_package.md).
 :::
 
 ## Download JE server core

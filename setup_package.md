@@ -1,4 +1,4 @@
-# Quick Install Minecraft Server
+# Dependencies
 
 ## Install Java Environment
 

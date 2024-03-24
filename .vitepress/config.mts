@@ -32,7 +32,7 @@ export default defineConfig({
               text: "Setup Minecraft Server",
               collapsed: false,
               items: [
-                { text: "Quick Install", link: "/setup_package" },
+                { text: "Dependencies", link: "/setup_package" },
                 { text: "Java Edition", link: "/setup_java_edition" },
                 { text: "Bedrock Edition", link: "/setup_bedrock_edition" },
               ],
