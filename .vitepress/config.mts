@@ -92,6 +92,10 @@ export default defineConfig({
               text: "Use CloudFlare CDN",
               link: "/ops/cloudflare.md",
             },
+			{
+              text: "Upgrade from 9.x",
+              link: "/ops/from_v9.md",
+            },
           ],
         },
         {
