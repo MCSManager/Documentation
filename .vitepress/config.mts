@@ -64,7 +64,7 @@ export default defineConfig({
               link: "/advanced/distributed.md",
             },
             {
-              text: "Enviromental isolation",
+              text: "Isolated Environment",
               link: "/advanced/docker.md",
             },
             {

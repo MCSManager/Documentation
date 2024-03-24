@@ -62,7 +62,7 @@ Enable：`systemctl enable mcsm-{daemon,web}.service`
 
 ## Panel Permission
 
-> If not set, MCSManager will run as the root user by default. This is not advised as it will bring extra risks to the host. It is recommanded to use a separate user when starting MCSManager.
+> If not set, MCSManager will run as the root user by default. This is not advised as it will bring extra risks to the host. It is recommended to use a separate user when starting MCSManager.
 
 1. Use the `useradd`, `chmod`, `chown` commands to create a user and set permissions.
 2. Add `User=<user>` to the `[Service]` section.
