@@ -6,36 +6,43 @@ If you are using Linux, we recommend that you deploy the steam server using a Do
 
 ## Install SteamCMD
 
-Whatever Steam game server you want to run, `PalWorld`, `CS2`, `ARK` or others, you need SteamCMD to help you install the files and get the server up and running.
+No matter which Steam game server you want to run, `PalWorld`, `CS2`, `ARK`, or others, `SteamCMD` is required to download and update the server.
 
 - [For Windows SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD#Windows)
 
 - [For Linux SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD#Linux)
 
-## Create a Instance
+## Create an Instance
 
-1. Go to the Instance page and click the `Create` button to create a new instance.
+1. Go to the `Instances` page and click the `Create` button.
 2. Select `Steam Game Server`.
 3. Select the machine (node) where you would like to deploy the server.
 4. Select `No Additional File Required`.
-5. Use the official game server documentation to configure the startup command.
+5. Configure the startup command following the official documentation (if any).
 
-## Get startup command
+## Obtain the Installation Command
 
-Each Steam game has an `APP ID`, you will need this ID and configure the command:
+***Note: This is NOT the startup command***\
+The same command is used to install and update the server. Each Steam game server has a unique `APP ID`, you will need this ID before running the following command:
+:::tip
+The `APP ID` for the game itself and it's dedicated server is usually different. In most cases, we want to use the one for the dedicated server. [Find the APP ID](https://steamdb.info/)
+:::
 
 ```bash
 "<SteamCMD Location>" +login anonymous +force_install_dir "{mcsm_workspace}" "+app_update <APP ID> validate" +quit
 ```
 
-Example：
+`Project Zomboid Dedicated Server` as an example：
 
 ```bash
-"C:/SteamCMD/steamcmd.exe" +login anonymous +force_install_dir "{mcsm_workspace}" "+app_update 380870 validate" +quit
+"C:/SteamCMD/steamcmd.exe" +login anonymous +force_install_dir "/dir/to/your/game/" "+app_update 380870 validate" +quit
 ```
 
-## Link to MCSManager
+## Configure the MCSManager
 
-Add the `steamcmd ....` command to the `Update Command` in the `Instance Settings` and click the `Update` button to install the Steam server.
+Add the `steamcmd ....` command obtained in the previous step to the `Update Command` in the `Instance Settings`. Click the `Update` button to install/Update the Steam server.
 
-Finally, click the 'Start' button to start your server.
+Once installed/updated, click the 'Start' button to start your server.
+:::tip
+In some cases, adding `validate` to the update command will result in damaged savings, especially when it's in the same directory as the server. If you are unsure about this, create a backup before each update and/or remove the `validate` portion from the update command.)
+:::
