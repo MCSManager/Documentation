@@ -60,7 +60,7 @@ export default defineConfig({
               link: "/advanced/update_panel.md",
             },
             {
-              text: "Distributed",
+              text: "Distributed Deployment",
               link: "/advanced/distributed.md",
             },
             {
