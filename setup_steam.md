@@ -29,13 +29,13 @@ The `APP ID` for the game itself and it's dedicated server is usually different.
 :::
 
 ```bash
-"<SteamCMD Location>" +login anonymous +force_install_dir "{mcsm_workspace}" "+app_update <APP ID> validate" +quit
+"<SteamCMD Location>" +force_install_dir "{mcsm_workspace}" +login anonymous "+app_update <APP ID> validate" +quit
 ```
 
 `Project Zomboid Dedicated Server` as an example：
 
 ```bash
-"C:/SteamCMD/steamcmd.exe" +login anonymous +force_install_dir "/dir/to/your/game/" "+app_update 380870 validate" +quit
+"C:/SteamCMD/steamcmd.exe" +force_install_dir "/dir/to/your/game/" +login anonymous "+app_update 380870 validate" +quit
 ```
 
 ## Configure the MCSManager
