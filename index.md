@@ -20,6 +20,7 @@ By default, the installation script will take care of the dependencies. If you a
 
 #### Installation script (Recommand)
 
+Only supports `x86_64` architecture **Ubuntu**/**Centos**/**Debian**/**Archlinux**.
 ```bash
 wget -qO- https://raw.githubusercontent.com/mcsmanager/Script/master/setup.sh | bash
 ```
