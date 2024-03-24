@@ -1,8 +1,8 @@
 # 面板通信原理
 
-<tip>
+:::tip
 你想要了解如何完美的进行反向代理，就必须先了解这个软件的网络是如何运作的。本章节将尽可能简单通俗的讲解 MCSManager 分布式网络通信原理。
-</tip>
+:::
 
 首先我们知道 MCSManager 是支持将**多台机器**连接起来，由 `面板` 统一管理的，而被连接的本地主机或远程主机，我们称之为 `节点`。
 
@@ -42,4 +42,4 @@
 
 右键新标签页打开可以放大。
 
-![分布式原理图](../images/zh_cn/distributed_principle.png)
+![分布式原理图](/images/zh_cn/distributed_principle.png)

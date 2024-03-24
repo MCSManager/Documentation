@@ -1,11 +1,10 @@
 # 搭建 Steam 游戏服务器
 
-<tip>
+:::tip
 如果你<b>是 Linux 服务器</b>，我们推荐你使用 Docker 镜像来部署你的 Steam 游戏服务器，请参考「使用 Docker 镜像部署」章节。
-</tip>
+:::
 
 ## 下载 Steam 服务器程序
-
 
 无论你是想架设 `Palworld`，`CSGO2`，`ARK` 还是其他 Steam 游戏，官方提供的 `SteamCMD` 命令行工具都可以帮助你快速建立 Steam 游戏服务器，MCSManager 面板也依赖它来运行 Steam 游戏服务器。
 

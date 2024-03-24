@@ -154,7 +154,7 @@ For Windows, you need restart nginx program or service.
 
 ## Visite panel
 
-If your domain is  **_domain.com_** ，proxied port is 12333 then use following address to visit your panel:
+If your domain is **_domain.com_** ，proxied port is 12333 then use following address to visit your panel:
 
 ```
 https://domain.com:12333/
@@ -172,6 +172,6 @@ You need use `wss://` to connect daemon(s).
 
 ## Use websocket to connect daemon.
 
-Open `nodes` page, you will see it is using `localhost` or   `x.x.x.x` or `yourdomain.com` connect with daemons, you have to configure reserve proxy for **ALL OF DAEMONS** to enable HTTPS + Websocket.
+Open `nodes` page, you will see it is using `localhost` or `x.x.x.x` or `yourdomain.com` connect with daemons, you have to configure reserve proxy for **ALL OF DAEMONS** to enable HTTPS + Websocket.
 
 Next, use `wss://x.x.x.x` ( x.x.x.x refer to your IP address ) or `wss://yourdomain.com` to connect your daemon, only this way can ensure HTTPS requests and enable all functions.

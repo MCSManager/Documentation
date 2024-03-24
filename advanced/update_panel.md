@@ -1,8 +1,8 @@
 # Upgrade & Reset Panel
 
-<tip>
+:::tip
 you are concerned about losing data, please backup the 'web/data' and 'daemon/data' folders to another location before upgrading your panel. After upgrading your panel, you can move it back.
-</tip>
+:::
 
 ## Before upgrade
 

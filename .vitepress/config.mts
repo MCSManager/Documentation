@@ -81,7 +81,7 @@ export default defineConfig({
               link: "/ops/config_files.md",
             },
             {
-              text: "面板通信原理",
+              text: "Panel Network Principle",
               link: "/ops/mcsm_network.md",
             },
             {
@@ -90,7 +90,7 @@ export default defineConfig({
             },
             {
               text: "Use CloudFlare CDN",
-              link: "/ops/cloudflare.md"
+              link: "/ops/cloudflare.md",
             },
           ],
         },
@@ -187,7 +187,11 @@ export default defineConfig({
             },
             {
               text: "使用 CloudFlare CDN",
-              link: "/zh_cn/ops/cloudflare.md"
+              link: "/zh_cn/ops/cloudflare.md",
+            },
+            {
+              text: "从 9.X 版本升级",
+              link: "/zh_cn/ops/from_v9.md",
             },
           ],
         },
