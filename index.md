@@ -21,14 +21,14 @@ By default, the installation script will take care of the dependencies. If you a
 #### Installation script (Recommand)
 
 ```bash
-wget -qO- https://gitee.com/mcsmanager/script/raw/master/setup_cn.sh | bash
+wget -qO- https://raw.githubusercontent.com/mcsmanager/Script/master/setup.sh | bash
 ```
 
 If the above script failed to complete correctly, feel free to [submit an Issue](https://github.com/MCSManager/MCSManager/issues) and/or try Linux manual installation.
 
 ### Windows
 
-Start by downloading this [zip archive](http://oss.duzuii.com/MCSManager/MCSManager) and decompress to a local directory. 
+Start by downloading this [zip archive](https://mcsmanager.com/) and decompress to a local directory. 
 
 ## Starting MCSManager
 
