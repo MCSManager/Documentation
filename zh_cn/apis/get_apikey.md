@@ -6,11 +6,11 @@
 
 如图所示
 
-<img src="../images/zh_cn/to_user_info.png" style="width:300px" />
+<img src="../../images/zh_cn/to_user_info.png" style="width:300px" />
 
 接下来只需生成并复制这段密钥，即是享有当前账户同等权利的 API 密钥。
 
-<img src="../images/zh_cn/getkey.png" style="width:400px" />
+<img src="../../images/zh_cn/getkey.png" style="width:400px" />
 
 ## 使用示例
 

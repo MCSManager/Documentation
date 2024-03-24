@@ -104,11 +104,11 @@ export default defineConfig({
           items: [
             {
               text: "Users",
-              link: "/apis/users.md",
+              link: "/apis/api_users.md",
             },
             {
               text: "Instances",
-              link: "/apis/instance.md",
+              link: "/apis/api_instance.md",
             },
 			{
               text: "Customize HTML Card",
@@ -210,9 +210,10 @@ export default defineConfig({
         {
           text: "开发",
           items: [
-            { text: "制作卡片组件", link: "/zh_cn/html_card.md" },
-            { text: "获取 APIKEY", link: "/zh_cn/get_apikey.md" },
-            { text: "API 接口参考", link: "/apis/users.html" },
+            { text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" },
+            { text: "获取 APIKEY", link: "/zh_cn/apis/get_apikey.md" },
+            { text: "API 接口参考 - 用户", link: "/zh_cn/apis/api_users.html" },
+			{ text: "API 接口参考 - 实例", link: "/zh_cn/apis/api_instance.html" },
           ],
         },
       ],
