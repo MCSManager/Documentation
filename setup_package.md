@@ -20,7 +20,7 @@ Some plugins have their own Java requriements. If you are unsure, check with the
 ### For Windows
 
 - [(Oracle) Java JDK 8](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
-- [(Azul) Java JDK 11](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
+- [(Oracle) Java JDK 11](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
 - [(Oracle) Java JDK 17](https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe)
 
 > JRE 16 and above only support x86_64/amd64 systems.
