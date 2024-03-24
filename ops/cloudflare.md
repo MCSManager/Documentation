@@ -1,7 +1,7 @@
 # Using Cloudflare CDN
 
 :::tip
-**Before reading this section, please fully understand the [「Network Principle」](./mcsm_network) and [「HTTPS Reverse Proxy」](./reverse_proxy.md) chapters**. \
+**Before reading this section, please fully understand the [「Network Architecture」](./mcsm_network) and [「HTTPS Reverse Proxy」](./reverse_proxy.md) chapters**. \
 This section is intended for users of Cloudflare CDN.
 :::
 

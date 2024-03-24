@@ -23,13 +23,13 @@ export default defineConfig({
     sidebar: {
       ["/"]: [
         {
-          text: "Installation",
-          link: "/zh_cn/index.md",
+          text: "Basic Usage",
+          link: "/",
           collapsed: false,
           items: [
             { text: "Quick start", link: "/index.md" },
             {
-              text: "Setup Minecraft Server",
+              text: "Minecraft Server",
               collapsed: false,
               items: [
                 { text: "Dependencies", link: "/setup_package" },
@@ -38,11 +38,11 @@ export default defineConfig({
               ],
             },
             {
-              text: "Setup Docker Image",
+              text: "Docker Image",
               link: "/setup_docker_image.md",
             },
             {
-              text: "Setup Steam Game Server",
+              text: "Steam Game Server",
               link: "/setup_steam.md",
             },
             {
@@ -56,7 +56,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             {
-              text: "Upgrade & Reset Panel",
+              text: "Upgrade & Reset",
               link: "/advanced/update_panel.md",
             },
             {
@@ -68,7 +68,7 @@ export default defineConfig({
               link: "/advanced/docker.md",
             },
             {
-              text: "Systemd service (Linux)",
+              text: "Systemd Service",
               link: "/advanced/linux_systemctl.md",
             },
           ],
@@ -77,11 +77,11 @@ export default defineConfig({
           text: "Operations",
           items: [
             {
-              text: "Data & Configs",
+              text: "Data & Configuration",
               link: "/ops/config_files.md",
             },
             {
-              text: "Panel Network Principle",
+              text: "Network Architecture",
               link: "/ops/mcsm_network.md",
             },
             {
@@ -89,7 +89,7 @@ export default defineConfig({
               link: "/ops/reverse_proxy.md",
             },
             {
-              text: "Use CloudFlare CDN",
+              text: "Cloudflare CDN",
               link: "/ops/cloudflare.md",
             },
 			{
@@ -102,14 +102,7 @@ export default defineConfig({
           text: "Development",
           collapsed: true,
           items: [
-            {
-              text: "Users",
-              link: "/apis/api_users.md",
-            },
-            {
-              text: "Instances",
-              link: "/apis/api_instance.md",
-            },
+
 			{
               text: "Customize HTML Card",
               link: "/apis/html_card.md",
@@ -117,6 +110,14 @@ export default defineConfig({
 			{
               text: "Obtain API Key",
               link: "/apis/get_apikey.md",
+            },
+			            {
+              text: "API Usage - User",
+              link: "/apis/api_users.md",
+            },
+            {
+              text: "API Usage - Instance",
+              link: "/apis/api_instance.md",
             },
           ],
         },

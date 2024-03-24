@@ -3,7 +3,7 @@
 :::tip
 Given MCSManager's distrbuted architecture, it is complex to configure HTTPS, and it requries some level of professional network knowledge. It is **STRONGLY** advised for general users to **NOT** configure HTTPS.
 
-**Make sure you FULLY understand the [Network Principle](/ops/mcsm_network.md) before continue.**\
+**Make sure you FULLY understand the [Network Architecture](/ops/mcsm_network.md) before continue.**\
 **The following steps will assume the reader has basic network knowledge (e.g. SSL certificate).**
 :::
 
