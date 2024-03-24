@@ -85,8 +85,8 @@ export default defineConfig({
               link: "/ops/mcsm_network.md",
             },
             {
-              text: "Use HTTPS",
-              link: "/ops/proxy_https.md",
+              text: "HTTPS Reverse Proxy",
+              link: "/ops/reverse_proxy.md",
             },
             {
               text: "Use CloudFlare CDN",
