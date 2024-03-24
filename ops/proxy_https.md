@@ -1,179 +1,177 @@
 # Use HTTPS
 
 <tip>
-MCSManager 的分布式架构导致要使用 HTTPS 是极其复杂和繁琐的，需要大量的专业开发知识，如果你没有如此之高的安全性要求，那么请不要尝试配置 HTTPS。
 
-**请确保你已经充分理解「面板通信原理」章节。**
+MCSManager distributed of daemon and web makes it difficult to enable HTTPS, it requires a lot of professional knowledge. If you don't have high security requirements, you don't need to enable HTTPS.
+
+**Before start reading this page, please make sure you understand [「Panel Network Principle」](/ops/mcsm_network) and [「Use HTTPS」](/ops/proxy_https).**
 </tip>
 
-## 生成 SSL 证书
+## Generate SSL Certificate
 
-可以在免费 SSL 的网站上，为自己的域名生成 90 天免费且可无限续签的证书：
+You can get a free 90-day SSL Certificate from these sites:
 
 > <a href="https://www.cersign.com/free-ssl-certificate.html" target="_blank">https://www.cersign.com/free-ssl-certificate.html</a>  
 > <a href="https://www.mianfeissl.com/" target="_blank">https://www.mianfeissl.com/</a>
 
-如果你没有域名，想直接用 IP 的方式使用 HTTPS，可以在此生成证书：
+If you don't have a domain and want to use an IP address with HTTPS, you can generate an SSL certificate from these sites:
 
 > <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
 
-## 反向代理与证书配置
+## Reserve Proxy & Certifcate config
 
-MCSManager 不支持直接配置证书并开启 HTTPS，需要依靠反向代理实现，这里以 `Nginx` 配置为例。
+You need to use reserve proxy to enable HTTPS for MCSManager Panel, the panel doesn't provide HTTPS. Here is an example for `Nginx`:
 
 ```nginx
-# 此配置以如下场景进行假定：
-# Daemon 端真实端口：24444
-# Web 端真实端口：23333
-# 代理后 Daemon 端端口：124444
-# 代理后 Web 端端口：123333
-# ssl证书目录：/etc/nginx/ssl/domain.com.crt
-# ssl证书私钥目录：/etc/nginx/ssl/domain.com_ECC.key
-# 需要允许主域名 domain.com 及其所有子域名访问
+# Imagine this situation:
+# Daemon listening port: 24444
+# Web listening port: 23333
+# Proxied Daemon port: 124444
+# Proxied Web port: 123333
+# SSL Certificate path：/etc/nginx/ssl/domain.com.crt
+# SSL Key path：/etc/nginx/ssl/domain.com_ECC.key
+# Allow root domain 'domain.com' and all sub-domain
 
 http {
-    # 配置SSL证书。以下监听的ssl端口将默认使用该证书。
+  	# Configure the SSL certificate and make it the default certificate.
     #SSL-START
     ssl_certificate "/etc/nginx/ssl/domain.com.crt";
     ssl_certificate_key "/etc/nginx/ssl/domain.com_ECC.key";
 
     ssl_session_cache shared:SSL:1m;
     ssl_session_timeout  10m;
-    ssl_protocols TLSv1.2 TLSv1.3; # 允许使用 TLSv1.2 或 TLSv1.3 建立连接
-    ssl_verify_client off; # 不验证客户端的证书
+    ssl_protocols TLSv1.2 TLSv1.3; # Allow TLSv1.2 or TLSv1.3
+    ssl_verify_client off; # Don't verify client certificate
     #SSL-END
 
-    # 传输时默认开启gzip压缩
+    # Start gzip compression
     gzip on;
-    # 传输时会被压缩的类型（应当依据文件压缩效果添加）
+    # Files will be compressed
     gzip_types text/plain text/css application/javascript application/xml application/json;
-    # 反向代理时，启用压缩
+    # Enable gzip while using reserve proxy
     gzip_proxied any;
-    # 传输时压缩等级，等级越高压缩消耗CPU越多，最高9级，通常5级就够了
+    # Compression level, maximum is 9, high level will use more CPU, recommand 5.
     gzip_comp_level 5;
-    # 传输时大小达到1k才压缩，压缩小内容无意义
+    # Only compress files that are over 1k in size, compressing small files is pointless.
     gzip_min_length 1k;
 
-    # 不限制客户端上传文件大小
+    # No limit for uploads
     client_max_body_size 0;
 
     server {
-        # Daemon 端localhost访问HTTP协议端口（可用多个listen监听多个端口）
+        # Daemon listening port ( Proxied )
         listen 127.0.0.1:12444 ;
         listen [::1]:12444 ; #IPv6
 
-        # 本地回环域名
+        # Domain ( '_' & 'localhost' for no domain)
         server_name localhost ;
 
-        # 本地回环地址不占宽带，无需压缩。
+        # Local transfer does not use bandwidth, pointless for gzip.
         gzip off;
 
-        # 开始反向代理
+        # Start proxy
         location / {
-            # 填写Daemon端真正监听的端口号
+            # Daemon listening port and IP ( Origin )
             proxy_pass http://localhost:24444 ;
 
-            # 一些请求头
+            # Proxy Headers
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header REMOTE-HOST $remote_addr;
-            # 用于WebSocket的必要请求头
+            # Enable Websocket
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
-            # 增加响应头
+      			# Add Cache Header
             add_header X-Cache $upstream_cache_status;
         }
     }
     server {
-        # Daemon 端公网HTTPS端口（可用多个listen监听多个端口）
+        # Daemon SSL listening port ( Proxied )
         listen 12444 ssl ;
         listen [::]:12444 ssl ; #IPv6
 
-        # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
-        # 如果你访问时的链接直接使用公网IP，那么此处填写公网IP。
+				# Your Domain ( If you don't have an domain then use IP address )
         server_name domain.com *.domain.com ;
 
-        # 开始反向代理
+        # Start Proxy
         location / {
-            # 填写Daemon端真正监听的端口号
+            # Daemon listening port and IP ( Origin )
             proxy_pass http://localhost:24444 ;
 
-            # 一些请求头
+            # Proxy Headers
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header REMOTE-HOST $remote_addr;
-            # 用于WebSocket的必要请求头
+            # Enable Websocket
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
             add_header X-Cache $upstream_cache_status;
         }
     }
     server {
-        # Web 端公网HTTPS端口（可用多个listen监听多个端口）
+        # Web listening port ( Proxied )
         listen 12333 ssl ;
         listen [::]:12333 ssl ; #IPv6
 
-        # 你访问时使用的域名（支持通配符，但通配符不能用于根域名）
-        # 如果你访问时的链接直接使用公网IP，那么此处填写公网IP。
+        # Your Domain ( If you don't have an domain then use IP address )
         server_name domain.com *.domain.com ;
 
-        # HTTP跳转到HTTPS
+        # Rewrite HTTP to HTTPS
         error_page 497 https://$host:$server_port$request_uri;
 
-        # 开始反向代理
+        # Start proxy
         location / {
-            # 填写Web面板端真正监听的端口号
+            # Website listening port & IP ( Origin )
             proxy_pass http://localhost:23333 ;
 
-            # 一些请求头
+            # Proxied Header
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header REMOTE-HOST $remote_addr;
-            # 用于WebSocket的必要请求头
+            # Enable Websocket
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
-            # 增加响应头
+            # Add Cache Header
             add_header X-Cache $upstream_cache_status;
-            # 仅允许客户端使用HTTPS发送Cookie
+            # Only allow cookie while using HTTPS
             proxy_cookie_flags ~ secure;
-            # 客户端访问后1年内HTTP自动跳转HTTPS（清浏览器缓存后失效）
             add_header Strict-Transport-Security "max-age=31536000";
         }
     }
 }
 ```
 
-配置完成后，重载 Nginx 配置。
+After configure the nginx, reload it:
 
 ```bash
 systemctl reload nginx
 ```
 
-Windows 系统则需要重启 Nginx 程序或系统服务。
+For Windows, you need restart nginx program or service.
 
-## 访问面板
+## Visite panel
 
-假如域名是 **_domain.com_** ，反向代理后的端口是 12333，那么浏览器需要使用这个地址访问：
+If your domain is  **_domain.com_** ，proxied port is 12333 then use following address to visit your panel:
 
 ```
 https://domain.com:12333/
 ```
 
-此时如果你访问网页，你会发现你可以登录并且使用面板。
+After you visited, you can register and login to your panel.
 
-**但是**
+**BUT**
 
-如果你进入实例控制台界面，上传文件，下载文件等，就会发现依然**无法正常使用**，这是因为 MCSManager 要求浏览器能够直接连接到远程节点，由于你升级到了 HTTPS，导致浏览器**拒绝**使用 Websocket+HTTP 协议连接远程节点！
+When you try to upload and download files or use other functions. You'll find that they are not usable. Because MCSManager doesn't allow websocket + HTTP connection, you need HTTPS + websocket.
 
-> [为什么浏览器要连接远程节点？](mcsm_network)
+> [Why browser need connect daemon?](mcsm_network)
 
-接下来你需要使用 `wss://` 协议来连接远程节点。
+You need use `wss://` to connect daemon(s).
 
-## 使用 WSS 协议连接远程节点
+## Use websocket to connect daemon.
 
-进入`节点管理`，你会发现可能是使用 `localhost`，`123.x.x.x` 或其他域名连接到远程节点的，此时你必须要给每一个远程节点**全部配置一次反向代理（如果是同一台机器只需配置一次即可）**，让它们全部支持 HTTPS+Websocket。
+Open `nodes` page, you will see it is using `localhost` or   `x.x.x.x` or `yourdomain.com` connect with daemons, you have to configure reserve proxy for **ALL OF DAEMONS** to enable HTTPS + Websocket.
 
-接下来，再使用 `wss://localhost`，`wss://123.x.x.x` 或 `wss://domain.com` 连接到你的远程节点，只有这样才能确保整个面板都是 HTTPS 请求，所有功能才能正常工作。
+Next, use `wss://x.x.x.x` ( x.x.x.x refer to your IP address ) or `wss://yourdomain.com` to connect your daemon, only this way can ensure HTTPS requests and enable all functions.

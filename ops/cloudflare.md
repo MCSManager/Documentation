@@ -1,7 +1,7 @@
 # Use CloudFlare CDN
 
 :::warning
-**Before start reading this page, please make sure you understand [「面板通信原理」](/ops/mcsm_network) and [「Use HTTPS」](/ops/proxy_https).**
+**Before start reading this page, please make sure you understand [「Panel Network Principle」](/ops/mcsm_network) and [「Use HTTPS」](/ops/proxy_https).**
 This page is for Cloudflare users.
 :::
 

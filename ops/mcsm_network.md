@@ -1,45 +1,45 @@
-# 面板通信原理
+# Panel Network Principle
 
 <tip>
-你想要了解如何完美的进行反向代理，就必须先了解这个软件的网络是如何运作的。本章节将尽可能简单通俗的讲解 MCSManager 分布式网络通信原理。
+
+If you want to understand how to enable Reserve Proxy perfectly, you need to understand how this panel works. This page will tell you the MCSManager distributed network principle.
+
 </tip>
 
-首先我们知道 MCSManager 是支持将**多台机器**连接起来，由 `面板` 统一管理的，而被连接的本地主机或远程主机，我们称之为 `节点`。
+First of all, MCSManager allows you to use a `web` to connect all the different `machines` or `servers/vps`, we call them `nodes`.
 
-那么如果有很多用户同时上传文件到不同的 `节点`，**如果所有上传文件的流量全部经过面板来转发，势必会造成宽带供不应求，甚至崩溃**。
+If a lot of users are uploading files to different `nodes` and **all files are proxied or path `web` use a lot of bandwidth, the program will crash or stop responding.**
 
-为此，我们将所有**大流量**的操作，只让 `面板` 负责授权，由浏览器**直接连接** `节点` 传输数据（比如文件上传，控制台实时日志）等。如此一来，流量就平均分摊到各个节点，不会导致 `面板` 侧占满的情况。
+To solve this problem, `web` is only for authorising and letting browsers connect `nodes` directly, file uploads, jornals, etc. So all requests are separated to nodes.
 
-## 子项目职责
+## Duty of Web & Daemon
 
-整体项目总共分为两个部分，一个面板端（Web Panel），一个节点端（Daemon）。
+MCSManager separeted into two part, `web` panel and `daemon`.
 
-**面板端的功能划分：**
+**Web: **
 
-- 用户管理
-- 连接节点
-- 大多数操作的权限认证与授权
-- API 接口提供
-- 更多...
+- User management
+- Connect nodes
+- Authorize controls and requests
+- APIs
+- etc.
 
-**节点端的功能划分**
+**Daemons:**
 
-- 真实的进程管理（你的实例进程实际运行处）
-- Docker 容器管理
-- 文件管理
-- 终端实时通信
-- 更多...
+- Actual instance process
+- Docker container manage
+- File management
+- Real-time instance control
+- etc.
 
-## 这会影响到什么吗？
+## Disadvantage?
 
-这会**严重加剧反向代理和 HTTPS 配置难度**。通常来说，配置反向代理只需要一个端口即可，但是由于 MCSManager 分布式的设计，你必须配置至少两个端口，如果你加入 HTTPS 配置，由于浏览器对于 HTTPS 网站的要求是所有连接必须全部是 HTTPS 协议，为此你需要为每一个远程节点全部配置并支持 HTTPS 才能成功。
+This will make it hard to configure reserve proxy and HTTPS. Usually only need proxy one port will be fine, but MCSManager using distributed desgin, so you need proxy atleast two ports. If you use HTTPS, browser need all requests under HTTPS, so you need to configure all the nodes.
 
-## 原理图
+## Graph
 
-在无其他配置和因素下，浏览器需要与守护进程进行直接访问，以便于文件上传下载和实时数据传输，从而减小面板端的流量压力。
+Without any effect of environments, browsers connect directly to daemon to control files and data transfer to use less bandwidth of web.
 
-正因如此，连接守护进程的 IP 地址不得使用内网段，否则外部用户将无法访问到守护进程并且会一直显示 `连接中` 字样。
-
-右键新标签页打开可以放大。
+So you need to set proxy daemon ports to public, otherwise you will see `connecting` to nodes section.
 
 ![分布式原理图](../images/zh_cn/distributed_principle.png)
