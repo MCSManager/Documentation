@@ -41,7 +41,7 @@ In addition, if you plan to support HTTPS with reverse proxy, you will have to c
 
 In general, the browser will need to be able to interact with the daemon directly to transfer files and console logs.
 
-Therefore, IP address for each daemon ***CAN NOT***  be a LAN address. In that case, the daemon status will stay at `Connecting`, and all users will not be able to access the panel from the public internet. 
+Consequently, the IP address for each daemon ***CAN NOT***  be a LAN address. In that case, the daemon status will stay at `Connecting`, and all users will not be able to access the panel from the public internet. 
 
 右键新标签页打开可以放大。
 
