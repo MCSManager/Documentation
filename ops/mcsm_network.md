@@ -43,4 +43,4 @@ In general, the browser will need to be able to interact with the daemon directl
 
 Consequently, the IP address for each daemon ***CAN NOT***  be a LAN address. In that case, the daemon status will stay at `Connecting`, and all users will not be able to access the panel from the public internet. 
 
-![分布式原理图](../images/distributed_principle.svg)
+![Network Architecture](../images/distributed_principle.svg)
