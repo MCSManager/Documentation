@@ -1,110 +1,68 @@
-# Use CloudFlare CDN
+# Using Cloudflare CDN
 
 :::tip
-**Before start reading this page, please make sure you understand [「Panel Network Principle」](/ops/mcsm_network) and [「Use HTTPS」](/ops/proxy_https).**
-This page is for Cloudflare users.
+**Before reading this section, please fully understand the [「Network Principle」](./mcsm_network) and [「HTTPS Reverse Proxy」](./reverse_proxy.md) chapters**. \
+This section is intended for users of Cloudflare CDN.
 :::
 
-In this page, you will learn how to configure your Panel while using Cloudflare CDN.
+This section explains how to access the daemon from the panel while using Cloudflare as a proxy. 
 
-## Generate SSL Certificate
+Note that Cloudflare only serves as a CDN and does **NOT** provide port conversion services. That is, the port Cloudflare uses to access the **source server** is the **SAME** as the port users use to access Cloudflare. 
 
-### Cloudflare certificate (Recommand)
-
-1. Open Cloudflare dashboard and click your domain.
-2. Select `Origin` in `SSL/TLS` section at sidebar.
-3. Click Generate Certificate and configure the fields to suit your own situation. (Recommand ECC, default for domain, 15 years)
-4. Save certificate and key.
-
-### Use other certificate
-
-If you are using another certificate not issued by Cloudflare, you will need to change your `SSL/TLS encryption mode` to `full`.
-
-## Reserve proxy and certificate config
-
-You will need to use `Nginx` or another web server to proxy your request to the Panel to enable SSL.
-
-We use `nginx` as an example:
+If you want multiple daemons to share one public port, consider using different subdomains and configure Nginx to forward differently based on the domain.
 
 :::warning
-Cloudflare only support these ports for SSL
-
+Cloudflare only support the following HTTPS ports:
+- 443
 - 2053
 - 2083
 - 2087
 - 2096
 - 8443
 
+Please choose one of the above ports as the external HTTPS port.
 :::
 
-```nginx
-# /etc/nginx/nginx.conf
-# /etc/nginx/nginx.conf
-http {
+## 1. Configure DNS
+1. Log in to the Cloudflare console and open the sub-panel for your domain.
+2. In the `DNS` submenu in the sidebar, find `Records`, and add a new `A` or `CNAME` record pointing to your host.
+3. Ensure `Proxy Status` is set to `DNS only` at this moment and save.
 
-    # limit upload size
-    client_max_body_size 100g;
+## 2. Configure HTTPS Reverse Proxy
+Before configuring Cloudflare CDN, (if not already) follow the [「HTTPS Reverse Proxy」](./reverse_proxy.md) section and enable HTTPS for your panel and daemon(s) using **one of the ports mentioned above**. You can use a `self-signed` or `Cloudflare's` SSL certificate.
 
-    server {
-        # Web to public
-        listen 80;
-        listen 443 ssl;
-        ssl_certificate /path/to/file;
-        ssl_certificate_key /path/to/file;
+Please make sure you can connect via a browser using the domain configured before continue.
 
-        location / {
-            # Web
-            proxy_pass http://localhost:23333/;
-            root   html;
-            index  index.html index.htm;
-            proxy_set_header Host localhost;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header REMOTE-HOST $remote_addr;
-            # Websocket
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-cache;
-            expires -1;
-        }
-    }
+### Using Cloudflare's Certificate:
 
-    server {
-        # Daemon to public
-        listen 8443 ssl;
-        ssl_certificate /path/to/file;
-        ssl_certificate_key /path/to/file;
+1. Open the Cloudflare panel and the sub-panel for your domain.
+2. In the `SSL/TLS` submenu, find the `Origin Server` option and open it.
+3. Click `create certificate`, and choose private key type, domain, and validity period (recommended: `ECC` private key type, keep domain `default`, and select `15 years` validity).
+4. Copy and save the certificate and key.
 
-        location / {
-            # daemon
-            proxy_pass http://localhost:24444/;
-            root   html;
-            index  index.html index.htm;
-            proxy_set_header Host localhost;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header REMOTE-HOST $remote_addr;
-            # websocket
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-cache;
-            expires -1;
-        }
-    }
-}
+### Using a Self-Signed Certificate:
 
 ```
-
-Change `/path/to/file` to the real path.
-
-Restart nginx after configure `nginx.conf` by using this command:
-
-```bash
-systemctl restart nginx
+#Generate a Self-Signed Certificate using OpenSSL
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
 ```
 
-## Start WSS connection and login to web UI
+## 3. Configure Cloudflare
 
-Check the last section at [Use HTTPS](/ops/proxy_https.md) to configure the setting on panel.
+Open the Cloudflare panel and the sub-panel for your domain, and open the `SSL/TLS` menu.
+
+1. If you're using a `self-signed certificate`, change the SSL/TLS **`encryption mode`** to **`Full`**.
+2. If you're using a Cloudflare certificate, you can choose between **`Strict`** or **`Full`**. In general, **`Full`** is sufficient for **`most`** users.
+
+In the `DNS` submenu, find `Records`.
+1. Edit the `A` or `CNAME` record you just added.
+2. Change `Proxy Status` to `Proxied` and save.
+
+## 4. Test Access
+Using the domain configured in **step two**, test access **again** with your browser.
+
+If it displays correctly, congratulations! You have successfully enabled Cloudflare for your panel and/or node!\
+Now, you can add nodes to your panel following the steps in the [「HTTPS Reverse Proxy」](./reverse_proxy.md) section.
+
+
+If the test fails, you may need to manually clear the DNS cache and retry.
