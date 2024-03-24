@@ -1,13 +1,35 @@
 # 使用 Cloudflare 代理
 
 :::tip
-**在阅读本章节之前请充分理解[「面板通信原理」](./mcsm_network)和[「使用 HTTPS」](./proxy_https.md)章节。**
+**在阅读本章节之前请充分理解[「面板通信原理」](./mcsm_network)和[「使用 HTTPS」](./reverse_proxy.md)章节。**
 本章节适用人群为 Cloudflare CDN 的使用者
 :::
 
-在本章节会讲解，如何在使用 Cloudflare 代理的同时，可以让面板访问到守护进程。
+在本章节会讲解如何在使用 Cloudflare 代理的同时，可以让面板访问到守护进程。\
+**注意** Cloudflare 仅作为CDN存在，并**不提供端口转换**服务。即 Cloudflare 访问源服务器的端口与用户访问 Cloudflare 的端口**一致**。\
+如果您有多个节点共享一个端口，可以使用不同域名并配置 Nginx 根据来源转发至不同节点。
 
-## 生成 SSL 证书
+:::warning
+Cloudflare 的 CDN 只支持以下端口作为 HTTPS 端口转发：
+- 443
+- 2053
+- 2083
+- 2087
+- 2096
+- 8443
+
+请选择以上端口作为守护进程的转发端口
+:::
+
+## 1. 设置域名DNS解析
+1. 登录 Cloudflare 控制台并打开域名的子面板。
+2. 在侧边栏的 `DNS` 的小菜单中找到 `记录`，并添加一个新的A或CNAME记录指向您的主机。
+3. 确保 `代理状态` 为 `仅DNS` 并保存。
+
+## 2. 配置 HTTPS 反向代理
+在正式配置Cloudflare CDN之前，请先参考[「使用 HTTPS」](./reverse_proxy.md)章节，使用**上面之一**的端口为面板和节点启用HTTPS。
+您可以使用自签或来自 Cloudflare 的SSL证书。\
+配置完成后，请确保可以正确使用域名及证书连接.
 
 ### 使用 Cloudflare 的证书
 
@@ -18,90 +40,26 @@
 
 ### 使用自签证书
 
-使用自签证书的时候，**需要在 Cloudflare 的面板`SSL/TLS`配置页面把`SSL/TLS的加密模式`改成`完全`。**
-
-## 反向代理与证书配置
-
-MCSManager 不支持直接配置证书和开启 HTTPS，需要依靠反向代理实现，此处以`Nginx`的配置为例子：
-
-:::warning
-Cloudflare 的 CDN 只支持以下端口作为 SSL 端口转发：
-
-- 2053
-- 2083
-- 2087
-- 2096
-- 8443
-
-请选择以上端口作为守护进程的转发端口
-:::
-
-```nginx
-# /etc/nginx/nginx.conf
-http {
-
-    # 上传大小限制
-    client_max_body_size 100g;
-
-    server {
-        # 转发面板
-        listen 80; # http 端口
-        listen 443 ssl; # https 端口
-        ssl_certificate /path/to/file; # 证书
-        ssl_certificate_key /path/to/file; # 证书密钥
-
-        location / {
-            # Web
-            proxy_pass http://localhost:23333/; # 面板地址
-            root   html;
-            index  index.html index.htm;
-            proxy_set_header Host localhost;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header REMOTE-HOST $remote_addr;
-            # Websocket
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-cache;
-            expires -1;
-        }
-    }
-
-    server {
-        # 转发守护进程
-        listen 8443 ssl; # 配置端口
-        ssl_certificate /path/to/file; # 证书
-        ssl_certificate_key /path/to/file; # 证书密钥
-
-        location / {
-            # 守护进程
-            proxy_pass http://localhost:24444/; # 守护进程地址
-            root   html;
-            index  index.html index.htm;
-            proxy_set_header Host localhost;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header REMOTE-HOST $remote_addr;
-            # websocket
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            add_header X-Cache $upstream_cache_status;
-            add_header Cache-Control no-cache;
-            expires -1;
-        }
-    }
-}
+```
+#Generate a Self-Signed Certificate using OpenSSL
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
 ```
 
-修改`/path/to/file`成实际目录。
+## 3. 配置 Cloudflare
 
-完成上述配置之后，重载 Nginx 配置。
+打开 Cloudflare 面板并打开域名的子面板， 打开`SSL/TLS`小菜单。
 
-```bash
-systemctl restart nginx
-```
+1. 如果您使用自签证书，**把`SSL/TLS的加密模式`改成`完全`**。
+2. 如果您使用 Cloudflare 证书，您可以自由选择 **`严格`** 或 **`完全`**。一般情况下 **`完全`** 足够绝大多数用户使用。
 
-## 访问面板和建立 WSS 协议连接
+在侧边栏的 `DNS` 的小菜单中找到 `记录`
+1. 编辑刚刚添加的A或CNAME记录。
+2. 更改 `代理状态` 为 `已代理` 并保存。
 
-请根据[使用 HTTPS](./proxy_https)访问面板和建立 WSS 连接
+## 4. 测试访问
+使用第二步中配置的域名，再次使用浏览器测试访问。
+
+如果可以正常显示，恭喜您已成功为您的面板或节点启用了Cloudflare！\
+您现在可以根据[「使用 HTTPS」](./reverse_proxy.md)章节中的步骤添加节点至面板。
+
+如果测试失败，您可能需要手动清除DNS解析缓存并重试。
