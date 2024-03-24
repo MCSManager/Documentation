@@ -22,7 +22,7 @@ If you have only a few daemons, upgrading your panel should not be a problem.
 **If you used the installation script**, simply run the command again. The installation script supports automatic upgrades without damaging your data.
 
 ```bash
-sudo wget -qO- https://gitee.com/mcsmanager/script/raw/master/setup_cn.sh | bash
+wget -qO- https://raw.githubusercontent.com/mcsmanager/Script/master/setup.sh | bash
 ```
 
 **If you installed the panel manually**, ***DO NOT*** use the installation script. _Running the script will result in an additional MCSManager being installed_.
