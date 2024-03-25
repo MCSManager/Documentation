@@ -1,45 +1,46 @@
-# 面板通信原理
+# Network Architecture
 
 :::tip
-你想要了解如何完美的进行反向代理，就必须先了解这个软件的网络是如何运作的。本章节将尽可能简单通俗的讲解 MCSManager 分布式网络通信原理。
+If you want a proper reverse proxy, you have to first understand how MCSManager manages its network traffic. On this page, we briefly discussed the network principle of MCSManager. 
 :::
 
-首先我们知道 MCSManager 是支持将**多台机器**连接起来，由 `面板` 统一管理的，而被连接的本地主机或远程主机，我们称之为 `节点`。
+Let's start with the daemons. MCSManager manages **multiple machines** together with a single `Panel`. The local/remote machines that were connected and managed is what we called `daemon`.
 
-那么如果有很多用户同时上传文件到不同的 `节点`，**如果所有上传文件的流量全部经过面板来转发，势必会造成宽带供不应求，甚至崩溃**。
+Suppose there are many users uploading files to different daemons, **if all files are transferred via the panel, the panel will become a bottleneck**, especially for remote daemons.
 
-为此，我们将所有**大流量**的操作，只让 `面板` 负责授权，由浏览器**直接连接** `节点` 传输数据（比如文件上传，控制台实时日志）等。如此一来，流量就平均分摊到各个节点，不会导致 `面板` 侧占满的情况。
+Therefore, we offload all operations that might require **a large bandwidth** directly to the daemon. Once authorized by the panel, the traffic (e.g. file uploading, console logs) will go ***directly*** from the browswer to the corresponding `daemon`. This will greatly reduce the load on the panel itself.
 
-## 子项目职责
+## Project Architecture
 
-整体项目总共分为两个部分，一个面板端（Web Panel），一个节点端（Daemon）。
+MCSManager has two parts: one **Panel** (Web Panel) and one **Daemon**.
 
-**面板端的功能划分：**
 
-- 用户管理
-- 连接节点
-- 大多数操作的权限认证与授权
-- API 接口提供
-- 更多...
+**The Panel**
 
-**节点端的功能划分**
+- User Management
+- Connect to Daemon(s)
+- Authentication for Most Operations
+- API
+- More...
 
-- 真实的进程管理（你的实例进程实际运行处）
-- Docker 容器管理
-- 文件管理
-- 终端实时通信
-- 更多...
+**The Daemon**
 
-## 这会影响到什么吗？
+- Process Management (Where Instances Run)
+- Docker Image Management
+- File Management
+- Realtime Terminal Communication
+- More...
 
-这会**严重加剧反向代理和 HTTPS 配置难度**。通常来说，配置反向代理只需要一个端口即可，但是由于 MCSManager 分布式的设计，你必须配置至少两个端口，如果你加入 HTTPS 配置，由于浏览器对于 HTTPS 网站的要求是所有连接必须全部是 HTTPS 协议，为此你需要为每一个远程节点全部配置并支持 HTTPS 才能成功。
+## What Does This Mean?
 
-## 原理图
+This distributed architecture will make configuration for reverse proxy ***harder***. For most applications, we only need to configure a single port for reverse proxy. However, for MCSManager, at least ***two ports*** need to be configured: one for the **web panel** and one for the **daemon**. If you have more than one daemon, the reverse proxy for each daemon needs to be configured separately.
 
-在无其他配置和因素下，浏览器需要与守护进程进行直接访问，以便于文件上传下载和实时数据传输，从而减小面板端的流量压力。
+In addition, if you plan to support HTTPS with reverse proxy, you will have to configure HTTPS for all daemons. This is a hard requirement by the browser, otherwise, the browser will refuse to connect to daemons without HTTPS. 
 
-正因如此，连接守护进程的 IP 地址不得使用内网段，否则外部用户将无法访问到守护进程并且会一直显示 `连接中` 字样。
+## Theory
 
-右键新标签页打开可以放大。
+In general, the browser will need to be able to interact with the daemon directly to transfer files and console logs.
 
-![分布式原理图](../images/zh_cn/distributed_principle.png)
+Consequently, the IP address for each daemon ***CAN NOT***  be a LAN address. In that case, the daemon status will stay at `Connecting`, and all users will not be able to access the panel from the public internet. 
+
+![Network Architecture](../images/distributed_principle.svg)

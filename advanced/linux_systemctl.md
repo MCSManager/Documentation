@@ -1,16 +1,19 @@
-# Systemd service (Linux)
+# Systemd Service (Linux)
 
 :::tip
-If you used the installation script to install, the information on this page is not relevant to you. This is because the installation script has already done this for you.
+If you installed using the installation script, then you can safely ignore this page. The installation script has already configured the systemd services for you.
 :::
 
-As we all know, we can use ssh client to visit Linux server and start programs, but when ssh is stopped, program will stop too. If we want to let MCSManager run for a long time on Linux server, then we can write into a service and let it run in background.
+We can always use an ssh client to connect to the Linux server and run any command. However, when we disconnect the SSH, any program that is running will be stopped too. Also it is not practical to manually start the program each time the server is rebooted.
 
-If you have installed the Panel manually, we recommend that you register a systemd service for MCSManager.
+Therefore, we can configure the systemd services for MCSManager to start with the system and keep running in the background.
 
-## Config
+If you installed MCSManager manually, we recommend that you configure a systemd service for MCSManager.
 
-**vim /etc/systemd/system/mcsm-daemon.service**
+## Sample Configuration
+
+### Daemon
+`vim /etc/systemd/system/mcsm-daemon.service`
 
 ```
 [Unit]
@@ -27,7 +30,8 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 WantedBy=multi-user.target
 ```
 
-**vim /etc/systemd/system/mcsm-web.service**
+### Web
+`vim /etc/systemd/system/mcsm-web.service`
 
 ```
 [Unit]
@@ -54,12 +58,12 @@ Stop：`systemctl stop mcsm-{daemon,web}.service`
 
 Disable：`systemctl disable mcsm-{daemon,web}.service`
 
-Able：`systemctl enable mcsm-{daemon,web}.service`
+Enable：`systemctl enable mcsm-{daemon,web}.service`
 
-## Adjust user permission
+## Panel Permission
 
-> If it is not set for specific user when running this service, it will be run by root. This will bring potential security issue, it is recommand to set a specific user for running the service and ensure the security
+> If not set, MCSManager will run as the root user by default. This is not advised as it will bring extra risks to the host. It is recommended to use a separate user when starting MCSManager.
 
 1. Use the `useradd`, `chmod`, `chown` commands to create a user and set permissions.
-2. Add `User=<user>` to the `[Service]` column.
-3. Restart the service(s).
+2. Add `User=<user>` to the `[Service]` section.
+3. Reload systemd and restart the service(s).

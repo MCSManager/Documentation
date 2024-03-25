@@ -1,4 +1,4 @@
-# User API
+# Sample API for User Management
 
 ## Create User
 
@@ -20,7 +20,7 @@ PUT /api/auth
 
 Request Body:
 {
-  "uuid": "{{uuid}}", // 目标用户的 UUID
+  "uuid": "{{uuid}}", // UUID of the target user
   "config": {
     "permission": 10, // 1=User, 10=Admin, -1=Banned user
     "instances": [

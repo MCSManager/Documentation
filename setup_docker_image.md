@@ -1,17 +1,17 @@
-# Setup Game Server via Docker Image
+# Running Docker Image
 
-## Select a Docker Image
+## Selecting Docker Image
 
-All Docker images can be found on [Docker Hub](https://hub.docker.com).
+You can use any docker images found on the [Docker Hub](https://hub.docker.com).
 
 For example `mysql:8.3.0`，`cm2network/csgo:latest`，`jammsen/palworld-dedicated-server`.
 
-You can create your own Docker image by using a Dockerfile.
+You can also create your own Docker image using a `Dockerfile`.
 
-## Use Docker Image
+## Using Docker Image
 
-To create an Instance on the Instance page, simply click the `Create` button and select `Use Docker Image`. Follow the instructions provided to complete the setup.
+On the `Instances` page, click the `Create` button. Select `Use Docker Image` and follow the instructions to complete the remaining setup.
 
 ::: tip
-You don't have to pull the docker image you need.
+You don't have to pull the docker image before starting the instance, MCSManager will do it for you if needed.
 :::

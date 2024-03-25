@@ -1,49 +1,49 @@
-# Setup Minecraft Bedrock Edition Server
+# Setup Bedrock Edition Server
 
-## Enviroment requirments
+## System Requirments
 
-To help prevent errors, we recommend using the **latest popular Linux distributions**, such as `Ubuntu 22.04`.
+To help prevent errors, we recommend using the **latest popular Linux distributions**, such as `Ubuntu 22.04 LTS`.
 
-For Windows, we suggest using `Windows Server 2016`, `Windows 10`, or the latest available version.
+For Windows, we suggest using `Windows Server 2016`, `Windows 10`, or the latest stable version.
 
 ## Windows
 
-### Download Core
+### Downloading Server Core
 
 You will find the latest official Bedrock Edition server core on [the official Minecraft Bedrock website](https://www.minecraft.net/zh-hans/download/server/bedrock).
 
-### Use the panel to start the server
+### Starting the Server
 
-1. Log in to the panel, and open Instance page.
+1. Log in to the panel, and go to `Instances`.
 2. Click `Create` button, and select `Minecraft Server (Bedrock)`.
 3. Select the machine (node) where you would like to deploy the server.
 4. Fill in the blanks and type `bedrock_server.exe` into the startup command.
-5. `bedrock_server.exe` is the name fo server core.
-6. Upload the core zip file that you download from the official minecraft website.
-7. Wait for upload and unzip. Then open the istance terminal.
-8. Click `Start` button on the top-right of the page. (Click the `action` first!)
+5. `bedrock_server.exe` is the name of the server core.
+6. Upload the core zip file that you downloaded.
+7. Wait for upload and unzip. Then open the instance terminal.
+8. Click `Start` button on the top-right of the page.
 9. Have fun!
 
-### `Missing .dll` or `Fail to start`?
+### `Missing xxx.dll` or `Fail to start`?
 
 Install Microsoft VC++ from microsoft official website.
 
 ## Linux
 
-### Download Core
+### Downloading Server Core
 
 You will find the latest official Bedrock Edition server core on [the official Minecraft Bedrock website](https://www.minecraft.net/zh-hans/download/server/bedrock).
 
-### Use the panel to start the server
+### Starting the Server
 
-1. Log in to the panel, and open Instance page.
+1. Log in to the panel, and go to `Instances`.
 2. Click `Create` button, and select `Minecraft Server (Bedrock)`.
 3. Select the machine (node) where you would like to deploy the server.
 4. Fill in the blanks and type `./bedrock_server`，`bedrock_server` into the startup command.
-5. `bedrock_server` is the name fo server core.
-6. Upload the core zip file that you download from the official minecraft website.
-7. Wait for upload and unzip. Then open the istance terminal.
-8. Click `Start` button on the top-right of the page. (Click the `action` first!)
+5. `bedrock_server` is the name of the server core.
+6. Upload the core zip file that you downloaded.
+7. Wait for upload and unzip. Then open the instance terminal.
+8. Click `Start` button on the top-right of the page.
 9. Have fun!
 
 ---
@@ -51,45 +51,49 @@ You will find the latest official Bedrock Edition server core on [the official M
 ### ERROR?
 
 ```
-[MCSMANAGER] [ERROR] The instance appears to have exited shortly after startup, which may be due to an incorrect launch command or configuration error.
+[MCSMANAGER] [ERROR] The instance appears to exit shortly after startup, which may be due to an incorrect launch command or configuration error.
 ```
 
-There are many factors that will cause this problem, here are the **three** known problem and solution.
+There are many factors that will cause this problem, here are the **three** most common problems and solution:
 
 - Incorrect startup command
-- No permission
+- Insufficient running permission
 - Missing running environment
 
 ---
 
-#### Incorrect startup command
+#### Incorrect Startup Command
 
 ```bash
 ./bedrock_server
-# bedrock_server is the server core filename. Or write an sh script and run sh <yourscript>.sh
+# bedrock_server is the name of the server core binary. 
+#You can also write an sh script and run with sh <yourscript>.sh
 ```
 
 ---
 
-#### No Permission & Missing running environment
+#### Insufficient Permission & Missing Running Environment
 
 ```bash
 # ERROR
-Detected instance process/container startup failure (PID is empty). Possible reasons are:
-1. Incorrectly instance startup command. Please check the startup command and parameters in the instance settings.
-2. Incorrect or missing system host environment, such as Java environment, etc.
+Instance process/container failed to start (PID is empty). Possible reasons are:
+1. Incorrect startup command. Please check the startup command and parameters in the instance settings.
+2. Incorrect or missing system environment, such as Java environment, etc.
 
 ......
 
 Please report this information to the administrator, technical support, or troubleshoot yourself.
+
+
+[MCSMANAGER] [ERROR] Failed to start instance, please check the startup command, host environment, or configurations.
 ```
 
-If you are **the panel admin or ops**, check **the folder (Server)** has 755 permission, if not grant the permission, if yes, check the server core file.
+If you are **the server admin**, make sure **the directory (Server)** has 755 permission. If not, change the permission using file management; If yes, check the integrity of the core.
 
-If running environment problem, try reinstalling Ubuntu or update Ubuntu, still happens? Google it!
+In case of a environment problem, try reinstalling or updating the OS, still happens? Google it!
 
 ---
 
 #### Instance started successfully, but can't log on to the server？
 
-In this situation, check your WAF or security group settings to allow inbound and outbound traffic to the specific port you are using. If this still does not work, contact your service provider and check for an internet problem.
+In this situation, check your firewall or security group settings, and make sure to allow inbound and/or outbound traffic for the port(s) you are using. If the problem still exists, check the network connectivity.

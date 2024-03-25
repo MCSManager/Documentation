@@ -23,26 +23,26 @@ export default defineConfig({
     sidebar: {
       ["/"]: [
         {
-          text: "Installation",
-          link: "/zh_cn/index.md",
+          text: "Basic Usage",
+          link: "/",
           collapsed: false,
           items: [
             { text: "Quick start", link: "/index.md" },
             {
-              text: "Setup Minecraft Server",
+              text: "Minecraft Server",
               collapsed: false,
               items: [
-                { text: "Quick Install", link: "/setup_package" },
+                { text: "Dependencies", link: "/setup_package" },
                 { text: "Java Edition", link: "/setup_java_edition" },
                 { text: "Bedrock Edition", link: "/setup_bedrock_edition" },
               ],
             },
             {
-              text: "Setup Docker Image",
+              text: "Docker Image",
               link: "/setup_docker_image.md",
             },
             {
-              text: "Setup Steam Game Server",
+              text: "Steam Game Server",
               link: "/setup_steam.md",
             },
             {
@@ -56,55 +56,68 @@ export default defineConfig({
           collapsed: false,
           items: [
             {
-              text: "Upgrade & Reset Panel",
+              text: "Upgrade & Reset",
               link: "/advanced/update_panel.md",
             },
             {
-              text: "Distributed",
+              text: "Distributed Deployment",
               link: "/advanced/distributed.md",
             },
             {
-              text: "Enviromental isolation",
+              text: "Isolated Environment",
               link: "/advanced/docker.md",
             },
             {
-              text: "Systemd service (Linux)",
+              text: "Systemd Service",
               link: "/advanced/linux_systemctl.md",
             },
           ],
         },
         {
-          text: "OPS",
+          text: "Operations",
           items: [
             {
-              text: "Data & Configs",
+              text: "Data & Configuration",
               link: "/ops/config_files.md",
             },
             {
-              text: "Panel Network Principle",
+              text: "Network Architecture",
               link: "/ops/mcsm_network.md",
             },
             {
-              text: "Use HTTPS",
-              link: "/ops/proxy_https.md",
+              text: "HTTPS Reverse Proxy",
+              link: "/ops/reverse_proxy.md",
             },
             {
-              text: "Use CloudFlare CDN",
+              text: "Cloudflare CDN",
               link: "/ops/cloudflare.md",
+            },
+			{
+              text: "Upgrade from 9.x",
+              link: "/ops/from_v9.md",
             },
           ],
         },
         {
-          text: "API Reference",
+          text: "Development",
           collapsed: true,
           items: [
-            {
-              text: "Users",
-              link: "/apis/users.md",
+
+			{
+              text: "Customize HTML Card",
+              link: "/apis/html_card.md",
+            },
+			{
+              text: "Obtain API Key",
+              link: "/apis/get_apikey.md",
+            },
+			            {
+              text: "API Usage - User",
+              link: "/apis/api_users.md",
             },
             {
-              text: "Instances",
-              link: "/apis/instance.md",
+              text: "API Usage - Instance",
+              link: "/apis/api_instance.md",
             },
           ],
         },
@@ -198,9 +211,10 @@ export default defineConfig({
         {
           text: "开发",
           items: [
-            { text: "制作卡片组件", link: "/zh_cn/html_card.md" },
-            { text: "获取 APIKEY", link: "/zh_cn/get_apikey.md" },
-            { text: "API 接口参考", link: "/apis/users.html" },
+            { text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" },
+            { text: "获取 APIKEY", link: "/zh_cn/apis/get_apikey.md" },
+            { text: "API 接口参考 - 用户", link: "/zh_cn/apis/api_users.html" },
+			{ text: "API 接口参考 - 实例", link: "/zh_cn/apis/api_instance.html" },
           ],
         },
       ],

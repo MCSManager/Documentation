@@ -1,19 +1,19 @@
-# Enviromental isolation
+# Isolated Environment
 
 ## Install Docker
 
-MCSManager requires Docker to isolate instances; once isolated, any changes from instances to the host are restricted, ensuring the security of the host server.
+MCSManager requires `Docker` to isolate instances. Once isolated, any changes from instances to the host are strictly restricted, ensuring the security of the host server.
 
-Panel supports Docker (Linux only), please install Docker first and make sure that MCSManager has enough permissions to control Docker.
+MCSManager supports Docker (***Linux only***), please install Docker first and make sure that MCSManager has sufficient permissions to access Docker.
 
-Go to the `daemons` page, in the top right corner there is a `container` button. Click on it, then you can follow the docker file to create, remove etc.
+Go to the `Daemons` page, click the `Container` button in the top right corner. You will then be able to manage containers.
 
-## Use images
+## User Docker Images
 
-Go to the `Instance Terminal` page, under `Instance Settings` you can enable the `Virtualisation Container (Linux Docker)`. You can run your instance in a Docker image and use the files in the working directory.
+Go to the `Instance Terminal` page, under `Instance Settings`, enable the `Virtualisation Container (Linux Docker)`. You can then run your instance in a Docker image and use the files in the working directory.
 
 ## FAQ
 
-- Q: The Panel says that Docker is being uninstalled, but it is installed.
+- Q: MCSManager says that Docker is not installed, but it is installed.
 
-> A: Try restarting the MCSManager panel with root privileges, it works, means permissions problem. Otherwise reinstall Docker.
+> A: Try restarting MCSManager panel with root privileges. If it works, then this is a permission issue. Otherwise please reinstall Docker.
