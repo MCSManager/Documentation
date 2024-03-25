@@ -25,7 +25,7 @@
 每一款 Steam 游戏都有一个 `APP ID`，你需要获取到这个 ID，并且编写如下命令：
 
 ```bash
-"<SteamCMD 路径>"+force_install_dir "{mcsm_workspace}"  +login anonymous "+app_update <APP ID> validate" +quit
+"<SteamCMD 路径>" +force_install_dir "{mcsm_workspace}" +login anonymous "+app_update <APP ID> validate" +quit
 ```
 
 列如：
