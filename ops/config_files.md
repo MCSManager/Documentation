@@ -19,11 +19,11 @@
   "quickInstallAddr": "https://mcsmanager.oss-cn-guangzhou.aliyuncs.com/quick_install.json", // Quick install json file path/address
 
   "redisUrl": "", // Redis database, NOT RECOMMAND
-  "dataPort": 23334, // Abandoned
-  "forwardType": 1, // Abandoned
-  "zipType": 1, // Abandoned
-  "maxCompress": 1, // Max number of concurrent compression tasks, Abandoned.
-  "maxDownload": 10 // Max number of concurrent downloading tasks, Abandoned.
+  "dataPort": 23334, // Deprecated
+  "forwardType": 1, // Deprecated
+  "zipType": 1, // Deprecated
+  "maxCompress": 1, // Max number of concurrent compression tasks, Deprecated.
+  "maxDownload": 10 // Max number of concurrent downloading tasks, Deprecated.
 }
 ```
 
@@ -39,7 +39,7 @@
   "key": "c043e149c9bc44d922ea3be6ff6406abc7b778981c3feb6", // Daemon key
   "maxFileTask": 2, // Max concurrent decompression tasks per instance
   "maxZipFileSize": 60, // Max allowed file size for decompression in GB
-  "language": "zh_cn", // daemon language
+  "language": "zh_cn", // Daemon language
   "defaultInstancePath": "" // Default directory for instances, blank for auto
 }
 ```
