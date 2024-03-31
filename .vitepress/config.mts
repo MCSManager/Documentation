@@ -167,7 +167,7 @@ export default defineConfig({
           items: [
             {
               text: "Docker Cli部署",
-              link: "/zh_cn/docker_cli.md",
+              link: "/zh_cn/docker-cli.md",
             },
             {
               text: "更新与重置",
