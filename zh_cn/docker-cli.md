@@ -1,11 +1,10 @@
-# 使用 Docker Cli 安装面板
+# 使用 Docker CLI 安装面板
 
 ## 需要安装 Docker
 
 ```bash
 sudo su
-curl -sSL https://get.daocloud.io/docker | sh
-apt update && apt install docker-compose
+curl -sSL https://get.docker.com/ | CHANNEL=stable bash -s docker --mirror Aliyun
 ```
 ## 只需执行以下命令即可部署
 执行前请确保您有`/opt`目录且可管理 \
