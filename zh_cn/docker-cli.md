@@ -10,7 +10,7 @@ curl -sSL https://get.docker.com/ | CHANNEL=stable bash -s docker --mirror Aliyu
 执行前请确保您有 `/opt` 目录且可管理 
 只适用于 Linux 系统，不包括 nas 系统 
 
-技术力限制，暂不支持自定义挂载目录，如需自定义挂载请看[Docker-compose](/zh-cn/tutorial/docker-compose.md)
+技术力限制，暂不支持自定义挂载目录。
 ## Web
 
 ```bash
