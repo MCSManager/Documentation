@@ -8,7 +8,7 @@ curl -sSL https://get.docker.com/ | CHANNEL=stable bash -s docker --mirror Aliyu
 ```
 ## 只需执行以下命令即可部署
 执行前请确保您有 `/opt` 目录且可管理 
-只适用于 Linux 系统，不包括 nas 系统 
+只适用于 Linux 系统，不包括 nas 系统。
 
 技术力限制，暂不支持自定义挂载目录。
 ## Web
