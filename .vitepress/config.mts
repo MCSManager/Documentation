@@ -60,6 +60,10 @@ export default defineConfig({
               link: "/advanced/update_panel.md",
             },
             {
+              text: "Upgrade from 9.x",
+              link: "/ops/from_v9.md",
+            },
+            {
               text: "Distributed Deployment",
               link: "/advanced/distributed.md",
             },
@@ -92,26 +96,21 @@ export default defineConfig({
               text: "Cloudflare CDN",
               link: "/ops/cloudflare.md",
             },
-			{
-              text: "Upgrade from 9.x",
-              link: "/ops/from_v9.md",
-            },
           ],
         },
         {
           text: "Development",
           collapsed: true,
           items: [
-
-			{
+            {
               text: "Customize HTML Card",
               link: "/apis/html_card.md",
             },
-			{
+            {
               text: "Obtain API Key",
               link: "/apis/get_apikey.md",
             },
-			            {
+            {
               text: "API Usage - User",
               link: "/apis/api_users.md",
             },
@@ -170,6 +169,10 @@ export default defineConfig({
               link: "/zh_cn/advanced/update_panel.md",
             },
             {
+              text: "从 9.X 版本升级",
+              link: "/zh_cn/ops/from_v9.md",
+            },
+            {
               text: "分布式",
               link: "/zh_cn/advanced/distributed.md",
             },
@@ -191,7 +194,7 @@ export default defineConfig({
               link: "/zh_cn/ops/config_files.md",
             },
             {
-              text: "面板通信原理",
+              text: "网络架构",
               link: "/zh_cn/ops/mcsm_network.md",
             },
             {
@@ -202,10 +205,6 @@ export default defineConfig({
               text: "使用 CloudFlare CDN",
               link: "/zh_cn/ops/cloudflare.md",
             },
-            {
-              text: "从 9.X 版本升级",
-              link: "/zh_cn/ops/from_v9.md",
-            },
           ],
         },
         {
@@ -214,7 +213,10 @@ export default defineConfig({
             { text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" },
             { text: "获取 APIKEY", link: "/zh_cn/apis/get_apikey.md" },
             { text: "API 接口参考 - 用户", link: "/zh_cn/apis/api_users.html" },
-			{ text: "API 接口参考 - 实例", link: "/zh_cn/apis/api_instance.html" },
+            {
+              text: "API 接口参考 - 实例",
+              link: "/zh_cn/apis/api_instance.html",
+            },
           ],
         },
       ],
