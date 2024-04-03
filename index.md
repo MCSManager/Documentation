@@ -21,15 +21,16 @@ By default, the installation script will take care of the dependencies. If you a
 #### Installation script (Recommand)
 
 Only supports `x86_64` architecture **Ubuntu**/**Centos**/**Debian**/**Archlinux**.
+
 ```bash
-wget -qO- https://raw.githubusercontent.com/mcsmanager/Script/master/setup.sh | bash
+sudo su -c "wget -qO- https://mcsmanager.com/install-v10.sh | bash"
 ```
 
 If the above script failed to complete correctly, feel free to [submit an Issue](https://github.com/MCSManager/MCSManager/issues) and/or try Linux manual installation.
 
 ### Windows
 
-Start by downloading this [zip archive](https://mcsmanager.com/) and decompress to a local directory. 
+Start by downloading this [zip archive](https://mcsmanager.com/) and decompress to a local directory.
 
 ## Starting MCSManager
 
@@ -51,16 +52,17 @@ systemctl restart mcsm-web.service
 systemctl stop mcsm-web.service
 systemctl stop mcsm-daemon.service
 ```
+
 :::tip
 `mcsm-web` is the service that provides user management and web access functionalities, while the `mcsm-daemon` is the service that manages processes and containers. Both services are essential for the panel to work. However, if an issue arises with a certain function, you don't always need to restart both of them.
 :::
 
-
 ### Windows
 
 #### Stop the Panel
+
 To stop the panel, you can either press `CTRL` + `C` or simply click the `X` button located on the top-right corner of the terminal(s).
 
-
 #### Start the Panel
+
 Simply click on `start.bat`. There is no need for any extra libraries (including Node.js), all dependencies were included in the package.

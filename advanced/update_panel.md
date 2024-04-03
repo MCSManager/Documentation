@@ -22,17 +22,18 @@ If you have only a few daemons, upgrading your panel should not be a problem.
 **If you used the installation script**, simply run the command again. The installation script supports automatic upgrades without damaging your data.
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/mcsmanager/Script/master/setup.sh | bash
+sudo su -c "wget -qO- https://mcsmanager.com/install-v10.sh | bash"
 ```
 
-**If you installed the panel manually**, ***DO NOT*** use the installation script. _Running the script will result in an additional MCSManager being installed_.
+**If you installed the panel manually**, **_DO NOT_** use the installation script. _Running the script will result in an additional MCSManager being installed_.
 
 To upgrade to the latest release of MCSManager, download the zip file from [the official release page](https://github.com/MCSManager/MCSManager/releases/latest), and overwrite all current MCSManager files.
 
 ## Reset Admin Account
 
 If you lost access to the admin account, you can always create a new one with the following steps:
-1. **Move** the `web/data/User` directory to another location. 
+
+1. **Move** the `web/data/User` directory to another location.
 2. Restart MCSManager, the initial setup page will be displayed.
 3. Follow the instructions and create a new admin account.
 4. Move back the `web/data/User` directory.
