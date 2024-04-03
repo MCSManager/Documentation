@@ -16,7 +16,7 @@ curl -sSL https://get.docker.com/ | CHANNEL=stable bash -s docker --mirror Aliyu
 ```bash
 docker run -d --name mcsmv10_web \
 --network host \
--e TZ=Asia/Shanghai
+-e TZ=Asia/Shanghai \
 -v /opt/docker-mcsm/web:/opt/docker-mcsm/web/data \
 -v /opt/docker-mcsm/web/logs:/opt/docker-mcsm/web/logs \
 -v /opt/docker-mcsm/daemon/data/Config:/opt/docker-mcsm/daemon/data/Config:ro \
@@ -28,7 +28,7 @@ registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_web
 ```bash
 docker run -d --name mcsmv10_daemon \
 --network host \
--e TZ=Asia/Shanghai
+-e TZ=Asia/Shanghai \
 -v /opt/docker-mcsm/daemon/data:/opt/docker-mcsm/daemon/data \
 -v /opt/docker-mcsm/daemon/logs:/opt/docker-mcsm/daemon/logs \
 -v /opt/docker-mcsm/daemon/lib:/opt/docker-mcsm/daemon/lib \
