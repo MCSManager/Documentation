@@ -36,3 +36,14 @@ registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_daemon
 ```
 
 数据存放在 `/opt/docker-mcsm` 目录中。
+
+## 升级版本
+
+```bash
+docker stop mcsmv10_daemon mcsmv10_web
+docker rm mcsmv10_daemon mcsmv10_web
+docker pull registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_web
+docker pull registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_daemon
+```
+
+建议先备份数据，以防万一。
