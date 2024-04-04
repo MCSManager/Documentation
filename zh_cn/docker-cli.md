@@ -47,4 +47,4 @@ docker rm mcsmv10_daemon mcsmv10_web
 docker pull registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_web
 docker pull registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_daemon
 ```
-
+重新执行部署命令即可。
