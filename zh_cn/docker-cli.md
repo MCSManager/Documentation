@@ -39,6 +39,8 @@ registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_daemon
 
 ## 升级版本
 
+建议先备份数据，以防万一。
+
 ```bash
 docker stop mcsmv10_daemon mcsmv10_web
 docker rm mcsmv10_daemon mcsmv10_web
@@ -46,4 +48,3 @@ docker pull registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_web
 docker pull registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_daemon
 ```
 
-建议先备份数据，以防万一。
