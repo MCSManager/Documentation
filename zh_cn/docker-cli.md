@@ -31,7 +31,6 @@ docker run -d --name mcsmv10_daemon \
 -e TZ=Asia/Shanghai \
 -v /opt/docker-mcsm/daemon/data:/opt/docker-mcsm/daemon/data \
 -v /opt/docker-mcsm/daemon/logs:/opt/docker-mcsm/daemon/logs \
--v /opt/docker-mcsm/daemon/lib:/opt/docker-mcsm/daemon/lib \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
 registry.cn-guangzhou.aliyuncs.com/kabaka/kabaka:mcsmv10_daemon
 ```
