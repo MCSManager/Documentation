@@ -165,6 +165,10 @@ export default defineConfig({
           text: "高级",
           items: [
             {
+              text: "Docker CLI 部署",
+              link: "/zh_cn/docker-cli.md",
+            },
+            {
               text: "更新与重置",
               link: "/zh_cn/advanced/update_panel.md",
             },
