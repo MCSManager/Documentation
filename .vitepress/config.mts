@@ -188,6 +188,10 @@ export default defineConfig({
               text: "系统服务",
               link: "/zh_cn/advanced/linux_systemctl.md",
             },
+            {
+              text:"自定义页面",
+              link:"/zh_cn/advanced/custom_page.md"
+            }
           ],
         },
         {
