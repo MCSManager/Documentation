@@ -4,7 +4,6 @@ import type { Config as ThemeConfig } from "@vue/theme";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "MCSManager",
-
   description: "MCSManager Document",
   locales: {
     root: {
@@ -27,7 +26,7 @@ export default defineConfig({
           link: "/",
           collapsed: false,
           items: [
-            { text: "Quick start", link: "/index.md" },
+            { text: "Quick start", link: "/quick_start.md" },
             {
               text: "Minecraft Server",
               collapsed: false,
@@ -127,7 +126,7 @@ export default defineConfig({
           items: [
             {
               text: "快速开始",
-              link: "/zh_cn/index.md",
+              link: "/zh_cn/quick_start.md",
             },
             {
               text: "搭建 Minecraft 游戏服务器",

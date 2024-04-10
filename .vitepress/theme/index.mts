@@ -1,12 +1,13 @@
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import tip from "./components/tip.vue";
+import Tip from "./components/tip.vue";
+import IndexPage from "./index-page.vue";
 import "./custom.css";
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    // 注册自定义全局组件
-    app.component("tip", tip);
+    app.component("tip", Tip);
+    app.component("index-page", IndexPage);
   },
 } satisfies Theme;
