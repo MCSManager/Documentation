@@ -1,0 +1,7 @@
+{
+  "i18n-ally.displayLanguage": "zh_cn",
+  "i18n-ally.localesPaths": [".vitepress/theme/languages/"],
+  "i18n-ally.dirStructure": "file",
+  "i18n-ally.enabledParsers": ["json"],
+  "i18n-ally.extract.keyMaxLength": 9999999
+}
