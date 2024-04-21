@@ -10,6 +10,7 @@
 {
   "httpPort": 23333, // Web 面板端口
   "httpIp": null, // 绑定IP，多张网卡时可使用
+  "prefix": "", // http路径前缀
   "crossDomain": true, // 是否准许跨域
   "gzip": false, // 是否开启 gzip 压缩
   "loginCheckIp": false, // 同IP登录次数过多自动锁定
@@ -36,6 +37,7 @@
   "version": 2,
   "ip": "", // 绑定IP，多张网卡时可使用
   "port": 24444, // 节点端口
+  "prefix": "", // http, websocket 路径前缀
   "key": "c043e149c9bc44d922ea3be6ff6406abc7b778981c3feb6", // 节点密钥
   "maxFileTask": 2, // 每个实例，最大同时解压缩任务数
   "maxZipFileSize": 60, // 最大文件解压缩限制，单位（GB）
