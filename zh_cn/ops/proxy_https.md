@@ -209,20 +209,20 @@ server
 
 当你完成上述配置添加后，可以使用命令`sudo nginx -t`来测试配置是否存在问题。
 
-```示例输出
+```log
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
 测试成功后使用命令`sudo nginx -s reload` 来使 Nginx 配置生效。
 
-```示例输出
+```log
 2024/01/27 22:57:17 [notice] 4826#4826: signal process started
 ```
 
 假如域名是 **_domain.com_** ，反向代理后的端口是`12333`与`12444`，那么浏览器需要使用这个地址访问：
 
-```
+```txt
 面板地址: https://domain.com:12333/
 节点地址: https://domain.com:12444/
 ```

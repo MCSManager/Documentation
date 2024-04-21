@@ -213,22 +213,20 @@ server
 
 Once the configuration is ready, use `sudo nginx -t` to tset the configuration.
 
-```
-#Sample Output
+```log
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
 Once succeeded, use `sudo nginx -s reload` to reload Nginx.
 
-```
-#Sample Output
+```log
 2024/01/27 22:57:17 [notice] 4826#4826: signal process started
 ```
 
 Suppose the domain being used is **_domain.com_** , and the HTTPS port is `12333` (for daemon) and `12444` (for panel), we can then access the following URL using any browser:
 
-```
+```txt
 Panel: https://domain.com:12333/
 Daemon: https://domain.com:12444/
 ```
