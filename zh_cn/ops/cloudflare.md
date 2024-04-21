@@ -1,7 +1,7 @@
 # 使用 Cloudflare 代理
 
 :::tip
-**在阅读本章节之前请充分理解[「网络架构」](./mcsm_network)和[「使用 HTTPS」](./reverse_proxy.md)章节。**
+**在阅读本章节之前请充分理解[「网络架构」](./mcsm_network)和[「使用 HTTPS」](./proxy_https.md)章节。**
 本章节适用人群为 Cloudflare CDN 的使用者
 :::
 
@@ -30,7 +30,7 @@ Cloudflare 的 CDN 只支持以下端口作为 HTTPS 端口转发：
 
 ## 2. 配置 HTTPS 反向代理
 
-在正式配置 Cloudflare CDN 之前，请先参考[「使用 HTTPS」](./reverse_proxy.md)章节，使用**上面之一**的端口为面板和节点启用 HTTPS。
+在正式配置 Cloudflare CDN 之前，请先参考[「使用 HTTPS」](./proxy_https.md)章节，使用**上面之一**的端口为面板和节点启用 HTTPS。
 您可以使用自签或来自 Cloudflare 的 SSL 证书。\
 配置完成后，请确保可以正确使用域名及证书连接.
 
@@ -65,6 +65,6 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3
 使用第二步中配置的域名，再次使用浏览器测试访问。
 
 如果可以正常显示，恭喜您已成功为您的面板或节点启用了 Cloudflare！\
-您现在可以根据[「使用 HTTPS」](./reverse_proxy.md)章节中的步骤添加节点至面板。
+您现在可以根据[「使用 HTTPS」](./proxy_https.md)章节中的步骤添加节点至面板。
 
 如果测试失败，您可能需要手动清除 DNS 解析缓存并重试。
