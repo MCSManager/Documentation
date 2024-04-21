@@ -94,7 +94,7 @@ export default defineConfig({
             },
             {
               text: "HTTPS Reverse Proxy",
-              link: "/ops/reverse_proxy.md",
+              link: "/ops/proxy_https.md",
             },
             {
               text: "Cloudflare CDN",
