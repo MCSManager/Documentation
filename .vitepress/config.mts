@@ -214,6 +214,10 @@ export default defineConfig({
               link: "/zh_cn/ops/proxy_https.md",
             },
             {
+              text: "路径前缀",
+              link: "/zh_cn/ops/path_prefix.md",             
+            },
+            {
               text: "使用 CloudFlare CDN",
               link: "/zh_cn/ops/cloudflare.md",
             },
