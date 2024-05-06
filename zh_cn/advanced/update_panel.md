@@ -23,7 +23,7 @@
 如果你**当初是使用的一键脚本**安装，那么你只需执行以下命令即可，一键安装脚本支持自动更新，不会损害本地数据。
 
 ```bash
-sudo su -c "wget -qO- https://mcsmanager.com/install-v10.sh | bash"
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash""
 ```
 
 如果你**当初是手动安装**的 MCSManager 面板，那么一键安装脚本将不适用于你，因为这会导致安装两份程序。

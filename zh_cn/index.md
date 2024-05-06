@@ -15,7 +15,7 @@ MCSManager 在 `Minecraft` 和 `其他游戏` 社区内中已有一定的流行�
 ### Linux
 
 ```bash
-sudo su -c "wget -qO- https://mcsmanager.com/install-v10.sh | bash"
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash""
 ```
 
 如果 Linux 下一键脚本安装失败，可以尝试[手动安装](https://github.com/MCSManager/MCSManager#linux)。

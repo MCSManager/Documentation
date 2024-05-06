@@ -23,7 +23,7 @@ By default, the installation script will take care of the dependencies. If you a
 Only supports `x86_64` architecture **Ubuntu**/**Centos**/**Debian**/**Archlinux**.
 
 ```bash
-sudo su -c "wget -qO- https://mcsmanager.com/install-v10.sh | bash"
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup.sh | bash""
 ```
 
 If the above script failed to complete correctly, feel free to [submit an Issue](https://github.com/MCSManager/MCSManager/issues) and/or try Linux manual installation.
