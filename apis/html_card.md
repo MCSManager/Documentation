@@ -6,7 +6,7 @@ This feature requires some knowledge of JavaScript development and may be somewh
 **It is not recommended to use scripts from others as this could lead to your panel being compromised.**
 :::
 
-After enabling the design mode in the MCSManager web interface, there is an option `Extension Page Card` when you add a new card. This card allows you to upload your own `HTML` file, which runs directly in the frontend web environment. This is fundamentally different from the `Embedded Web Page Card` because you can access most frontend HTML nodes and operate the API provided by MCSManager.
+After enabling the design mode in the MCSManager web interface, there is an option `Extend Page Card` when you add a new card. This card allows you to upload your own `HTML` file, which runs directly in the frontend web environment. This is fundamentally different from the `Embedded Web Card` because you can access most frontend HTML nodes and operate the API provided by MCSManager.
 
 ```html
 <!DOCTYPE html>

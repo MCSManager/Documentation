@@ -8,40 +8,56 @@ MCSManager has gained a certain level of popularity within `Minecraft` and `othe
 
 ## Dependencies
 
-By default, the installation script will take care of the dependencies. If you are installing manually, only `Node.js 16+` is required.
+By default, **The installation script should already include all required environments**, so you don't need to worry about environment requirements.
 
-> To download Node.js -> [https://nodejs.org/](https://nodejs.org/)
+But if you install it manually, you need to meet the `Node 16+` runtime environment.
 
-## Installation
+## Linux Installation Script
 
-### Linux
-
----
-
-#### Installation script (Recommended)
-
-Only supports `x86_64` architecture **Ubuntu**/**Centos**/**Debian**/**Archlinux**.
+Because it needs to be registered to the system service, **The installation script must be run with root.**
 
 ```bash
-sudo su -c "wget -qO- https://mcsmanager.com/install-v10.sh | bash"
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash"
 ```
 
-If the above script failed to complete correctly, feel free to [submit an Issue](https://github.com/MCSManager/MCSManager/issues) and/or try Linux manual installation.
-
-#### Manual
-
-If the installation script failed to execute correctly, you can try install it manually.
+### Startup Method
 
 ```bash
-# Create /opt directory if not already
-mkdir /opt
-# Switch to /opt
+# Start the panel daemon first.
+# This is a service process used for process control and terminal management.
+systemctl start mcsm-daemon.service
+# Start the panel web service again.
+# This is used to implement services that support web page access and user management.
+systemctl start mcsm-web.service
+
+# Restart panel command
+systemctl restart mcsm-daemon.service
+systemctl restart mcsm-web.service
+
+# Stop panel command
+systemctl stop mcsm-web.service
+systemctl stop mcsm-daemon.service
+
+```
+
+:::tip
+If the `systemctl` command **cannot start** the panel, you can refer to the `Startup Method` in the `Manual installation` below to start MCSManager.
+But this requires you to use other background running programs to take over it, otherwise when your `SSH` terminal is disconnected, the manually started MCSManager panel will also be forcibly terminated by the system.
+
+The panel web service is a service that provides user management and web page access functions, and the daemon process is a service that provides process management and container management. Both are indispensable. If a certain function is not working properly, you can restart only this part of the service to hot-fix the problem.
+:::
+
+## Linux Manual Installation
+
+```bash
+# Switch to the installation directory, you can also change to other directories.
 cd /opt/
+
 # Download Node.js 20.11. If you already have Node.js 16+ installed, ignore this step.
 wget https://nodejs.org/dist/v20.11.0/node-v20.11.0-linux-x64.tar.xz
-# Decompress Node.js source
 tar -xvf node-v20.11.0-linux-x64.tar.xz
-# Add Node.js to system PATH
+
+# Add NodeJS to system PATH
 ln -s /opt/node-v20.11.0-linux-x64/bin/node /usr/bin/node
 ln -s /opt/node-v20.11.0-linux-x64/bin/npm /usr/bin/npm
 
@@ -51,60 +67,43 @@ cd /opt/mcsmanager/
 
 # Download MCSManager
 wget https://github.com/MCSManager/MCSManager/releases/latest/download/mcsmanager_linux_release.tar.gz
+
+# Unzip to the installation directory
 tar -zxf mcsmanager_linux_release.tar.gz
 
-# Install dependencies
-./install.sh
-
-# Please open two terminals or screens.
-
-# Start the daemon first.
-./start-daemon.sh
-
-# Start the web interface at the second terminal or screen.
-./start-web.sh
-
-# For web access, go to http://localhost:23333/
-# In general, the web interface will automatically scan and add the local daemon.
 ```
 
-This installation approach does not automatically set up MCSManager as a system service. Therefore, it is necessary to use `screen` for management.
-
-### Windows
-
-Start by downloading this [zip archive](https://github.com/MCSManager/MCSManager/releases/latest/download/mcsmanager_windows_release.zip) and decompress to a local directory.
-
-## Starting MCSManager
-
-### Linux
+### Startup Method
 
 ```bash
-# Start the daemon first.
-# This is the service process that controls instances and terminals
-systemctl start mcsm-daemon.service
-# Then start the web interface.
-# The web interface provides an easy way to access all panel's functionalities
-systemctl start mcsm-web.service
+#Install dependent libraries
+./install.sh
 
-# Restart the panel
-systemctl restart mcsm-daemon.service
-systemctl restart mcsm-web.service
+# Please use the Screen program to open two terminal windows (or other takeover programs)
 
-# Stop the panel
-systemctl stop mcsm-web.service
-systemctl stop mcsm-daemon.service
+# Start the node program first
+./start-daemon.sh
+
+# Start the Web panel service in the second terminal
+./start-web.sh
+
+# Access http://localhost:23333/ for the web interface
+# Generally speaking, network applications will automatically scan and connect to the local daemon.
+# Default ports that need to be opened: 23333 and 24444
 ```
 
-:::tip
-`mcsm-web` is the service that provides user management and web access functionalities, while the `mcsm-daemon` is the service that manages processes and containers. Both services are essential for the panel to work. However, if an issue arises with a certain function, you don't always need to restart both of them.
-:::
+### Stop Panel
 
-### Windows
+Just enter two terminals and execute `Ctrl+C`.
 
-#### Stop the Panel
+## Windows Installation
 
-To stop the panel, you can either press `CTRL` + `C` or simply click the `X` button located on the top-right corner of the terminal(s).
+Just [download the ZIP file](http://oss.duzuii.com/MCSManager/MCSManager-ZH) and decompress it to run without any installation dependencies and without polluting the registry.
 
-#### Start the Panel
+### Startup Method
 
-Simply click on `start.bat`. There is no need for any extra libraries (including Node.js), all dependencies were included in the package.
+Execute `start.bat` or `run.bat`, etc. If the compressed package contains `launcher.exe`, you can use it to start the panel.
+
+### Stop Panel
+
+Enter `Ctrl+C` in the two terminal console windows of the panel to close normally.
