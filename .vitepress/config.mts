@@ -214,7 +214,7 @@ export default defineConfig({
               link: "/zh_cn/ops/proxy_https.md",
             },
             {
-              text: "路径前缀",
+              text: "与其他服务共用端口",
               link: "/zh_cn/ops/path_prefix.md",
             },
             {
