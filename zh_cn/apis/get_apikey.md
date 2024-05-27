@@ -40,24 +40,24 @@ Content-Type: application/json; charset=utf-8
       "process": {
         "cpu": 5625000,
         "memory": 132437320,
-        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon"
+        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon" 
       },
       "instance": {
-        "running": 1,
-        "total": 6
+        "running": 1, //运行的应用
+        "total": 6 //总共应用
       },
       "system": {
-        "type": "Windows_NT",
-        "hostname": "MyComputer",
-        "platform": "win32",
-        "release": "11.0.22000",
-        "uptime": 410445,
-        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon",
+        "type": "Windows_NT", //服务器类型
+        "hostname": "MyComputer", //服务器名称
+        "platform": "win32", //服务器版本
+        "release": "11.0.22000", //面板版本
+        "uptime": 410445, //面板在线时间
+        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon", //面板运行路径
         "loadavg": [0, 0, 0],
-        "freemem": 5700775936,
-        "cpuUsage": 0.0490009222256379,
-        "memUsage": 0.6651475749266619,
-        "totalmem": 17024741376,
+        "freemem": 5700775936, //剩余内存
+        "cpuUsage": 0.0490009222256379, //CPU占用
+        "memUsage": 0.6651475749266619, //内存使用
+        "totalmem": 17024741376, //总内存
         "processCpu": 0,
         "processMem": 0
       }
