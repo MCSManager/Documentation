@@ -114,16 +114,23 @@ export default defineConfig({
               text: "Obtain API Key",
               link: "/apis/get_apikey.md",
             },
+
+          ],
+        },
+        {
+          text: "API Usage",
+          collapsed: true,
+          items: [
             {
-              text: "API Usage - User",
+              text: "User",
               link: "/apis/api_users.md",
             },
             {
-              text: "API Usage - Instance",
+              text: "Instance",
               link: "/apis/api_instance.md",
             },
-          ],
-        },
+          ]
+        }
       ],
       ["/zh_cn/"]: [
         {
