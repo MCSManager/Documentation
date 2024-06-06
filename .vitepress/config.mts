@@ -131,6 +131,10 @@ export default defineConfig({
             {
               text: "Instance",
               link: "/apis/api_instance.md",
+            },
+            {
+              text: "Daemon",
+              link: "/apis/api_daemon.md",
             }
           ]
         }
