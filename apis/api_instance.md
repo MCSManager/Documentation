@@ -37,7 +37,7 @@ GET /api/instance
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
@@ -64,7 +64,7 @@ POST /api/instance
 ```
 
 ##### Request Body
-[InstanceDetail](#type-of-instancedetail)
+> [InstanceDetail](#type-of-instancedetail)
 
 #### Response
 ```json
@@ -86,13 +86,13 @@ PUT /api/instance
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
 
 #### Request Body
-[InstanceConfig](#type-of-instanceconfig)
+> [InstanceConfig](#type-of-instanceconfig)
 
 #### Response
 ```json
@@ -113,7 +113,7 @@ DELETE /api/instance
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
@@ -143,7 +143,7 @@ GET /api/protected_instance/open
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
@@ -167,7 +167,7 @@ GET /api/protected_instance/stop
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
@@ -191,7 +191,7 @@ GET /api/protected_instance/restart
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
@@ -215,7 +215,7 @@ GET /api/protected_instance/kill
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
@@ -239,7 +239,7 @@ GET /api/protected_instance/command
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
   command: string
 }
@@ -264,7 +264,7 @@ GET /api/protected_instance/outputlog
 #### Query Param
 ```js
 {
-  uuid: string,     // InstanceId
+  uuid: string,     // Instance ID
   daemonId: string,
   size?: number      // Log size: 1KB ~ 2048KB
                      // if not set, return all logs
@@ -277,6 +277,37 @@ GET /api/protected_instance/outputlog
     "status": 200,
     "data": "[INFO]: Done (12.138s)! For help, type \"help\"\n",
     "time": 1145141918100
+}
+```
+
+## Reinstall
+```http
+POST /api/protected_instance/install_instance
+```
+
+#### Query Param
+```js
+{
+  daemonId: string,
+  uuid: string      // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "targetUrl": "https://files.example.com/Paper-1.20.4.zip",
+  "title": "Minecraft 1.20.4 Java",
+  "description": "[Paper] Low hardware configuration machine use, Fast setup."
+}
+```
+
+#### Response
+```json
+{
+  "status":200,
+  "data":true,
+  "time":1145141918100
 }
 ```
 
