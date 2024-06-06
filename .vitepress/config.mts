@@ -121,13 +121,17 @@ export default defineConfig({
               link: "/apis/get_apikey.md",
             },
             {
+              text: "Dashboard",
+              link: "/apis/api_dashboard.md",
+            },
+            {
               text: "User",
               link: "/apis/api_users.md",
             },
             {
               text: "Instance",
               link: "/apis/api_instance.md",
-            },
+            }
           ]
         }
       ],
