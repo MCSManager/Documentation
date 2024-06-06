@@ -99,6 +99,7 @@ PUT /api/auth
   }
 }
 ```
+> For information about InstanceDetail, see [this](./api_instance.md#type-of-instancedetail)
 
 
 #### Response
