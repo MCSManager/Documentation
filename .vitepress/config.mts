@@ -110,17 +110,16 @@ export default defineConfig({
               text: "Customize HTML Card",
               link: "/apis/html_card.md",
             },
-            {
-              text: "Obtain API Key",
-              link: "/apis/get_apikey.md",
-            },
-
           ],
         },
         {
           text: "API Usage",
           collapsed: true,
           items: [
+            {
+              text: "Obtain API Key",
+              link: "/apis/get_apikey.md",
+            },
             {
               text: "User",
               link: "/apis/api_users.md",
