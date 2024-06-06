@@ -1,16 +1,11 @@
 # Sample API for User Management
 
-## Request Header
-```http
-content-type: application/json; 
-```
-
 ## Get User List
 ```http
 GET /api/auth/search
 ```
 
-#### Request Query
+#### Query Param
 ```js
 {
   userName?: string
@@ -25,7 +20,6 @@ GET /api/auth/search
 ```json
 {
   "status": 200,
-  "time": 1145141918100,
   "data": {
     "data": [
       {
@@ -54,6 +48,7 @@ GET /api/auth/search
       "pageSize": 20,
       "total": 6,
   },
+  "time": 1145141918100
 }
 ```
 
@@ -110,8 +105,8 @@ PUT /api/auth
 ```json
 {
   "status": 200,
-  "time": 1145141918100,
-  "data": true
+  "data": true,
+  "time": 1145141918100
 }
 ```
 
@@ -129,7 +124,7 @@ DELETE /api/auth
 ```json
 {
   "status": 200,
-  "time": 1145141918100,
-  "data": true
+  "data": true,
+  "time": 1145141918100
 }
 ```
