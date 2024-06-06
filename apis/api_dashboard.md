@@ -10,7 +10,7 @@ GET /api/overview
 {
   "status": 200,
   "data": {
-    "version": "10.2.1",// Linux only
+    "version": "10.2.1",
     "specifiedDaemonVersion": "4.4.1",
     "process": {
       "cpu": 0,
