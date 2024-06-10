@@ -135,6 +135,10 @@ export default defineConfig({
             {
               text: "Daemon",
               link: "/apis/api_daemon.md",
+            },
+            {
+              text: "File Manager",
+              link: "/apis/api_fileManager.md",
             }
           ]
         }
