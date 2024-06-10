@@ -72,7 +72,7 @@ server
 		listen 12333 ssl http2; #IPV4
 		listen [::]:12333 ssl http2; #IPv6
 
-		# 开启HSTS 开启后将强制使用HTTPS连接节点并在取消此策略后持续一年除非在浏览器手动清楚策略。
+		# 开启HSTS 开启后将强制使用HTTPS连接节点并在取消此策略后持续一年除非在浏览器手动清除策略。
 		# 默认未开启，可取消注释开启.
 		#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 
