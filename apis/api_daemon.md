@@ -69,3 +69,30 @@ GET /api/service/link_remote_service
   "time": 1145141918100
 }
 ```
+
+## Update Daemon Info
+```http
+PUT /api/service/remote_service
+```
+
+#### Request Body
+```json
+{
+  "uuid": "e31986e43c254107951dea97026a3741",
+  "ip": "10.0.0.16",
+  "port": 24446,
+  "prefix": "",
+  "available": false,
+  "remarks": "MiPad",
+  "apiKey": ""
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
