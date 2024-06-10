@@ -1,4 +1,4 @@
-# Sample API for File Manager
+# Sample API for Image Manager
 
 ## Get Image List
 ```http
