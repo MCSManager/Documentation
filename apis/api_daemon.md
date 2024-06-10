@@ -1,9 +1,9 @@
 # Sample API for Daemon
 
-## Get Daemon List
+## Daemon List
 > see [Dashboard API](./api_dashboard.md#get-overview-info)
 
-## Add Daemon
+## Add
 ```http
 POST /api/service/remote_service
 ```
@@ -28,7 +28,7 @@ POST /api/service/remote_service
 }
 ```
 
-## Delete Daemon
+## Delete
 ```http
 DELETE /api/service/remote_service
 ```
@@ -49,7 +49,7 @@ DELETE /api/service/remote_service
 }
 ```
 
-## Link Daemon
+## Link
 ```http
 GET /api/service/link_remote_service
 ```
@@ -70,7 +70,7 @@ GET /api/service/link_remote_service
 }
 ```
 
-## Update Daemon Info
+## Update Info
 ```http
 PUT /api/service/remote_service
 ```
