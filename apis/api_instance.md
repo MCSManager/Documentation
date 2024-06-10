@@ -379,7 +379,7 @@ POST /api/protected_instance/install_instance
     "timestamp": 0
   },
   "space": 0,
-  "started": number,     // start count
+  "started": 6, // start count
   "status": 3,  // -1 = busy,
                 // 0  = stopped,
                 // 1  = stopping,
@@ -393,7 +393,7 @@ POST /api/protected_instance/install_instance
 {
   "containerName": "",
   "image": "mcsm-ubuntu:22.04",
-  "memory": 1024,
+  "memory": 1024, // MB
   "ports": ["25565:25565/tcp"],
   "extraVolumes": [],
   "maxSpace": null,

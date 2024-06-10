@@ -139,6 +139,10 @@ export default defineConfig({
             {
               text: "File Manager",
               link: "/apis/api_fileManager.md",
+            },
+            {
+              text: "Image Manager",
+              link: "/apis/api_imageManager.md",
             }
           ]
         }
