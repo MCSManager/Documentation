@@ -90,7 +90,8 @@ PUT /api/auth
     "userName": string,
     "loginTime": string,
     "registerTime": string,
-    "instances": InstanceDetail[],
+    "instances": InstanceDetail[],  // user instances
+                                    // You can assign instances to users here
     "permission": number,  // 1=User, 10=Admin, -1=Banned user
     "apiKey": string,
     "isInit": boolean,
@@ -117,7 +118,7 @@ DELETE /api/auth
 ```
 
 #### Request Body
-```json
+```js
 ['user uuid'] // UUID of the target users
 ```
 
