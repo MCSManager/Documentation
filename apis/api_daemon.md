@@ -48,3 +48,24 @@ DELETE /api/service/remote_service
   "time": 1145141918100
 }
 ```
+
+## Link Daemon
+```http
+GET /api/service/link_remote_service
+```
+
+#### Query Param
+```js
+{
+  uuid: string  // Daemon ID
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
