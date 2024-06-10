@@ -96,7 +96,7 @@ PUT /api/files/
 }
 ```
 
-## Edit File
+## Update File
 ```http
 PUT /api/files/
 ```
