@@ -24,7 +24,7 @@ GET /api/files/list
     "items": [
       {
         "name": "Genshin Impact",
-        "size": 0,
+        "size": 0,    // byte
         "time": "Fri Jun 07 2024 08:53:34 GMT+0800 (中国标准时间)",
         "mode": 444,  // permission
         "type": 0     // 0 = Folder, 1 = File
@@ -56,11 +56,18 @@ GET /api/files/list
         "time": "Thu Jun 06 2024 18:25:14 GMT+0800 (中国标准时间)",
         "mode": 444,
         "type": 0
+      },
+      {
+        "name": "secret base_君がくれたもの【Covered by Kotoha】.mp4",
+        "size": 13253857,
+        "time": "Thu Jun 06 2024 19:37:35 GMT+0800 (中国标准时间)",
+        "mode": 666,
+        "type": 1
       }
     ],
     "page": 0,
     "pageSize": 100,
-    "total": 5,
+    "total": 6,
     "absolutePath": "\\"
   },
   "time": 1145141918100
