@@ -1,0 +1,443 @@
+# Sample API for File Manager
+
+## Get File List
+```http
+GET /api/files/list
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+  target: string;   // File(name or directory) Path
+  page: number;
+  page_size: number;
+};
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": {
+    "items": [
+      {
+        "name": "Genshin Impact",
+        "size": 0,
+        "time": "Fri Jun 07 2024 08:53:34 GMT+0800 (中国标准时间)",
+        "mode": 444,  // permission
+        "type": 0     // 0 = Folder, 1 = File
+      },
+      {
+        "name": "NEKO-MIMI SWEET HOUSEMATES Vol. 1",
+        "size": 0,
+        "time": "Thu Jun 06 2024 18:25:14 GMT+0800 (中国标准时间)",
+        "mode": 444,
+        "type": 0
+      },
+      {
+        "name": "Poly Bridge",
+        "size": 0,
+        "time": "Thu Jun 06 2024 18:25:14 GMT+0800 (中国标准时间)",
+        "mode": 444,
+        "type": 0
+      },
+      {
+        "name": "Wuthering Waves",
+        "size": 0,
+        "time": "Fri Jun 07 2024 04:32:58 GMT+0800 (中国标准时间)",
+        "mode": 666,
+        "type": 0
+      },
+      {
+        "name": "AngryBirdsSeasons",
+        "size": 0,
+        "time": "Thu Jun 06 2024 18:25:14 GMT+0800 (中国标准时间)",
+        "mode": 444,
+        "type": 0
+      }
+    ],
+    "page": 0,
+    "pageSize": 100,
+    "total": 5,
+    "absolutePath": "\\"
+  },
+  "time": 1145141918100
+}
+```
+
+## Get File Contents
+```http
+PUT /api/files/
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "target": "/eula.txt"
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": "eula=false\n",
+  "time": 1145141918100
+}
+```
+
+## Update File
+```http
+PUT /api/files/
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "target": "/eula.txt",
+  "text": "eula=true\n"
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Download File
+```http
+POST /api/files/download
+```
+
+#### Query Param
+```js
+{
+  file_name: string;  // Path + FileName, Example: /backup/world.zip
+  daemonId: string;
+  uuid: string;       // Instance ID
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": {
+    "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
+    "addr": "localhost:24444"   // Daemon Addr
+  },
+  "time": 1145141918100
+}
+```
+
+#### Usage
+```http
+GET http(s)://{ Daemon Addr }/download/{ password}/{ fileName }
+GET http://localhost:24444/download/db8271f526...49468abd74/world.zip
+```
+
+## Upload File
+
+### 1. Get Upload Config 
+```http
+POST /api/files/upload
+```
+
+#### Query Param
+```js
+{
+  upload_dir: string;
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": {
+    "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
+    "addr": "localhost:24444"   // Daemon Addr
+  },
+  "time": 1145141918100
+}
+```
+
+### 2. Upload File
+```http
+POST http(s)://{ Upload Config Addr }/upload/{ password }
+```
+
+#### Request Headers
+```http
+Content-Type: multipart/form-data
+```
+
+#### Request FormData
+```http
+file: (Your file)
+```
+
+#### Response
+```
+OK
+```
+
+## Copy
+```http
+POST /api/files/copy
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "targets": [
+    [
+      "/server.jar",      // source
+      "/cache/server.jar" // target
+    ]
+    // ... more
+  ]
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Move or Rename
+```http
+PUT /api/files/move
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "targets": [
+    [
+      "/server.jar",      // source
+      "/cache/server.jar" // target
+    ],
+
+    // support rename
+    [
+      "/ops.json",      // source
+      "/ops.txt"        // target
+    ]
+    // ... more
+  ]
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Zip
+```http
+POST /api/files/compress
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "type": 1,
+  "code": "utf-8",        // only utf-8
+  "source": "/test.zip",  // zip file path
+  "targets": [
+    "/world",             // support folder
+    "/config.json",
+    "/server.jar"
+  ]
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Unzip
+```http
+POST /api/files/compress
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "type": 2,
+  "code": "utf-8",        // format of the compressed file
+                          // support: utf-8, gbk, big5
+  "source": "/test.zip",  // zip file path
+  "targets": "/cache"     // unzip to
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Delete
+```http
+DELETE /api/files
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "targets": [
+    "/world",             // support folder
+    "/cache/config.json",
+    "/server.jar"
+  ]
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Touch File
+```http
+POST /api/files/touch
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "target": "/test"   // File name
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Create Folder
+```http
+POST /api/files/mkdir
+```
+
+#### Query Param
+```js
+{
+  daemonId: string;
+  uuid: string;     // Instance ID
+}
+```
+
+#### Request Body
+```json
+{
+  "target": "/backup"   // Folder name
+}
+```
+
+#### Response
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
+}
+```

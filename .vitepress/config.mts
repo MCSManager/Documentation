@@ -110,20 +110,42 @@ export default defineConfig({
               text: "Customize HTML Card",
               link: "/apis/html_card.md",
             },
+          ],
+        },
+        {
+          text: "API Usage",
+          collapsed: true,
+          items: [
             {
               text: "Obtain API Key",
               link: "/apis/get_apikey.md",
             },
             {
-              text: "API Usage - User",
+              text: "Dashboard",
+              link: "/apis/api_dashboard.md",
+            },
+            {
+              text: "User",
               link: "/apis/api_users.md",
             },
             {
-              text: "API Usage - Instance",
+              text: "Instance",
               link: "/apis/api_instance.md",
             },
-          ],
-        },
+            {
+              text: "Daemon",
+              link: "/apis/api_daemon.md",
+            },
+            {
+              text: "File Manager",
+              link: "/apis/api_fileManager.md",
+            },
+            {
+              text: "Image Manager",
+              link: "/apis/api_imageManager.md",
+            }
+          ]
+        }
       ],
       ["/zh_cn/"]: [
         {
