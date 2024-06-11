@@ -71,7 +71,9 @@ POST /api/auth
 {
   "status": 200,
   "time": 1145141918100,
-  "data": true
+  "data": {
+    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // new user's uuid
+  }
 }
 ```
 
