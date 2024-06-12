@@ -1,11 +1,13 @@
-# Sample API for Instance Management
+# Instance API
 
 ## Instance List
+
 ```http
 GET /api/service/remote_service_instances
 ```
 
 #### Query Param
+
 ```js
 {
   daemonId: string;
@@ -17,6 +19,7 @@ GET /api/service/remote_service_instances
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -30,11 +33,13 @@ GET /api/service/remote_service_instances
 ```
 
 ## Instance Detail
+
 ```http
 GET /api/instance
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -43,6 +48,7 @@ GET /api/instance
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -52,21 +58,25 @@ GET /api/instance
 ```
 
 ## Create
+
 ```http
 POST /api/instance
 ```
 
 ##### Query Param
+
 ```js
 {
-  daemonId: string
+  daemonId: string;
 }
 ```
 
 ##### Request Body
+
 > [InstanceDetail](#type-of-instancedetail)
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -79,11 +89,13 @@ POST /api/instance
 ```
 
 ## Update
+
 ```http
 PUT /api/instance
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -92,25 +104,29 @@ PUT /api/instance
 ```
 
 #### Request Body
+
 > [InstanceConfig](#type-of-instanceconfig)
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": {
-        "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
-    },
-    "time": 1145141918100
+  "status": 200,
+  "data": {
+    "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
+  },
+  "time": 1145141918100
 }
 ```
 
 ## Delete
+
 ```http
 DELETE /api/instance
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -119,28 +135,32 @@ DELETE /api/instance
 ```
 
 #### Request Body
+
 ```json
 {
-  "uuids": ["50c73059001b436fa85c0d8221c157cf"],  // Instance Id
-  "deleteFile": false                             // Delete instance files
+  "uuids": ["50c73059001b436fa85c0d8221c157cf"], // Instance Id
+  "deleteFile": false // Delete instance files
 }
 ```
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": true,
-    "time": 1145141918100
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
 }
 ```
 
 ## Start
+
 ```http
 GET /api/protected_instance/open
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -149,22 +169,25 @@ GET /api/protected_instance/open
 ```
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": {
-      "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
-    },
-    "time": 1145141918100
+  "status": 200,
+  "data": {
+    "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
+  },
+  "time": 1145141918100
 }
 ```
 
 ## Stop
+
 ```http
 GET /api/protected_instance/stop
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -173,22 +196,25 @@ GET /api/protected_instance/stop
 ```
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": {
-      "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
-    },
-    "time": 1145141918100
+  "status": 200,
+  "data": {
+    "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
+  },
+  "time": 1145141918100
 }
 ```
 
 ## Restart
+
 ```http
 GET /api/protected_instance/restart
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -197,22 +223,25 @@ GET /api/protected_instance/restart
 ```
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": {
-      "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
-    },
-    "time": 1145141918100
+  "status": 200,
+  "data": {
+    "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
+  },
+  "time": 1145141918100
 }
 ```
 
 ## Kill
+
 ```http
 GET /api/protected_instance/kill
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -221,22 +250,25 @@ GET /api/protected_instance/kill
 ```
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": {
-      "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
-    },
-    "time": 1145141918100
+  "status": 200,
+  "data": {
+    "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
+  },
+  "time": 1145141918100
 }
 ```
 
 ## Send Command
+
 ```http
 GET /api/protected_instance/command
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -246,22 +278,25 @@ GET /api/protected_instance/command
 ```
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": {
-      "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
-    },
-    "time": 1145141918100
+  "status": 200,
+  "data": {
+    "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
+  },
+  "time": 1145141918100
 }
 ```
 
 ## Get output
+
 ```http
 GET /api/protected_instance/outputlog
 ```
 
 #### Query Param
+
 ```js
 {
   uuid: string,     // Instance ID
@@ -272,20 +307,23 @@ GET /api/protected_instance/outputlog
 ```
 
 #### Response
+
 ```json
 {
-    "status": 200,
-    "data": "[INFO]: Done (12.138s)! For help, type \"help\"\n",
-    "time": 1145141918100
+  "status": 200,
+  "data": "[INFO]: Done (12.138s)! For help, type \"help\"\n",
+  "time": 1145141918100
 }
 ```
 
 ## Reinstall
+
 ```http
 POST /api/protected_instance/install_instance
 ```
 
 #### Query Param
+
 ```js
 {
   daemonId: string,
@@ -294,6 +332,7 @@ POST /api/protected_instance/install_instance
 ```
 
 #### Request Body
+
 ```json
 {
   "targetUrl": "https://files.example.com/Paper-1.20.4.zip",
@@ -303,15 +342,17 @@ POST /api/protected_instance/install_instance
 ```
 
 #### Response
+
 ```json
 {
-  "status":200,
-  "data":true,
-  "time":1145141918100
+  "status": 200,
+  "data": true,
+  "time": 1145141918100
 }
 ```
 
 ## Type of InstanceConfig
+
 ```json
 {
   "nickname": "New Name",
@@ -356,7 +397,8 @@ POST /api/protected_instance/install_instance
 }
 ```
 
-## Type of InstanceDetail 
+## Type of InstanceDetail
+
 ```json
 {
   "config": InstanceConfig,
@@ -389,6 +431,7 @@ POST /api/protected_instance/install_instance
 ```
 
 ## Type of Instance DockerConfig
+
 ```json
 {
   "containerName": "",
@@ -404,6 +447,6 @@ POST /api/protected_instance/install_instance
   "cpusetCpus": "",
   "cpuUsage": 100,
   "workingDir": "",
-  "env": [],
+  "env": []
 }
 ```

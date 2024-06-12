@@ -1,4 +1,4 @@
-# Sample API for User Management
+# User API
 
 ## Create User
 

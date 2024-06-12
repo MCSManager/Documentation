@@ -104,7 +104,7 @@ export default defineConfig({
         },
         {
           text: "Development",
-          collapsed: true,
+          collapsed: false,
           items: [
             {
               text: "Customize HTML Card",
@@ -117,7 +117,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              text: "Obtain API Key",
+              text: "Api Key",
               link: "/apis/get_apikey.md",
             },
             {
@@ -143,9 +143,9 @@ export default defineConfig({
             {
               text: "Image Manager",
               link: "/apis/api_imageManager.md",
-            }
-          ]
-        }
+            },
+          ],
+        },
       ],
       ["/zh_cn/"]: [
         {
@@ -247,13 +247,39 @@ export default defineConfig({
         },
         {
           text: "开发",
+          items: [{ text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" }],
+        },
+        {
+          text: "API 接口",
+          collapsed: true,
           items: [
-            { text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" },
-            { text: "获取 APIKEY", link: "/zh_cn/apis/get_apikey.md" },
-            { text: "API 接口参考 - 用户", link: "/zh_cn/apis/api_users.html" },
             {
-              text: "API 接口参考 - 实例",
-              link: "/zh_cn/apis/api_instance.html",
+              text: "Api Key",
+              link: "/apis/get_apikey.md",
+            },
+            {
+              text: "Dashboard",
+              link: "/apis/api_dashboard.md",
+            },
+            {
+              text: "User",
+              link: "/apis/api_users.md",
+            },
+            {
+              text: "Instance",
+              link: "/apis/api_instance.md",
+            },
+            {
+              text: "Daemon",
+              link: "/apis/api_daemon.md",
+            },
+            {
+              text: "File Manager",
+              link: "/apis/api_fileManager.md",
+            },
+            {
+              text: "Image Manager",
+              link: "/apis/api_imageManager.md",
             },
           ],
         },

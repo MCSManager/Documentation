@@ -1,11 +1,13 @@
-# Sample API for User Management
+# Users API
 
 ## Get User List
+
 ```http
 GET /api/auth/search
 ```
 
 #### Query Param
+
 ```js
 {
   userName?: string
@@ -17,6 +19,7 @@ GET /api/auth/search
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -28,9 +31,10 @@ GET /api/auth/search
         "passWord": "",
         "passWordType": 1,
         "salt": "",
-        "permission": 10,
+        "permission": 10, // 1=User, 10=Admin, -1=Banned user
         "registerTime": "10/28/2023, 5:38:44 PM",
         "loginTime": "10/14/2023, 1:01:58 AM",
+        // List of instances owned by the user
         "instances": [
           {
             "instanceUuid": "82e856fd33424e018fc2c007e1a3c4d3",
@@ -41,23 +45,25 @@ GET /api/auth/search
         "isInit": false,
         "secret": "",
         "open2FA": false
-        }
-      ],
-      "maxPage": 1,
-      "page": 1,
-      "pageSize": 20,
-      "total": 6,
+      }
+    ],
+    "maxPage": 1,
+    "page": 1,
+    "pageSize": 20,
+    "total": 6
   },
   "time": 1145141918100
 }
 ```
 
 ## Create User
+
 ```http
 POST /api/auth
 ```
 
 #### Request Body
+
 ```json
 {
   "username": string,
@@ -67,6 +73,7 @@ POST /api/auth
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -76,11 +83,13 @@ POST /api/auth
 ```
 
 ## Update User
+
 ```http
 PUT /api/auth
 ```
 
 #### Request Body
+
 ```json
 {
   "uuid": string, // UUID of the target user
@@ -100,10 +109,11 @@ PUT /api/auth
   }
 }
 ```
+
 > For information about InstanceDetail, see [this](./api_instance.md#type-of-instancedetail)
 
-
 #### Response
+
 ```json
 {
   "status": 200,
@@ -113,16 +123,19 @@ PUT /api/auth
 ```
 
 ## Delete User
+
 ```http
 DELETE /api/auth
 ```
 
 #### Request Body
+
 ```js
-['user uuid'] // UUID of the target users
+["user uuid"]; // UUID of the target users
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,

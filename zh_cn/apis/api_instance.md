@@ -1,4 +1,4 @@
-# Sample API for Instance Management
+# Instance Management API
 
 ## Instance detail
 

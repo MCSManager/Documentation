@@ -1,11 +1,13 @@
-# Sample API for Dashboard
+# Dashboard API
 
-## Get Overview Info
+## Get Overview Data
+
 ```http
 GET /api/overview
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -14,7 +16,7 @@ GET /api/overview
     "specifiedDaemonVersion": "4.4.1",
     "process": {
       "cpu": 0,
-      "memory": 219439104,  // Panel Memory Usage
+      "memory": 219439104, // Panel Memory Usage
       "cwd": "Z:\\Workspace\\MCSManager\\panel"
     },
     "record": {
@@ -27,30 +29,29 @@ GET /api/overview
       "user": {
         "uid": -1,
         "gid": -1,
-        "username": "Nyancy",
-        "homedir": "X:\\Users\\Nyancy",
+        "username": "MCSManager",
+        "homedir": "X:\\Users\\MCSManager",
         "shell": null
       },
+      // Memory usage on the panel
       "time": 1145141918100,
       "totalmem": 16577519520,
       "freemem": 10966386688,
       "type": "Windows_NT",
       "version": "Windows 10 Pro for Workstations",
       "node": "v17.9.1",
-      "hostname": "Nyancy-Workstation",
+      "hostname": "MCSManager-Workstation",
 
       // Linux only
-      "loadavg": [
-        0,
-        0,
-        0
-      ],
+      "loadavg": [0, 0, 0],
 
       "platform": "win32",
       "release": "10.0.22631",
       "uptime": 905020,
       "cpu": 0.11684482123110951
     },
+
+    // Memory&CPU usage on the panel (statistical chart)
     "chart": {
       "system": [
         {
@@ -71,7 +72,7 @@ GET /api/overview
       "total": 3
     },
 
-    // Node List
+    // Daemon List
     "remote": [
       {
         "version": "3.4.0",
@@ -84,6 +85,8 @@ GET /api/overview
           "running": 0,
           "total": 6
         },
+
+        // CPU and memory usage on the Daemon.
         "system": {
           "type": "Linux",
           "hostname": "NYA-Dev-01",
@@ -91,11 +94,7 @@ GET /api/overview
           "release": "5.15.0-101-generic",
           "uptime": 39.63,
           "cwd": "/opt/mcsmanager/daemon",
-          "loadavg": [
-            3.5,
-            0.85,
-            0.28
-          ],
+          "loadavg": [3.5, 0.85, 0.28],
           "freemem": 7254478848,
           "cpuUsage": 0.002512562814070307,
           "memUsage": 0.12453628345617548,
@@ -103,12 +102,16 @@ GET /api/overview
           "processCpu": 0,
           "processMem": 0
         },
+
+        // CPU and memory usage on the Daemon (Chart).
         "cpuMemChart": [
           {
             "cpu": 0,
             "mem": 13
-          },
+          }
         ],
+
+        // Daemon UUID
         "uuid": "957c6bddf379445c82bac5edf7684bbc",
         "ip": "s1.example.com",
         "port": "24444",

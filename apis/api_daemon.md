@@ -1,14 +1,17 @@
-# Sample API for Daemon
+# Daemon API
 
 ## Daemon List
+
 > see [Dashboard API](./api_dashboard.md#get-overview-info)
 
 ## Add
+
 ```http
 POST /api/service/remote_service
 ```
 
 #### Request Body
+
 ```json
 {
   "ip": "10.0.0.16",
@@ -20,6 +23,7 @@ POST /api/service/remote_service
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -29,18 +33,21 @@ POST /api/service/remote_service
 ```
 
 ## Delete
+
 ```http
 DELETE /api/service/remote_service
 ```
 
 #### Query Param
+
 ```js
 {
-  uuid: string  // Daemon ID
+  uuid: string; // Daemon ID
 }
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -49,19 +56,22 @@ DELETE /api/service/remote_service
 }
 ```
 
-## Link
+## Try Connect Daemon
+
 ```http
 GET /api/service/link_remote_service
 ```
 
 #### Query Param
+
 ```js
 {
-  uuid: string  // Daemon ID
+  uuid: string; // Daemon ID
 }
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -70,25 +80,28 @@ GET /api/service/link_remote_service
 }
 ```
 
-## Update Info
+## Update Daemon Connect Config
+
 ```http
 PUT /api/service/remote_service
 ```
 
 #### Request Body
+
 ```json
 {
   "uuid": "e31986e43c254107951dea97026a3741",
-  "ip": "10.0.0.16",
-  "port": 24446,
+  "ip": "162.2.xx.xx",
+  "port": 24444,
   "prefix": "",
   "available": false,
-  "remarks": "MiPad",
+  "remarks": "My Node",
   "apiKey": ""
 }
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,

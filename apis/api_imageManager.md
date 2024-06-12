@@ -1,18 +1,21 @@
-# Sample API for Image Manager
+# Image Manager API
 
 ## Get Image List
+
 ```http
 GET /api/environment/image
 ```
 
 #### Query Param
+
 ```js
 {
-  daemonId: string
+  daemonId: string;
 }
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -20,21 +23,25 @@ GET /api/environment/image
   "time": 1145141918100
 }
 ```
+
 > DockerImageList: https://docs.docker.com/engine/api/v1.37/#tag/Image/operation/ImageList
 
 ## Get Container List
+
 ```http
 GET /api/environment/containers
 ```
 
 #### Query Param
+
 ```js
 {
-  daemonId: string
+  daemonId: string;
 }
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -42,21 +49,25 @@ GET /api/environment/containers
   "time": 1145141918100
 }
 ```
+
 > DockerContainerList: https://docs.docker.com/engine/api/v1.37/#tag/Container/operation/ContainerList
 
 ## Get Network Mode List
+
 ```http
 GET /api/environment/network
 ```
 
 #### Query Param
+
 ```js
 {
-  daemonId: string
+  daemonId: string;
 }
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -64,14 +75,17 @@ GET /api/environment/network
   "time": 1145141918100
 }
 ```
+
 > DockerNetworkList: https://docs.docker.com/engine/api/v1.37/#tag/Network/operation/NetworkList
-  
+
 ## Create Image
+
 ```http
 POST /api/environment/image
 ```
 
 #### Query Param
+
 ```js
 {
   daemonId: string,
@@ -79,15 +93,17 @@ POST /api/environment/image
 ```
 
 #### Request Body
+
 ```json
 {
-  "dockerFile": "",       // DockerFile Content
-  "name": "mcsm-custom",  // Image Name
-  "tag": "latest"         // Version
+  "dockerFile": "...", // DockerFile Config
+  "name": "mcsm-custom", // Image Name
+  "tag": "latest" // Version
 }
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
@@ -97,11 +113,13 @@ POST /api/environment/image
 ```
 
 ## Build Progress
+
 ```http
 GET /api/environment/progress
 ```
 
 #### Query Param
+
 ```js
 {
   daemonId: string,
@@ -109,13 +127,13 @@ GET /api/environment/progress
 ```
 
 #### Response
+
 ```json
 {
   "status": 200,
   "data": {
-    "mcsm-custom:latest": -1 // -1 = Failed
-    // ...                   //  1 = Building
-                             //  2 = Complete
+    "mcsm-custom:latest": -1 // -1 = Failed, 1 = Building, 2 = Complete
+    // ...more...
   },
   "time": 1145141918100
 }
