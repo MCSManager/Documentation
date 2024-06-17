@@ -1,15 +1,86 @@
-# User API
+# Users API
+
+## Get User List
+
+```http
+GET /api/auth/search
+```
+
+#### Query Param
+
+```js
+{
+  userName?: string
+  page: number
+  page_size: number
+  role?: string      // User permission
+                     // 1=User, 10=Admin, -1=Banned user
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": {
+    "data": [
+      {
+        "uuid": "55a8120adb4f4bb3bee672ef305bae62",
+        "userName": "Admin",
+        "passWord": "",
+        "passWordType": 1,
+        "salt": "",
+        "permission": 10, // 1=User, 10=Admin, -1=Banned user
+        "registerTime": "10/28/2023, 5:38:44 PM",
+        "loginTime": "10/14/2023, 1:01:58 AM",
+        // List of instances owned by the user
+        "instances": [
+          {
+            "instanceUuid": "82e856fd33424e018fc2c007e1a3c4d3",
+            "daemonId": "1fcdacc01eac44a7bf8fe83d34215d05"
+          }
+        ],
+        "apiKey": "",
+        "isInit": false,
+        "secret": "",
+        "open2FA": false
+      }
+    ],
+    "maxPage": 1,
+    "page": 1,
+    "pageSize": 20,
+    "total": 6
+  },
+  "time": 1718594177859
+}
+```
 
 ## Create User
 
 ```http
 POST /api/auth
+```
 
-Request Body:
+#### Request Body
+
+```json
 {
-  "username": "{{register_username}}",
-  "password": "123456",
-  "permission": 10  // 1=User, 10=Admin, -1=Banned user
+  "username": string,
+  "password": string,
+  "permission": number  // 1=User, 10=Admin, -1=Banned user
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "time": 1718594177859,
+  "data": {
+    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // new user's uuid
+  }
 }
 ```
 
@@ -17,22 +88,60 @@ Request Body:
 
 ```http
 PUT /api/auth
+```
 
-Request Body:
+#### Request Body
+
+```json
 {
-  "uuid": "{{uuid}}", // UUID of the target user
+  "uuid": string, // UUID of the target user
   "config": {
-    "permission": 10, // 1=User, 10=Admin, -1=Banned user
-    "instances": [
-      {
-        "daemonId": "0e865f1f14c14906894698cc71f4e574",
-        "instanceUuid": "11e2f159b43f447eacb213b2cdc6df2a"
-      },
-      {
-        "serviceUuid": "07027a72d147487aa0a2ca0616231f22",
-        "instanceUuid": "11e2f159b43f447eacb213b2cdc6df2a"
-      }
-    ]
+    // target user info
+    "uuid": string,
+    "userName": string,
+    "loginTime": string,
+    "registerTime": string,
+    "instances": InstanceDetail[],  // user instances
+                                    // You can assign instances to users here
+    "permission": number,  // 1=User, 10=Admin, -1=Banned user
+    "apiKey": string,
+    "isInit": boolean,
+    "secret": string,
+    "open2FA": boolean,
   }
+}
+```
+
+> For information about InstanceDetail, see [this](./api_instance.md#type-of-instancedetail)
+
+#### Response
+
+```json
+{
+  "status"1718594177859
+  "data": true,
+  "time": 1145141918100
+}
+```
+
+## Delete User
+
+```http
+DELETE /api/auth
+```
+
+#### Request Body
+
+```js
+["user uuid"]; // UUID of the target users
+```
+
+#### Response
+
+```json
+{
+  "status"1718594177859
+  "data": true,
+  "time": 1145141918100
 }
 ```

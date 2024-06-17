@@ -133,15 +133,15 @@ export default defineConfig({
               link: "/apis/api_instance.md",
             },
             {
-              text: "Daemon",
+              text: "Nodes",
               link: "/apis/api_daemon.md",
             },
             {
-              text: "File Manager",
+              text: "File",
               link: "/apis/api_fileManager.md",
             },
             {
-              text: "Image Manager",
+              text: "Image",
               link: "/apis/api_imageManager.md",
             },
           ],
@@ -254,32 +254,32 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              text: "API 使用教程",
-              link: "/apis/get_apikey.md",
+              text: "使用教程",
+              link: "/zh_cn/apis/get_apikey.md",
             },
             {
-              text: "Dashboard",
-              link: "/apis/api_dashboard.md",
+              text: "仪表盘数据",
+              link: "/zh_cn/apis/api_dashboard.md",
             },
             {
-              text: "User",
-              link: "/apis/api_users.md",
+              text: "用户管理",
+              link: "/zh_cn/apis/api_users.md",
             },
             {
-              text: "Instance",
-              link: "/apis/api_instance.md",
+              text: "实例管理",
+              link: "/zh_cn/apis/api_instance.md",
             },
             {
-              text: "Daemon",
-              link: "/apis/api_daemon.md",
+              text: "节点管理",
+              link: "/zh_cn/apis/api_daemon.md",
             },
             {
-              text: "File Manager",
-              link: "/apis/api_fileManager.md",
+              text: "文件管理",
+              link: "/zh_cn/apis/api_fileManager.md",
             },
             {
-              text: "Image Manager",
-              link: "/apis/api_imageManager.md",
+              text: "镜像管理",
+              link: "/zh_cn/apis/api_imageManager.md",
             },
           ],
         },
