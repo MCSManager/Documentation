@@ -66,14 +66,14 @@ GET /api/files/list
         "time": "Thu Jun 06 2024 19:37:35 GMT+0800 (中国标准时间)",
         "mode": 666,
         "type": 1
-      }1718594177859
+      }
     ],
     "page": 0,
     "pageSize": 100,
     "total": 6,
     "absolutePath": "\\"
   },
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -100,15 +100,13 @@ PUT /api/files/
 }
 ```
 
-1718594177859
-
 #### Response
 
 ```json
 {
   "status": 200,
   "data": "eula=false\n", // file content
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -136,15 +134,13 @@ PUT /api/files/
 }
 ```
 
-1718594177859
-
 #### Response
 
 ```json
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -166,14 +162,14 @@ POST /api/files/download
 
 #### Response
 
-```json1718594177859
+```json
 {
   "status": 200,
   "data": {
     "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
     "addr": "localhost:24444" // Daemon Addr
   },
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -206,14 +202,14 @@ POST /api/files/upload
 
 #### Response
 
-```json1718594177859
+```json
 {
   "status": 200,
   "data": {
     "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
     "addr": "localhost:24444" // Daemon Addr
   },
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -270,7 +266,7 @@ POST /api/files/copy
 }
 ```
 
-1718594177859
+
 
 #### Response
 
@@ -278,7 +274,7 @@ POST /api/files/copy
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -317,7 +313,7 @@ PUT /api/files/move
 }
 ```
 
-1718594177859
+
 
 #### Response
 
@@ -325,7 +321,7 @@ PUT /api/files/move
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -359,7 +355,7 @@ POST /api/files/compress
 }
 ```
 
-1718594177859
+
 
 #### Response
 
@@ -367,7 +363,7 @@ POST /api/files/compress
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -398,7 +394,7 @@ POST /api/files/compress
 }
 ```
 
-1718594177859
+
 
 #### Response
 
@@ -406,7 +402,7 @@ POST /api/files/compress
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -437,7 +433,7 @@ DELETE /api/files
 }
 ```
 
-1718594177859
+
 
 #### Response
 
@@ -445,7 +441,7 @@ DELETE /api/files
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -472,7 +468,7 @@ POST /api/files/touch
 }
 ```
 
-1718594177859
+
 
 #### Response
 
@@ -480,7 +476,7 @@ POST /api/files/touch
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -507,7 +503,7 @@ POST /api/files/mkdir
 }
 ```
 
-1718594177859
+
 
 #### Response
 
@@ -515,6 +511,6 @@ POST /api/files/mkdir
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```

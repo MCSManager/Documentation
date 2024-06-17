@@ -120,7 +120,7 @@ PUT /api/auth
 {
   "status"1718594177859
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -142,6 +142,6 @@ DELETE /api/auth
 {
   "status"1718594177859
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
