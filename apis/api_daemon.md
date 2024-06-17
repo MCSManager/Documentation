@@ -28,7 +28,7 @@ POST /api/service/remote_service
 {
   "status": 200,
   "data": "499e1012a21443278a7ec63a3a95860b", // Added Daemon ID
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -52,7 +52,7 @@ DELETE /api/service/remote_service
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -76,7 +76,7 @@ GET /api/service/link_remote_service
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -106,6 +106,6 @@ PUT /api/service/remote_service
 {
   "status": 200,
   "data": true,
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```

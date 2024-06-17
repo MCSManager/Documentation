@@ -1,4 +1,6 @@
-# Obtaining API Key
+# API Tutorial
+
+## API Key
 
 :::tip
 If you are on an admin account, your API key will also have admin privileges. Please do <b>not</b> disclose your API key.
@@ -17,11 +19,18 @@ Generate and copy this API key, it will have the same rights as your current acc
 Suppose you are an admin, and you want to use the API to `get a list of daemons`. You need to use any programming language or HTTP tool to send the following request:
 
 ```bash
-URL: http://<Your Panel Address>/api/service/remote_services_system?apikey=<APIKEY>
-
-GET
+GET http://<Your Panel Address>/api/service/remote_services_system?apikey=<Your Api Key>
 Content-Type: application/json; charset=utf-8
+X-Requested-With: XMLHttpRequest
 ```
+
+:::warning
+If not otherwise specified, **these HTTP request headers are required**.
+
+- X-Requested-With: XMLHttpRequest
+- Content-Type: application/json; charset=utf-8
+
+:::
 
 You will get all daemon's data:
 

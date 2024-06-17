@@ -117,7 +117,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              text: "Api Key",
+              text: "Tutorial",
               link: "/apis/get_apikey.md",
             },
             {
@@ -254,7 +254,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              text: "Api Key",
+              text: "API 使用教程",
               link: "/apis/get_apikey.md",
             },
             {

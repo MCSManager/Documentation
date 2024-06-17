@@ -34,7 +34,7 @@ GET /api/overview
         "shell": null
       },
       // Memory usage on the panel
-      "time": 1145141918100,
+      "time": 1718594177859,
       "totalmem": 16577519520,
       "freemem": 10966386688,
       "type": "Windows_NT",
@@ -121,6 +121,6 @@ GET /api/overview
       }
     ]
   },
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```

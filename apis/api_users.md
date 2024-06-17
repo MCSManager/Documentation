@@ -27,7 +27,7 @@ GET /api/auth/search
     "data": [
       {
         "uuid": "55a8120adb4f4bb3bee672ef305bae62",
-        "userName": "Master",
+        "userName": "Admin",
         "passWord": "",
         "passWordType": 1,
         "salt": "",
@@ -52,7 +52,7 @@ GET /api/auth/search
     "pageSize": 20,
     "total": 6
   },
-  "time": 1145141918100
+  "time": 1718594177859
 }
 ```
 
@@ -77,7 +77,7 @@ POST /api/auth
 ```json
 {
   "status": 200,
-  "time": 1145141918100,
+  "time": 1718594177859,
   "data": {
     "uuid": "046afc351bfb44a99aa5641c06e70e5a" // new user's uuid
   }
@@ -118,7 +118,7 @@ PUT /api/auth
 
 ```json
 {
-  "status": 200,
+  "status"1718594177859
   "data": true,
   "time": 1145141918100
 }
@@ -140,7 +140,7 @@ DELETE /api/auth
 
 ```json
 {
-  "status": 200,
+  "status"1718594177859
   "data": true,
   "time": 1145141918100
 }

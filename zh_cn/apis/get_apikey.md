@@ -1,4 +1,6 @@
-# 获取 APIKEY
+# API 使用教程
+
+## 获取 Api Key
 
 :::tip
 如果你是管理员账号，那么你的 APIKEY 将同时拥有管理员权限，请<b>不要</b>泄漏你的 APIKEY。
@@ -17,11 +19,19 @@
 假设你是管理员，那么列如 API 接口 `获取节点列表`，你只需要使用任何编程语言，或者任何 HTTP 工具发送如下请求：
 
 ```bash
-URL: http://<你的面板地址>/api/service/remote_services_system?apikey=<APIKEY>
+GET http://<你的面板地址>/api/service/remote_services_system?apikey=<APIKEY>
 
-GET
 Content-Type: application/json; charset=utf-8
+X-Requested-With: XMLHttpRequest
 ```
+
+:::warning
+除非额外说明，**否则所有 API 接口都必须附带以下 HTTP 请求头：**
+
+- X-Requested-With: XMLHttpRequest
+- Content-Type: application/json; charset=utf-8
+
+:::
 
 你将获取到所有节点数据：
 
@@ -40,7 +50,7 @@ Content-Type: application/json; charset=utf-8
       "process": {
         "cpu": 5625000,
         "memory": 132437320,
-        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon" 
+        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon"
       },
       "instance": {
         "running": 1, //运行的应用
