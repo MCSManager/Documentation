@@ -1,12 +1,12 @@
-# 制作卡片组件
+# Creating a Card Component
 
 :::tip
-此功能需要一定 JavaScript 开发知识，并且有一定的不稳定性。
+This feature requires some knowledge of JavaScript development and may be somewhat unstable.
 
-**请勿轻易使用其他人的脚本，这可能会导致你的面板被入侵。**
+**It is not recommended to use scripts from others as this could lead to your panel being compromised.**
 :::
 
-开启 MCSManager 网页界面的设计后，新增卡片时有一个 `扩展页面卡片`，这个卡片支持你上传自己的 `HTML` 文件，并且直接运行在前端网页环境中，这和 `内嵌网页卡片` 有着本质上的区别，因为你可以访问到绝大部分前端 HTML 节点，以及操作 MCSManager 给予你的 API。
+After enabling the design mode in the MCSManager web interface, there is an option `Extend Page Card` when you add a new card. This card allows you to upload your own `HTML` file, which runs directly in the frontend web environment. This is fundamentally different from the `Embedded Web Card` because you can access most frontend HTML nodes and operate the API provided by MCSManager.
 
 ```html
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <div>
       <h1>Hello World</h1>
       <button id="myButton">Button</button>
-      <!-- 不要在 HTML 使用 JavaScript 中的函数 -->
+      <!-- Do not use JavaScript functions in HTML -->
       <!-- <button id="myButton" onClick="handleClick()">Button</button> -->
     </div>
     <script>
@@ -23,15 +23,15 @@
         console.debug("Button click!");
       }
 
-      // 卡片挂载事件
+      // Card mount event
       window.$onMounted = function () {
         console.debug("HTML Mounted");
 
-        // 如果你要对 HTML 进行交互，请这样写
+        // If you want to interact with HTML, please write like this
         document.querySelector("#myButton").addEventListener("click");
       };
 
-      // 卡片卸载事件
+      // Card unmount event
       window.$onUnmounted = function () {
         console.debug("HTML Unmounted");
       };
@@ -40,19 +40,19 @@
 </html>
 ```
 
-## JavaScript 沙盒机制
+## JavaScript Sandbox Mechanism
 
-为了防止多个卡片载入到同一个页面互相干扰，MCSManager 制作了一个简易的 JavaScript 沙盒机制，它的工作原理就是代理 `window` 对象，你对 `window` 对象的所有更改都不会影响到其他人。
+To prevent multiple cards from interfering with each other loaded on the same page, MCSManager has created a simple JavaScript sandbox mechanism. Its working principle is to proxy the window object. Any changes you make to the window object will not affect others.
 
-### HTML 卡片 1
+### HTML Card 1
 
 ```js
 window.$onMounted = function () {
-  window.name = "foo"; // 定义全局变量
+  window.name = "foo"; // Define a global variable
 };
 ```
 
-### HTML 卡片 2
+### HTML Card 2
 
 ```js
 window.$onMounted = function () {
@@ -62,29 +62,29 @@ window.$onMounted = function () {
 };
 ```
 
-## CSS 样式污染
+## CSS Style Pollution
 
-MCSManager 并没有对 CSS 样式进行隔离，需要你自己或者其他开发者自己约束 CSS 样式，你对 CSS 样式的任何定义都会影响 MCSManager 整个网页。
+MCSManager does not isolate CSS styles. It's up to you or other developers to constrain CSS styles. Any definition you make to CSS will affect the entire MCSManager webpage.
 
-## 卡片 API
+## Card API
 
-我们为你提供了几个 API 供你在脚本中使用。
+We provide you with several APIs for use in your script.
 
 ```js
 window.$onMounted = function () {
-  // 卡片加载完毕事件。
+  // Card mount complete event.
 };
 window.$onUnmounted = function () {
-  // 卡片卸载完毕事件。
+  // Card unmount complete event.
 };
 
-// 真实 window 对象，即 MCSManager 网页前端的 window 对象。
+// Real window object, i.e., the window object of the MCSManager web frontend.
 window.$realWindow;
 
-// Axios 库，可用于发送请求。
-// 使用方法参考：https://axios-http.com/docs/example
+// Axios library for sending requests.
+// Reference: https://axios-http.com/docs/example
 window.$axios;
 
-// 当前 MCSManager 界面主题，浅色或深色（light/dark）。
+// Current MCSManager interface theme, light or dark (light/dark).
 window.$theme;
 ```

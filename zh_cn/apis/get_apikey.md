@@ -1,49 +1,48 @@
-# API 使用教程
+# API Tutorial
 
-## 获取 Api Key
+## API Key
 
 :::tip
-如果你是管理员账号，那么你的 APIKEY 将同时拥有管理员权限，请<b>不要</b>泄漏你的 APIKEY。
+If you are on an admin account, your API key will also have admin privileges. Please do <b>not</b> disclose your API key.
 :::
 
-如图所示
+As shown in the image,
 
-<img src="../../images/zh_cn/to_user_info.png" style="width:300px" />
+<img src="../images/zh_cn/to_user_info.png" style="width:300px" />
 
-接下来只需生成并复制这段密钥，即是享有当前账户同等权利的 API 密钥。
+Generate and copy this API key, it will have the same rights as your current account.
 
-<img src="../../images/zh_cn/getkey.png" style="width:400px" />
+<img src="../images/zh_cn/getkey.png" style="width:400px" />
 
-## 使用示例
+## Example Usages
 
-假设你是管理员，那么列如 API 接口 `获取节点列表`，你只需要使用任何编程语言，或者任何 HTTP 工具发送如下请求：
+Suppose you are an admin, and you want to use the API to `get a list of daemons`. You need to use any programming language or HTTP tool to send the following request:
 
 ```bash
-GET http://<你的面板地址>/api/service/remote_services_system?apikey=<APIKEY>
-
+GET http://<Your Panel Address>/api/service/remote_services_system?apikey=<Your Api Key>
 Content-Type: application/json; charset=utf-8
 X-Requested-With: XMLHttpRequest
 ```
 
 :::warning
-除非额外说明，**否则所有 API 接口都必须附带以下 HTTP 请求头：**
+If not otherwise specified, **these HTTP request headers are required**.
 
 - X-Requested-With: XMLHttpRequest
 - Content-Type: application/json; charset=utf-8
 
 :::
 
-你将获取到所有节点数据：
+You will get all daemon's data:
 
 ```json
 {
-  // status 参数
-  // 200：正常，并返回相应内容
-  // 400：请求参数不正确
-  // 403：权限不足
-  // 500：程序错误
+  // status parameter
+  // 200: Normal, and returns the corresponding content
+  // 400: Incorrect request parameters
+  // 403: Insufficient permissions
+  // 500: Program error
   "status": 200,
-  // 响应节点列表
+  // Responded node list
   "data": [
     {
       "version": "3.9.0",
@@ -53,27 +52,27 @@ X-Requested-With: XMLHttpRequest
         "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon"
       },
       "instance": {
-        "running": 1, //运行的应用
-        "total": 6 //总共应用
+        "running": 1,
+        "total": 6
       },
       "system": {
-        "type": "Windows_NT", //服务器类型
-        "hostname": "MyComputer", //服务器名称
-        "platform": "win32", //服务器版本
-        "release": "11.0.22000", //面板版本
-        "uptime": 410445, //面板在线时间
-        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon", //面板运行路径
+        "type": "Windows_NT",
+        "hostname": "MyComputer",
+        "platform": "win32",
+        "release": "11.0.22000",
+        "uptime": 410445,
+        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon",
         "loadavg": [0, 0, 0],
-        "freemem": 5700775936, //剩余内存
-        "cpuUsage": 0.0490009222256379, //CPU占用
-        "memUsage": 0.6651475749266619, //内存使用
-        "totalmem": 17024741376, //总内存
+        "freemem": 5700775936,
+        "cpuUsage": 0.0490009222256379,
+        "memUsage": 0.6651475749266619,
+        "totalmem": 17024741376,
         "processCpu": 0,
         "processMem": 0
       }
     }
   ],
-  // 面板处理完毕的时间，可以用于统计网络延迟。
+  // The time when the request finished processing, can be used to measure latency.
   "time": 1643879914006
 }
 ```

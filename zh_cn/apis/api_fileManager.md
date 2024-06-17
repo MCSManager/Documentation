@@ -100,8 +100,6 @@ PUT /api/files/
 }
 ```
 
-
-
 #### Response
 
 ```json
@@ -135,8 +133,6 @@ PUT /api/files/
   "text": "eula=true\n" // file content
 }
 ```
-
-
 
 #### Response
 
