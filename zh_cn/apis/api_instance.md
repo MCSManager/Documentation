@@ -88,7 +88,7 @@ POST /api/instance
 }
 ```
 
-## Update
+## Update Config
 
 ```http
 PUT /api/instance
@@ -257,6 +257,32 @@ GET /api/protected_instance/kill
   "data": {
     "instanceUuid": "50c73059001b436fa85c0d8221c157cf"
   },
+  "time": 1718594177859
+}
+```
+
+## Update Instance
+
+```http
+GET /api/protected_instance/asynchronous
+```
+
+#### Query Param
+
+```js
+{
+  uuid: string,     // Instance ID
+  daemonId: string,
+  task_name: "update"
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": true,
   "time": 1718594177859
 }
 ```
