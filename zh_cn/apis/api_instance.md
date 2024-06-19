@@ -129,7 +129,6 @@ DELETE /api/instance
 
 ```js
 {
-  uuid: string,     // Instance ID
   daemonId: string,
 }
 ```
@@ -138,7 +137,10 @@ DELETE /api/instance
 
 ```json
 {
-  "uuids": ["50c73059001b436fa85c0d8221c157cf"], // Instance Id
+  "uuids": [
+    "50c73059001b436fa85c0d8221c157cf"
+    "11c2f4c89b9e4e1da819dc56bf16f151"
+  ], // Instance Id
   "deleteFile": false // Delete instance files
 }
 ```
@@ -260,6 +262,33 @@ GET /api/protected_instance/kill
   "time": 1718594177859
 }
 ```
+
+## Batch Operation
+Support operations: `start`, `stop`, `restart`, `kill`
+
+```http
+POST /api/instance/multi_{{operations}}
+```
+
+#### Query Param
+
+```js
+{
+  instanceUuid: string,
+  daemonId: string,
+}[]
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1718594177859
+}
+```
+
 
 ## Update Instance
 

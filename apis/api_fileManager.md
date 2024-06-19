@@ -176,7 +176,7 @@ POST /api/files/download
 #### Usage
 
 ```http
-GET http(s)://{Daemon Addr}/download/{password}/{fileName}
+GET http(s)://{{Daemon Addr}}/download/{{password}}/{{fileName}}
 
 // For example:
 GET http://localhost:24444/download/db8271f526...49468abd74/world.zip
@@ -216,7 +216,7 @@ POST /api/files/upload
 ### 2. Upload File
 
 ```http
-POST http(s)://{Daemon Address}/upload/{password}
+POST http(s)://{{Daemon Address}}/upload/{{password}}
 ```
 
 #### Request Headers
