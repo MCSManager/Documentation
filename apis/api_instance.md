@@ -73,7 +73,7 @@ POST /api/instance
 
 ##### Request Body
 
-> [InstanceDetail](#type-of-instancedetail)
+> [InstanceConfig](#type-of-instanceconfig)
 
 #### Response
 
