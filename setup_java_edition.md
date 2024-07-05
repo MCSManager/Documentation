@@ -37,12 +37,12 @@ You can provide many more arguments in the startup command. Feel free to explore
 
 After creating the instance, navigate to the instance console and start it by clicking the `Start` button located in the top-right corner.
 
-## ELUA
+## EULA
 
 ::: warning
-If you do not agree to the Mojang's End-User License Agreement (ELUA), you will not be able to start your server.
+If you do not agree to the Mojang's End-User License Agreement (EULA), you will not be able to start your server.
 :::
 
-To start the server for the first time, you must accept the `End-User License Agreement (EULA)`. To accept ELUA, go to `Configuration Files`, and you will see `elua.txt`, click `edit` and select `yes`.
+To start the server for the first time, you must accept the `End-User License Agreement (EULA)`. To accept EULA, go to `Configuration Files`, and you will see `eula.txt`, click `edit` and select `yes`.
 
 If you can't find this file, try starting your server.
