@@ -12,7 +12,7 @@ As shown in the image,
 
 Generate and copy this API key, it will have the same rights as your current account.
 
-<img src="../images/zh_cn/getkey.png" style="width:400px" />
+<img src="../../images/zh_cn/getkey.png" style="width:400px" />
 
 ## Example Usages
 
