@@ -8,7 +8,7 @@ If you are on an admin account, your API key will also have admin privileges. Pl
 
 As shown in the image,
 
-<img src="../images/zh_cn/to_user_info.png" style="width:300px" />
+<img src="../../images/zh_cn/to_user_info.png" style="width:300px" />
 
 Generate and copy this API key, it will have the same rights as your current account.
 
