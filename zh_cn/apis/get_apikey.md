@@ -2,7 +2,9 @@
 
 :::tip
 如果你是管理员账号，那么你的 APIKEY 将同时拥有管理员权限，请<b>不要</b>泄漏你的 APIKEY。
+如果您需要制作外接程序，请牢记将API写入后端进行隐藏！
 :::
+
 
 如图所示
 
@@ -38,26 +40,26 @@ Content-Type: application/json; charset=utf-8
     {
       "version": "3.9.0",
       "process": {
-        "cpu": 5625000,
-        "memory": 132437320,
-        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon"
+        "cpu": 5625000 //CPU 使用
+        "memory": 132437320, // 内存使用
+        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon" //守护进程 目录
       },
       "instance": {
-        "running": 1,
-        "total": 6
+        "running": 1, // 运行的实例
+        "total": 6 // 总共实例
       },
       "system": {
-        "type": "Windows_NT",
-        "hostname": "MyComputer",
-        "platform": "win32",
-        "release": "11.0.22000",
-        "uptime": 410445,
-        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon",
-        "loadavg": [0, 0, 0],
-        "freemem": 5700775936,
-        "cpuUsage": 0.0490009222256379,
-        "memUsage": 0.6651475749266619,
-        "totalmem": 17024741376,
+        "type": "Windows_NT", //系统类型
+        "hostname": "MyComputer", //系统名称 
+        "platform": "win32", //系统平台
+        "release": "11.0.22000", //版本
+        "uptime": 410445, //在线时长
+        "cwd": "D:\\Workspace\\MCSM\\MCSManager-Daemon", //守护进程 目录
+        "loadavg": [0, 0, 0], //负载
+        "freemem": 5700775936, //剩余内存
+        "cpuUsage": 0.0490009222256379, //CPU使用
+        "memUsage": 0.6651475749266619, //内存使用
+        "totalmem": 17024741376, //总内存
         "processCpu": 0,
         "processMem": 0
       }
