@@ -1,12 +1,12 @@
-# Instance API
+# 实例 API
 
-## Instance List
+## 示例列表
 
 ```http
 GET /api/service/remote_service_instances
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -18,7 +18,7 @@ GET /api/service/remote_service_instances
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -31,14 +31,14 @@ GET /api/service/remote_service_instances
   "time": 1718594177859
 }
 ```
-
-## Instance Detail
+> 请看[示例详细信息](#示例详细形信息)
+## 实例详情
 
 ```http
 GET /api/instance
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -47,7 +47,7 @@ GET /api/instance
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -56,14 +56,14 @@ GET /api/instance
   "time": 1718594177859
 }
 ```
-
-## Create
+> 请看[示例详细信息](#示例详细形信息)
+## 创建实例
 
 ```http
 POST /api/instance
 ```
 
-##### Query Param
+##### Query 参数
 
 ```js
 {
@@ -71,11 +71,11 @@ POST /api/instance
 }
 ```
 
-##### Request Body
+##### 请求正文示例
 
-> [InstanceConfig](#type-of-InstanceConfig)
+> 请看[实例配置示例](#实例配置示例)
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -88,13 +88,13 @@ POST /api/instance
 }
 ```
 
-## Update Config
+## 更新示例配置
 
 ```http
 PUT /api/instance
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -103,11 +103,11 @@ PUT /api/instance
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
-> [InstanceConfig](#type-of-instanceconfig)
+> 请看[实例配置示例](#实例配置示例)
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -119,13 +119,13 @@ PUT /api/instance
 }
 ```
 
-## Delete
+## 删除实例
 
 ```http
 DELETE /api/instance
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -133,7 +133,7 @@ DELETE /api/instance
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
@@ -145,7 +145,7 @@ DELETE /api/instance
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -155,13 +155,13 @@ DELETE /api/instance
 }
 ```
 
-## Start
+## 启动实例
 
 ```http
 GET /api/protected_instance/open
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -170,7 +170,7 @@ GET /api/protected_instance/open
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -182,13 +182,13 @@ GET /api/protected_instance/open
 }
 ```
 
-## Stop
+## 停止实例
 
 ```http
 GET /api/protected_instance/stop
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -197,7 +197,7 @@ GET /api/protected_instance/stop
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -209,13 +209,13 @@ GET /api/protected_instance/stop
 }
 ```
 
-## Restart
+## 重启实例
 
 ```http
 GET /api/protected_instance/restart
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -224,7 +224,7 @@ GET /api/protected_instance/restart
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -236,13 +236,13 @@ GET /api/protected_instance/restart
 }
 ```
 
-## Kill
+## 强制结束实例进程
 
 ```http
 GET /api/protected_instance/kill
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -251,7 +251,7 @@ GET /api/protected_instance/kill
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -263,14 +263,14 @@ GET /api/protected_instance/kill
 }
 ```
 
-## Batch Operation
-Support operations: `start`, `stop`, `restart`, `kill`
+## 批量操作
+operations可填: `start`, `stop`, `restart`, `kill`
 
 ```http
 POST /api/instance/multi_{{operations}}
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -279,7 +279,7 @@ POST /api/instance/multi_{{operations}}
 }[]
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -290,13 +290,13 @@ POST /api/instance/multi_{{operations}}
 ```
 
 
-## Update Instance
+## 更新实例
 
 ```http
 GET /api/protected_instance/asynchronous
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -306,7 +306,7 @@ GET /api/protected_instance/asynchronous
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -316,13 +316,13 @@ GET /api/protected_instance/asynchronous
 }
 ```
 
-## Send Command
+## 发送命令
 
 ```http
 GET /api/protected_instance/command
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -332,7 +332,7 @@ GET /api/protected_instance/command
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -344,24 +344,24 @@ GET /api/protected_instance/command
 }
 ```
 
-## Get output
+## 获取输出
 
 ```http
 GET /api/protected_instance/outputlog
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
   uuid: string,     // Instance ID
   daemonId: string,
-  size?: number      // Log size: 1KB ~ 2048KB
-                     // if not set, return all logs
+  size?: number      // 获取的日志大小: 1KB ~ 2048KB
+                     // 如果未设置，则返回所有日志
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -371,13 +371,13 @@ GET /api/protected_instance/outputlog
 }
 ```
 
-## Reinstall
+## 重新安装
 
 ```http
 POST /api/protected_instance/install_instance
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -386,7 +386,7 @@ POST /api/protected_instance/install_instance
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
@@ -396,7 +396,7 @@ POST /api/protected_instance/install_instance
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -406,7 +406,7 @@ POST /api/protected_instance/install_instance
 }
 ```
 
-## Type of InstanceConfig
+## 实例配置示例
 
 ```json
 {
@@ -414,11 +414,11 @@ POST /api/protected_instance/install_instance
   "startCommand": "cmd.exe",
   "stopCommand":  "^C",
   "cwd": "/workspaces/my_server/",
-  "ie": "gbk",                        // input encode
-  "oe": "gbk",                        // output encode
+  "ie": "gbk",                        // 输入 encode
+  "oe": "gbk",                        // 输出 encode
   "createDatetime": "2022/2/3",
   "lastDatetime": "2022/2/3 16:02",
-  "type": "universal",                // instance type
+  "type": "universal",                // 实例类型
   "tag": [],
   "endTime": "2022/2/28",
   "fileCode": "gbk",
@@ -434,7 +434,7 @@ POST /api/protected_instance/install_instance
   "rconPort": 2557,
   "rconIp": "192.168.1.233",
 
-  // Old fields
+  //终端选项
   "terminalOption": {
     "haveColor": false,
     "pty": true,
@@ -452,7 +452,7 @@ POST /api/protected_instance/install_instance
 }
 ```
 
-## Type of InstanceDetail
+## 示例详细形信息
 
 ```json
 {
@@ -476,16 +476,16 @@ POST /api/protected_instance/install_instance
     "timestamp": 0
   },
   "space": 0,
-  "started": 6, // start count
-  "status": 3,  // -1 = busy,
-                // 0  = stopped,
-                // 1  = stopping,
-                // 2  = starting,
-                // 3  = running
+  "started": 6, // 开始计数
+  "status": 3,  // -1 = 忙碌,
+                // 0  = 停止,
+                // 1  = 停止中,
+                // 2  = 启动中,
+                // 3  = 运行中
 }
 ```
 
-## Type of Instance DockerConfig
+## 实例的docker配置
 
 ```json
 {
