@@ -1,7 +1,7 @@
 # api教程
 ## API Key
 
-:::提示
+:::tip
 如果您使用管理员帐户，您的 API 密钥也将具有管理员权限。请不要泄露您的 API 密钥。
 :::
 
@@ -23,7 +23,7 @@ Content-Type: application/json; charset=utf-8
 X-Requested-With: XMLHttpRequest
 ```
 
-:::警告
+:::warning
 如果没有另行指定，**这些 HTTP 请求头是必需的**。
 
 - X-Requested-With: XMLHttpRequest
