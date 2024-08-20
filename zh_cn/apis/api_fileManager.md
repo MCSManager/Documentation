@@ -1,24 +1,24 @@
-# File Manager API
+# 文件管理api
 
-## Get File List
+## 获取文库列表
 
 ```http
 GET /api/files/list
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
   daemonId: string;
-  uuid: string; // Instance ID
-  target: string; // File(name or directory) Path
+  uuid: string; // 你的Instance ID
+  target: string; // 文件（名称或目录）路径
   page: number;
   page_size: number;
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -77,13 +77,13 @@ GET /api/files/list
 }
 ```
 
-## Get File Contents
+## 获取文件内容
 
 ```http
 PUT /api/files/
 ```
 
-#### Query Param
+#### Query 示例
 
 ```js
 {
@@ -92,7 +92,7 @@ PUT /api/files/
 }
 ```
 
-#### Request Body
+#### 请求示例
 
 ```json
 {
@@ -100,7 +100,7 @@ PUT /api/files/
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -110,13 +110,13 @@ PUT /api/files/
 }
 ```
 
-## Update File
+## 更新文件
 
 ```http
 PUT /api/files/
 ```
 
-#### Query Param
+#### Query示例
 
 ```js
 {
@@ -125,7 +125,7 @@ PUT /api/files/
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
@@ -134,7 +134,7 @@ PUT /api/files/
 }
 ```
 
-#### Response
+#### 返回内容
 
 ```json
 {
@@ -144,53 +144,53 @@ PUT /api/files/
 }
 ```
 
-## Download File
+## 下载文件
 
 ```http
 POST /api/files/download
 ```
 
-#### Query Param
+#### 查询文件
 
 ```js
 {
-  file_name: string; // Path + FileName, Example: /backup/world.zip
+  file_name: string; // 路径+名字, 示例: /backup/world.zip
   daemonId: string;
   uuid: string; // Instance ID
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
   "status": 200,
   "data": {
     "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
-    "addr": "localhost:24444" // Daemon Addr
+    "addr": "localhost:24444" // 节点地址
   },
   "time": 1718594177859
 }
 ```
 
-#### Usage
+#### 使用方法
 
 ```http
 GET http(s)://{{Daemon Addr}}/download/{{password}}/{{fileName}}
 
-// For example:
+// 示例:
 GET http://localhost:24444/download/db8271f526...49468abd74/world.zip
 ```
 
-## Upload File
+## 上传文件
 
-### 1. Get Upload Config
+### 1.获得上传配置
 
 ```http
 POST /api/files/upload
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -200,50 +200,50 @@ POST /api/files/upload
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
   "status": 200,
   "data": {
     "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
-    "addr": "localhost:24444" // Daemon Addr
+    "addr": "localhost:24444" // 节点地址
   },
   "time": 1718594177859
 }
 ```
 
-### 2. Upload File
+### 2. 上传文件
 
 ```http
 POST http(s)://{{Daemon Address}}/upload/{{password}}
 ```
 
-#### Request Headers
+#### 请求头
 
 ```http
 Content-Type: multipart/form-data
 ```
 
-#### Request FormData
+#### 申请表格数据
 
 ```http
-file: (Binary Data)
+file: (二进制数据)
 ```
 
-#### Response
+#### 返回示例
 
 ```
 OK
 ```
 
-## Copy
+## 复制
 
 ```http
 POST /api/files/copy
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -252,7 +252,7 @@ POST /api/files/copy
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
@@ -268,7 +268,7 @@ POST /api/files/copy
 
 
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -278,13 +278,13 @@ POST /api/files/copy
 }
 ```
 
-## Move or Rename
+## 移动或重命名
 
 ```http
 PUT /api/files/move
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -293,7 +293,7 @@ PUT /api/files/move
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
@@ -315,7 +315,7 @@ PUT /api/files/move
 
 
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -325,13 +325,13 @@ PUT /api/files/move
 }
 ```
 
-## Zip
+## 压缩
 
 ```http
 POST /api/files/compress
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -340,15 +340,15 @@ POST /api/files/compress
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
   "type": 1,
   "code": "utf-8", // only utf-8
-  "source": "/test.zip", // zip file path
+  "source": "/test.zip", // zip文件路径
   "targets": [
-    "/world", // support folder
+    "/world", // 支持文件夹
     "/config.json",
     "/server.jar"
   ]
@@ -357,7 +357,7 @@ POST /api/files/compress
 
 
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -367,13 +367,13 @@ POST /api/files/compress
 }
 ```
 
-## Unzip
+## 解压缩
 
 ```http
 POST /api/files/compress
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -382,7 +382,7 @@ POST /api/files/compress
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
@@ -396,7 +396,7 @@ POST /api/files/compress
 
 
 
-#### Response
+#### 返沪示例
 
 ```json
 {
@@ -406,14 +406,13 @@ POST /api/files/compress
 }
 ```
 
-## Delete
+## 删除文件
 
 ```http
 DELETE /api/files
 ```
 
-#### Query Param
-
+#### Query 参数
 ```js
 {
   daemonId: string;
@@ -421,7 +420,7 @@ DELETE /api/files
 }
 ```
 
-#### Request Body
+#### 请求正文
 
 ```json
 {
@@ -435,7 +434,7 @@ DELETE /api/files
 
 
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -451,7 +450,7 @@ DELETE /api/files
 POST /api/files/touch
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -460,17 +459,16 @@ POST /api/files/touch
 }
 ```
 
-#### Request Body
-
+#### 请求正文示例
 ```json
 {
-  "target": "/test" // File name
+  "target": "/test" // 文件名
 }
 ```
 
 
 
-#### Response
+#### 返回
 
 ```json
 {
@@ -480,13 +478,13 @@ POST /api/files/touch
 }
 ```
 
-## Create Folder
+## 新建文件夹
 
 ```http
 POST /api/files/mkdir
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -495,7 +493,7 @@ POST /api/files/mkdir
 }
 ```
 
-#### Request Body
+#### 请求正文示例
 
 ```json
 {
@@ -505,7 +503,7 @@ POST /api/files/mkdir
 
 
 
-#### Response
+#### 返回示例
 
 ```json
 {
