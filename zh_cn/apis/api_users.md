@@ -1,24 +1,24 @@
-# Users API
+# 用户 API
 
-## Get User List
+## 获取 用户 列表
 
 ```http
 GET /api/auth/search
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
   userName?: string
   page: number
   page_size: number
-  role?: string      // User permission
-                     // 1=User, 10=Admin, -1=Banned user
+  role?: string      // 用户权限
+                     // 1=用户, 10=管理员, -1=被封禁的用户
 }
 ```
 
-#### Response
+#### 返回实例
 
 ```json
 {
@@ -31,10 +31,10 @@ GET /api/auth/search
         "passWord": "",
         "passWordType": 1,
         "salt": "",
-        "permission": 10, // 1=User, 10=Admin, -1=Banned user
+        "permission": 10, // 1=用户, 10=管理员, -1=被封禁的用户
         "registerTime": "10/28/2023, 5:38:44 PM",
         "loginTime": "10/14/2023, 1:01:58 AM",
-        // List of instances owned by the user
+        // 用户拥有的实例列表
         "instances": [
           {
             "instanceUuid": "82e856fd33424e018fc2c007e1a3c4d3",
@@ -56,54 +56,54 @@ GET /api/auth/search
 }
 ```
 
-## Create User
+## 创建 用户
 
 ```http
 POST /api/auth
 ```
 
-#### Request Body
+#### 请求正文
 
 ```json
 {
   "username": string,
   "password": string,
-  "permission": number  // 1=User, 10=Admin, -1=Banned user
+  "permission": number  // 1=用户, 10=管理员, -1=被封禁的用户
 }
 ```
 
-#### Response
+#### 返回实例
 
 ```json
 {
   "status": 200,
   "time": 1718594177859,
   "data": {
-    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // new user's uuid
+    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // 新用户的 UUID
   }
 }
 ```
 
-## Update User
+## 更新用户数据
 
 ```http
 PUT /api/auth
 ```
 
-#### Request Body
+#### 请求正文
 
 ```json
 {
-  "uuid": string, // UUID of the target user
+  "uuid": string, //目标用户的 UUID
   "config": {
-    // target user info
+    // 目标用户信息
     "uuid": string,
     "userName": string,
     "loginTime": string,
     "registerTime": string,
-    "instances": InstanceDetail[],  // user instances
-                                    // You can assign instances to users here
-    "permission": number,  // 1=User, 10=Admin, -1=Banned user
+    "instances": InstanceDetail[],  // 用户拥有的实例
+                                    // 您可以在此处为用户分配实例
+    "permission": number,  // 1=用户, 10=管理员, -1=被封禁的用户
     "apiKey": string,
     "isInit": boolean,
     "secret": string,
@@ -112,9 +112,9 @@ PUT /api/auth
 }
 ```
 
-> For information about InstanceDetail, see [this](./api_instance.md#type-of-instancedetail)
+> 有关InstanceDetail的信息，[这请参考这里](./api_instance.md#示例详细信息)
 
-#### Response
+#### 返回实例
 
 ```json
 {
@@ -124,19 +124,19 @@ PUT /api/auth
 }
 ```
 
-## Delete User
+## 删除用户
 
 ```http
 DELETE /api/auth
 ```
 
-#### Request Body
+#### 请求正文
 
 ```js
-["user uuid"]; // UUID of the target users
+["user uuid"]; // 目标用户的UUID
 ```
 
-#### Response
+#### 返回实例
 
 ```json
 {

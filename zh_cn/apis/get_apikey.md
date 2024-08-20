@@ -1,48 +1,47 @@
-# API Tutorial
-
+# api教程
 ## API Key
 
-:::tip
-If you are on an admin account, your API key will also have admin privileges. Please do <b>not</b> disclose your API key.
+:::提示
+如果您使用管理员帐户，您的 API 密钥也将具有管理员权限。请不要泄露您的 API 密钥。
 :::
 
-As shown in the image,
+如图所示，
 
 <img src="../../images/zh_cn/to_user_info.png" style="width:300px" />
 
-Generate and copy this API key, it will have the same rights as your current account.
+生成并复制此 API 密钥，它将具有与您当前帐户相同的权限。
 
 <img src="../../images/zh_cn/getkey.png" style="width:400px" />
 
-## Example Usages
+## 示例用法
 
-Suppose you are an admin, and you want to use the API to `get a list of daemons`. You need to use any programming language or HTTP tool to send the following request:
+假设您是一名管理员，并且希望使用 API 来“获取远程节点列表”。您需要使用任何编程语言或 HTTP 工具来发送以下请求：
 
 ```bash
-GET http://<Your Panel Address>/api/service/remote_services_system?apikey=<Your Api Key>
+GET http://< 你的面板安装地址 >/api/service/remote_services_system?apikey=< 你的 Api Key >
 Content-Type: application/json; charset=utf-8
 X-Requested-With: XMLHttpRequest
 ```
 
-:::warning
-If not otherwise specified, **these HTTP request headers are required**.
+:::警告
+如果没有另行指定，**这些 HTTP 请求头是必需的**。
 
 - X-Requested-With: XMLHttpRequest
 - Content-Type: application/json; charset=utf-8
 
 :::
 
-You will get all daemon's data:
+您将获得所有节点的所有数据：
 
 ```json
 {
-  // status parameter
-  // 200: Normal, and returns the corresponding content
-  // 400: Incorrect request parameters
-  // 403: Insufficient permissions
-  // 500: Program error
+  // 状态参数
+  // 200：正常，返回相应内容
+  // 400：请求参数不正确
+  // 403：权限不足
+  // 500：程序错误
   "status": 200,
-  // Responded node list
+  // 响应节点列表
   "data": [
     {
       "version": "3.9.0",
@@ -72,7 +71,7 @@ You will get all daemon's data:
       }
     }
   ],
-  // The time when the request finished processing, can be used to measure latency.
+  // 请求完成处理的时间可用于测量延迟。
   "time": 1643879914006
 }
 ```

@@ -1,12 +1,12 @@
-# Image Manager API
+# dockers 镜像管理 API
 
-## Get Image List
+## 获取镜像列表
 
 ```http
 GET /api/environment/image
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -14,7 +14,7 @@ GET /api/environment/image
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -24,15 +24,15 @@ GET /api/environment/image
 }
 ```
 
-> DockerImageList: https://docs.docker.com/engine/api/v1.37/#tag/Image/operation/ImageList
+>  DockerImageList详见: https://docs.docker.com/engine/api/v1.37/#tag/Image/operation/ImageList
 
-## Get Container List
+## 获取容器列表
 
 ```http
 GET /api/environment/containers
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -40,7 +40,7 @@ GET /api/environment/containers
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -50,15 +50,15 @@ GET /api/environment/containers
 }
 ```
 
-> DockerContainerList: https://docs.docker.com/engine/api/v1.37/#tag/Container/operation/ContainerList
+> DockerContainerList详见: https://docs.docker.com/engine/api/v1.37/#tag/Container/operation/ContainerList
 
-## Get Network Mode List
+## 获取网络接口列表
 
 ```http
 GET /api/environment/network
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -66,7 +66,7 @@ GET /api/environment/network
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -76,15 +76,15 @@ GET /api/environment/network
 }
 ```
 
-> DockerNetworkList: https://docs.docker.com/engine/api/v1.37/#tag/Network/operation/NetworkList
+> DockerNetworkList详见: https://docs.docker.com/engine/api/v1.37/#tag/Network/operation/NetworkList
 
-## Create Image
+## 新增镜像
 
 ```http
 POST /api/environment/image
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -92,7 +92,7 @@ POST /api/environment/image
 }
 ```
 
-#### Request Body
+#### 请求正文
 
 ```json
 {
@@ -102,7 +102,7 @@ POST /api/environment/image
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -112,13 +112,13 @@ POST /api/environment/image
 }
 ```
 
-## Build Progress
+## 构建进度
 
 ```http
 GET /api/environment/progress
 ```
 
-#### Query Param
+#### Query 参数
 
 ```js
 {
@@ -126,7 +126,7 @@ GET /api/environment/progress
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
