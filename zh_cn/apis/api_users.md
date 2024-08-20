@@ -34,7 +34,7 @@ GET /api/auth/search
         "permission": 10, // 1=用户, 10=管理员, -1=被封禁的用户
         "registerTime": "10/28/2023, 5:38:44 PM",
         "loginTime": "10/14/2023, 1:01:58 AM",
-        // List of instances owned by the user
+        // 用户拥有的实例列表
         "instances": [
           {
             "instanceUuid": "82e856fd33424e018fc2c007e1a3c4d3",
@@ -79,7 +79,7 @@ POST /api/auth
   "status": 200,
   "time": 1718594177859,
   "data": {
-    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // 新用户的uuid
+    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // 新用户的 UUID
   }
 }
 ```
@@ -94,9 +94,9 @@ PUT /api/auth
 
 ```json
 {
-  "uuid": string, //目标用户的UUID
+  "uuid": string, //目标用户的 UUID
   "config": {
-    //目标用户信息
+    // 目标用户信息
     "uuid": string,
     "userName": string,
     "loginTime": string,
@@ -112,7 +112,7 @@ PUT /api/auth
 }
 ```
 
-> 有关InstanceDetail的信息，请参见[这](./api_instance.md#示例详细信息)
+> 有关InstanceDetail的信息，[这请参考这里](./api_instance.md#示例详细信息)
 
 #### 返回实例
 
