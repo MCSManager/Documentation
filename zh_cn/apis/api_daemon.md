@@ -38,7 +38,7 @@ POST /api/service/remote_service
 DELETE /api/service/remote_service
 ```
 
-#### 查询参数
+#### Query 参数
 
 ```js
 {
@@ -62,7 +62,7 @@ DELETE /api/service/remote_service
 GET /api/service/link_remote_service
 ```
 
-#### 查询参数
+#### Query 参数
 
 ```js
 {
