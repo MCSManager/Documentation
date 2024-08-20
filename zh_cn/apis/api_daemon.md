@@ -27,7 +27,7 @@ POST /api/service/remote_service
 ```json
 {
   "status": 200,
-  "data": "499e1012a21443278a7ec63a3a95860b", // Added Daemon ID
+  "data": "499e1012a21443278a7ec63a3a95860b", // 新增节点的节点 ID
   "time": 1718594177859
 }
 ```
