@@ -1,16 +1,16 @@
-# Daemon API
+# 节点 API
 
-## Daemon List
+## 节点列表
 
-> see [Dashboard API](./api_dashboard.md#get-overview-info)
+> 请参考 [仪表盘 API](./api_dashboard.md#get-overview-info)
 
-## Add
+## 添加节点
 
 ```http
 POST /api/service/remote_service
 ```
 
-#### Request Body
+#### 请求示例
 
 ```json
 {
@@ -22,7 +22,7 @@ POST /api/service/remote_service
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -32,21 +32,21 @@ POST /api/service/remote_service
 }
 ```
 
-## Delete
+## 删除节点
 
 ```http
 DELETE /api/service/remote_service
 ```
 
-#### Query Param
+#### 查询参数
 
 ```js
 {
-  uuid: string; // Daemon ID
+  uuid: string; // 节点 ID
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -56,21 +56,21 @@ DELETE /api/service/remote_service
 }
 ```
 
-## Try Connect Daemon
+## 链接节点
 
 ```http
 GET /api/service/link_remote_service
 ```
 
-#### Query Param
+#### 查询参数
 
 ```js
 {
-  uuid: string; // Daemon ID
+  uuid: string; //节点 ID
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
@@ -80,13 +80,13 @@ GET /api/service/link_remote_service
 }
 ```
 
-## Update Daemon Connect Config
+## 更新节点连接参数
 
 ```http
 PUT /api/service/remote_service
 ```
 
-#### Request Body
+#### 请求示例
 
 ```json
 {
@@ -100,7 +100,7 @@ PUT /api/service/remote_service
 }
 ```
 
-#### Response
+#### 返回示例
 
 ```json
 {
