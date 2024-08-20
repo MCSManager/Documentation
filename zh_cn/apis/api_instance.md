@@ -57,6 +57,7 @@ GET /api/instance
 }
 ```
 > 请看[示例详细信息](#示例详细形信息)
+
 ## 创建实例
 
 ```http
@@ -141,7 +142,7 @@ DELETE /api/instance
     "50c73059001b436fa85c0d8221c157cf"
     "11c2f4c89b9e4e1da819dc56bf16f151"
   ], // Instance Id
-  "deleteFile": false // Delete instance files
+  "deleteFile": false // 是否删除实例文件
 }
 ```
 
@@ -434,7 +435,7 @@ POST /api/protected_instance/install_instance
   "rconPort": 2557,
   "rconIp": "192.168.1.233",
 
-  //终端选项
+  // 终端选项
   "terminalOption": {
     "haveColor": false,
     "pty": true,
@@ -476,7 +477,7 @@ POST /api/protected_instance/install_instance
     "timestamp": 0
   },
   "space": 0,
-  "started": 6, // 开始计数
+  "started": 6, // 启动次数
   "status": 3,  // -1 = 忙碌,
                 // 0  = 停止,
                 // 1  = 停止中,
