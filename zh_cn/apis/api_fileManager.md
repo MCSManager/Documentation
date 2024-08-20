@@ -11,7 +11,7 @@ GET /api/files/list
 ```js
 {
   daemonId: string;
-  uuid: string; // 你的Instance ID
+  uuid: string; // 你的 Instance ID
   target: string; // 文件（名称或目录）路径
   page: number;
   page_size: number;
@@ -105,7 +105,7 @@ PUT /api/files/
 ```json
 {
   "status": 200,
-  "data": "eula=false\n", // file content
+  "data": "eula=false\n", // 文件内容
   "time": 1718594177859
 }
 ```
@@ -299,14 +299,14 @@ PUT /api/files/move
 {
   "targets": [
     [
-      "/server.jar", // source
-      "/cache/server.jar" // target
+      "/server.jar", // 原来
+      "/cache/server.jar" // 现在
     ],
 
     // support rename
     [
-      "/ops.json", // source
-      "/ops.txt" // target
+      "/ops.json", // 原来
+      "/ops.txt" // 现在
     ]
     // ... more
   ]
@@ -346,7 +346,7 @@ POST /api/files/compress
 {
   "type": 1,
   "code": "utf-8", // only utf-8
-  "source": "/test.zip", // zip文件路径
+  "source": "/test.zip", // zip 文件路径
   "targets": [
     "/world", // 支持文件夹
     "/config.json",
@@ -387,16 +387,16 @@ POST /api/files/compress
 ```json
 {
   "type": 2,
-  "code": "utf-8", // format of the compressed file
-  // support: utf-8, gbk, big5
-  "source": "/test.zip", // zip file path
-  "targets": "/cache" // unzip to
+  "code": "utf-8", // 压缩文件的编码
+  // 可选: utf-8, gbk, big5
+  "source": "/test.zip", // 压缩文件路径
+  "targets": "/cache" // 解压到什么地方
 }
 ```
 
 
 
-#### 返沪示例
+#### 返回示例
 
 ```json
 {
@@ -425,7 +425,7 @@ DELETE /api/files
 ```json
 {
   "targets": [
-    "/world", // support folder
+    "/world", // 支持删除文件夹
     "/cache/config.json",
     "/server.jar"
   ]
@@ -497,7 +497,7 @@ POST /api/files/mkdir
 
 ```json
 {
-  "target": "/backup" // Folder name
+  "target": "/backup" // 文件夹名字
 }
 ```
 
