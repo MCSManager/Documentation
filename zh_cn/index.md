@@ -98,7 +98,7 @@ tar -zxf mcsmanager_linux_release.tar.gz
 
 ## Windows 安装
 
-仅需[下载 ZIP 文件](http://oss.duzuii.com/MCSManager/MCSManager-ZH)解压后即可运行，无任何安装依赖，不污染注册表。
+仅需点击[官网](https://mcsmanager.com/)首页的下载按钮即可，解压后即可运行，无任何安装依赖，不污染注册表。
 
 ### 启动方式
 
