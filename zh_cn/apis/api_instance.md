@@ -1,6 +1,6 @@
 # 实例 API
 
-## 示例列表
+## 实例列表
 
 ```http
 GET /api/service/remote_service_instances
@@ -31,7 +31,7 @@ GET /api/service/remote_service_instances
   "time": 1718594177859
 }
 ```
-> 请看[示例详细信息](#示例详细形信息)
+> 请看[实例详细信息](#实例详细形信息)
 ## 实例详情
 
 ```http
@@ -56,7 +56,7 @@ GET /api/instance
   "time": 1718594177859
 }
 ```
-> 请看[示例详细信息](#示例详细形信息)
+> 请看[实例详细信息](#实例详细形信息)
 
 ## 创建实例
 
@@ -89,7 +89,7 @@ POST /api/instance
 }
 ```
 
-## 更新示例配置
+## 更新实例配置
 
 ```http
 PUT /api/instance
@@ -453,7 +453,7 @@ POST /api/protected_instance/install_instance
 }
 ```
 
-## 示例详细形信息
+## 实例详细形信息
 
 ```json
 {
