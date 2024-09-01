@@ -1,4 +1,4 @@
-# api教程
+# API 使用教程
 ## API Key
 
 :::tip
@@ -18,9 +18,11 @@
 假设您是一名管理员，并且希望使用 API 来“获取远程节点列表”。您需要使用任何编程语言或 HTTP 工具来发送以下请求：
 
 ```bash
-GET http://< 你的面板安装地址 >/api/service/remote_services_system?apikey=< 你的 Api Key >
+GET http://demo.com/api/service/remote_services_system?apikey=<你的 Api Key>
 Content-Type: application/json; charset=utf-8
 X-Requested-With: XMLHttpRequest
+
+注意：URL后面一定要加入 apikey 参数，否则权限不足
 ```
 
 :::warning
