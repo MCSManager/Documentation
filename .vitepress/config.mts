@@ -104,23 +104,45 @@ export default defineConfig({
         },
         {
           text: "Development",
-          collapsed: true,
+          collapsed: false,
           items: [
             {
               text: "Customize HTML Card",
               link: "/apis/html_card.md",
             },
+          ],
+        },
+        {
+          text: "API Usage",
+          collapsed: true,
+          items: [
             {
-              text: "Obtain API Key",
+              text: "Tutorial",
               link: "/apis/get_apikey.md",
             },
             {
-              text: "API Usage - User",
+              text: "Dashboard",
+              link: "/apis/api_dashboard.md",
+            },
+            {
+              text: "User",
               link: "/apis/api_users.md",
             },
             {
-              text: "API Usage - Instance",
+              text: "Instance",
               link: "/apis/api_instance.md",
+            },
+            {
+              text: "Nodes",
+              link: "/apis/api_daemon.md",
+            },
+            {
+              text: "File",
+              link: "/apis/api_fileManager.md",
+            },
+            {
+              text: "Image",
+              link: "/apis/api_imageManager.md",
             },
           ],
         },
@@ -225,13 +247,39 @@ export default defineConfig({
         },
         {
           text: "开发",
+          items: [{ text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" }],
+        },
+        {
+          text: "API 接口",
+          collapsed: true,
           items: [
-            { text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" },
-            { text: "获取 APIKEY", link: "/zh_cn/apis/get_apikey.md" },
-            { text: "API 接口参考 - 用户", link: "/zh_cn/apis/api_users.html" },
             {
-              text: "API 接口参考 - 实例",
-              link: "/zh_cn/apis/api_instance.html",
+              text: "使用教程",
+              link: "/zh_cn/apis/get_apikey.md",
+            },
+            {
+              text: "仪表盘数据",
+              link: "/zh_cn/apis/api_dashboard.md",
+            },
+            {
+              text: "用户管理",
+              link: "/zh_cn/apis/api_users.md",
+            },
+            {
+              text: "实例管理",
+              link: "/zh_cn/apis/api_instance.md",
+            },
+            {
+              text: "节点管理",
+              link: "/zh_cn/apis/api_daemon.md",
+            },
+            {
+              text: "文件管理",
+              link: "/zh_cn/apis/api_fileManager.md",
+            },
+            {
+              text: "镜像管理",
+              link: "/zh_cn/apis/api_imageManager.md",
             },
           ],
         },

@@ -1,38 +1,147 @@
-# Sample API for User Management
+# 用户 API
 
-## Create User
+## 获取 用户 列表
 
 ```http
-POST /api/auth
+GET /api/auth/search
+```
 
-Request Body:
+#### Query 参数
+
+```js
 {
-  "username": "{{register_username}}",
-  "password": "123456",
-  "permission": 10  // 1=User, 10=Admin, -1=Banned user
+  userName?: string
+  page: number
+  page_size: number
+  role?: string      // 用户权限
+                     // 1=用户, 10=管理员, -1=被封禁的用户
 }
 ```
 
-## Update User
+#### 返回实例
+
+```json
+{
+  "status": 200,
+  "data": {
+    "data": [
+      {
+        "uuid": "55a8120adb4f4bb3bee672ef305bae62",
+        "userName": "Admin",
+        "passWord": "",
+        "passWordType": 1,
+        "salt": "",
+        "permission": 10, // 1=用户, 10=管理员, -1=被封禁的用户
+        "registerTime": "10/28/2023, 5:38:44 PM",
+        "loginTime": "10/14/2023, 1:01:58 AM",
+        // 用户拥有的实例列表
+        "instances": [
+          {
+            "instanceUuid": "82e856fd33424e018fc2c007e1a3c4d3",
+            "daemonId": "1fcdacc01eac44a7bf8fe83d34215d05"
+          }
+        ],
+        "apiKey": "",
+        "isInit": false,
+        "secret": "",
+        "open2FA": false
+      }
+    ],
+    "maxPage": 1,
+    "page": 1,
+    "pageSize": 20,
+    "total": 6
+  },
+  "time": 1718594177859
+}
+```
+
+## 创建 用户
+
+```http
+POST /api/auth
+```
+
+#### 请求正文
+
+```json
+{
+  "username": string,
+  "password": string,
+  "permission": number  // 1=用户, 10=管理员, -1=被封禁的用户
+}
+```
+
+#### 返回实例
+
+```json
+{
+  "status": 200,
+  "time": 1718594177859,
+  "data": {
+    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // 新用户的 UUID
+  }
+}
+```
+
+## 更新用户数据
 
 ```http
 PUT /api/auth
+```
 
-Request Body:
+#### 请求正文
+
+```json
 {
-  "uuid": "{{uuid}}", // UUID of the target user
+  "uuid": string, //目标用户的 UUID
   "config": {
-    "permission": 10, // 1=User, 10=Admin, -1=Banned user
-    "instances": [
-      {
-        "daemonId": "0e865f1f14c14906894698cc71f4e574",
-        "instanceUuid": "11e2f159b43f447eacb213b2cdc6df2a"
-      },
-      {
-        "serviceUuid": "07027a72d147487aa0a2ca0616231f22",
-        "instanceUuid": "11e2f159b43f447eacb213b2cdc6df2a"
-      }
-    ]
+    // 目标用户信息
+    "uuid": string,
+    "userName": string,
+    "loginTime": string,
+    "registerTime": string,
+    "instances": InstanceDetail[],  // 用户拥有的实例
+                                    // 您可以在此处为用户分配实例
+    "permission": number,  // 1=用户, 10=管理员, -1=被封禁的用户
+    "apiKey": string,
+    "isInit": boolean,
+    "secret": string,
+    "open2FA": boolean,
   }
+}
+```
+
+> 有关InstanceDetail的信息，[这请参考这里](./api_instance.md#示例详细信息)
+
+#### 返回实例
+
+```json
+{
+  "status":200 ,
+  "data": true,
+  "time": 1718594177859
+}
+```
+
+## 删除用户
+
+```http
+DELETE /api/auth
+```
+
+#### 请求正文
+
+```js
+["user uuid"]; // 目标用户的UUID
+```
+
+#### 返回实例
+
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1718594177859
 }
 ```

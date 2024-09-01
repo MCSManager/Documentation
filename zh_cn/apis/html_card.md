@@ -1,12 +1,12 @@
-# 制作卡片组件
+# 创建卡组件
 
 :::tip
-此功能需要一定 JavaScript 开发知识，并且有一定的不稳定性。
+此功能需要一些 JavaScript 开发知识。
 
-**请勿轻易使用其他人的脚本，这可能会导致你的面板被入侵。**
+**不建议使用其他人的脚本，因为这可能会导致您的面板受到损害**
 :::
 
-开启 MCSManager 网页界面的设计后，新增卡片时有一个 `扩展页面卡片`，这个卡片支持你上传自己的 `HTML` 文件，并且直接运行在前端网页环境中，这和 `内嵌网页卡片` 有着本质上的区别，因为你可以访问到绝大部分前端 HTML 节点，以及操作 MCSManager 给予你的 API。
+在 MCSManager web 界面中启用设计模式后，添加新卡时有一个选项“扩展页面卡”。此卡允许您上传自己的 “HTMK” 文件，该文件直接在前端 web 环境中运行。这与“嵌入式 Web 卡”有根本不同，因为您可以访问大多数前端 HTML 节点并操作 MCSManager 提供的 API 。
 
 ```html
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <div>
       <h1>Hello World</h1>
       <button id="myButton">Button</button>
-      <!-- 不要在 HTML 使用 JavaScript 中的函数 -->
+      <!-- Do not use JavaScript functions in HTML -->
       <!-- <button id="myButton" onClick="handleClick()">Button</button> -->
     </div>
     <script>
@@ -27,7 +27,7 @@
       window.$onMounted = function () {
         console.debug("HTML Mounted");
 
-        // 如果你要对 HTML 进行交互，请这样写
+        // 如果你想与 HTML 交互，请这样写
         document.querySelector("#myButton").addEventListener("click");
       };
 
@@ -42,49 +42,49 @@
 
 ## JavaScript 沙盒机制
 
-为了防止多个卡片载入到同一个页面互相干扰，MCSManager 制作了一个简易的 JavaScript 沙盒机制，它的工作原理就是代理 `window` 对象，你对 `window` 对象的所有更改都不会影响到其他人。
+为了防止加载在同一页面上的多张卡相互干扰， MCSManager 创建了一个简单的 JavaScript 沙盒机制。其工作原理是代理窗口对象。对窗口对象所做的任何更改都不会影响其他对象。
 
-### HTML 卡片 1
+### HTML 卡片实例1
 
 ```js
 window.$onMounted = function () {
-  window.name = "foo"; // 定义全局变量
+  window.name = "foo"; // 定义一个全局变量
 };
 ```
 
-### HTML 卡片 2
+### HTML 卡片实例 2
 
 ```js
 window.$onMounted = function () {
   setTimeout(() => {
-    console.log(window.name); // undefined
+    console.log(window.name);  // 输出 undefined，因为卡片1的js脚本不会污染到其他任何卡片
   }, 10000);
 };
 ```
 
 ## CSS 样式污染
 
-MCSManager 并没有对 CSS 样式进行隔离，需要你自己或者其他开发者自己约束 CSS 样式，你对 CSS 样式的任何定义都会影响 MCSManager 整个网页。
+MCSManager 不隔离 CSS 样式。约束 CSS 样式取决于您或其他开发人员。您对 CSS 所做的任何定义都会影响整个 MCSManager 网页。
 
-## 卡片 API
+## Card API
 
-我们为你提供了几个 API 供你在脚本中使用。
+我们为您的脚本提供了几个 API。
 
 ```js
 window.$onMounted = function () {
-  // 卡片加载完毕事件。
+  // 卡片挂载完成事件。
 };
 window.$onUnmounted = function () {
-  // 卡片卸载完毕事件。
+  // 卡片卸载完成事件。
 };
 
-// 真实 window 对象，即 MCSManager 网页前端的 window 对象。
+// 真实窗口对象，即 MCSManager web 前端的窗口对象。
 window.$realWindow;
 
-// Axios 库，可用于发送请求。
-// 使用方法参考：https://axios-http.com/docs/example
+// Axios 库用于发送请求。
+//参考：https://axios-http.com/docs/example
 window.$axios;
 
-// 当前 MCSManager 界面主题，浅色或深色（light/dark）。
+//当前 MCSManager 界面主题，亮或暗（亮/暗）。
 window.$theme;
 ```

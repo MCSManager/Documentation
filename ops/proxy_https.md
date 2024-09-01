@@ -71,8 +71,8 @@ In case of multiple daemons, simple add the following configuration repeatedly w
 server
     {
 		# Public HTTPS port for the daemon (use multiple `listen` directive for multiple ports)
-		listen 12333 ssl http2; #IPV4
-		listen [::]:12333 ssl http2; #IPv6
+		listen 12444 ssl http2; #IPV4
+		listen [::]:12444 ssl http2; #IPv6
 
 		# Enable HSTS. Once enabled, it will enforce the use of HTTPS to connect to daemons and will continue for a year after this policy is cancelled, unless manually cleared in the browser.
 		# Disable by default, uncomment to enable.
@@ -145,8 +145,8 @@ You can also place the configuration directly at the end of the `nginx.conf` fil
 server
     {
 		# Public HTTPS port for the panel (use multiple `listen` directive for multiple ports)
-		listen 12444 ssl http2; #IPV4
-		listen [::]:12444 ssl http2; #IPv6
+		listen 12333 ssl http2; #IPV4
+		listen [::]:12333 ssl http2; #IPv6
 
 		# Enable HSTS. Once enabled, it will enforce the use of HTTPS to connect to the panel and will continue for a year after this policy is cancelled, unless manually cleared in the browser.
 		# Disable by default, uncomment to enable.
