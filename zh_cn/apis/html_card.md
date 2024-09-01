@@ -57,7 +57,7 @@ window.$onMounted = function () {
 ```js
 window.$onMounted = function () {
   setTimeout(() => {
-    console.log(window.name); 
+    console.log(window.name);  // 输出 undefined，因为卡片1的js脚本不会污染到其他任何卡片
   }, 10000);
 };
 ```
