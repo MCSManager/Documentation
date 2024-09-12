@@ -79,7 +79,9 @@ POST /api/auth
   "status": 200,
   "time": 1718594177859,
   "data": {
-    "uuid": "046afc351bfb44a99aa5641c06e70e5a" // 新用户的 UUID
+    "uuid": "046afc351bfb44a99aa5641c06e70e5a", // 新用户的 UUID
+    "userName": "Admin", // 新用户的用户名
+    "permission": 1 //新用户的权限
   }
 }
 ```
