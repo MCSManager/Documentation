@@ -18,7 +18,7 @@ GET /api/auth/search
 }
 ```
 
-#### 返回实例
+#### 返回示例
 
 ```json
 {
@@ -72,7 +72,7 @@ POST /api/auth
 }
 ```
 
-#### 返回实例
+#### 返回示例
 
 ```json
 {
@@ -114,7 +114,7 @@ PUT /api/auth
 
 > 有关InstanceDetail的信息，[这请参考这里](./api_instance.md#示例详细信息)
 
-#### 返回实例
+#### 返回示例
 
 ```json
 {
@@ -136,7 +136,7 @@ DELETE /api/auth
 ["user uuid"]; // 目标用户的UUID
 ```
 
-#### 返回实例
+#### 返回示例
 
 ```json
 {
