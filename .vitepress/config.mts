@@ -5,7 +5,7 @@ import type { Config as ThemeConfig } from "@vue/theme";
 export default defineConfig({
   title: "MCSManager",
   description: "MCSManager Document",
-  lastUpdate: true,
+  lastUpdated: true,
 
   locales: {
     root: {
