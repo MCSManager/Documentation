@@ -4,8 +4,9 @@ import type { Config as ThemeConfig } from "@vue/theme";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "MCSManager",
-
   description: "MCSManager Document",
+  lastUpdated: true,
+
   locales: {
     root: {
       label: "English",
