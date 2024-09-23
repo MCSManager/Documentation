@@ -40,6 +40,10 @@ DELETE /api/service/remote_service
 
 #### Query Param
 
+:::info
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+:::
+
 ```js
 {
   uuid: string; // Daemon ID
@@ -63,6 +67,10 @@ GET /api/service/link_remote_service
 ```
 
 #### Query Param
+
+:::info
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+:::
 
 ```js
 {

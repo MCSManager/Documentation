@@ -8,6 +8,10 @@ GET /api/auth/search
 
 #### Query Param
 
+:::info
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+:::
+
 ```js
 {
   userName?: string
