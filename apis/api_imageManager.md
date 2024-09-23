@@ -8,6 +8,8 @@ GET /api/environment/image
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -33,6 +35,8 @@ GET /api/environment/containers
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
@@ -60,6 +64,8 @@ GET /api/environment/network
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -85,6 +91,8 @@ POST /api/environment/image
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
@@ -119,6 +127,8 @@ GET /api/environment/progress
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {

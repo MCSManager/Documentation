@@ -8,6 +8,8 @@ GET /api/auth/search
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   userName?: string
