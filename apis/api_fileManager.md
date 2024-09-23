@@ -8,9 +8,7 @@ GET /api/files/list
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -89,9 +87,7 @@ PUT /api/files/
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -126,9 +122,7 @@ PUT /api/files/
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -164,9 +158,7 @@ POST /api/files/download
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -208,9 +200,7 @@ POST /api/files/upload
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -265,9 +255,7 @@ POST /api/files/copy
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -310,9 +298,7 @@ PUT /api/files/move
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -361,9 +347,7 @@ POST /api/files/compress
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -407,9 +391,7 @@ POST /api/files/compress
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -450,9 +432,7 @@ DELETE /api/files
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -493,9 +473,7 @@ POST /api/files/touch
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -532,9 +510,7 @@ POST /api/files/mkdir
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {

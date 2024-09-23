@@ -8,9 +8,7 @@ GET /api/service/remote_service_instances
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -44,9 +42,7 @@ GET /api/instance
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -73,9 +69,7 @@ POST /api/instance
 
 ##### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -108,9 +102,7 @@ PUT /api/instance
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -143,9 +135,7 @@ DELETE /api/instance
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -183,9 +173,7 @@ GET /api/protected_instance/open
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -214,9 +202,7 @@ GET /api/protected_instance/stop
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -245,9 +231,7 @@ GET /api/protected_instance/restart
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -276,9 +260,7 @@ GET /api/protected_instance/kill
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -308,9 +290,7 @@ POST /api/instance/multi_{{operations}}
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -338,9 +318,7 @@ GET /api/protected_instance/asynchronous
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -368,9 +346,7 @@ GET /api/protected_instance/command
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -400,9 +376,7 @@ GET /api/protected_instance/outputlog
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
@@ -431,9 +405,7 @@ POST /api/protected_instance/install_instance
 
 #### Query Param
 
-:::info
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
-:::
 
 ```js
 {
