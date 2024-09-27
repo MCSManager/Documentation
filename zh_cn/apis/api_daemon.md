@@ -56,7 +56,7 @@ DELETE /api/service/remote_service
 }
 ```
 
-## 链接节点
+## 连接节点
 
 ```http
 GET /api/service/link_remote_service
@@ -86,11 +86,20 @@ GET /api/service/link_remote_service
 PUT /api/service/remote_service
 ```
 
-#### 请求示例
+### 请求示例
+
+### Query 参数
+
+```js
+{
+  uuid: string; // Daemon ID
+}
+```
+
+### Body 参数
 
 ```json
 {
-  "uuid": "e31986e43c254107951dea97026a3741",
   "ip": "162.2.xx.xx",
   "port": 24444,
   "prefix": "",
