@@ -86,8 +86,6 @@ GET /api/service/link_remote_service
 PUT /api/service/remote_service
 ```
 
-### 请求示例
-
 ### Query 参数
 
 ```js
