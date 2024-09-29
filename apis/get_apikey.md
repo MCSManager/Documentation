@@ -19,7 +19,7 @@ Generate and copy this API key, it will have the same rights as your current acc
 Suppose you are an admin, and you want to use the API to `get a list of daemons`. You need to use any programming language or HTTP tool to send the following request:
 
 ```bash
-GET http://<Your Panel Address>/api/service/remote_services_system?apikey=<Your Api Key>
+GET http://example.com/api/service/remote_services_system?apikey=<User Api Key>
 Content-Type: application/json; charset=utf-8
 X-Requested-With: XMLHttpRequest
 ```

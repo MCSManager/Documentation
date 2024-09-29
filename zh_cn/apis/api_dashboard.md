@@ -1,12 +1,12 @@
-# Dashboard API
+# 仪表盘 API
 
-## Get Overview Data
+## 获取概览数据
 
 ```http
 GET /api/overview
 ```
 
-#### Response
+#### 返回
 
 ```json
 {
@@ -33,7 +33,7 @@ GET /api/overview
         "homedir": "X:\\Users\\MCSManager",
         "shell": null
       },
-      // Memory usage on the panel
+      // 面板上的内存使用情况
       "time": 1718594177859,
       "totalmem": 16577519520,
       "freemem": 10966386688,
@@ -42,7 +42,7 @@ GET /api/overview
       "node": "v17.9.1",
       "hostname": "MCSManager-Workstation",
 
-      // Linux only
+      // 仅限 Linux
       "loadavg": [0, 0, 0],
 
       "platform": "win32",
@@ -51,7 +51,7 @@ GET /api/overview
       "cpu": 0.11684482123110951
     },
 
-    // Memory&CPU usage on the panel (statistical chart)
+    // 面板上的内存和 CPU 使用情况（统计图）
     "chart": {
       "system": [
         {
@@ -86,7 +86,7 @@ GET /api/overview
           "total": 6
         },
 
-        // CPU and memory usage on the Daemon.
+        // Daemon 上的 CPU 和内存使用情况。
         "system": {
           "type": "Linux",
           "hostname": "NYA-Dev-01",
@@ -103,7 +103,7 @@ GET /api/overview
           "processMem": 0
         },
 
-        // CPU and memory usage on the Daemon (Chart).
+        // 节点上的CPU和内存使用情况（图表）.
         "cpuMemChart": [
           {
             "cpu": 0,
@@ -111,7 +111,7 @@ GET /api/overview
           }
         ],
 
-        // Daemon UUID
+        // 节点 UUID
         "uuid": "957c6bddf379445c82bac5edf7684bbc",
         "ip": "s1.example.com",
         "port": "24444",

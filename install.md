@@ -12,7 +12,7 @@ If the Linux next-key script installation fails, you can [go here](https://githu
 
 ## Windows
 
-[http://oss.duzuii.com/MCSManager/MCSManager-ZH](http://oss.duzuii.com/MCSManager/MCSManager-ZH)
+[Download Zip](https://cloud.alongw.cn/f/akrCY/mcsmanager_windows_release.zip)
 
 Just download and run, without any installation dependencies and without polluting the registry.
 

@@ -8,6 +8,8 @@ GET /api/files/list
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -85,6 +87,8 @@ PUT /api/files/
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -117,6 +121,8 @@ PUT /api/files/
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
@@ -151,6 +157,8 @@ POST /api/files/download
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
@@ -191,6 +199,8 @@ POST /api/files/upload
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
@@ -245,6 +255,8 @@ POST /api/files/copy
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -285,6 +297,8 @@ PUT /api/files/move
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
@@ -333,6 +347,8 @@ POST /api/files/compress
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -375,6 +391,8 @@ POST /api/files/compress
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -413,6 +431,8 @@ DELETE /api/files
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
@@ -453,6 +473,8 @@ POST /api/files/touch
 
 #### Query Param
 
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
 ```js
 {
   daemonId: string;
@@ -487,6 +509,8 @@ POST /api/files/mkdir
 ```
 
 #### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
 
 ```js
 {
