@@ -6,7 +6,7 @@
 
 ## 卡片化
 
-自 MCSManager 10.X 起，用户可使用拖拽卡片的方式自定义任何能看到的页面。
+自 `MCSManager 10` 起，用户可使用拖拽卡片的方式自定义任何能看到的页面。
 
 ![preview](./../../images/custom_page/preview.gif)
 
@@ -53,4 +53,3 @@
 ![extend_page_card](./../../images/custom_page/extend_page_card.png)
 
 ![html_card](./../../images/custom_page/html_card.png)
-

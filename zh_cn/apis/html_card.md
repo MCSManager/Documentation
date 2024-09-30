@@ -1,4 +1,4 @@
-# 创建卡组件
+# 制作卡片小组件
 
 :::tip
 此功能需要一些 JavaScript 开发知识。
@@ -6,7 +6,7 @@
 **不建议使用其他人的脚本，因为这可能会导致您的面板受到损害**
 :::
 
-在 MCSManager web 界面中启用设计模式后，添加新卡时有一个选项“扩展页面卡”。此卡允许您上传自己的 “HTMK” 文件，该文件直接在前端 web 环境中运行。这与“嵌入式 Web 卡”有根本不同，因为您可以访问大多数前端 HTML 节点并操作 MCSManager 提供的 API 。
+在 MCSManager web 界面中启用设计模式后，添加新卡片时有一个选项“扩展页面卡片”。此卡片允许您上传自己的 “HTMK” 文件，该文件直接在前端 web 环境中运行。这与“嵌入式 Web 卡片”有根本不同，因为您可以访问大多数前端 HTML 节点并操作 MCSManager 提供的 API 。
 
 ```html
 <!DOCTYPE html>
@@ -42,9 +42,9 @@
 
 ## JavaScript 沙盒机制
 
-为了防止加载在同一页面上的多张卡相互干扰， MCSManager 创建了一个简单的 JavaScript 沙盒机制。其工作原理是代理窗口对象。对窗口对象所做的任何更改都不会影响其他对象。
+为了防止加载在同一页面上的多张卡片相互干扰， MCSManager 创建了一个简单的 JavaScript 沙盒机制。其工作原理是代理窗口对象。对窗口对象所做的任何更改都不会影响其他对象。
 
-### HTML 卡片实例1
+### HTML 卡片实例 1
 
 ```js
 window.$onMounted = function () {
@@ -57,7 +57,7 @@ window.$onMounted = function () {
 ```js
 window.$onMounted = function () {
   setTimeout(() => {
-    console.log(window.name);  // 输出 undefined，因为卡片1的js脚本不会污染到其他任何卡片
+    console.log(window.name); // 输出 undefined，因为卡片1的js脚本不会污染到其他任何卡片
   }, 10000);
 };
 ```

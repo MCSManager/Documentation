@@ -22,7 +22,7 @@ No matter which Steam game server you want to run, `PalWorld`, `CS2`, `ARK`, or 
 
 ## Obtain the Installation Command
 
-***Note: This is NOT the startup command***\
+**_Note: This is NOT the startup command_**\
 The same command is used to install and update the server. Each Steam game server has a unique `APP ID`, you will need this ID before running the following command:
 :::tip
 The `APP ID` for the game itself and it's dedicated server is usually different. In most cases, we want to use the one for the dedicated server. [Find the APP ID](https://steamdb.info/)
@@ -43,6 +43,19 @@ The `APP ID` for the game itself and it's dedicated server is usually different.
 Add the `steamcmd ....` command obtained in the previous step to the `Update Command` in the `Instance Settings`. Click the `Update` button to install/Update the Steam server.
 
 Once installed/updated, click the 'Start' button to start your server.
-:::tip
-In some cases, adding `validate` to the update command will result in damaged savings, especially when it's in the same directory as the server. If you are unsure about this, create a backup before each update and/or remove the `validate` portion from the update command.)
-:::
+
+Finally, based on the game server setup guide you chose, enter the server start command and click the "Start" button to run your Steam game server.
+
+## FAQs
+
+### What is the start command?
+
+The start command varies for different Steam games. You should refer to the setup guide for this specific game server or look up articles from other users who have set up the same server. Follow the instructions there to enter the correct start command.
+
+### The server started successfully, but commands don’t work and there’s no output in the terminal
+
+This might happen if the Steam game server does not support standard input streams. You can use the `RCON protocol` provided by MCSManager to send commands to the server. There is an `RCON protocol` option button in the lower right corner of the terminal console.
+
+If even the `RCON protocol` cannot successfully send commands, it’s possible that `MCSManager` does not support this type of Steam game server.
+
+You may want to try setting up your Steam server using a `Linux + Docker` combination, which typically offers the best compatibility.
