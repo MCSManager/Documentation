@@ -10,7 +10,7 @@
 以下配置是基于通过`pkg_add node`安装的 Node.js 编写的
 :::
 
-**vim /etc/rc.d/mcsm-daemon**
+**vim /etc/rc.d/mcsmd**
 
 ```
 #!/bin/ksh
@@ -32,7 +32,7 @@ rc_start() {
 rc_cmd $1
 ```
 
-**vim /etc/rc.d/mcsm-web**
+**vim /etc/rc.d/mcsmw**
 
 ```
 #!/bin/ksh
@@ -54,30 +54,30 @@ rc_start() {
 rc_cmd $1
 ```
 
-编辑完毕后请使用`chmod +x /etc/rc.d/mcsm-*`，否则无法执行服务！
+编辑完毕后请使用`chmod +x /etc/rc.d/mcsm*`，否则无法执行服务！
 
 
 ## 命令用法
 
 重启：
-`rcctl restart mcsm-daemon`
-`rcctl restart mcsm-web`
+`rcctl restart mcsmd`
+`rcctl restart mcsmw`
 
 启动：
-`rcctl start mcsm-daemon`
-`rcctl start mcsm-web`
+`rcctl start mcsmd`
+`rcctl start mcsmw`
 
 停止：
-`rcctl stop mcsm-daemon`
-`rcctl stop mcsm-web`
+`rcctl stop mcsmd`
+`rcctl stop mcsmw`
 
 禁用：
-`rcctl disable mcsm-daemon`
-`rcctl disable mcsm-web`
+`rcctl disable mcsmd`
+`rcctl disable mcsmw`
 
 启用：
-`rcctl enable mcsm-daemon`
-`rcctl enable mcsm-web`
+`rcctl enable mcsmd`
+`rcctl enable mcsmw`
 
 ## 修改用户权限
 

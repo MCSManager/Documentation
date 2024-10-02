@@ -10,7 +10,7 @@
 
 ## 配置
 
-**vim /etc/init.d/mcsm-daemon**
+**vim /etc/init.d/mcsmd**
 
 ```
 #!/sbin/openrc-run
@@ -36,7 +36,7 @@ reload() {
 }
 ```
 
-**vim /etc/init.d/mcsm-web**
+**vim /etc/init.d/mcsmw**
 
 ```
 #!/sbin/openrc-run
@@ -62,30 +62,30 @@ reload() {
 }
 ```
 
-编辑完毕后请使用`chmod +x /etc/init.d/mcsm-*`，否则无法执行服务！
+编辑完毕后请使用`chmod +x /etc/init.d/mcsm*`，否则无法执行服务！
 
 
 ## 命令用法
 
 重启：
-`service mcsm-daemon restart`
-`service mcsm-web restart`
+`service mcsmd restart`
+`service mcsmw restart`
 
 启动：
-`service mcsm-daemon start`
-`service mcsm-web start`
+`service mcsmd start`
+`service mcsmw start`
 
 停止：
-`service mcsm-daemon stop`
-`service mcsm-web stop`
+`service mcsmd stop`
+`service mcsmw stop`
 
 禁用：
-`rc-update del mcsm-daemon`
-`rc-update del mcsm-web`
+`rc-update del mcsmd`
+`rc-update del mcsmw`
 
 启用：
-`rc-update add mcsm-daemon`
-`rc-update add mcsm-web`
+`rc-update add mcsmd`
+`rc-update add mcsmw`
 
 ## 修改用户权限
 
