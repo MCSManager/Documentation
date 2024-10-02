@@ -1,7 +1,11 @@
-# 注册到 Linux 系统服务
+# 注册到 Linux systemd 系统服务
 
 :::tip
 如果你是通过一键安装脚本安装的，这个教程对你而言是无用的，因为已经自动配置完毕。
+:::
+
+:::tip
+使用Alpine、Devuan、Artix、Slackware等基于OpenRC的发行版的用户请移步OpenRC服务设置教程
 :::
 
 众所周知，通过 SSH 客户端访问 Linux 启动的任何软件，会在 SSH 连接断开时自动退出，此时如果我们希望 MCSManager 在 Linux 中长期运行，那么我们可以编写服务让其在后台长期运行。
@@ -22,6 +26,7 @@ ExecStart=<NodeJS安装路径>/bin/node app.js
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+User=root
 
 [Install]
 WantedBy=multi-user.target
@@ -39,6 +44,7 @@ ExecStart=<NodeJS安装路径>/bin/node app.js
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+User=root
 
 [Install]
 WantedBy=multi-user.target
@@ -60,6 +66,6 @@ WantedBy=multi-user.target
 
 > 在 systemd 的服务配置内未指定用户的情况下，服务会以 root 用户运行，从而给服务器带来潜在安全隐患，推荐更改运行该服务的用户来保证安全。
 
-1. 通过` useradd``chmod``chown `等命令来创建用户并修改相关用户权限。
-2. 在 `[Service]` 栏目中添加 `User=用户`
+1. 通过`useradd``chmod``chown`等命令来创建用户并修改相关用户权限。
+2. 在 `[Service]` 栏目中修改 `User=root`属性（如果没有就添加一个）
 3. 重新启动服务
