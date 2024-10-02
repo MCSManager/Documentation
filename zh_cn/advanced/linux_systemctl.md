@@ -66,6 +66,6 @@ WantedBy=multi-user.target
 
 > 在 systemd 的服务配置内未指定用户的情况下，服务会以 root 用户运行，从而给服务器带来潜在安全隐患，推荐更改运行该服务的用户来保证安全。
 
-1. 通过`useradd``chmod``chown`等命令来创建用户并修改相关用户权限。
-2. 在 `[Service]` 栏目中修改 `User=root`属性（如果没有就添加一个）
+1. 通过`useradd` `chmod` `chown`等命令来创建用户并修改相关用户权限。
+2. 在 `[Service]` 栏目中修改 `User`属性（如果没有就添加一个）
 3. 重新启动服务

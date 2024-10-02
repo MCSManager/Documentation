@@ -216,6 +216,10 @@ export default defineConfig({
               link: "/zh_cn/advanced/linux_openrc.md",
             },
             {
+              text: "FreeBSD 系统服务",
+              link: "/zh_cn/advanced/freebsd_rc.md",
+            },
+            {
               text: "OpenBSD 系统服务",
               link: "/zh_cn/advanced/openbsd_rc.md",
             },
