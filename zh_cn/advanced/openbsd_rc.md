@@ -4,7 +4,7 @@
 由于 Go 语言编译相关问题，守护进程（Daemon）暂时不能直接在 OpenBSD 运行
 :::
 
-众所周知，通过 SSH 客户端访问 BSD Kshell 启动的任何软件，会在 SSH 连接断开时自动退出，此时如果我们希望 MCSManager 在 OpenBSD 中长期运行，那么我们可以编写服务让其在后台长期运行。
+众所周知，通过 SSH 客户端访问 BSD Kornshell 启动的任何软件，会在 SSH 连接断开时自动退出，此时如果我们希望 MCSManager 在 OpenBSD 中长期运行，那么我们可以编写服务让其在后台长期运行。
 
 如果你是手动安装的 MCSManager，那么建议你将 MCSManager 配置为系统服务。
 
