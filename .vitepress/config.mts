@@ -212,7 +212,7 @@ export default defineConfig({
               link: "/zh_cn/advanced/linux_systemctl.md",
             },
             {
-              text: "在其他系统添加服务"
+              text: "在其他系统添加服务",
               collapsed: true,
               items: [
                 {
