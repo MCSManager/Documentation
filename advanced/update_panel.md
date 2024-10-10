@@ -14,20 +14,26 @@ If you have only a few daemons, upgrading your panel should not be a problem.
 
 ### For Windows
 
-1. Download the latest zip file from [the official website](https://mcsmanager.com).
+1. Download the latest zip file from [official website](https://mcsmanager.com).
 2. **Overwrite** the existing panel directory.
 
-### For Linux
+### Script Update for Linux Version
 
-**If you used the installation script**, simply run the command again. The installation script supports automatic upgrades without damaging your data.
+If you originally installed MCSManager using the **one-click script**, you can simply run the following command. The one-click installation script supports automatic updates and will not damage your local data.
+
+After executing the script, there's nothing else you need to do, and your MCSManager should automatically be updated to the latest version.
 
 ```bash
-sudo su -c "wget -qO- https://script.mcsmanager.com/setup.sh | bash""
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash"
 ```
 
-**If you installed the panel manually**, **_DO NOT_** use the installation script. _Running the script will result in an additional MCSManager being installed_.
+### Manual Update for Linux Version
 
-To upgrade to the latest release of MCSManager, download the zip file from [the official release page](https://github.com/MCSManager/MCSManager/releases/latest), and overwrite all current MCSManager files.
+If you originally installed MCSManager **manually**, the one-click installation script will not work for you as it may result in installing two separate instances of the program.
+
+You will need to visit the official [release page](https://github.com/MCSManager/MCSManager/releases/latest), download the latest code, and overwrite all your existing MCSManager files.
+
+After overwriting the files, you also need to update the dependencies by navigating to both the `web` and `daemon` directories, and running `npm install --production` in each. This ensures that all required dependencies are updated, otherwise, you may not be able to start the panel!
 
 ## Reset Admin Account
 

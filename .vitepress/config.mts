@@ -61,10 +61,6 @@ export default defineConfig({
               link: "/advanced/update_panel.md",
             },
             {
-              text: "Upgrade from 9.x",
-              link: "/ops/from_v9.md",
-            },
-            {
               text: "Distributed Deployment",
               link: "/advanced/distributed.md",
             },
@@ -79,6 +75,10 @@ export default defineConfig({
             {
               text: "Custom Layout",
               link: "/advanced/custom_page.md",
+            },
+            {
+              text: "Upgrade from 9.x",
+              link: "/ops/from_v9.md",
             },
           ],
         },
@@ -200,10 +200,6 @@ export default defineConfig({
               link: "/zh_cn/advanced/update_panel.md",
             },
             {
-              text: "从 9.X 版本升级",
-              link: "/zh_cn/ops/from_v9.md",
-            },
-            {
               text: "分布式",
               link: "/zh_cn/advanced/distributed.md",
             },
@@ -212,12 +208,34 @@ export default defineConfig({
               link: "/zh_cn/advanced/docker.md",
             },
             {
-              text: "系统服务",
+              text: "systemd 系统服务",
               link: "/zh_cn/advanced/linux_systemctl.md",
+            },
+            {
+              text: "在其他系统添加服务",
+              collapsed: true,
+              items: [
+                {
+                  text: "OpenRC 系统服务",
+                  link: "/zh_cn/advanced/linux_openrc.md",
+                },
+                {
+                  text: "FreeBSD 系统服务",
+                  link: "/zh_cn/advanced/freebsd_rc.md",
+                },
+                {
+                  text: "OpenBSD 系统服务",
+                  link: "/zh_cn/advanced/openbsd_rc.md",
+                },
+              ],
             },
             {
               text: "自定义页面",
               link: "/zh_cn/advanced/custom_page.md",
+            },
+            {
+              text: "从 9.X 版本升级",
+              link: "/zh_cn/ops/from_v9.md",
             },
           ],
         },
@@ -248,7 +266,7 @@ export default defineConfig({
         },
         {
           text: "开发",
-          items: [{ text: "制作卡片组件", link: "/zh_cn/apis/html_card.md" }],
+          items: [{ text: "制作卡片小组件", link: "/zh_cn/apis/html_card.md" }],
         },
         {
           text: "API 接口",
