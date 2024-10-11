@@ -6,7 +6,7 @@
 GET /api/files/list
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -83,7 +83,7 @@ GET /api/files/list
 PUT /api/files/
 ```
 
-#### Query 示例
+#### Query 查询参数
 
 ```js
 {
@@ -92,7 +92,7 @@ PUT /api/files/
 }
 ```
 
-#### 请求示例
+#### Body 请求体
 
 ```json
 {
@@ -116,7 +116,7 @@ PUT /api/files/
 PUT /api/files/
 ```
 
-#### Query示例
+#### Query 查询参数
 
 ```js
 {
@@ -125,7 +125,7 @@ PUT /api/files/
 }
 ```
 
-#### 请求正文示例
+#### Body 请求体
 
 ```json
 {
@@ -134,7 +134,7 @@ PUT /api/files/
 }
 ```
 
-#### 返回内容
+#### Response 响应体
 
 ```json
 {
@@ -146,11 +146,13 @@ PUT /api/files/
 
 ## 下载文件
 
+需要先获取下载配置，然后通过获取到的下载配置下载文件。
+
 ```http
 POST /api/files/download
 ```
 
-#### 查询文件
+#### Query 查询参数
 
 ```js
 {
@@ -160,7 +162,7 @@ POST /api/files/download
 }
 ```
 
-#### 返回示例
+#### Response 响应体
 
 ```json
 {
@@ -173,7 +175,7 @@ POST /api/files/download
 }
 ```
 
-#### 使用方法
+#### 下载文件
 
 ```http
 GET http(s)://{{Daemon Addr}}/download/{{password}}/{{fileName}}
@@ -190,7 +192,7 @@ GET http://localhost:24444/download/db8271f526...49468abd74/world.zip
 POST /api/files/upload
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -200,7 +202,7 @@ POST /api/files/upload
 }
 ```
 
-#### 返回示例
+#### Response 响应体
 
 ```json
 {
@@ -219,31 +221,31 @@ POST /api/files/upload
 POST http(s)://{{Daemon Address}}/upload/{{password}}
 ```
 
-#### 请求头
+#### Request Headers 请求头
 
 ```http
 Content-Type: multipart/form-data
 ```
 
-#### 申请表格数据
+#### Form Data 表单数据（请求体）
 
 ```http
 file: (二进制数据)
 ```
 
-#### 返回示例
+#### Response 响应体
 
 ```
 OK
 ```
 
-## 复制
+## 复制文件
 
 ```http
 POST /api/files/copy
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -252,7 +254,7 @@ POST /api/files/copy
 }
 ```
 
-#### 请求正文示例
+#### Body 请求体
 
 ```json
 {
@@ -266,9 +268,7 @@ POST /api/files/copy
 }
 ```
 
-
-
-#### 返回示例
+#### Response 响应体
 
 ```json
 {
@@ -284,7 +284,7 @@ POST /api/files/copy
 PUT /api/files/move
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -293,7 +293,7 @@ PUT /api/files/move
 }
 ```
 
-#### 请求正文示例
+#### Body 请求体
 
 ```json
 {
@@ -313,9 +313,7 @@ PUT /api/files/move
 }
 ```
 
-
-
-#### 返回示例
+#### Response 响应体
 
 ```json
 {
@@ -325,13 +323,13 @@ PUT /api/files/move
 }
 ```
 
-## 压缩
+## 压缩文件
 
 ```http
 POST /api/files/compress
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -340,7 +338,7 @@ POST /api/files/compress
 }
 ```
 
-#### 请求正文示例
+#### Body 请求体
 
 ```json
 {
@@ -355,9 +353,7 @@ POST /api/files/compress
 }
 ```
 
-
-
-#### 返回示例
+#### Response 响应体
 
 ```json
 {
@@ -367,13 +363,13 @@ POST /api/files/compress
 }
 ```
 
-## 解压缩
+## 解压文件
 
 ```http
 POST /api/files/compress
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -382,7 +378,7 @@ POST /api/files/compress
 }
 ```
 
-#### 请求正文示例
+#### Request Body 请求体
 
 ```json
 {
@@ -412,7 +408,7 @@ POST /api/files/compress
 DELETE /api/files
 ```
 
-#### Query 参数
+#### Query 查询参数
 ```js
 {
   daemonId: string;
@@ -420,7 +416,7 @@ DELETE /api/files
 }
 ```
 
-#### 请求正文
+#### Request Body 请求体
 
 ```json
 {
@@ -444,13 +440,13 @@ DELETE /api/files
 }
 ```
 
-## Touch File
+## Touch File 新建文件
 
 ```http
 POST /api/files/touch
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -459,7 +455,7 @@ POST /api/files/touch
 }
 ```
 
-#### 请求正文示例
+#### Request Body 请求体
 ```json
 {
   "target": "/test" // 文件名
@@ -468,7 +464,7 @@ POST /api/files/touch
 
 
 
-#### 返回
+#### 返回示例
 
 ```json
 {
@@ -484,7 +480,7 @@ POST /api/files/touch
 POST /api/files/mkdir
 ```
 
-#### Query 参数
+#### Query 查询参数
 
 ```js
 {
@@ -493,7 +489,7 @@ POST /api/files/mkdir
 }
 ```
 
-#### 请求正文示例
+#### Request Body 请求体
 
 ```json
 {
