@@ -20,8 +20,8 @@ sudo sh get-docker.sh
 docker pull ghcr.io/mcsmanager/mcsmanager-daemon:latest
 docker pull ghcr.io/mcsmanager/mcsmanager-web:latest
 
-docker run -v /etc/localtime:/etc/localtime:ro -v ${INSTALL_PATH}/data/web/data:/opt/mcsmanager/web/data -v ${INSTALL_PATH}/data/web/logs:/opt/mcsmanager/web/logs -p 23333:23333 -d ghcr.io/mcsmanager/mcsmanager-web:latest
-docker run -v /etc/localtime:/etc/localtime:ro -v ${INSTALL_PATH}/data/daemon/data:/opt/mcsmanager/daemon/data -v ${INSTALL_PATH}/data/daemon/logs:/opt/mcsmanager/daemon/logs -v /var/run/docker.sock:/var/run/docker.sock -e MCSM_INSTANCES_BASE_PATH=${INSTALL_PATH}/daemon/data/InstanceData -p 24444:24444 -d ghcr.io/mcsmanager/mcsmanager-daemon:latest
+docker run -v /etc/localtime:/etc/localtime:ro -v ${INSTALL_PATH}/web/data:/opt/mcsmanager/web/data -v ${INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs -p 23333:23333 -d ghcr.io/mcsmanager/mcsmanager-web:latest
+docker run -v /etc/localtime:/etc/localtime:ro -v ${INSTALL_PATH}/daemon/data:${INSTALL_PATH}/daemon/data -v ${INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs -v /var/run/docker.sock:/var/run/docker.sock -e MCSM_INSTANCES_BASE_PATH=${INSTALL_PATH}/daemon/data/InstanceData -p 24444:24444 -d ghcr.io/mcsmanager/mcsmanager-daemon:latest
 ```
 
 ### docker-compose 安装
@@ -35,8 +35,8 @@ services:
       - "23333:23333"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ${INSTALL_PATH}/data/web/data:/opt/mcsmanager/web/data
-      - ${INSTALL_PATH}/data/web/logs:/opt/mcsmanager/web/logs
+      - ${INSTALL_PATH}/web/data:/opt/mcsmanager/web/data
+      - ${INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs
 
   daemon:
     image: ghcr.io/mcsmanager/mcsmanager-daemon:latest
@@ -47,8 +47,8 @@ services:
       - MCSM_INSTANCES_BASE_PATH=${INSTALL_PATH}/daemon/data/InstanceData
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ${INSTALL_PATH}/data/daemon/data:/opt/mcsmanager/daemon/data
-      - ${INSTALL_PATH}/data/daemon/logs:/opt/mcsmanager/daemon/logs
+      - ${INSTALL_PATH}/daemon/data:${INSTALL_PATH}/daemon/data
+      - ${INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
