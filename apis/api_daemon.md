@@ -90,6 +90,15 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 PUT /api/service/remote_service
 ```
 
+#### Query Param
+
+```js
+{
+  uuid: string; // Daemon ID
+}
+```
+
+
 #### Request Body
 
 ```json

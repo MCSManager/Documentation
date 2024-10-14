@@ -208,8 +208,26 @@ export default defineConfig({
               link: "/zh_cn/advanced/docker.md",
             },
             {
-              text: "系统服务",
+              text: "systemd 系统服务",
               link: "/zh_cn/advanced/linux_systemctl.md",
+            },
+            {
+              text: "在其他系统添加服务",
+              collapsed: true,
+              items: [
+                {
+                  text: "OpenRC 系统服务",
+                  link: "/zh_cn/advanced/linux_openrc.md",
+                },
+                {
+                  text: "FreeBSD 系统服务",
+                  link: "/zh_cn/advanced/freebsd_rc.md",
+                },
+                {
+                  text: "OpenBSD 系统服务",
+                  link: "/zh_cn/advanced/openbsd_rc.md",
+                },
+              ],
             },
             {
               text: "自定义页面",
