@@ -155,6 +155,12 @@ export default defineConfig({
             {
               text: "快速开始",
               link: "/zh_cn/index.md",
+              items: [
+                {
+                  text: "Docker安装",
+                  link: "/zh_cn/docker.md",
+                },
+              ],
             },
             {
               text: "搭建 Minecraft 游戏服务器",
