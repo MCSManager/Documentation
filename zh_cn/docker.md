@@ -12,18 +12,18 @@ sudo sh get-docker.sh
 
 下列命令中，所有的`${CHANGE_ME_TO_INSTALL_PATH}`需要替换为你实际数据存储的位置，该位置需要被持久化
 
-所有的`ghcr.io/mcsmanager`可以被替换为`githubyumao`，取决于你是否可以连接到Github Container Registry (aka. GHCR)
+所有的`githubyumao`可以被替换为`ghcr.io/mcsmanager`，取决于你是否可以连接到Github Container Registry (aka. GHCR)
 
 注意：web和daemon的安装位置可以不同
 
 ### 命令行安装
 
 ```bash
-docker pull ghcr.io/mcsmanager/mcsmanager-daemon:latest
-docker pull ghcr.io/mcsmanager/mcsmanager-web:latest
+docker pull githubyumao/mcsmanager-daemon:latest
+docker pull githubyumao/mcsmanager-web:latest
 
-docker run -v /etc/localtime:/etc/localtime:ro -v ${CHANGE_ME_TO_INSTALL_PATH}/web/data:/opt/mcsmanager/web/data -v ${CHANGE_ME_TO_INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs -p 23333:23333 -d ghcr.io/mcsmanager/mcsmanager-web:latest
-docker run -v /etc/localtime:/etc/localtime:ro -v ${CHANGE_ME_TO_INSTALL_PATH}/InstanceData:${CHANGE_ME_TO_INSTALL_PATH}/InstanceData -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs -v /var/run/docker.sock:/var/run/docker.sock -e MCSM_INSTANCES_BASE_PATH=${CHANGE_ME_TO_INSTALL_PATH}/daemon/data/InstanceData -p 24444:24444 -d ghcr.io/mcsmanager/mcsmanager-daemon:latest
+docker run -v /etc/localtime:/etc/localtime:ro -v ${CHANGE_ME_TO_INSTALL_PATH}/web/data:/opt/mcsmanager/web/data -v ${CHANGE_ME_TO_INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs -p 23333:23333 -d githubyumao/mcsmanager-web:latest
+docker run -v /etc/localtime:/etc/localtime:ro -v ${CHANGE_ME_TO_INSTALL_PATH}/InstanceData:${CHANGE_ME_TO_INSTALL_PATH}/InstanceData -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs -v /var/run/docker.sock:/var/run/docker.sock -e MCSM_INSTANCES_BASE_PATH=${CHANGE_ME_TO_INSTALL_PATH}/daemon/data/InstanceData -p 24444:24444 -d githubyumao/mcsmanager-daemon:latest
 ```
 
 ### docker-compose 安装
@@ -32,7 +32,7 @@ docker run -v /etc/localtime:/etc/localtime:ro -v ${CHANGE_ME_TO_INSTALL_PATH}/I
 # docker-compose.yml
 services:
   web:
-    image: ghcr.io/mcsmanager/mcsmanager-web:latest
+    image: githubyumao/mcsmanager-web:latest
     ports:
       - "23333:23333"
     volumes:
@@ -41,7 +41,7 @@ services:
       - ${CHANGE_ME_TO_INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs
 
   daemon:
-    image: ghcr.io/mcsmanager/mcsmanager-daemon:latest
+    image: githubyumao/mcsmanager-daemon:latest
     restart: unless-stopped
     ports:
       - "24444:24444"
