@@ -157,7 +157,7 @@ export default defineConfig({
               link: "/zh_cn/index.md",
             },
             {
-              text: "从 Docker 安装",
+              text: "使用 Docker 安装面板",
               link: "/zh_cn/docker-install.md",
             },
             {
