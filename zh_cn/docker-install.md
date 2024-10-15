@@ -40,8 +40,6 @@ docker run \
 -v /etc/localtime:/etc/localtime:ro \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/web/data:/opt/mcsmanager/web/data \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs \
-# 将守护进程端的数据也映射到 web 端
--v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data \
 -p 23333:23333 \
 -d githubyumao/mcsmanager-web:latest
 
