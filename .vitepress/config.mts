@@ -155,12 +155,10 @@ export default defineConfig({
             {
               text: "快速开始",
               link: "/zh_cn/index.md",
-              items: [
-                {
-                  text: "Docker安装",
-                  link: "/zh_cn/docker.md",
-                },
-              ],
+            },
+            {
+              text: "从 Docker 安装",
+              link: "/zh_cn/docker-install.md",
             },
             {
               text: "搭建 Minecraft 游戏服务器",
@@ -198,16 +196,12 @@ export default defineConfig({
           text: "高级",
           items: [
             {
-              text: "Docker CLI 部署",
-              link: "/zh_cn/docker-cli.md",
+              text: "连接其他机器",
+              link: "/zh_cn/advanced/distributed.md",
             },
             {
               text: "更新与重置",
               link: "/zh_cn/advanced/update_panel.md",
-            },
-            {
-              text: "分布式",
-              link: "/zh_cn/advanced/distributed.md",
             },
             {
               text: "环境隔离",
