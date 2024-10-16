@@ -34,7 +34,7 @@ docker run -v /etc/localtime:/etc/localtime:ro  \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs \
 -v /var/run/docker.sock:/var/run/docker.sock \
--e MCSM_INSTANCES_BASE_PATH=${CHANGE_ME_TO_INSTALL_PATH}/daemon/data/InstanceData \
+-e MCSM_INSTANCES_BASE_PATH=${CHANGE_ME_TO_INSTALL_PATH}/InstanceData \
 -p 24444:24444 \
 -d githubyumao/mcsmanager-daemon:latest
 
