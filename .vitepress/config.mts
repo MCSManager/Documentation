@@ -30,6 +30,10 @@ export default defineConfig({
           items: [
             { text: "Quick start", link: "/index.md" },
             {
+              text: "Install via Docker image",
+              link: "/docker-install.md",
+            },
+            {
               text: "Minecraft Server",
               collapsed: false,
               items: [
@@ -39,7 +43,7 @@ export default defineConfig({
               ],
             },
             {
-              text: "Docker Image",
+              text: "Run Docker Image",
               link: "/setup_docker_image.md",
             },
             {
