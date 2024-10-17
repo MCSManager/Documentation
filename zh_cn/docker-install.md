@@ -14,9 +14,7 @@ sudo sh get-docker.sh
 
 ## 安装 MCSManager
 
-下列命令中，所有的 `${CHANGE_ME_TO_INSTALL_PATH}` 需要替换为你实际数据存储的位置，该位置需要被持久化
-
-注意：web 和 daemon 的安装位置可以不同
+下列命令中，所有的 `<CHANGE_ME_TO_INSTALL_PATH>` 需要**替换为你实际数据存储**的位置，该位置需要被持久化，web 和 daemon 的安装位置可以不同。
 
 ### docker-compose 安装
 
