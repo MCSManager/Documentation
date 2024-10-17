@@ -18,6 +18,41 @@ sudo sh get-docker.sh
 
 注意：web 和 daemon 的安装位置可以不同
 
+### docker-compose 安装
+
+```yaml
+# docker-compose.yml
+services:
+  web:
+    image: githubyumao/mcsmanager-web:latest
+    ports:
+      - "23333:23333"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - <CHANGE_ME_TO_INSTALL_PATH>/web/data:/opt/mcsmanager/web/data
+      - <CHANGE_ME_TO_INSTALL_PATH>/web/logs:/opt/mcsmanager/web/logs
+
+  daemon:
+    image: githubyumao/mcsmanager-daemon:latest
+    restart: unless-stopped
+    ports:
+      - "24444:24444"
+    environment:
+      - MCSM_DOCKER_WORKSPACE_PATH=<CHANGE_ME_TO_INSTALL_PATH>/daemon/data/InstanceData
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - <CHANGE_ME_TO_INSTALL_PATH>/daemon/data:/opt/mcsmanager/daemon/data
+      - <CHANGE_ME_TO_INSTALL_PATH>/daemon/logs:/opt/mcsmanager/daemon/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+```
+
+```bash
+mkdir -p <CHANGE_ME_TO_INSTALL_PATH>
+cd <CHANGE_ME_TO_INSTALL_PATH>
+vim docker-compose.yml # 这里写入上面的docker-compose.yml的内容
+docker compose pull && docker compose up -d
+```
+
 ### 命令行安装
 
 ```bash
@@ -30,11 +65,10 @@ docker pull githubyumao/mcsmanager-web:latest
 
 # 启动 MCSManager 守护进程端
 docker run -v /etc/localtime:/etc/localtime:ro  \
--v ${CHANGE_ME_TO_INSTALL_PATH}/InstanceData:${CHANGE_ME_TO_INSTALL_PATH}/InstanceData \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs \
 -v /var/run/docker.sock:/var/run/docker.sock \
--e MCSM_INSTANCES_BASE_PATH=${CHANGE_ME_TO_INSTALL_PATH}/InstanceData \
+-e MCSM_DOCKER_WORKSPACE_PATH=${CHANGE_ME_TO_INSTALL_PATH}/daemon/data/InstanceData \
 -p 24444:24444 \
 -d githubyumao/mcsmanager-daemon:latest
 
@@ -49,42 +83,6 @@ docker run \
 
 ```
 
-### docker-compose 安装
-
-```yaml
-# docker-compose.yml
-services:
-  web:
-    image: githubyumao/mcsmanager-web:latest
-    ports:
-      - "23333:23333"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${CHANGE_ME_TO_INSTALL_PATH}/web/data:/opt/mcsmanager/web/data
-      - ${CHANGE_ME_TO_INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs
-
-  daemon:
-    image: githubyumao/mcsmanager-daemon:latest
-    restart: unless-stopped
-    ports:
-      - "24444:24444"
-    environment:
-      - MCSM_INSTANCES_BASE_PATH=${CHANGE_ME_TO_INSTALL_PATH}/InstanceData
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${CHANGE_ME_TO_INSTALL_PATH}/InstanceData:${CHANGE_ME_TO_INSTALL_PATH}/InstanceData
-      - ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data
-      - ${CHANGE_ME_TO_INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs
-      - /var/run/docker.sock:/var/run/docker.sock
-```
-
-```bash
-mkdir -p ${CHANGE_ME_TO_INSTALL_PATH}
-cd ${CHANGE_ME_TO_INSTALL_PATH}
-vim docker-compose.yml # 这里写入上面的docker-compose.yml的内容
-docker compose pull && docker compose up -d
-```
-
 ### 配置面板
 
 安装并启动之后，你可以通过 `http://<你的公网IP>:23333` 访问面板。
@@ -95,6 +93,6 @@ docker compose pull && docker compose up -d
 
 点击顶部导航栏 `节点`，点击右侧的 `新增节点`，填写你的服务器**公网 IP**，密钥和默认的 `24444` 端口。
 
-执行指令 `cat /opt/mcsmanager/daemon/data/Config/global.json` 可以查看守护进程密钥。
+执行指令 `cat <CHANGE_ME_TO_INSTALL_PATH>/daemon/data/Config/global.json` 可以查看守护进程密钥。
 
 具体流程可以参考：[连接其他机器](./advanced/distributed.html)
