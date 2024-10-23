@@ -31,7 +31,9 @@ GET /api/service/remote_service_instances
   "time": 1718594177859
 }
 ```
+
 > 请看[实例详细信息](#实例详细形信息)
+
 ## 实例详情
 
 ```http
@@ -56,6 +58,7 @@ GET /api/instance
   "time": 1718594177859
 }
 ```
+
 > 请看[实例详细信息](#实例详细形信息)
 
 ## 创建实例
@@ -265,7 +268,8 @@ GET /api/protected_instance/kill
 ```
 
 ## 批量操作
-operations可填: `start`, `stop`, `restart`, `kill`
+
+operations 可填: `start`, `stop`, `restart`, `kill`
 
 ```http
 POST /api/instance/multi_{{operations}}
@@ -289,7 +293,6 @@ POST /api/instance/multi_{{operations}}
   "time": 1718594177859
 }
 ```
-
 
 ## 更新实例
 
@@ -417,11 +420,11 @@ POST /api/protected_instance/install_instance
   "cwd": "/workspaces/my_server/",
   "ie": "gbk",                        // 输入 encode
   "oe": "gbk",                        // 输出 encode
-  "createDatetime": "2022/2/3",
-  "lastDatetime": "2022/2/3 16:02",
+  "createDatetime": 1709631756708,
+  "lastDatetime": 1709631756708,
   "type": "universal",                // 实例类型
   "tag": [],
-  "endTime": "2022/2/28",
+  "endTime": 1709631756708,
   "fileCode": "gbk",
   "processType": "docker",
   "updateCommand": "shutdown -s",
@@ -486,7 +489,7 @@ POST /api/protected_instance/install_instance
 }
 ```
 
-## 实例的docker配置
+## 实例的 docker 配置
 
 ```json
 {

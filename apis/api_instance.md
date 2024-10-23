@@ -282,6 +282,7 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 ```
 
 ## Batch Operation
+
 Support operations: `start`, `stop`, `restart`, `kill`
 
 ```http
@@ -308,7 +309,6 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "time": 1718594177859
 }
 ```
-
 
 ## Update Instance
 
@@ -444,11 +444,11 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "cwd": "/workspaces/my_server/",
   "ie": "gbk",                        // input encode
   "oe": "gbk",                        // output encode
-  "createDatetime": "2022/2/3",
-  "lastDatetime": "2022/2/3 16:02",
+  "createDatetime": 1709631756708,
+  "lastDatetime": 1709631756708,
   "type": "universal",                // instance type
   "tag": [],
-  "endTime": "2022/2/28",
+  "endTime": 1729631756708,
   "fileCode": "gbk",
   "processType": "docker",
   "updateCommand": "shutdown -s",
