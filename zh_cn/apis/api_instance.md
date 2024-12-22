@@ -142,7 +142,7 @@ DELETE /api/instance
 ```json
 {
   "uuids": [
-    "50c73059001b436fa85c0d8221c157cf"
+    "50c73059001b436fa85c0d8221c157cf",
     "11c2f4c89b9e4e1da819dc56bf16f151"
   ], // Instance Id
   "deleteFile": false // 是否删除实例文件
@@ -154,7 +154,10 @@ DELETE /api/instance
 ```json
 {
   "status": 200,
-  "data": true,
+  "data": [
+    "50c73059001b436fa85c0d8221c157cf",
+    "11c2f4c89b9e4e1da819dc56bf16f151"
+  ], // Instance Id
   "time": 1718594177859
 }
 ```
