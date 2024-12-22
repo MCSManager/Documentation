@@ -148,7 +148,7 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 ```json
 {
   "uuids": [
-    "50c73059001b436fa85c0d8221c157cf"
+    "50c73059001b436fa85c0d8221c157cf",
     "11c2f4c89b9e4e1da819dc56bf16f151"
   ], // Instance Id
   "deleteFile": false // Delete instance files
@@ -160,7 +160,10 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 ```json
 {
   "status": 200,
-  "data": true,
+  "data": [
+    "50c73059001b436fa85c0d8221c157cf",
+    "11c2f4c89b9e4e1da819dc56bf16f151"
+  ], // Instance Id
   "time": 1718594177859
 }
 ```
