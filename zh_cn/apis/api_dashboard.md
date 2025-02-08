@@ -47,7 +47,7 @@ GET /api/overview
 
       "platform": "win32",
       "release": "10.0.22631",
-      "uptime": 905020,
+      "uptime": 905020.0,
       "cpu": 0.11684482123110951
     },
 
@@ -114,7 +114,7 @@ GET /api/overview
         // 节点 UUID
         "uuid": "957c6bddf379445c82bac5edf7684bbc",
         "ip": "s1.example.com",
-        "port": "24444",
+        "port": 24444,
         "prefix": "",
         "available": true,
         "remarks": "CN-ZJ-DEV-01"
