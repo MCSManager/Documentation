@@ -36,13 +36,13 @@ start_cmd="${name}_start"
 stop_cmd="${name}_stop"
 reload_cmd="${name}_reload"
 
-mcsmw_start()
+mcsmd_start()
 {
     cd ${workdir}
     /usr/sbin/daemon -p ${pidfile} -u ${user} /usr/local/bin/node app.js > /dev/null
 }
 
-mcsmw_stop()
+mcsmd_stop()
 {
     if [ -f $pidfile ]; then
         kill -QUIT $(cat $pidfile)
@@ -50,7 +50,7 @@ mcsmw_stop()
     fi
 }
 
-mcsmw_reload()
+mcsmd_reload()
 {
     if [ -f $pidfile ]; then
         kill -HUP $(cat $pidfile)
