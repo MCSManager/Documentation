@@ -7,6 +7,12 @@ export default defineConfig({
   description: "MCSManager Document",
   lastUpdated: true,
 
+  // head section
+  head: [
+    // favicon
+    ['link', { rel: 'icon', href: '/images/logo.png' }]
+  ],
+
   locales: {
     root: {
       label: "English",
