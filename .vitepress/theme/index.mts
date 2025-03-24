@@ -10,7 +10,7 @@ function languageSwitch() {
   ) {
     setTimeout(() => {
       window.location.href = "/zh_cn/";
-    }, 1000);
+    }, 2100);
   }
 }
 
