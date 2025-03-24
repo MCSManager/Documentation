@@ -1,18 +1,25 @@
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import "./custom.css";
+import ExtLayout from "./ext-layout.vue";
 
-// function languageSwitch() {
-//   if (
-//     window.navigator.language.includes("zh") &&
-//     window.location.pathname === "/"
-//   ) {
-//     window.location.href = "/zh_cn/";
-//   }
-// }
+function languageSwitch() {
+  if (
+    window.navigator.language.includes("zh") &&
+    window.location.pathname === "/"
+  ) {
+    setTimeout(() => {
+      window.location.href = "/zh_cn/";
+    }, 1000);
+  }
+}
 
+/** @type {import('vitepress').Theme} */
 export default {
   extends: DefaultTheme,
-  setup() {},
+  Layout: ExtLayout,
+  setup() {
+    languageSwitch();
+  },
   enhanceApp({ app }) {},
 } satisfies Theme;
