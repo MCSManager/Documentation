@@ -2,9 +2,9 @@
 <!-- 这个组件只用于展示广告，广告会根据用户的浏览器语言自动变化 -->
 <template>
   <div class="header-top-nav" v-if="displayAd">
-    <div v-for="item in ad" :key="item.adText" class="ad-item">
+    <div v-for="item in tipItems" :key="item.adText" class="right-my-container">
       <a :href="item.adAddr" target="_blank">
-        <div class="ad-text">
+        <div class="inner-text">
           {{ item.adText }}
         </div>
       </a>
@@ -15,7 +15,7 @@
         href="https://afdian.com/item/9efafa52f8ca11ef99925254001e7c00"
         target="_blank"
       >
-        <div class="join-ad">
+        <div class="join-us">
           <p>购买此处推广位</p>
         </div>
       </a>
@@ -49,7 +49,7 @@ const currentLanguage = navigator.language;
 
 const displayAd = currentLanguage.includes("zh");
 
-const ad = reactive(
+const tipItems = reactive(
   adConfig.filter((item) => currentLanguage.includes(item.language))
 );
 </script>
@@ -80,7 +80,7 @@ const ad = reactive(
   padding: 10px;
   line-height: 20px;
 
-  .ad-item {
+  .right-my-container {
     .transition-hover();
     .flex-center();
     .card-base();
@@ -93,13 +93,13 @@ const ad = reactive(
       background-color: rgba(97, 169, 125, 0.926);
     }
 
-    .ad-text {
+    .inner-text {
       font-size: 13px;
       color: #fff;
     }
   }
 
-  .join-ad {
+  .join-us {
     .transition-hover();
     .flex-center();
     .card-base();
