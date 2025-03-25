@@ -94,6 +94,7 @@ export default defineConfig({
         },
         {
           text: "Operations",
+          collapsed: false,
           items: [
             {
               text: "Data & Configuration",
@@ -115,6 +116,7 @@ export default defineConfig({
         },
         {
           text: "Tunneling",
+          collapsed: false,
           items: [
             {
               text: "PlayIt.gg",
