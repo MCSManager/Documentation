@@ -121,15 +121,7 @@ export default defineConfig({
             {
               text: "PlayIt.gg",
               link: "/tunnels/playit.md",
-            },
-            {
-              text: "ZeroTier",
-              link: "/tunnels/zerotier.md",
-            },
-            {
-              text: "Cloudflared",
-              link: "/tunnels/cloudflared.md",
-            },
+            }
           ],
         },
         {

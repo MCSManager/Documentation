@@ -4,7 +4,7 @@ This section explains how to tunnel MCSManager through [PlayIt](https://playit.g
 **Before reading this section, please fully understand the [Network Architecture](/ops/mcsm_network) chapter**
 :::
 :::warning
-**This will expose MCSManager to the internet!** This can have unwanted consequenses, use [ZeroTier](./zerotier) if you want remotly access MCSManger without exposing it to the internet.
+**This will expose MCSManager to the internet!** This can have unwanted consequenses, use [TailScale](https://tailscale.com/) or [ZeroTier](https://zerotier.com/) if you want remotly access MCSManger without exposing it to the internet.
 :::
 ## 1. Make an Agent
 1. Login in to [PlayIt](https://playit.gg) account
