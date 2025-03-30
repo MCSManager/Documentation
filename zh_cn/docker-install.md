@@ -16,13 +16,18 @@ sudo sh get-docker.sh
 
 下列命令中，所有的 `<CHANGE_ME_TO_INSTALL_PATH>` 需要**替换为你实际数据存储**的位置，该位置需要被持久化，web 和 daemon 的安装位置可以不同。
 
+:::tip
+中国的服务器可能无法正常访问 Docker Hub ，因此需要使用镜像源。以下 Docker compose 命令使用了[毫秒镜像](https://1ms.run/)。
+若无需使用，请删除对应 image 行前面的"docker.1ms.run"。
+:::
+
 ### docker-compose 安装
 
 ```yaml
 # docker-compose.yml
 services:
   web:
-    image: githubyumao/mcsmanager-web:latest
+    image: docker.1ms.run/githubyumao/mcsmanager-web:latest
     ports:
       - "23333:23333"
     volumes:
@@ -31,7 +36,7 @@ services:
       - <CHANGE_ME_TO_INSTALL_PATH>/web/logs:/opt/mcsmanager/web/logs
 
   daemon:
-    image: githubyumao/mcsmanager-daemon:latest
+    image: docker.1ms.run/githubyumao/mcsmanager-daemon:latest
     restart: unless-stopped
     ports:
       - "24444:24444"
@@ -54,7 +59,10 @@ docker compose pull && docker compose up -d
 ### 命令行安装
 
 ```bash
-# 拉取镜像，在中国的服务器需要自己配置加速镜像源
+# 拉取镜像，在中国的服务器需要自己配置加速镜像源，可以通过使用以下两行（去除行首的 #）来使用。
+# docker pull docker.1ms.run/githubyumao/mcsmanager-daemon:latest
+# docker pull docker.1ms.run/githubyumao/mcsmanager-web:latest
+
 docker pull githubyumao/mcsmanager-daemon:latest
 docker pull githubyumao/mcsmanager-web:latest
 
