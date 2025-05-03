@@ -1,20 +1,12 @@
 # Reverse Proxy for HTTPS
 
 :::tip
-Given MCSManager's distrbuted architecture, it is complex to configure HTTPS, and it requries some level of professional network knowledge. It is **STRONGLY** advised for general users to **NOT** configure HTTPS.
-
-**Make sure you FULLY understand the [Network Architecture](/ops/mcsm_network.md) before continue.**\
-**The following steps will assume the reader has basic network knowledge (e.g. SSL certificate).**
+**Make sure you FULLY understand the [Network Architecture](/ops/mcsm_network.md) before continue.**
 :::
 
 ## Generate SSL Certificate
 
 The following websites provide free 90-days SSL certificate for your domain. You can also choose other providers.
-
-> <a href="https://www.cersign.com/free-ssl-certificate.html" target="_blank">https://www.cersign.com/free-ssl-certificate.html</a>  
-> <a href="https://www.mianfeissl.com/" target="_blank">https://www.mianfeissl.com/</a>
-
-If you don't have a domain, and want to use HTTPS with IP address, a certificate can be obtained here:
 
 > <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
 
@@ -66,72 +58,73 @@ Save as `daemon_https.conf` and put it in the `/etc/nginx/sites-enabled`director
 You can also place the configuration directly at the end of the `nginx.conf` file (before the last curly brace).\
 In case of multiple daemons, simple add the following configuration repeatedly with different ports and addresses.
 
-```
-# Sample HTTPS reverse proxy for MCSManager Daemon
-server
-    {
-		# Public HTTPS port for the daemon (use multiple `listen` directive for multiple ports)
-		listen 12444 ssl http2; #IPV4
-		listen [::]:12444 ssl http2; #IPv6
+```nginx
+# MCSManager Daemon
+server {
+	# Public HTTPS port for the daemon (use multiple `listen` directive for multiple ports)
+	listen 12444 ssl http2; #IPV4
+	listen [::]:12444 ssl http2; #IPv6
 
-		# Enable HSTS. Once enabled, it will enforce the use of HTTPS to connect to daemons and will continue for a year after this policy is cancelled, unless manually cleared in the browser.
-		# Disable by default, uncomment to enable.
-		#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+	# Enable HSTS. Once enabled, it will enforce the use of HTTPS to connect to daemons and will continue for a year after this policy is cancelled, unless manually cleared in the browser.
+	# Disable by default, uncomment to enable.
+	#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 
-		# DNS resolver, only required when the traffic will be forwarded to a remote daemon connected via a domain.
-		resolver 8.8.8.8;
+	# DNS resolver, only required when the traffic will be forwarded to a remote daemon connected via a domain.
+	resolver 8.8.8.8;
 
-		# Automatically redirect HTTP to HTTPS
-		error_page 497 https://$host:$server_port$request_uri;
+	# Automatically redirect HTTP to HTTPS
+	error_page 497 https://$host:$server_port$request_uri;
 
-		proxy_hide_header Upgrade;
-		location / {
-				# Request Headers. No need to change in general
-				proxy_set_header Host $host;
-				proxy_set_header X-Real-Ip $remote_addr;
-				proxy_set_header X-Forwarded-For $remote_addr;
-				proxy_set_header REMOTE-HOST $remote_addr;
+	proxy_hide_header Upgrade;
+	location / {
+		# Request Headers. No need to change in general
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-Ip $remote_addr;
+		proxy_set_header X-Forwarded-For $remote_addr;
+		proxy_set_header REMOTE-HOST $remote_addr;
 
-				# Target daemon address and port. Support domain and HTTPS.
-				proxy_pass http://127.0.0.1:24444;
+		# Target daemon address and port. Support domain and HTTPS.
+		proxy_pass http://127.0.0.1:24444;
 
-				# Support WebSocket
-				proxy_set_header Upgrade $http_upgrade;
-				proxy_set_header Connection "upgrade";
+		# Support WebSocket
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
 
-				# Max size for a single file being transferred. 0 for unlimited.
-				client_max_body_size 0;
+		# Max size for a single file being transferred. 0 for unlimited.
+		client_max_body_size 0;
 
-				# Disable cache
-				proxy_request_buffering off;
-				proxy_buffering off;
-				  }
-		# Path to HTTPS certificate and key
-		ssl_certificate /etc/nginx/ssl/domain.crt;
-		ssl_certificate_key /etc/nginx/ssl/domain.key;
+		# Disable cache
+		proxy_request_buffering off;
+		proxy_buffering off;
+	}
+	# Path to HTTPS certificate and key
+	ssl_certificate /etc/nginx/ssl/domain.crt;
+	ssl_certificate_key /etc/nginx/ssl/domain.key;
 
-		# Enable gzip by default
-		gzip on;
+	# Enable gzip by default
+	gzip on;
 
-		# File that will be compressed during transfer
-		gzip_types text/plain text/css application/javascript application/xml application/json;
+	# File that will be compressed during transfer
+	gzip_types text/plain text/css application/javascript application/xml application/json;
 
-		# Enable compression with reverse proxy
-		gzip_proxied any;
+	# Enable compression with reverse proxy
+	gzip_proxied any;
 
-		# Compression level during transmission; the higher the level, the more CPU is used for compression.
-		# The maximum level is 9, but usually, level 5 is sufficient
-		gzip_comp_level 5;
+	# Compression level during transmission; the higher the level, the more CPU is used for compression.
+	# The maximum level is 9, but usually, level 5 is sufficient
+	gzip_comp_level 5;
 
-		# Only compress when the size during transmission reaches 1k, as compressing smaller content is pointless.
-		gzip_min_length 1k;
+	# Only compress when the size during transmission reaches 1k, as compressing smaller content is pointless.
+	gzip_min_length 1k;
 
-		# Supported protocols, algorithms, and timeout settings, etc. Generally, there's no need to change these.
-		ssl_session_timeout 5m;
-		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-		ssl_prefer_server_ciphers on;
-    }
+	# intermediate configuration
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_ecdh_curve X25519:prime256v1:secp384r1;
+	ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;
+	ssl_prefer_server_ciphers off;
+	# see also ssl_session_ticket_key alternative to stateful session cache
+	ssl_session_timeout 1d;
+}
 ```
 
 ## Reverse Proxy for the Panel
@@ -140,73 +133,77 @@ Below is a sample configuration, you can change the port or adjust the settings 
 Save as `web_https.conf` and put it in the `/etc/nginx/sites-enabled`directory\
 You can also place the configuration directly at the end of the `nginx.conf` file (before the last curly brace).
 
-```
-# Sample HTTPS reverse proxy for MCSManager Web Panel
-server
-    {
-		# Public HTTPS port for the panel (use multiple `listen` directive for multiple ports)
-		listen 12333 ssl http2; #IPV4
-		listen [::]:12333 ssl http2; #IPv6
+```nginx
+# MCSManager Panel
+server {
+	# Public HTTPS port for the panel (use multiple `listen` directive for multiple ports)
+	listen 12333 ssl http2; #IPV4
+	listen [::]:12333 ssl http2; #IPv6
 
-		# Enable HSTS. Once enabled, it will enforce the use of HTTPS to connect to the panel and will continue for a year after this policy is cancelled, unless manually cleared in the browser.
-		# Disable by default, uncomment to enable.
-		#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+	# Enable HSTS. Once enabled, it will enforce the use of HTTPS to connect to the panel and will continue for a year after this policy is cancelled, unless manually cleared in the browser.
+	# Disable by default, uncomment to enable.
+	#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 
-		# DNS resolver, only required when the traffic will be forwarded to a remote panel connected via a domain.
-		resolver 8.8.8.8;
+	# DNS resolver, only required when the traffic will be forwarded to a remote panel connected via a domain.
+	resolver 8.8.8.8;
 
-		# Automatically redirect HTTP to HTTPS
-		error_page 497 https://$host:$server_port$request_uri;
+	# Automatically redirect HTTP to HTTPS
+	error_page 497 https://$host:$server_port$request_uri;
 
-		proxy_hide_header Upgrade;
-		location / {
-				# Request Headers. No need to change in general
-				proxy_set_header Host $host;
-				proxy_set_header X-Real-Ip $remote_addr;
-				proxy_set_header X-Forwarded-For $remote_addr;
-				proxy_set_header REMOTE-HOST $remote_addr;
+	proxy_hide_header Upgrade;
+	location / {
+		# Request Headers. No need to change in general
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-Ip $remote_addr;
+		proxy_set_header X-Forwarded-For $remote_addr;
+		proxy_set_header REMOTE-HOST $remote_addr;
 
-				# Target daemon address and port. Support domain and HTTPS.
-				proxy_pass http://127.0.0.1:23333;
+		# Target daemon address and port. Support domain and HTTPS.
+		proxy_pass http://127.0.0.1:23333;
 
-				# Support WebSocket
-				proxy_set_header Upgrade $http_upgrade;
-				proxy_set_header Connection "upgrade";
+		# Support WebSocket
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
 
-				# Max size for a single file being transferred. 0 for unlimited.
-				client_max_body_size 0;
+		# Max size for a single file being transferred. 0 for unlimited.
+		client_max_body_size 0;
 
-				# Disable cache
-				proxy_request_buffering off;
-				proxy_buffering off;
-				  }
+		# Disable cache
+		proxy_request_buffering off;
+		proxy_buffering off;
 
-		# Path to HTTPS certificate and key
-		ssl_certificate /etc/nginx/ssl/domain.crt;
-		ssl_certificate_key /etc/nginx/ssl/domain.key;
+		# Only allow clients to send cookies over HTTPS.
+		proxy_cookie_flags ~ secure;
+	}
 
-		# Enable gzip by default
-		gzip on;
+	# Path to HTTPS certificate and key
+	ssl_certificate /etc/nginx/ssl/domain.crt;
+	ssl_certificate_key /etc/nginx/ssl/domain.key;
 
-		# File that will be compressed during transfer
-		gzip_types text/plain text/css application/javascript application/xml application/json;
+	# Enable gzip by default
+	gzip on;
 
-		# Enable compression with reverse proxy
-		gzip_proxied any;
+	# File that will be compressed during transfer
+	gzip_types text/plain text/css application/javascript application/xml application/json;
 
-		# Compression level during transmission; the higher the level, the more CPU is used for compression.
-		# The maximum level is 9, but usually, level 5 is sufficient
-		gzip_comp_level 5;
+	# Enable compression with reverse proxy
+	gzip_proxied any;
 
-		# Only compress when the size during transmission reaches 1k, as compressing smaller content is pointless.
-		gzip_min_length 1k;
+	# Compression level during transmission; the higher the level, the more CPU is used for compression.
+	# The maximum level is 9, but usually, level 5 is sufficient
+	gzip_comp_level 5;
 
-		# Supported protocols, algorithms, and timeout settings, etc. Generally, there's no need to change these.
-		ssl_session_timeout 5m;
-		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-		ssl_prefer_server_ciphers on;
-    }
+	# Only compress when the size during transmission reaches 1k, as compressing smaller content is pointless.
+	gzip_min_length 1k;
+
+	# intermediate configuration
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_ecdh_curve X25519:prime256v1:secp384r1;
+	ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;
+	ssl_prefer_server_ciphers off;
+	# see also ssl_session_ticket_key alternative to stateful session cache
+	ssl_session_timeout 1d;
+}
 ```
 
 ## Verify Nginx Configuration
@@ -250,5 +247,3 @@ If you enter any instance console to upload or download files, etc., you will fi
 Go to the `Daemons` tab, you might find connections to remote daemons using `localhost`, `123.x.x.x`, or other domains. A reverse proxy for each remote daemon **_must be configured separately_**, so that they all use HTTPS to connect.
 
 Once configured, replace the original `localhost`, `123.x.x.x`, or `domain.com` with `wss://localhost`, `wss://123.x.x.x`, or `wss://domain.com` respectively.
-
-Congratulations, you have now successfully enabled HTTPS for your panel :-)
