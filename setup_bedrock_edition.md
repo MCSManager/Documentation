@@ -10,7 +10,7 @@ For Windows, we suggest using `Windows Server 2016`, `Windows 10`, or the latest
 
 ### Downloading Server Core
 
-You will find the latest official Bedrock Edition server core on [the official Minecraft Bedrock website](https://www.minecraft.net/zh-hans/download/server/bedrock).
+You will find the latest official Bedrock Edition server core on [the official Minecraft Bedrock website](https://www.minecraft.net/en-us/download/server/bedrock).
 
 ### Starting the Server
 
@@ -32,7 +32,7 @@ Install Microsoft VC++ from microsoft official website.
 
 ### Downloading Server Core
 
-You will find the latest official Bedrock Edition server core on [the official Minecraft Bedrock website](https://www.minecraft.net/zh-hans/download/server/bedrock).
+You will find the latest official Bedrock Edition server core on [the official Minecraft Bedrock website](https://www.minecraft.net/en-us/download/server/bedrock).
 
 ### Starting the Server
 

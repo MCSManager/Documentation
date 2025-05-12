@@ -16,7 +16,7 @@
   "loginInfo": "foo", // Login UI hint
   "canFileManager": true, // Allow all users to use file management
   "language": "zh_cn", // UI language
-  "quickInstallAddr": "https://mcsmanager.oss-cn-guangzhou.aliyuncs.com/quick_install.json", // Quick install json file path/address
+  "quickInstallAddr": "https://raw.githubusercontent.com/MCSManager/Script/refs/heads/master/templates.json", // Quick install json file path/address
 
   "redisUrl": "", // Redis database, NOT RECOMMAND
   "dataPort": 23334, // Deprecated

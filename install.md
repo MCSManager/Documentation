@@ -3,7 +3,7 @@
 ## Linux
 
 ```bash
-wget -qO- https://gitee.com/mcsmanager/script/raw/master/setup_cn.sh | bash
+wget -qO- https://gitee.com/mcsmanager/script/raw/master/setup.sh | bash
 ```
 
 If the Linux next-key script installation fails, you can [go here](https://github.com/MCSManager/MCSManager#linux) to install it manually.
@@ -12,7 +12,7 @@ If the Linux next-key script installation fails, you can [go here](https://githu
 
 ## Windows
 
-[Download Zip](https://cloud.alongw.cn/f/akrCY/mcsmanager_windows_release.zip)
+[Download Zip](https://github.com/MCSManager/MCSManager/releases/latest/download/mcsmanager_windows_release.zip)
 
 Just download and run, without any installation dependencies and without polluting the registry.
 
