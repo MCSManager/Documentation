@@ -17,7 +17,7 @@ But if you install it manually, you need to meet the `Node 16+` runtime environm
 Because it needs to be registered to the system service, **The installation script must be run with root.**
 
 ```bash
-sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash"
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup.sh | bash"
 ```
 
 ### Startup Method
@@ -98,7 +98,7 @@ Just enter two terminals and execute `Ctrl+C`.
 
 ## Windows Installation
 
-Just [download the ZIP file](http://oss.duzuii.com/MCSManager/MCSManager-ZH) and decompress it to run without any installation dependencies and without polluting the registry.
+Just [download the ZIP file](https://github.com/MCSManager/MCSManager/releases/latest/download/mcsmanager_windows_release.zip) and decompress it to run without any installation dependencies and without polluting the registry.
 
 ### Startup Method
 

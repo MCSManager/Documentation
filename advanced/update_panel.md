@@ -24,7 +24,7 @@ If you originally installed MCSManager using the **one-click script**, you can s
 After executing the script, there's nothing else you need to do, and your MCSManager should automatically be updated to the latest version.
 
 ```bash
-sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash"
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup.sh | bash"
 ```
 
 ### Manual Update for Linux Version
