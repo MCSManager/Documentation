@@ -31,16 +31,16 @@ const adConfig = [
     language: "zh",
     adText: "【创梦网络】四川一手高防10年老商家-物理机低至170元-招代理",
     adAddr: "https://www.580dns.com/cart?fid=1&gid=3",
-    endTime: "2025/3/25 23:59:59",
+    endTime: "2025/7/8 23:59:59",
     qq: 490898739,
     price: 239,
   },
   {
     language: "zh",
-    adText: "【道之云网络】MCSM 用户专享特惠/企业运营资质齐全/招收合作伙伴",
-    adAddr: "https://idc.daozhiyun.cn/aff/DGNMLNKW",
-    endTime: "2025/4/24 23:59:59",
-    qq: 2416892749,
+    adText: "【不二云】国内高防高频云稳定带宽，你生产力的不二之选！",
+    adAddr: "https://cb2.cn/",
+    endTime: "2025/7/8 23:59:59",
+    qq: 3515655888,
     price: 200,
   },
 ];
@@ -49,8 +49,13 @@ const currentLanguage = navigator.language;
 
 const displayAd = currentLanguage.includes("zh");
 
+const now = Date.now();
+
 const tipItems = reactive(
-  adConfig.filter((item) => currentLanguage.includes(item.language))
+  adConfig.filter((item) => {
+    const endTime = new Date(item.endTime).getTime();
+    return currentLanguage.includes(item.language) && now < endTime;
+  })
 );
 </script>
 
