@@ -300,7 +300,7 @@ POST /api/instance/multi_{{operations}}
 ## 更新实例
 
 ```http
-GET /api/protected_instance/asynchronous
+POST /api/protected_instance/asynchronous
 ```
 
 #### Query 参数
