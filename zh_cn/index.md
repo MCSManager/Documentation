@@ -69,7 +69,7 @@ cd /opt/mcsmanager/
 wget https://github.com/MCSManager/MCSManager/releases/latest/download/mcsmanager_linux_release.tar.gz
 
 # 解压到安装目录
-tar -zxf mcsmanager_linux_release.tar.gz
+tar --strip-components=1 -xzvf mcsmanager_linux_release.tar.gz
 
 ```
 
