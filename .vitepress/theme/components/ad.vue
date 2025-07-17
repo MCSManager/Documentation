@@ -29,19 +29,20 @@ import { reactive } from "vue";
 const adConfig = [
   {
     language: "zh",
-    adText: "【创梦网络】四川一手高防10年老商家-物理机低至170元-招代理",
-    adAddr: "https://www.580dns.com/cart?fid=1&gid=3",
-    endTime: "2025/7/8 23:59:59",
+    adText: "【创梦网络】【创梦网络】16核/16G/50M带宽 限时特价仅88元/月",
+    adAddr: "https://www.580dns.com/cart?fid=3&gid=31",
+    endTime: "2025/8/16 23:59:59",
     qq: 490898739,
     price: 239,
   },
   {
     language: "zh",
-    adText: "【不二云】国内高防高频云稳定带宽，你生产力的不二之选！",
-    adAddr: "https://cb2.cn/",
-    endTime: "2025/7/8 23:59:59",
-    qq: 3515655888,
-    price: 200,
+    adText:
+      "【互联网数据中心】全球高防高频云服务器就位，IDC 让每一份算力都有价值！",
+    adAddr: "https://www.idcnetwork.cn/cart/goodsList.htm",
+    endTime: "2025/8/4 23:59:59",
+    qq: 1481515930,
+    price: 599,
   },
 ];
 
