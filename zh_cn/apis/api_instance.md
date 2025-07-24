@@ -3,7 +3,7 @@
 ## 实例列表
 
 ```http
-GET /api/service/remote_service_instances
+POST /api/service/remote_service_instances
 ```
 
 #### Query 参数
