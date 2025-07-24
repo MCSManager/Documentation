@@ -316,7 +316,7 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 ## Update Instance
 
 ```http
-GET /api/protected_instance/asynchronous
+POST /api/protected_instance/asynchronous
 ```
 
 #### Query Param
