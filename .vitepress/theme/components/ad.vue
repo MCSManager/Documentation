@@ -44,6 +44,14 @@ const adConfig = [
     qq: 1481515930,
     price: 599,
   },
+  {
+    language: "zh",
+    adText: "【小白云】南京56核64G 30M 仅需299一个月",
+    adAddr: "https://www.xiaobaiyun.cn",
+    endTime: "2025/8/1 23:59:59",
+    qq: 1531335070,
+    price: 269,
+  },
 ];
 
 const currentLanguage = navigator.language;
