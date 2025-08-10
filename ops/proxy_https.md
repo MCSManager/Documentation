@@ -1,4 +1,4 @@
-# Reverse Proxy for HTTPS
+# Reverse Proxy for HTTPS with NGINX
 
 :::tip
 **Make sure you FULLY understand the [Network Architecture](/ops/mcsm_network.md) before continue.**
