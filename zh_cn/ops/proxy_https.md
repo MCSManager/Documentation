@@ -84,6 +84,7 @@ server {
 		# 请求头 一般无需更改
 		proxy_set_header Host $host;
 		proxy_set_header X-Real-Ip $remote_addr;
+		#proxy_set_header X-Real-Ip $http_CF_Connecting_IP; # Cloudflare 代理时请使用此变量
 		proxy_set_header X-Forwarded-For $remote_addr;
 		proxy_set_header REMOTE-HOST $remote_addr;
 
@@ -155,6 +156,7 @@ server {
 		# 请求头 一般无需更改
 		proxy_set_header Host $host;
 		proxy_set_header X-Real-Ip $remote_addr;
+		#proxy_set_header X-Real-Ip $http_CF_Connecting_IP; # Cloudflare 代理时请使用此变量
 		proxy_set_header X-Forwarded-For $remote_addr;
 		proxy_set_header REMOTE-HOST $remote_addr;
 

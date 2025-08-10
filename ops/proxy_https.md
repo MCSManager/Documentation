@@ -80,6 +80,7 @@ server {
 		# Request Headers. No need to change in general
 		proxy_set_header Host $host;
 		proxy_set_header X-Real-Ip $remote_addr;
+		#proxy_set_header X-Real-Ip $http_CF_Connecting_IP; # Use this if behind Cloudflare proxy
 		proxy_set_header X-Forwarded-For $remote_addr;
 		proxy_set_header REMOTE-HOST $remote_addr;
 
@@ -155,6 +156,7 @@ server {
 		# Request Headers. No need to change in general
 		proxy_set_header Host $host;
 		proxy_set_header X-Real-Ip $remote_addr;
+		#proxy_set_header X-Real-Ip $http_CF_Connecting_IP; # Use this if behind Cloudflare proxy
 		proxy_set_header X-Forwarded-For $remote_addr;
 		proxy_set_header REMOTE-HOST $remote_addr;
 
