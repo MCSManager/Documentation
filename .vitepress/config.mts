@@ -126,6 +126,10 @@ export default defineConfig({
               link: "/ops/proxy_https.md",
             },
             {
+              text: "HTTPS Reverse Proxy with IIS",
+              link: "/ops/proxy_https_iis.md",
+            },
+            {
               text: "Cloudflare CDN",
               link: "/ops/cloudflare.md",
             },
@@ -281,6 +285,10 @@ export default defineConfig({
             {
               text: "通过 NGINX 使用 HTTPS",
               link: "/zh_cn/ops/proxy_https.md",
+            },
+            {
+              text: "通过 IIS 使用 HTTPS",
+              link: "/zh_cn/ops/proxy_https_iis.md",
             },
             {
               text: "与其他服务共用端口",
