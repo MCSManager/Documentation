@@ -83,6 +83,24 @@ export default defineConfig({
               link: "/advanced/linux_systemctl.md",
             },
             {
+              text: "Add service for other OSes",
+              collapsed: true,
+              items: [
+                {
+                  text: "OpenRC Service",
+                  link: "/advanced/linux_openrc.md",
+                },
+                {
+                  text: "FreeBSD Service",
+                  link: "/advanced/freebsd_rc.md",
+                },
+                {
+                  text: "OpenBSD Service",
+                  link: "/advanced/openbsd_rc.md",
+                },
+              ],
+            },
+            {
               text: "Custom Layout",
               link: "/advanced/custom_page.md",
             },
