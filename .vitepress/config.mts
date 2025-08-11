@@ -122,7 +122,7 @@ export default defineConfig({
               link: "/ops/mcsm_network.md",
             },
             {
-              text: "HTTPS Reverse Proxy",
+              text: "HTTPS Reverse Proxy with NGINX",
               link: "/ops/proxy_https.md",
             },
             {
@@ -279,7 +279,7 @@ export default defineConfig({
               link: "/zh_cn/ops/mcsm_network.md",
             },
             {
-              text: "使用 HTTPS",
+              text: "通过 NGINX 使用 HTTPS",
               link: "/zh_cn/ops/proxy_https.md",
             },
             {
