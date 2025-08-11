@@ -13,7 +13,7 @@ The following is based on Node.js installed with `pkg install node`.
 :::
 
 :::tip
-DO NOT save service files to `/etc/rc.d`, or it may be ruined with system patch or upgrade! 
+DO NOT save service files to `/etc/rc.d`, or it may be ruined by system patch or upgrade! 
 :::
 
 **vim /usr/local/etc/rc.d/mcsmd**

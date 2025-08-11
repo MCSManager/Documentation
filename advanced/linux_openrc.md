@@ -1,7 +1,7 @@
 # OpenRC service (Linux)
 
 :::tip
-This page only applys for Linux distros using on OpeRC init like Alpine/Devuan/Artix/Slackware. If you don't know what it is, please view Systemd Service instead.
+This page only applys for Linux distros using on OpenRC init like Alpine/Devuan/Artix/Slackware. If you don't know what it is, please view Systemd Service instead.
 :::
 
 We can always use an ssh client to connect to the Linux server and run any command. However, when we disconnect the SSH, any program that is running will be stopped too. Also it is not practical to manually start the program each time the server is rebooted.
