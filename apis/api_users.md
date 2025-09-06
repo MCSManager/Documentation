@@ -105,7 +105,7 @@ PUT /api/auth
     "userName": string,
     "loginTime": string,
     "registerTime": string,
-    "instances": InstanceDetail[],  // user instances
+    "instances": IUserHaveInstance[],  // user instances
                                     // You can assign instances to users here
     "permission": number,  // 1=User, 10=Admin, -1=Banned user
     "apiKey": string,
@@ -116,7 +116,7 @@ PUT /api/auth
 }
 ```
 
-> For information about InstanceDetail, see [this](./api_instance.md#type-of-instancedetail)
+> For information about IUserHaveInstance[], see [this](./api_instance.md#iuserhaveinstancedetail)
 
 #### Response
 

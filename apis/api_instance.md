@@ -533,6 +533,20 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "cpusetCpus": "",
   "cpuUsage": 100,
   "workingDir": "",
+  "changeWorkdir": false,
   "env": []
+}
+```
+
+:::tip
+You can use `{mcsm_port}` to give a random port in `ports` field.
+:::
+
+## `IUserHaveInstance[]`
+
+```json
+{
+    "instanceUuid": "********************************",
+    "daemonId": "********************************"
 }
 ```
