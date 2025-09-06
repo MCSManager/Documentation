@@ -26,14 +26,14 @@ GET /api/auth/search
   "data": {
     "data": [
       {
-        "uuid": "55a8120adb4f4bb3bee672ef305bae62",
+        "uuid": "********************************",
         "userName": "Admin",
         "passWord": "",
         "passWordType": 1,
         "salt": "",
         "permission": 10, // 1=用户, 10=管理员, -1=被封禁的用户
-        "registerTime": "10/28/2023, 5:38:44 PM",
-        "loginTime": "10/14/2023, 1:01:58 AM",
+        "registerTime": 1718594128408,
+        "loginTime": 1718594138590,
         // 用户拥有的实例列表
         "instances": [
           {
@@ -103,7 +103,7 @@ PUT /api/auth
     "userName": string,
     "loginTime": string,
     "registerTime": string,
-    "instances": InstanceDetail[],  // 用户拥有的实例
+    "instances": IUserHaveInstance[],  // 用户拥有的实例
                                     // 您可以在此处为用户分配实例
     "permission": number,  // 1=用户, 10=管理员, -1=被封禁的用户
     "apiKey": string,
@@ -114,7 +114,7 @@ PUT /api/auth
 }
 ```
 
-> 有关InstanceDetail的信息，[这请参考这里](./api_instance.md#示例详细信息)
+> 有关`IUserHaveInstance[]`的信息，[这请参考这里](./api_instance.md#iuserhaveinstance)
 
 #### 返回示例
 

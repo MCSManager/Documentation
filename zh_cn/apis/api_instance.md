@@ -8,6 +8,10 @@ GET /api/service/remote_service_instances
 
 #### Query 参数
 
+:::tip
+注意此处的参数是**Query参数**,使用JSON格式只是为了更好地表达,下文也有相同的方法将不再提醒
+:::
+
 ```js
 {
   daemonId: string;
@@ -417,20 +421,20 @@ POST /api/protected_instance/install_instance
 
 ```json
 {
-  "nickname": "New Name",
-  "startCommand": "cmd.exe",
-  "stopCommand":  "^C",
-  "cwd": "/workspaces/my_server/",
+  "nickname": "New Name",             // 实例名称
+  "startCommand": "cmd.exe",          // 启动命令
+  "stopCommand":  "^C",               // 停止命令
+  "cwd": "/workspaces/my_server/",    // 运行目录(主机)
   "ie": "gbk",                        // 输入 encode
   "oe": "gbk",                        // 输出 encode
-  "createDatetime": 1709631756708,
-  "lastDatetime": 1709631756708,
+  "createDatetime": 1709631756708,    // 创建时间
+  "lastDatetime": 1709631756708,      // 最后启动时间
   "type": "universal",                // 实例类型
-  "tag": [],
-  "endTime": 1709631756708,
-  "fileCode": "gbk",
-  "processType": "docker",
-  "updateCommand": "shutdown -s",
+  "tag": [],                          // 实例标签
+  "endTime": 1709631756708,           // 到期时间
+  "fileCode": "gbk",                  // 文件编码
+  "processType": "docker",            // 进程类型
+  "updateCommand": "shutdown -s",     // 更新命令
   "actionCommandList": [],
   "crlf": 2,
   "docker": DockerConfig,
@@ -496,19 +500,33 @@ POST /api/protected_instance/install_instance
 
 ```json
 {
-  "containerName": "",
-  "image": "mcsm-ubuntu:22.04",
-  "memory": 1024, // MB
-  "ports": ["25565:25565/tcp"],
-  "extraVolumes": [],
-  "maxSpace": null,
-  "network": null,
-  "io": null,
-  "networkMode": "bridge",
-  "networkAliases": [],
-  "cpusetCpus": "",
-  "cpuUsage": 100,
-  "workingDir": "",
-  "env": []
+  "containerName": "",            // 容器名称
+  "image": "mcsm-ubuntu:22.04",   // 镜像
+  "memory": 1024,                 // 单位使用MB
+  "ports": ["25565:25565/tcp"],   // 端口映射
+  "extraVolumes": [],             // 挂载卷
+  "maxSpace": null,               // 最大可用磁盘空间(暂未开发完成)
+  "network": null,                // Docker网络
+  "io": null,                     // 暂时无效
+  "networkMode": "bridge",        // 网络模式
+  "networkAliases": [],           // 网络别名
+  "cpusetCpus": "",               // CPU使用偏好
+  "cpuUsage": 100,                // CPU限制
+  "workingDir": "",               // 工作目录
+  "changeWorkdir": false,         // 强制更改工作目录
+  "env": []                       // 环境变量
+}
+```
+
+:::tip
+`ports`字段中，使用`{mcsm_port}`可以表示随机端口
+:::
+
+## `IUserHaveInstance[]`
+
+```json
+{
+    "instanceUuid": "********************************", //实例ID
+    "daemonId": "********************************"
 }
 ```
