@@ -121,7 +121,7 @@ server {
 	# 传输时大小达到1k才压缩，压缩小内容无意义
 	gzip_min_length 1k;
 
-	# intermediate configuration
+	# 使用Cloudflare或京东云CDN代理时注释掉以下4项，intermediate configuration
 	ssl_protocols TLSv1.2 TLSv1.3;
 	ssl_ecdh_curve X25519:prime256v1:secp384r1;
 	ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;

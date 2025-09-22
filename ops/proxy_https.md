@@ -118,7 +118,7 @@ server {
 	# Only compress when the size during transmission reaches 1k, as compressing smaller content is pointless.
 	gzip_min_length 1k;
 
-	# intermediate configuration
+	# Comment out these 4 options when using Cloudflare/JDCloud CDN, intermediate configuration
 	ssl_protocols TLSv1.2 TLSv1.3;
 	ssl_ecdh_curve X25519:prime256v1:secp384r1;
 	ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;
