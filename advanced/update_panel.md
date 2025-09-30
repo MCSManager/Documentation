@@ -27,6 +27,9 @@ After executing the script, there's nothing else you need to do, and your MCSMan
 sudo su -c "wget -qO- https://script.mcsmanager.com/setup.sh | bash"
 ```
 
+> [!IMPORTANT]
+> The script will enable `mcsm-web` automatically, if you don't need the web panel, remember to **disable it manually** by **`systemctl stop mcsm-web && systemctl disable mcsm-web`** after update!
+
 ### Manual Update for Linux Version
 
 If you originally installed MCSManager **manually**, the one-click installation script will not work for you as it may result in installing two separate instances of the program.
