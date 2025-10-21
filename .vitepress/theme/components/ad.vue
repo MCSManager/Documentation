@@ -29,28 +29,12 @@ import { reactive } from "vue";
 const adConfig = [
   {
     language: "zh",
-    adText: "【创梦网络】【创梦网络】16核/16G/50M带宽 限时特价仅88元/月",
-    adAddr: "https://www.580dns.com/cart?fid=3&gid=31",
-    endTime: "2025/8/16 23:59:59",
-    qq: 490898739,
-    price: 239,
-  },
-  {
-    language: "zh",
     adText:
-      "【互联网数据中心】全球高防高频云服务器就位，IDC 让每一份算力都有价值！",
-    adAddr: "https://www.idcnetwork.cn/cart/goodsList.htm",
-    endTime: "2025/8/4 23:59:59",
-    qq: 1481515930,
-    price: 599,
-  },
-  {
-    language: "zh",
-    adText: "【小白云】南京56核64G 30M 仅需299一个月",
-    adAddr: "https://www.xiaobaiyun.cn",
-    endTime: "2025/8/1 23:59:59",
-    qq: 1531335070,
-    price: 269,
+      "【裕米云计算】为爱探索的你培育好每一颗“数字玉米”，全新云服务等你发现！",
+    adAddr: "https://comcorn.cn/",
+    endTime: "2025/10/21 23:59:59",
+    qq: 3073559291,
+    price: 199,
   },
 ];
 
