@@ -30,6 +30,9 @@
 sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash"
 ```
 
+> [!IMPORTANT]
+> 脚本会自动启用 `mcsm-web`, 如果你不需要网页面板，请在更新后**手动执行** **`systemctl stop mcsm-web && systemctl disable mcsm-web`** 禁用，否则可能导致面板被入侵！
+
 ### Linux 版手动更新
 
 如果你**当初是手动安装**的 MCSManager 面板，那么一键安装脚本将不适用于你，因为这会导致安装两份程序。
