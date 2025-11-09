@@ -32,7 +32,7 @@ const adConfig = [
     adText:
       "【裕米云计算】为爱探索的你培育好每一颗“数字玉米”，全新云服务等你发现！",
     adAddr: "https://comcorn.cn/",
-    endTime: "2025/10/21 23:59:59",
+    endTime: "2025/11/21 23:59:59",
     qq: 3073559291,
     price: 199,
   },
