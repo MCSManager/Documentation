@@ -19,13 +19,13 @@ Suppose you also have a service called `Jenkins` and set the path prefix to `/je
 
 For example, reverse proxy to `https://example.com[:443]`, then you can access the MCSM panel through `https://example.com/mcsm/` and also through `https://example .com/jenkins/` to access Jenkins.
 
-## Reverse proxy
+## Reverse proxy with NGINX
 
 For the configuration of Nginx, see [Configuring HTTPS](proxy_https).
 
 What we need to do now is to modify the `location` item in the original configuration. For example, if your path prefix is `/mcsm/`, then replace the original
 
-```conf
+```nginx
 location/{
      #...
 }
@@ -33,13 +33,35 @@ location/{
 
 Change to
 
-```conf
+```nginx
 location /mcsm {
      #...
 }
 ```
 
 Just restart nginx.
+
+## Reverse proxy with Caddy
+
+For the configuration of Caddy, see [Configuring HTTPS](proxy_https_caddy).
+
+What we need to do now is to modify the `reverse_proxy` item in the original configuration. For example, if your path prefix is `/mcsm/`, then replace the original
+
+```
+reverse_proxy localhost:23333 {
+    # ...
+}
+```
+
+Change to
+
+```
+reverse_proxy /mcsm/* localhost:23333 {
+    # ...
+}
+```
+
+Just restart caddy.
 
 ## Change configuration
 

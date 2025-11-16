@@ -8,7 +8,7 @@
 
 The following websites provide free 90-days SSL certificate for your domain. You can also choose other providers.
 
-> <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
+> [https://zerossl.com/](https://zerossl.com/)
 
 You can also choose to get a certificate from `Let's Encrypt`, `Other CA`, or `Self-Signed Certificate`. Note, that a self-signed certificate is not trusted by OS and browser by default, it has to be added to the certificate store manually.
 
