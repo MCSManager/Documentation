@@ -19,13 +19,13 @@
 
 例如，反向代理到 `https://example.com[:443]`，那么，你可以通过 `https://example.com/mcsm/` 访问到 MCSM 面板，同时通过 `https://example.com/jenkins/` 访问到 Jenkins。
 
-## 反向代理
+## 使用Nginx反向代理
 
 Nginx 的配置参见[配置 HTTPS](proxy_https)。
 
 现在我们要做的是修改原先配置中的 `location` 项。例如你的路径前缀是 `/mcsm/`，那么将原先的
 
-```conf
+```nginx
 location / {
     # ...
 }
@@ -33,13 +33,35 @@ location / {
 
 改为
 
-```conf
+```nginx
 location /mcsm {
     # ...
 }
 ```
 
 重启 nginx 即可。
+
+## 使用Caddy反向代理
+
+Caddy 的配置参见[配置 HTTPS](proxy_https_caddy)。
+
+现在我们要做的是修改原先配置中的 `reverse_proxy` 块。例如你的路径前缀是 `/mcsm/`，那么将原先的
+
+```
+reverse_proxy localhost:23333 {
+    # ...
+}
+```
+
+改为
+
+```
+reverse_proxy /mcsm/* localhost:23333 {
+    # ...
+}
+```
+
+重启 Caddy 即可。
 
 ## 更改配置
 

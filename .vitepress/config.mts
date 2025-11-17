@@ -130,6 +130,14 @@ export default defineConfig({
               link: "/ops/proxy_https_iis.md",
             },
             {
+              text: "HTTPS Reverse Proxy with Caddy",
+              link: "/ops/proxy_https_caddy.md",
+            },
+            {
+              text: "Share ports with other services",
+              link: "/ops/path_prefix.md",
+            },
+            {
               text: "Cloudflare CDN",
               link: "/ops/cloudflare.md",
             },
@@ -289,6 +297,10 @@ export default defineConfig({
             {
               text: "通过 IIS 使用 HTTPS",
               link: "/zh_cn/ops/proxy_https_iis.md",
+            },
+            {
+              text: "通过 Caddy 使用 HTTPS",
+              link: "/zh_cn/ops/proxy_https_caddy.md",
             },
             {
               text: "与其他服务共用端口",

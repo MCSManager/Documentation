@@ -8,16 +8,16 @@
 
 可以在免费 SSL 的网站上，为自己的域名生成 90 天免费且可无限续签的证书：
 
-> <a href="https://ohttps.com/" target="_blank">https://ohttps.com/</a>  
-> <a href="https://www.mianfeissl.com/" target="_blank">https://www.mianfeissl.com/</a>
+> [https://ohttps.com/](https://ohttps.com/)  
+> [https://www.mianfeissl.com/](https://www.mianfeissl.com/)  
 
 如果你没有域名，想直接用 IP 地址访问，可以在此生成证书：
 
-> <a href="https://zerossl.com/" target="_blank">https://zerossl.com/</a>
+> [https://zerossl.com/](https://zerossl.com/)
 
 你也可以选择使用`Let's Encrypt`、`其他CA`或`自签名SSL证书`。注意自签名证书默认不被操作系统及浏览器信任，需要手动加入信任链。
 
-```使用OpenSSL生成自签名证书
+```
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
 ```
 
@@ -161,7 +161,7 @@ openssl pkcs12 -export -out certificate.pfx -inkey domain.key -in domain.crt -ce
 
 假如域名是 **_domain.com_** ，反向代理后的端口是`12333`与`12444`，那么浏览器需要使用这个地址访问：
 
-```txt
+```
 面板地址: https://domain.com:12333/
 节点地址: https://domain.com:12444/
 ```
