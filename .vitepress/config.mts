@@ -291,6 +291,10 @@ export default defineConfig({
               link: "/zh_cn/ops/mcsm_network.md",
             },
             {
+              text: "使用 HTTPS",
+              link: "/zh_cn/ops/https.md",
+            },
+            {
               text: "通过 NGINX 使用 HTTPS",
               link: "/zh_cn/ops/proxy_https.md",
             },
