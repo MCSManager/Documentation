@@ -4,7 +4,7 @@
 
 `Linux` 建议使用较新版本的 Linux 发行版，否则容易出现环境不兼容导致无法启动，建议使用 `Ubuntu 22.04` 及以上版本。
 
-`Windows` 端建议使用 `Windows server 2016`，`Windows 10` 及以上版本。
+`Windows` 端建议使用 `Windows server 2016`，`Windows 11` 及以上版本。
 
 ## Windows 版本
 

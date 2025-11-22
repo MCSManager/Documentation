@@ -4,7 +4,7 @@
 
 To help prevent errors, we recommend using the **latest popular Linux distributions**, such as `Ubuntu 22.04 LTS`.
 
-For Windows, we suggest using `Windows Server 2016`, `Windows 10`, or the latest stable version.
+For Windows, we suggest using `Windows Server 2016`, `Windows 11`, or the latest stable version.
 
 ## Windows
 
