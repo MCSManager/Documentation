@@ -14,6 +14,10 @@ Generate and copy this API key, it will have the same rights as your current acc
 
 <img src="../images/zh_cn/getkey.png" style="width:400px" />
 
+:::warning 
+Please fill in all parameters, even if they are blank. Otherwise, there may be malfunctions in the API response.
+:::
+
 ## Example Usages
 
 Suppose you are an admin, and you want to use the API to `get a list of daemons`. You need to use any programming language or HTTP tool to send the following request:
