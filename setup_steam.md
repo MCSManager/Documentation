@@ -14,6 +14,11 @@ No matter which Steam game server you want to run, `PalWorld`, `CS2`, `ARK`, or 
 
 ## Create an Instance
 
+:::tip
+We also offer Steam Game Server templates on the Market for popular games.  
+To use a template, head to the `Instances` page, select a game and press `Install`.
+:::
+
 1. Go to the `Instances` page and click the `Create` button.
 2. Select `Steam Game Server`.
 3. Select the machine (node) where you would like to deploy the server.
