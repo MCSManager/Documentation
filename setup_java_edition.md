@@ -41,6 +41,27 @@ java -Dfile.encoding=UTF-8 -jar "paper-<version>.jar"
 You can provide many more arguments in the startup command. Feel free to explore more possibilities!
 :::
 
+:::tip
+You can increase the heap size (Memory or RAM) by adding these two arguments to your startup command:
+
+`-Xms` - specifies the initial heap size for the JVM  
+`-Xmx` - specifies the maximum heap size for the JVM
+
+Examples:
+1. `-Xms256M -Xmx2G`
+2. `-Xms2G -Xmx4G`
+
+The final command should look something like this:
+```bash
+java -Dfile.encoding=UTF-8 -Xms2G -Xmx4G -jar "paper-<version>.jar"
+```
+
+You can adjust the values to your liking and find out what works best for your system!
+
+:::warning
+Please check how much RAM your system has before adding those arguments and don't allocate your full system's RAM to the JVM as the operating system your machine is running on also needs some resources to function. Ignoring this warning may result in a full system crash when running your server.
+:::
+
 After filling in the startup command, click `Create` to create the instance.
 
 Go to `File Management` and upload the server core file you downloaded earlier.
@@ -58,3 +79,20 @@ If you do not agree to the Mojang's End-User License Agreement (EULA), you will 
 To start the server for the first time, you must accept the `End-User License Agreement (EULA)`. To accept EULA, go to `Configuration Files`, and you will see `eula.txt`, click `edit` and select `yes`.
 
 If you can't find this file, try starting your server.
+
+## Changing the terminal's time zone
+
+If the terminal's time zone is not the same as yours, you can add this command line argument to your Startup command:
+
+```bash
+-Duser.timezone=<TZ-Identifier>
+```
+
+Example:
+```bash
+java -Duser.timezone=Europe/Paris -Dfile.encoding=UTF-8 -Xms2G -Xmx4G -jar "paper-<version>.jar"
+```
+
+:::tip
+You can find a list of all time zones and their identifiers [**here**](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+:::
