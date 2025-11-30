@@ -8,13 +8,13 @@ MCSManager has gained a certain level of popularity within `Minecraft` and `othe
 
 ## Dependencies
 
-By default, **The installation script should already include all required environments**, so you don't need to worry about environment requirements.
+By default, **the installation script should already include all required environments**, so you don't need to worry about environment requirements.
 
-But if you install it manually, you need to meet the `Node 16+` runtime environment.
+But if you install it manually, you need to [**install `Node.js` version 16 or newer**](https://nodejs.org/en/download).
 
 ## Linux Installation Script
 
-Because it needs to be registered to the system service, **The installation script must be run with root.**
+Because MCSManager needs to be registered to the system services, **the installation script must be run with root privileges.**
 
 ```bash
 sudo su -c "wget -qO- https://script.mcsmanager.com/setup.sh | bash"
@@ -37,6 +37,10 @@ systemctl restart mcsm-web.service
 # Stop panel command
 systemctl stop mcsm-web.service
 systemctl stop mcsm-daemon.service
+
+# Run MCSManager on startup
+systemctl enable mcsm-web.service
+systemctl enable mcsm-daemon.service
 
 ```
 
@@ -102,8 +106,9 @@ Just [download the ZIP file](https://github.com/MCSManager/MCSManager/releases/l
 
 ### Startup Method
 
-Execute `start.bat` or `run.bat`, etc. If the compressed package contains `launcher.exe`, you can use it to start the panel.
+Execute `start.bat` or `run.bat`, etc. to start MCSManager.  
+If the compressed package contains `launcher.exe`, you can use it to start the panel.
 
 ### Stop Panel
 
-Enter `Ctrl+C` in the two terminal console windows of the panel to close normally.
+Press `Ctrl+C` in the two terminal console windows of the panel to stop MCSManager.

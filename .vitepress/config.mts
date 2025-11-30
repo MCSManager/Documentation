@@ -40,7 +40,7 @@ export default defineConfig({
               link: "/docker-install.md",
             },
             {
-              text: "Minecraft Server",
+              text: "Minecraft Servers",
               collapsed: false,
               items: [
                 { text: "Dependencies", link: "/setup_package" },

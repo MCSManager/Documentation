@@ -28,7 +28,7 @@ sudo su -c "wget -qO- https://script.mcsmanager.com/setup.sh | bash"
 ```
 
 > [!IMPORTANT]
-> The script will enable `mcsm-web` automatically, if you don't need the web panel, remember to **disable it manually** by **`systemctl stop mcsm-web && systemctl disable mcsm-web`** after update!
+> The script will enable `mcsm-web` automatically. If you don't need the web panel, remember to run **disable it manually** by **`systemctl stop mcsm-web && systemctl disable mcsm-web`** in a terminal after updating!
 
 ### Manual Update for Linux Version
 
@@ -50,4 +50,13 @@ If you lost access to the admin account, you can always create a new one with th
 
 ## Reset Everything
 
-All you need to do is delete the `data` folder.
+If you want to reset the entire Panel, all you need to do is stop MCSManager, delete the `data` folders of the corresponding modules and start MCSManager again.
+
+:::tip
+**/mcsmanager/web/data** - User-Related data
+**/mcsmanager/daemon/data** - Instance-Related data
+:::
+
+::: warning
+When deleting the Instance-Related data folder you could delete your instances if you didn't manually change their working directory!
+:::
