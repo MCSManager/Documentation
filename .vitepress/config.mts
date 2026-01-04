@@ -10,7 +10,7 @@ export default defineConfig({
   // head section
   head: [
     // favicon
-    ['link', { rel: 'icon', href: '/images/logo.png' }]
+    ["link", { rel: "icon", href: "/images/logo.png" }],
   ],
 
   locales: {
@@ -140,6 +140,10 @@ export default defineConfig({
             {
               text: "Cloudflare CDN",
               link: "/ops/cloudflare.md",
+            },
+            {
+              text: "Cloudflare Tunnels",
+              link: "/ops/cloudflare_tunnels.md",
             },
           ],
         },
