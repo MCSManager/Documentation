@@ -7,4 +7,4 @@ This section is intended for users of Cloudflare Tunnels.
 
 ## Youtube Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ITrh7SDVC9U?si=DTfLYoxxmKOc3y0u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="700" height="415" src="https://www.youtube.com/embed/ITrh7SDVC9U?si=DTfLYoxxmKOc3y0u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
