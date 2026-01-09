@@ -37,6 +37,7 @@ services:
     environment:
       - MCSM_DOCKER_WORKSPACE_PATH=<CHANGE_ME_TO_INSTALL_PATH>/daemon/data/InstanceData
     volumes:
+      - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - <CHANGE_ME_TO_INSTALL_PATH>/daemon/data:/opt/mcsmanager/daemon/data
       - <CHANGE_ME_TO_INSTALL_PATH>/daemon/logs:/opt/mcsmanager/daemon/logs
@@ -60,7 +61,8 @@ docker pull githubyumao/mcsmanager-web:latest
 # with your actual data storage path, which needs to be persistent.
 
 # Start the MCSManager Daemon
-docker run -v /etc/localtime:/etc/localtime:ro  \
+docker run -v /etc/timezone:/etc/timezone:ro  \
+-v /etc/localtime:/etc/localtime:ro  \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs \
 -v /var/run/docker.sock:/var/run/docker.sock \
