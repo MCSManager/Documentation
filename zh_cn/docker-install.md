@@ -38,6 +38,7 @@ services:
     environment:
       - MCSM_DOCKER_WORKSPACE_PATH=<CHANGE_ME_TO_INSTALL_PATH>/daemon/data/InstanceData
     volumes:
+      - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - <CHANGE_ME_TO_INSTALL_PATH>/daemon/data:/opt/mcsmanager/daemon/data
       - <CHANGE_ME_TO_INSTALL_PATH>/daemon/logs:/opt/mcsmanager/daemon/logs
@@ -62,7 +63,8 @@ docker pull githubyumao/mcsmanager-web:latest
 # 需要替换为你实际数据存储的位置，该位置需要被持久化
 
 # 启动 MCSManager 守护进程端
-docker run -v /etc/localtime:/etc/localtime:ro  \
+docker run -v /etc/timezone:/etc/timezone:ro  \
+-v /etc/localtime:/etc/localtime:ro  \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/data:/opt/mcsmanager/daemon/data \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/daemon/logs:/opt/mcsmanager/daemon/logs \
 -v /var/run/docker.sock:/var/run/docker.sock \
