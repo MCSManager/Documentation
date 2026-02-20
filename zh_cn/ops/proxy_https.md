@@ -144,8 +144,11 @@ server {
 # MCSManager 面板
 server {
 	# 面板端公网HTTPS端口(可用多个listen监听多个端口)
-	listen 12333 ssl http2; #IPV4
-	listen [::]:12333 ssl http2; #IPv6
+	listen 12333 ssl; #IPV4
+	listen [::]:12333 ssl; #IPv6
+
+	# 启用http2
+	http2 on;
 
 	# 开启HSTS 开启后将强制使用HTTPS连接面板并在取消此策略后持续一年除非在浏览器手动清除策略。
 	# 默认未开启，可取消注释开启.
