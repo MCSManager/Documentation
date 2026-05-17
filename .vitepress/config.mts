@@ -108,6 +108,10 @@ export default defineConfig({
               text: "Upgrade from 9.x",
               link: "/ops/from_v9.md",
             },
+            {
+              text: "Implementation of SSO",
+              link: "/ops/sso.md",
+            },
           ],
         },
         {
@@ -280,6 +284,10 @@ export default defineConfig({
             {
               text: "从 9.X 版本升级",
               link: "/zh_cn/ops/from_v9.md",
+            },
+            {
+              text: "Implementation of SSO",
+              link: "/zh_cn/ops/sso.md",
             },
           ],
         },
