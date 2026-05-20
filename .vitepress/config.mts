@@ -126,6 +126,10 @@ export default defineConfig({
               link: "/ops/mcsm_network.md",
             },
             {
+              text: "Enable HTTPS",
+              link: "/ops/https.md",
+            },
+            {
               text: "HTTPS Reverse Proxy with NGINX",
               link: "/ops/proxy_https.md",
             },
