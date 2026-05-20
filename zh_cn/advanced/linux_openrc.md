@@ -18,7 +18,7 @@
 name=$RC_SVCNAME
 description="MCSManager Daemon"
 supervisor="supervise-daemon"
-command="<NodeJS dir>/bin/node"
+command="<NodeJS安装路径>/bin/node"
 command_args="app.js"
 supervise_daemon_args=" -d /opt/mcsmanager/daemon -e "PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"\""
 command_user="root"
@@ -41,7 +41,7 @@ reload() {
 name=$RC_SVCNAME
 description="MCSManager Web"
 supervisor="supervise-daemon"
-command="<NodeJS dir>/bin/node"
+command="<NodeJS安装路径>/bin/node"
 command_args="app.js"
 supervise_daemon_args=" -d /opt/mcsmanager/web -e "PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"\""
 command_user="root"
