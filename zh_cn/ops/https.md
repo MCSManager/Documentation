@@ -37,8 +37,8 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3
 
 1. 已签发证书链文件及路径: `/root/ssl/domain_fullchain.crt`。
 2. 已签发证书对应的私钥及路径: `/root/ssl/domain.key`。
-3. 面板配置文件：`/opt/mcsmanager/daemon/data/Config/global.json`
-4. 节点配置文件：`/opt/mcsmanager/web/data/SystemConfig/config.json`
+3. 面板配置文件：`/opt/mcsmanager/web/data/SystemConfig/config.json`
+4. 节点配置文件：`/opt/mcsmanager/daemon/data/Config/global.json`
 5. 域名已正确解析到 IP。
 6. 防火墙或端口映射已放行节点端口`24444`与面板端口`23333`。
 7. 关闭面板和节点进程。
