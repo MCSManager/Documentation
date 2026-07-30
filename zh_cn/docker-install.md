@@ -26,9 +26,11 @@ services:
     ports:
       - "23333:23333"
     volumes:
+      - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - <CHANGE_ME_TO_INSTALL_PATH>/web/data:/opt/mcsmanager/web/data
       - <CHANGE_ME_TO_INSTALL_PATH>/web/logs:/opt/mcsmanager/web/logs
+      - <CHANGE_ME_TO_INSTALL_PATH>/web/public/upload_files:/opt/mcsmanager/web/public/upload_files
 
   daemon:
     image: githubyumao/mcsmanager-daemon:latest
@@ -75,9 +77,11 @@ docker run -v /etc/timezone:/etc/timezone:ro  \
 
 # 启动 MCSManager Web 端
 docker run \
+-v /etc/timezone:/etc/timezone:ro \
 -v /etc/localtime:/etc/localtime:ro \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/web/data:/opt/mcsmanager/web/data \
 -v ${CHANGE_ME_TO_INSTALL_PATH}/web/logs:/opt/mcsmanager/web/logs \
+-v ${CHANGE_ME_TO_INSTALL_PATH}/web/public/upload_files:/opt/mcsmanager/web/public/upload_files \
 -p 23333:23333 \
 -d githubyumao/mcsmanager-web:latest
 
