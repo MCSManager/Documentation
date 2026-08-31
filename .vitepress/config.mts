@@ -290,7 +290,7 @@ export default defineConfig({
               link: "/zh_cn/ops/from_v9.md",
             },
             {
-              text: "Implementation of SSO",
+              text: "使用SSO登录",
               link: "/zh_cn/ops/sso.md",
             },
           ],
