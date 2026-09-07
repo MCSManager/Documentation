@@ -39,11 +39,19 @@ const adConfig = [
   {
     language: "zh",
     adText:
-      "🔥 IDCN 云｜MCSManager 推荐！9950X/i9-14900K 游戏服高防云服务器 → idcnetwork.cn【互联网数据中心】",
+      "🔥 IDCN 云｜MCSManager 推荐！9950X/i9-14900K 游戏服高防云服务器 idcnetwork.cn【互联网数据中心】",
     adAddr: "https://www.idcnetwork.cn/",
     endTime: "2027/4/1 23:59:59",
     qq: 1481515930,
     price: 4000,
+  },
+  {
+    language: "zh",
+    adText: "🔥 赔钱云 全网最低价！新用户享受 1 折优惠！",
+    adAddr: "https://www.peiqianyun.com/aff/LEBCJRUT",
+    endTime: "2027/10/7 23:59:59",
+    qq: 3447530588,
+    price: 599,
   },
   {
     language: "zh",
