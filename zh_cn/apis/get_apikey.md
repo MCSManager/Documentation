@@ -65,7 +65,7 @@ X-Requested-With: XMLHttpRequest
       },
       "system": {
         "type": "Windows_NT", //系统类型
-        "hostname": "MyComputer", //系统名称 
+        "hostname": "MyComputer", //系统名称
         "platform": "win32", //系统平台
         "release": "11.0.22000", //版本
         "uptime": 410445, //在线时长
@@ -77,7 +77,14 @@ X-Requested-With: XMLHttpRequest
         "totalmem": 17024741376, //总内存
         "processCpu": 0,
         "processMem": 0
-      }
+      },
+      "cpuMemChart": [
+        // CPU 和内存使用情况图表
+        {
+          "cpu": 0,
+          "mem": 13
+        }
+      ]
     }
   ],
   // 请求完成处理的时间可用于测量延迟。

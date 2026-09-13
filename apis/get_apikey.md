@@ -73,7 +73,13 @@ You will get all daemon's data:
         "totalmem": 17024741376,
         "processCpu": 0,
         "processMem": 0
-      }
+      },
+      "cpuMemChart": [
+        {
+          "cpu": 0,
+          "mem": 13
+        }
+      ]
     }
   ],
   // The time when the request finished processing, can be used to measure latency.

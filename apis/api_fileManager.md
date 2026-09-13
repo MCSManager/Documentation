@@ -15,8 +15,9 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   daemonId: string;
   uuid: string; // Instance ID
   target: string; // File(name or directory) Path
-  page: number;
-  page_size: number;
+  page: number; // Starts from 0
+  page_size: number; // 1 - 100, default 10
+  file_name: string; // Optional, filter by file name
 }
 ```
 
@@ -79,11 +80,63 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 }
 ```
 
+## Get File Status
+
+```http
+GET /api/files/status
+```
+
+#### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  daemonId: string;
+  uuid: string; // Instance ID
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": {
+    "instanceFileTask": 0, // Number of file tasks for this instance
+    "globalFileTask": 0, // Number of file tasks across the daemon
+    "downloadFileFromURLTask": 0, // Number of active URL download tasks
+    "downloadTasks": [
+      {
+        "taskId": "xxx",
+        "path": "/path/to/file",
+        "total": 1024,
+        "current": 512,
+        "status": 0,
+        "error": null
+      }
+    ],
+    "platform": "linux", // OS platform
+    "isGlobalInstance": false, // Whether the instance is the global instance
+    "disks": [] // Windows disk list
+  },
+  "time": 1718594177859
+}
+```
+
+:::tip
+The `disks` field is only populated on Windows systems.
+:::
+
 ## Get File Contents
 
 ```http
 PUT /api/files/
 ```
+
+:::tip
+This route shares the same endpoint `PUT /api/files/` with "Update File". When the request body contains only `target` (without `text`), the file contents are read. When `text` is provided, the file is written.
+:::
 
 #### Query Param
 
@@ -120,6 +173,10 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 PUT /api/files/
 ```
 
+:::tip
+This route shares the same endpoint `PUT /api/files/` with "Get File Contents". When the request body contains `text`, the file is written. When only `target` is provided, the file contents are read.
+:::
+
 #### Query Param
 
 The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
@@ -153,7 +210,7 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 ## Download File
 
 ```http
-POST /api/files/download
+ALL /api/files/download
 ```
 
 #### Query Param
@@ -175,7 +232,8 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "status": 200,
   "data": {
     "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
-    "addr": "localhost:24444" // Daemon Addr
+    "addr": "localhost:24444", // Daemon Addr
+    "remoteMappings": {} // Remote address mappings
   },
   "time": 1718594177859
 }
@@ -190,12 +248,16 @@ GET http(s)://{{Daemon Addr}}/download/{{password}}/{{fileName}}
 GET http://localhost:24444/download/db8271f526...49468abd74/world.zip
 ```
 
+:::tip
+The `password` is a one-time credential. After the download request completes, the credential is invalidated.
+:::
+
 ## Upload File
 
 ### 1. Get Upload Config
 
 ```http
-POST /api/files/upload
+ALL /api/files/upload
 ```
 
 #### Query Param
@@ -217,7 +279,8 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "status": 200,
   "data": {
     "password": "b2d8a6fa3bc8467ebd1563dc4f7179be1718010317889",
-    "addr": "localhost:24444" // Daemon Addr
+    "addr": "localhost:24444", // Daemon Addr
+    "remoteMappings": {} // Remote address mappings
   },
   "time": 1718594177859
 }
@@ -227,6 +290,18 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 
 ```http
 POST http(s)://{{Daemon Address}}/upload/{{password}}
+```
+
+#### Query Param (optional)
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  unzip: boolean; // Optional, if true, unzip the uploaded file after upload
+  code: string; // Optional, encoding for unzip (e.g. utf-8, gbk, big5)
+  overwrite: string; // Optional, "false" to keep the existing file with auto-rename
+}
 ```
 
 #### Request Headers
@@ -245,6 +320,85 @@ file: (Binary Data)
 
 ```
 OK
+```
+
+:::tip
+The daemon also supports resumable uploads via `POST /upload-new/:key` and `POST /upload-piece/:id` endpoints, suitable for uploading large files in chunks.
+:::
+
+## Download From URL
+
+```http
+POST /api/files/download_from_url
+```
+
+#### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  daemonId: string;
+  uuid: string; // Instance ID
+}
+```
+
+#### Request Body
+
+```json
+{
+  "url": "https://example.com/file.zip", // URL to download from
+  "file_name": "/backup/file.zip" // Save path + file name
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": "a1b2c3d4e5f6...", // Download task ID
+  "time": 1718594177859
+}
+```
+
+:::tip
+The download runs in the background on the daemon. Use the `Get File Status` endpoint to track download progress and obtain the actual task ID (`downloadTasks[].taskId`) for stopping.
+:::
+
+## Stop Download From URL
+
+```http
+POST /api/files/download_from_url_stop
+```
+
+#### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  daemonId: string;
+  uuid: string; // Instance ID
+}
+```
+
+#### Request Body
+
+```json
+{
+  "taskId": "a1b2c3d4e5f6..." // Download task ID (from Get File Status)
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": true, // true = stopped successfully, false = task not found
+  "time": 1718594177859
+}
 ```
 
 ## Copy
@@ -277,8 +431,6 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   ]
 }
 ```
-
-
 
 #### Response
 
@@ -327,7 +479,42 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 }
 ```
 
+#### Response
 
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1718594177859
+}
+```
+
+## Chmod
+
+```http
+PUT /api/files/chmod
+```
+
+#### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  daemonId: string;
+  uuid: string; // Instance ID
+}
+```
+
+#### Request Body
+
+```json
+{
+  "target": "/server.jar", // File or directory path
+  "chmod": 755, // Permission number
+  "deep": false // Whether to apply recursively to directories
+}
+```
 
 #### Response
 
@@ -338,6 +525,68 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "time": 1718594177859
 }
 ```
+
+:::warning
+`chmod` is only supported on Linux systems.
+:::
+
+## Chmod Batch
+
+```http
+PUT /api/files/chmod_batch
+```
+
+#### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  daemonId: string;
+  uuid: string; // Instance ID
+}
+```
+
+#### Request Body
+
+```json
+{
+  "targets": [
+    "/server.jar",
+    "/config.json"
+  ], // Array of file/directory paths
+  "chmod": 755, // Permission number
+  "deep": false // Whether to apply recursively
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": {
+    "success": 2, // Number of successfully chmod'd items
+    "failed": 0, // Number of failed items
+    "total": 2, // Total number of items
+    "results": [
+      {
+        "target": "/server.jar",
+        "success": true
+      },
+      {
+        "target": "/config.json",
+        "success": true
+      }
+    ]
+  },
+  "time": 1718594177859
+}
+```
+
+:::warning
+`chmod` is only supported on Linux systems.
+:::
 
 ## Zip
 
@@ -370,8 +619,6 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   ]
 }
 ```
-
-
 
 #### Response
 
@@ -412,8 +659,6 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 }
 ```
 
-
-
 #### Response
 
 ```json
@@ -453,8 +698,6 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 }
 ```
 
-
-
 #### Response
 
 ```json
@@ -490,8 +733,6 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 }
 ```
 
-
-
 #### Response
 
 ```json
@@ -526,8 +767,6 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "target": "/backup" // Folder name
 }
 ```
-
-
 
 #### Response
 

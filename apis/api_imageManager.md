@@ -59,7 +59,7 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 ## Get Network Mode List
 
 ```http
-GET /api/environment/network
+GET /api/environment/networkModes
 ```
 
 #### Query Param
@@ -120,6 +120,37 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
 }
 ```
 
+:::tip
+The image build runs asynchronously. The response returns `true` immediately before the build completes. Use the `Build Progress` endpoint to track the build status.
+:::
+
+## Delete Image
+
+```http
+DELETE /api/environment/image
+```
+
+#### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  daemonId: string;
+  imageId: string; // Docker image ID
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": true,
+  "time": 1718594177859
+}
+```
+
 ## Build Progress
 
 ```http
@@ -148,3 +179,81 @@ The parameters here are **URL Query parameters**, which are presented in JSON fo
   "time": 1718594177859
 }
 ```
+
+## Get Image Platforms
+
+```http
+POST /api/environment/image_platforms
+```
+
+#### Query Param
+
+The parameters here are **URL Query parameters**, which are presented in JSON format for better illustration.
+
+```js
+{
+  daemonId: string;
+}
+```
+
+#### Request Body
+
+```json
+{
+  "imageName": "nginx:latest" // Image name (supports image:tag, namespace/image:tag, registry/repo/image:tag)
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": [
+    "linux/amd64",
+    "linux/arm64",
+    "linux/arm/v7"
+  ],
+  "time": 1718594177859
+}
+```
+
+:::tip
+This endpoint queries supported platforms via the daemon's Docker service. Returns an empty array if platforms cannot be determined.
+:::
+
+## Get Docker Hub Image Platforms
+
+```http
+POST /api/environment/dockerhub_image_platforms
+```
+
+:::tip
+This endpoint fetches platform information directly from Docker Hub (or a custom registry) via the Docker Registry HTTP API V2, bypassing the daemon. Useful for querying available platforms before pulling an image.
+:::
+
+#### Request Body
+
+```json
+{
+  "imageName": "nginx:latest" // Image name (supports image:tag, namespace/image:tag, registry/repo/image:tag)
+}
+```
+
+#### Response
+
+```json
+{
+  "status": 200,
+  "data": [
+    "linux/amd64",
+    "linux/arm64",
+    "linux/arm/v7"
+  ],
+  "time": 1718594177859
+}
+```
+
+:::warning
+If the request fails (e.g. network timeout, private repository without authentication), an empty array `[]` is returned as a graceful fallback.
+:::
