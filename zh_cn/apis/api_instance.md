@@ -1068,6 +1068,13 @@ POST /api/exchange/request_buy_instance
 }
 ```
 
+`eventTask` 字段的运行时行为：
+
+- `autoStart` 只在 daemon 完成实例加载后执行一次。daemon 会等待约 5 秒，然后启动配置为自动启动且当前已停止的实例；运行期间修改该字段不会热加载。
+- `autoRestart` 只在实例进程退出后触发重启，不会因为 daemon 重启而启动实例。
+- `autoRestartMaxTimes` 是当前 daemon 进程内的自动重启上限；`-1` 表示不限制。达到上限后，后续异常退出不会再自动启动。
+- 通过 API 或面板修改配置会立即更新内存中的实例配置并持久化到 `InstanceConfig` 文件。直接编辑文件不会刷新已加载的实例，daemon 后续写回配置时可能覆盖手工修改。
+
 ## InstanceDetail 类型
 
 <a id="type-of-instdetail"></a>

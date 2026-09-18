@@ -1109,6 +1109,13 @@ POST /api/exchange/request_buy_instance
 }
 ```
 
+Runtime behavior of `eventTask`:
+
+- `autoStart` runs once after the daemon finishes loading instances. The daemon waits about five seconds, then starts instances that have this flag enabled and are stopped. Changes made directly to the file are not hot-reloaded.
+- `autoRestart` only starts an instance again after its process exits; restarting the daemon does not trigger it.
+- `autoRestartMaxTimes` limits automatic restarts within the current daemon process. `-1` means unlimited. Once the limit is reached, later unexpected exits are not restarted automatically.
+- Changes made through the API or panel update the in-memory instance and are persisted to the `InstanceConfig` file. Editing the file directly does not refresh an already-loaded instance, and a later daemon write can overwrite the manual change.
+
 ## Type of InstanceDetail
 
 <a id="type-of-instdetail"></a>
